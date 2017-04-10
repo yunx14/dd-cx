@@ -1,0 +1,24 @@
+{
+  "name": "simple-service",
+  "version": "1.0.0",
+  "description": "simple rest service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jasmine-node ./test --verbose"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "Bob Warren <rwarren@delta.org> (http://www.delta.com)",
+  "license": "none",
+  "dependencies": {
+        "express": "^4.14.0",
+        "body-parser": "*",
+    "express-handlebars": "*"
+    },
+    "devDependencies": {
+        "jasmine-node": "^2.0.0"
+    }
+}

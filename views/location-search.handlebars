@@ -1,0 +1,13 @@
+<h1>Location Search</h1>
+<h2>Search by zipcode</h2>
+
+<form action="location-search" method="post">
+  <formset id="location-search">
+    <!-- label for="search">Search</label --><input type="search" name="search" id="search" class="search zip" placeholder="ex: 12345" maxlength="5"/>
+  </formset>
+  <button type="submit">Search</button>
+  <button id="debugButton" type="button">Debug Model</button>
+</form>
+
+<!-- create a view to manage interaction (optional) -->
+<script src="./location-search.js" defer="defer"></script>
