@@ -62,6 +62,14 @@ module.exports = function() {
     },
     "index": function(i) {
       return (i) ? this.attributes[i] : null;
+    },
+    "toJSON": function() {
+      return this.attributes;
+    },
+    "set": function(data) {
+      if (data) {
+        this.attributes = data;
+      }
     }
   }
 }
