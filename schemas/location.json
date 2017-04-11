@@ -1,0 +1,48 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "model",
+	"description": "Generated Schema",
+	"type": "object",
+	"properties": {
+		"npi": {
+			"type": "string",
+			"description": "npi"
+		},
+		"type": {
+			"type": "string",
+			"description": "type"
+		},
+		"name": {
+			"type": "object",
+			"description": "name"
+		},
+		"addresses": {
+			"type": "array",
+			"description": "addresses"
+		},
+		"speciality": {
+			"type": "array",
+			"description": "speciality"
+		},
+		"accepting": {
+			"type": "string",
+			"description": "accepting"
+		},
+		"plans": {
+			"type": "array",
+			"description": "plans"
+		},
+		"languages": {
+			"type": "array",
+			"description": "languages"
+		},
+		"gender": {
+			"type": "string",
+			"description": "gender"
+		},
+		"last_updated_on": {
+			"type": "string",
+			"description": "last_updated_on"
+		}
+	}
+}
