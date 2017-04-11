@@ -7,6 +7,7 @@ module.exports = function() {
     "path": "",
     "port": 0,
     "attributes": {},
+    "query": {},
     "fetch": function(options, success, error) {
       if (!options) {
         options = {};
@@ -20,6 +21,7 @@ module.exports = function() {
       if (!options.path) {
         options.path = this.path;
       }
+      // TODO: Support query for filtering
 
       if (!success) {
         success = function(status, data) {

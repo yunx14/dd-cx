@@ -7,7 +7,7 @@ var View = require("./views/view.js");
 var Logger = require("./utility/logger.js");
 
 const PORT = 80,
-      ABOUT = "This is a simple Locations EndPoint built on express.",
+      ABOUT = "This is the Directory Experience EndPoint.",
       SERVICE_HOST = "http://localhost",
       SERVICE_PORT = 8080,
       LOCATION_SEARCH_VIEW_ANCHOR = "location-search";
