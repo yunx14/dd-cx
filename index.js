@@ -8,7 +8,7 @@ const PORT = 80,
       SERVICE_PORT = 8080;
 
 // modules
-var Locations = require("./locations.js");
+var Collection = require("./collections/collection.js");
 
 var app = express();
 
@@ -44,7 +44,7 @@ app.get("/location-search.html", function(req, res) {
   res.render("location-search");
 });
 
-app.post("/location-search", function(req, res) {  
+app.post("/location-search", function(req, res) {
   res.status(201).send("Searching....");
 });
 
@@ -63,7 +63,7 @@ app.get("/about", function(req, res) {
 app.get("/locations", function (req, res) {
   console.log("GET /locations");
 
-  var locations = new Locations();
+  var locations = new Collection();
   locations.host = SERVICE_HOST;
   locations.port = SERVICE_PORT;
   locations.path = "/locations";
