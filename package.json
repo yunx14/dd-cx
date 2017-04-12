@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "jasmine-node ./test --verbose",
-    "build": "browserify "
+    "build": "browserify ",
+    "docs": "jsdoc ./views ./utility ./collections ./models ./controllers -r -d ./jsdoc/ -R ./README.md"
   },
   "keywords": [
     "node",
@@ -20,6 +21,7 @@
     "express-handlebars": "*"
   },
   "devDependencies": {
-    "jasmine-node": "^2.0.0"
+    "jasmine-node": "^2.0.0",
+    "jsdoc": "*"
   }
 }
