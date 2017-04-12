@@ -15,11 +15,11 @@
   "author": "Bob Warren <rwarren@delta.org> (http://www.delta.com)",
   "license": "none",
   "dependencies": {
-        "express": "^4.14.0",
-        "body-parser": "*",
-        "express-handlebars": "*"
-    },
-    "devDependencies": {
-        "jasmine-node": "^2.0.0"
-    }
+    "express": "^4.14.0",
+    "body-parser": "*",
+    "express-handlebars": "*"
+  },
+  "devDependencies": {
+    "jasmine-node": "^2.0.0"
+  }
 }
