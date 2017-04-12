@@ -1,7 +1,7 @@
 // abstract model
 var http = require("http");
 
-module.exports = function(name, id) {
+module.exports = Model = function(name, id) {
     return {
       "id": id,
       "name": name,

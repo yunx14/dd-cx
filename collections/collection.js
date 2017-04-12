@@ -1,7 +1,7 @@
 // Abstract Collection
 var http = require("http");
 
-module.exports = function() {
+module.exports = Collection = function() {
   return {
     "host": "",
     "path": "",
@@ -47,7 +47,7 @@ module.exports = function() {
             var data = JSON.parse(buffer);
             this.attributes = data;
 
-            console.log("data " + JSON.stringify(data));
+            //console.log("data " + JSON.stringify(data));
             success(res.statusCode, data);
           } catch(e) {
             error(e);

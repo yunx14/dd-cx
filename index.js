@@ -48,9 +48,6 @@ app.post("/location-form", function(req, res) {
 */
 
 app.get("/location-search.html", function(req, res) {
-  /*var locationsView = new View({}, LOCATION_SEARCH_VIEW_ANCHOR);
-  view.init();*/
-
   res.render("location-search");
 });
 
@@ -62,17 +59,23 @@ app.post("/location-search", function(req, res) {
   locations.port = SERVICE_PORT;
   locations.path = "/locations";
 
+  var locationsView = new View(
+    "locations", // name
+    { "locations": [], "title": ""}, // viewModel
+    { "locations": "{{collection}}", "title": "Locations:" }); // property map
+
   locations.fetch({},
     function(code, data) {
       // success
-      // Note, this is where any enrichment or transformation occur
-      res.render("locations", {"locations": data, "title": "Locations:"});
+      res.status(code).render(locationsView.getName(), locationsView.enrichData(data));
     },
     function(e) {
+      // error
       logger.log("ERROR: Failed to request locations: " + e.message);
       res.status(500).send(e);
     }
   );
+
 
 });
 
@@ -89,6 +92,7 @@ app.get("/about", function(req, res) {
 });
 
 // Testing
+/*
 app.get("/locations", function(req, res) {
   logger.log("GET /locations");
 
@@ -109,6 +113,7 @@ app.get("/locations", function(req, res) {
     }
   );
 });
+*/
 
 app.listen(PORT, function () {
   logger.log("Locations EndPoint listening on port " + PORT);

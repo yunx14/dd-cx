@@ -1,62 +1,35 @@
-/* Location Search Module */
+/* Abstract View */
 
-module.exports = View = function(m, e) {
-  var model = (m) ? m : {},
-      el = (e) ? e : "",
-      valid = true;
+const VIEW_MODEL_COLLECTION_KEY = "{{collection}}";
 
-  var validate = function() {
-    // some rules
-    valid = true;
-    return true;
+module.exports = View = function(n, vm, map) {
+  var name = n;
+  this.collection = null;
+  this.model = null;
+  this.viewModel = vm;
+  this.propertyMap = map;
+  this.getName = function() {
+    return name;
   };
+  this.enrichData = function(data) {
+    if (data && this.viewModel) {
+      // TODO: merge the view model here
+      var fullData = this.viewModel, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
 
-  var syncModel = function(event) {
-    if (event && event.currentTarget) {
-      model[event.currentTarget.name] = event.currentTarget.value;
-    }
-  };
-
-  var bindModel = function(el) {
-    var els = el.getElementsByTagName("input");
-    if (els) {
-      var i = 0, l = els.length;
       for (i = 0; i < l; i++) {
-        els[i].addEventListener("input", syncModel);
+        keyName = k[i];
+
+        if (this.propertyMap[keyName] === VIEW_MODEL_COLLECTION_KEY) {
+          fullData[keyName] = data;
+        } else {
+          fullData[keyName] = this.propertyMap[keyName];
+        }
       }
+
+      console.log("data " + JSON.stringify(fullData));
+      //fullData["locations"] = data;
+      return fullData;
     }
-  };
-
-  var init = function(viewEl) {
-    if (viewEl) {
-      el = viewEl;
-      var ls = document.getElementById(el);
-      bindModel(ls);
-    } else {
-      console.warn("No view anchor point!  Not binding.");
-    }
-  };
-
-  var cleanup = function() {
-    var ls = document.getElementById(el);
-    var els = ls.getElementsByTagName("input");
-    if (els) {
-      var i = 0, l = els.length;
-      for (i = 0; i < l; i++) {
-        els[i].removeEventListener("input", syncModel);
-      }
-    }
-  };
-
-  var get = function(key) {
-    return model[key];
-  };
-
-  return {
-    "init": init,
-    "cleanup": cleanup,
-    "getModelValue": get,
-    "model": model,
-    "validate": validate
+    return data;
   };
 };
