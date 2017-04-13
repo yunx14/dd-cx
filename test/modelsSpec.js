@@ -1,21 +1,23 @@
 var Model = require("../models/model.js");
 
 describe("Given a singular model", function() {
+
+	var name = "John Smith";
+	var id = 1;
+
 	it("is defined", function() {
 		expect(Model).toBeDefined();
 	});
 
   it("can create an object", function() {
-		var name = "John Smith";
-		var id = 1;
-    var model = new Model(name, id);
+		var model = new Model(name, id);
 		expect(model).toBeDefined();
 		expect(model.name).toEqual(name);
 		expect(model.id).toEqual(id);
 	});
 
 	it("has all the properties of the object", function() {
-		var model = new Model();
+		var model = new Model(name, id);
 		var actualProperties = Object.keys(model).sort();
 		var expectedProperties = [
 			'id',
@@ -35,7 +37,7 @@ describe("Given a singular model", function() {
 	});
 
 	it("functions are defined", function() {
-		var model = new Model();
+		var model = new Model(name, id);
 		expect(model.fetch).toBeDefined();
 		expect(model.toString).toBeDefined();
 		expect(model.toJSON).toBeDefined();
@@ -44,7 +46,7 @@ describe("Given a singular model", function() {
 	});
 
 	it("matches typeof the object properties", function() {
-		var model = new Model();
+		var model = new Model(name, id);
 		expect(typeof model.host).toEqual('string');
 		expect(typeof model.port).toEqual('number');
 		expect(typeof model.getURI).toEqual('function');
@@ -52,8 +54,8 @@ describe("Given a singular model", function() {
 	});
 
   it("matches objects with the expect key/value pairs", function() {
-		var model = new Model();
-    expect(model).toEqual(jasmine.objectContaining({
+		var model = new Model(name, id);
+		expect(model).toEqual(jasmine.objectContaining({
       attributes: {}
     }));
 		expect(model).not.toEqual(jasmine.objectContaining({
@@ -63,15 +65,18 @@ describe("Given a singular model", function() {
 });
 
 describe("As a model", function() {
-  var model = null;
 
-  beforeEach(function() {
-    model = new Model();
-  });
+	var model = null;
 
-  afterEach(function() {
-    model = null;
-  });
+	beforeEach(function() {
+		var name = "John Smith";
+		var id = 1;
+		model = new Model(name, id);
+	});
+
+	afterEach(function() {
+		model = null;
+	});
 
 	it("can stringify data", function() {
 		var result = model.toString();
