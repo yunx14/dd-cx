@@ -83,22 +83,9 @@ describe("As a collection", function() {
 		expect(collection.attributes[1]).toEqual(result);
 	});
 
-});
-
-describe("As a collection", function() {
-	var collection = null;
-	var result = ["I am a test", 123];
-
-	beforeEach(function() {
-		collection = new Collection();
-	});
-
-	afterEach(function() {
-		collection = null;
-	});
-
 	it("can set data", function() {
-		collection.reset(["I am a test", 123]);
+		var result = ["I am a test", 123];
+		collection.reset(result);
 		expect(collection.attributes).toEqual(result);
 	});
 
