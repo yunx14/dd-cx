@@ -16,9 +16,10 @@
   "author": "Bob Warren <rwarren@delta.org> (http://www.delta.com)",
   "license": "none",
   "dependencies": {
-    "express": "^4.14.0",
     "body-parser": "*",
-    "express-handlebars": "*"
+    "express": "^4.14.0",
+    "express-handlebars": "*",
+    "request": "^2.81.0"
   },
   "devDependencies": {
     "jasmine-node": "^2.0.0",
