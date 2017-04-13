@@ -125,13 +125,15 @@ module.exports = Collection = function() {
       return this.attributes;
     },
     /**
-     * @method set Sets the collection data
-     * @param data {array} The data to set
+     * @method reset resets the collection data
+     * @param data {array} The data to set(optional)
      * @memberof Collection
      */
-    "set": function(data) {
+    "reset": function(data) {
       if (data) {
         this.attributes = data;
+      } else {
+        this.attributes = {};
       }
     }
   }

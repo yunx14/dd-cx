@@ -6,8 +6,32 @@ describe("Given a singular model", function() {
 	});
 
   it("can create an object", function() {
-    var model = new Model();
+		var name = "John Smith";
+		var id = 1;
+    var model = new Model(name, id);
 		expect(model).toBeDefined();
+		expect(model.name).toEqual(name);
+		expect(model.id).toEqual(id);
+	});
+
+	it("has all the properties of the object", function() {
+		var model = new Model();
+		var actualProperties = Object.keys(model).sort();
+		var expectedProperties = [
+			'id',
+			'name',
+			'host',
+			'path',
+			'port',
+			'attributes',
+			'getURI',
+			'fetch',
+			'toString',
+			'toJSON',
+			'get',
+			'set'
+		].sort();
+		expect(actualProperties).toEqual(expectedProperties);
 	});
 
 	it("functions are defined", function() {

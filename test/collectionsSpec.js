@@ -24,7 +24,7 @@ describe("Given Locations Collection", function() {
 			'toString',
 			'index',
 			'toJSON',
-			'set'
+			'reset'
 		].sort();
 		expect(actualProperties).toEqual(expectedProperties);
 	});
@@ -35,7 +35,7 @@ describe("Given Locations Collection", function() {
 		expect(collection.toString).toBeDefined();
 		expect(collection.index).toBeDefined();
 		expect(collection.toJSON).toBeDefined();
-		expect(collection.set).toBeDefined();
+		expect(collection.reset).toBeDefined();
 	});
 
 	it("matches typeof the object properties", function() {
@@ -98,7 +98,7 @@ describe("As a collection", function() {
 	});
 
 	it("can set data", function() {
-		collection.set(["I am a test", 123]);
+		collection.reset(["I am a test", 123]);
 		expect(collection.attributes).toEqual(result);
 	});
 
