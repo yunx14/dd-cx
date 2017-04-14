@@ -9,7 +9,7 @@ describe("Given a singular model", function() {
 		expect(Model).toBeDefined();
 	});
 
-  it("can create an object", function() {
+	it("can create an object", function() {
 		var model = new Model(name, id);
 		expect(model).toBeDefined();
 		expect(model.name).toEqual(name);
@@ -53,15 +53,15 @@ describe("Given a singular model", function() {
 		expect(typeof model.attributes).toEqual('object');
 	});
 
-  it("matches objects with the expect key/value pairs", function() {
+	it("matches objects with the expect key/value pairs", function() {
 		var model = new Model(name, id);
 		expect(model).toEqual(jasmine.objectContaining({
-      attributes: {}
-    }));
+			attributes: {}
+		}));
 		expect(model).not.toEqual(jasmine.objectContaining({
 			query: {}
 		}));
-  });
+	});
 });
 
 describe("As a model", function() {
@@ -94,10 +94,10 @@ describe("As a model", function() {
 		expect(model.attributes[789]).toEqual("I am the value");
 	});
 
-  it("can get data", function() {
+	it("can get data", function() {
 		model.attributes = { 123: 'another param', 456: 'another param2' };
-    expect(model.get(123)).toEqual('another param');
-    expect(model.get(456)).toEqual('another param2');
-  });
+		expect(model.get(123)).toEqual('another param');
+		expect(model.get(456)).toEqual('another param2');
+	});
 
 });

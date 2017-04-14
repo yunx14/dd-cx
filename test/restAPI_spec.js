@@ -5,12 +5,12 @@ describe("API Testing", function() {
     .get('http://localhost:80/location-search.html')
     .expectStatus(200)
     .expectHeader('Content-Type', 'text/html; charset=utf-8')
-  .toss();
+    .toss();
 
   frisby.create('POST search results from an endpoint')
     .post('http://localhost:80/location-search')
     .expectStatus(200)
     .expectHeader('Content-Type', 'text/html; charset=utf-8')
-  .toss();
+    .toss();
 
 });
