@@ -7,13 +7,10 @@ describe("API Testing", function() {
     .expectHeader('Content-Type', 'text/html; charset=utf-8')
   .toss();
 
-  // frisby.create('POST zipCode to ')
-  //   .post('http://localhost:80/location-search', {
-  //     zipCode: 12345
-  //   })
-  //   .expectJSONTypes('args', {
-  //     zipCode: Number
-  //   })
-  // .toss();
+  frisby.create('POST search results from an endpoint')
+    .post('http://localhost:80/location-search')
+    .expectStatus(200)
+    .expectHeader('Content-Type', 'text/html; charset=utf-8')
+  .toss();
 
 });
