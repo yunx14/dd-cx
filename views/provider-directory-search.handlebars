@@ -20,11 +20,7 @@
     <fieldset>
       {{#each form.formFields}}
       <label for="{{ field-id }}" {{#each labelAttribute}} >{{label}}{{/each}}</label>
-<<<<<<< HEAD
       <input id="{{ field-id }}" {{#each inputAttribute}}{{attributeName}}="{{attributeValue}}"{{/each}} {{#each inputSecondaryAttribute}}{{attributeName}}{{/each}} />
-=======
-      <input id="{{ field-id }}" {{#each inputAttribute}}{{attributeName}}="{{attributeValue}}" {{/each}} />
->>>>>>> ff49fad9dbeec810bfd49ea2e6c2c1b8592e3960
       {{/each}}
     </fieldset>
     <button type="submit" class="{{ btnClass }} btn--primary">{{btnTextPrimary}}</button>
