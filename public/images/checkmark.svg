@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="14px" height="11px" viewBox="0 0 14 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <title>6AD9D096-9C03-49EA-919E-EBA1648C789E</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M12.6541444,68.8708509 C12.6574707,68.875017 12.6620443,68.875017 12.6653706,68.8791831 C12.6686968,68.8833492 12.6699442,68.8875153 12.6736862,68.8916814 C12.6986333,68.9125119 12.7285698,68.9250102 12.7572589,68.9416746 C12.7726429,68.9500068 12.7855322,68.9625051 12.8013321,68.9708373 C12.851642,68.9916678 12.9044466,69 12.957667,69 C13.0113032,69 13.0641078,68.9916678 13.1144177,68.9708373 C13.1302175,68.9625051 13.1431068,68.9500068 13.1584909,68.9416746 C13.18718,68.9250102 13.2171165,68.9125119 13.2420635,68.8916814 C13.2458056,68.8875153 13.2470529,68.8833492 13.2503792,68.8791831 C13.2537055,68.875017 13.2582791,68.875017 13.2616054,68.8708509 L20.887923,60.7011267 C21.0446737,60.5344827 21.0359422,60.2720183 20.8683811,60.1137065 C20.6999884,59.9553946 20.4380443,59.9637268 20.280462,60.1303709 L12.957667,67.9751391 L9.71953803,64.5089431 C9.56195574,64.3381329 9.30001157,64.3298007 9.13161888,64.4881126 C8.96405777,64.6464244 8.9553263,64.9088888 9.11207702,65.0755328 L12.6541444,68.8708509" id="path-1"></path>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1" y="-1" width="14" height="11">
+            <rect x="8" y="59" width="14" height="11" fill="white"></rect>
+            <use xlink:href="#path-1" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Form-Elements" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Inputs" transform="translate(-58.000000, -672.000000)">
+            <g id="Checkbox" transform="translate(50.000000, 613.000000)">
+                <g id="Fill-1452">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

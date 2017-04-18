@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon / Indicator / Question-mark</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-/-Indicator-/-Question-mark" fill-rule="nonzero" fill="#535353">
+            <g id="Outline">
+                <path d="M7,13 L9,13 L9,11 L7,11 L7,13 Z M8,3 C6.232,3 4.8,4.38586844 4.8,6.09691271 L6.4,6.09691271 C6.4,5.24526171 7.12,4.54845636 8,4.54845636 C8.88,4.54845636 9.6,5.24526171 9.6,6.09691271 C9.6,7.64536907 7.00282288,7.46532892 7.00282288,9.9815705 L9.00239563,10 C9.00239563,8.2579866 11.2,8.03248315 11.2,6.09691271 C11.2,4.38586844 9.768,3 8,3 Z" id="Shape"></path>
+                <path d="M8,15 C11.8659932,15 15,11.8659932 15,8 C15,4.13400675 11.8659932,1 8,1 C4.13400675,1 1,4.13400675 1,8 C1,11.8659932 4.13400675,15 8,15 Z M8,16 C3.581722,16 0,12.418278 0,8 C0,3.581722 3.581722,0 8,0 C12.418278,0 16,3.581722 16,8 C16,12.418278 12.418278,16 8,16 Z" id="Oval-2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

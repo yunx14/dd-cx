@@ -1,4 +1,9 @@
 module.exports = {
+  "imgClass": "logo",
+  "aLink": "Log in",
+  "aLinkInverted": "inverted",
+  "heading": "Provider Directory",
+  "btnTextPrimary": "View Dentists",
   "form" : {
     "formFields": [
       {
@@ -37,6 +42,7 @@ module.exports = {
       }
     ]
   },
+  "btnTextFeedback": "FEEDBACK",
   "contact": {
     "phoneNumber": "844.847.9516"
   },
@@ -57,5 +63,8 @@ module.exports = {
       "linkHref" : "4",
       "aLink": "Contact Us"
     }
-  ]
+  ],
+  "company": {
+    "name": "Delta Dental"
+  }
 };
