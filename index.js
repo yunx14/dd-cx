@@ -20,7 +20,7 @@ var Collection = require("./collections/collection.js");
 var app = express();
 
 // For enabling view caching vs compile and render again
-//app.enable("view cache");
+app.enable("view cache");
 
 var options = {
   dotfiles: "ignore",
@@ -48,7 +48,7 @@ app.get("/directory-search.html", function(req, res) {
     vm, // viewModel
     { "provider": "", "btnTextPrimary": "Submit" }); // property map
 
-  res.render("provider-directory-search", vm);
+    res.status(200).render(locationsView.getName(), locationsView.enrichData(vm));
 });
 
 app.post("/address_form", function(req, res) {
