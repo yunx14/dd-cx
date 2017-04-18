@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon / Indicator / Info</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-/-Indicator-/-Info" fill-rule="nonzero" fill="#535353">
+            <path d="M7,13 L9,13 L9,7 L7,7 L7,13 Z M8,0 C3.584,0 0,3.584 0,8 C0,12.416 3.584,16 8,16 C12.416,16 16,12.416 16,8 C16,3.584 12.416,0 8,0 Z M8,15 C4.14125,15 1,11.85875 1,8 C1,4.14125 4.14125,1 8,1 C11.85875,1 15,4.14125 15,8 C15,11.85875 11.85875,15 8,15 Z M7,5 L9,5 L9,3 L7,3 L7,5 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

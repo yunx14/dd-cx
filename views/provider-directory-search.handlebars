@@ -20,7 +20,7 @@
     <fieldset>
       {{#each form.formFields}}
       <label for="{{ field-id }}" {{#each labelAttribute}} >{{label}}{{/each}}</label>
-      <input id="{{ field-id }}" {{#each inputAttribute}}{{/each}} {{#if inputSecondaryAttribute}}{{secondaryAttribute}}{{/if}} />
+      <input id="{{ field-id }}" {{#each inputAttribute}}{{attributeName}}="{{attributeValue}}" {{/each}} />
       {{/each}}
     </fieldset>
     <button type="submit" class="{{ btnClass }} btn--primary">{{btnTextPrimary}}</button>
@@ -45,7 +45,9 @@
 </main>
 <footer class="page-footer" role="contentinfo">
 	<div>
-		-
+    <a href="{{ company.url }}" class="c-logo-link">
+      <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" srcset="../../images/logo-primary-alternate.svg" alt="{{ company.name }}" />
+    </a>
 	</div>
 
 	<ul class="contact g-half ">
