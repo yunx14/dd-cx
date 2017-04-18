@@ -2,7 +2,7 @@ module.exports = {
   "imgClass": "logo",
   "aLink": "Log in",
   "aLinkInverted": "inverted",
-  "heading": "Provider Directory",
+  "heading": "Find a Dentist",
   "btnTextPrimary": "View Dentists",
   "form" : {
     "formFields": [
