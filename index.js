@@ -46,12 +46,12 @@ app.get("/directory-search.html", function(req, res) {
   var locationsView = new View(
     "provider-directory-search", // name
     vm, // viewModel
-    { "btnTextPrimary": "Submit" }); // property map
+    { "provider": "", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
-  res.render("provider-directory-search", vm);
+    res.status(200).render(locationsView.getName(), locationsView.enrichData(vm));
 });
 
-app.post("/address_form", function(req, res) {
+app.post("/directory-search.html", function(req, res) {
   logger.log("GET /locations");
 
   var locations = new Collection();
@@ -64,7 +64,7 @@ app.post("/address_form", function(req, res) {
   var locationsView = new View(
     "provider-directory-search", // name
     vm, // viewModel
-    { "provider": "{{collection}}", "btnTextPrimary": "Submit" }); // property map
+    { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
   locations.fetch({},
     function(code, data) {
