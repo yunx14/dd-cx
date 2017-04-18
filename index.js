@@ -38,6 +38,48 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 /* UI Requests */
 
+// template versions
+
+app.get("/directory-search.html", function(req, res) {
+  var vm = require("./views/provider-directory-search.js");
+
+  var locationsView = new View(
+    "provider-directory-search", // name
+    vm, // viewModel
+    { "btnTextPrimary": "Submit" }); // property map
+    
+  res.render("provider-directory-search", data);
+});
+
+app.post("/address_form", function(req, res) {
+  logger.log("GET /locations");
+
+  var locations = new Collection();
+  locations.host = SERVICE_HOST;
+  locations.port = SERVICE_PORT;
+  locations.path = "/locations";
+
+  var vm = require("./views/provider-directory-search.js");
+
+  var locationsView = new View(
+    "provider-directory-search", // name
+    vm, // viewModel
+    { "provider": "{{collection}}", "btnTextPrimary": "Submit" }); // property map
+
+  locations.fetch({},
+    function(code, data) {
+      // success
+      res.status(code).render(locationsView.getName(), locationsView.enrichData(data));
+    },
+    function(e) {
+      // error
+      logger.log("ERROR: Failed to request locations: " + e.message);
+      res.status(500).send(e);
+    }
+  );
+});
+
+// test versions
 app.get("/location-search.html", function(req, res) {
   res.render("location-search");
 });
@@ -66,8 +108,6 @@ app.post("/location-search", function(req, res) {
       res.status(500).send(e);
     }
   );
-
-
 });
 
 /* REST API */

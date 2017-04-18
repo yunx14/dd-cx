@@ -1,0 +1,76 @@
+<header class="page-header header--banner">
+  <ul>
+    <li>
+      <i class="icon icon-home" aria-label="home icon"></i>
+    </li>
+    <li class="logo__container">
+      <img class="{{imgClass}}" src="../../images/logo-unbounded-alternate-reversed.png" srcset="../../images/logo-unbounded-alternate-reversed.svg" alt="{{ company.name }}" />
+    </li>
+    <li class="login__container">
+      <a href="#{{ linkHref }}" class="{{ aLinkInverted }}">{{ aLink }}</a>
+    </li>
+  </ul>
+</header>
+<main role="main" class="page-main">
+
+
+  <form action="address_form" method="post" id='address_form' autocomplete="off" >
+    <h2 class="{{ styleModifier }}" {{# attribute}}{{/ attribute}}>{{heading}}</h2>
+    <p><a>Log in</a> to find dentists in your plan.</p>
+    <fieldset>
+      {{#each form.formFields}}
+      <label for="{{ field-id }}" {{#each labelAttribute}} >{{label}}{{/each}}</label>
+      <input id="{{ field-id }}" {{#each inputAttribute}}{{/each}} {{#if inputSecondaryAttribute}}{{secondaryAttribute}}{{/if}} />
+      {{/each}}
+    </fieldset>
+    <button type="submit" class="{{ btnClass }} btn--primary">{{btnTextPrimary}}</button>
+	</form>
+
+  <!--if results -->
+  {{#if provider}}
+  <h3>Results</h3>
+    <ul class='provider-list' id="provider-list">
+      {{#each provider}}
+      <li class="provider-facility">
+        <div class="">{{npi}}</div><br/>
+        <div class="provider__name">{{name.first}} {{name.last}}</div>
+        <div class="provider__specialty">{{specialty}}</div>
+        <div class="provider__specialty">{{address}}</div>
+        <div class="provider__network">{{network}}</div>
+      </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+</main>
+<footer class="page-footer" role="contentinfo">
+	<div>
+		-
+	</div>
+
+	<ul class="contact g-half ">
+		<li class="gi">
+			<div id="feedback" class="feedback">
+				<button class="{{ btnClass }} btn--feedback">{{ btnTextFeedback }}</button>
+			</div>
+		</li>
+		<li class="gi">
+			<p>Need Help?</p>
+			<a class="phone-number" href="tel:+{{contact.phoneNumber}}">{{contact.phoneNumber}}</a>
+		</li>
+	</ul>
+
+	<div class="footer-links">
+		<ul>
+			{{#each footerLinks}}
+			<li><a href="#{{ linkHref }}" class="">{{ aLink }}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<p class="copyright">&copy; {{company.name}}</p>
+
+	<p class="disclaimer">
+		This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.
+	</p>
+</footer>
