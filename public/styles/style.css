@@ -1214,12 +1214,7 @@ input.success {
 /**
  * Navigation base styles
  */
-header {
-  width: 100%; }
-
 .header--banner {
-  display: inline-block;
-  width: 100%;
   background-color: #563d82;
   color: white; }
   .header--banner p {

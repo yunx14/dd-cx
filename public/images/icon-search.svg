@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 41.1 (35376) - http://www.bohemiancoding.com/sketch -->
+    <title>327A5074-76D9-43CB-8DB1-D27DF48BC94A</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <circle id="path-1" cx="6.46687826" cy="6.46687826" r="6.46687826"></circle>
+        <path d="M10.7781304,10.7781304 L15.0893826,15.0893826" id="path-3"></path>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="magnifyglass" transform="translate(1.000000, 1.000000)">
+            <g id="icon-search">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="path-1" stroke="#FFFFFF" stroke-width="2" xlink:href="#path-1"></use>
+                <mask id="mask-4" fill="white">
+                    <use xlink:href="#path-3"></use>
+                </mask>
+                <use id="Line" stroke="#FFFFFF" stroke-width="2" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>
