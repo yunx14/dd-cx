@@ -47,8 +47,8 @@ app.get("/directory-search.html", function(req, res) {
     "provider-directory-search", // name
     vm, // viewModel
     { "btnTextPrimary": "Submit" }); // property map
-    
-  res.render("provider-directory-search", data);
+
+  res.render("provider-directory-search", vm);
 });
 
 app.post("/address_form", function(req, res) {
