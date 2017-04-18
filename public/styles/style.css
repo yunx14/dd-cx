@@ -534,7 +534,7 @@ ol {
   overflow: hidden; }
   ul li,
   ol li {
-  float: left; }
+  /* patched:float: left;*/ }
     ul li a,
     ol li a {
       display: block;
