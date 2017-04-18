@@ -12,4 +12,5 @@ function fillInAddress() {
   $locationInput.val((latLng.lat+", "+latLng.lng));
 }
 
+autocomplete.setComponentRestrictions({'country': ['us', 'pr', 'vi', 'gu', 'mp']});
 autocomplete.addListener('place_changed', fillInAddress);
