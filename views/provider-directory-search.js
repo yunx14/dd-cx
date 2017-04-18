@@ -28,6 +28,10 @@ module.exports = {
           {
             "attributeName" : "value",
             "attributeValue": ""
+          },
+          {
+            "attributeName" : "maxlength",
+            "attributeValue": "5"
           }
         ]
       }

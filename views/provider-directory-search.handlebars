@@ -14,13 +14,13 @@
 <main role="main" class="page-main">
 
 
-  <form action="address_form" method="post" id='address_form' autocomplete="off" >
+  <form action="directory-search.html" method="post" id='address_form' autocomplete="off" >
     <h2 class="{{ styleModifier }}" {{# attribute}}{{/ attribute}}>{{heading}}</h2>
     <p><a>Log in</a> to find dentists in your plan.</p>
     <fieldset>
       {{#each form.formFields}}
       <label for="{{ field-id }}" {{#each labelAttribute}} >{{label}}{{/each}}</label>
-      <input id="{{ field-id }}" {{#each inputAttribute}}{{/each}} {{#if inputSecondaryAttribute}}{{secondaryAttribute}}{{/if}} />
+      <input id="{{ field-id }}" {{#each inputAttribute}}{{attributeName}}="{{attributeValue}}"{{/each}} {{#each inputSecondaryAttribute}}{{attributeName}}{{/each}} />
       {{/each}}
     </fieldset>
     <button type="submit" class="{{ btnClass }} btn--primary">{{btnTextPrimary}}</button>
