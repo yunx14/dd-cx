@@ -32,11 +32,21 @@
     <ul class='provider-list' id="provider-list">
       {{#each provider}}
       <li class="provider-facility">
-        <div class="">{{npi}}</div><br/>
-        <div class="provider__name">{{name.first}} {{name.last}}</div>
-        <div class="provider__specialty">{{specialty}}</div>
-        <div class="provider__specialty">{{address}}</div>
-        <div class="provider__network">{{network}}</div>
+        <div class="">NPI: {{npi}}</div>
+        <div class="">Name: {{name.first}} {{name.last}}</div>
+        <div class="">Gender: {{gender}}</div>
+        <div class="">Speciality: {{speciality}}</div>
+        <div class="">Accepting: {{accepting}}</div>
+        <div class="">Languages: {{languages}}</div>
+
+        <ul>
+          {{#each addresses}}
+            <div class="provider__addresses">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
+            <div class="provider__phone">Phone: {{phone}}</div>
+          {{/each}}
+        </ul>
+
+        <div class="provider__network">{{network}}</div></br>
       </li>
       {{/each}}
     </ul>
