@@ -41,7 +41,6 @@ module.exports = View = function(n, vm, map) {
    */
   this.enrichData = function(data) {
     if (data && this.viewModel) {
-      // TODO: merge the view model here
       var fullData = this.viewModel, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
 
       for (i = 0; i < l; i++) {
@@ -57,5 +56,9 @@ module.exports = View = function(n, vm, map) {
       return fullData;
     }
     return data;
+  };
+
+  this.render = function(data) {
+    return Handlebars.templates[this.getName()](this.enrichData( ((data) ? data : this.viewModel)) );
   };
 };

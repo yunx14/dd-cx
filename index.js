@@ -1,8 +1,10 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
+    Handlebars = require("handlebars");
 var hb = require("express-handlebars");
 var View = require("./views/view.js");
+var AtomicPower = require("./views/pds.js");
 
 var Logger = require("./utility/logger.js");
 
@@ -48,7 +50,9 @@ app.get("/directory-search.html", function(req, res) {
     vm, // viewModel
     { "provider": "", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
-    res.status(200).render(locationsView.getName(), locationsView.enrichData(vm));
+    //var html = Handlebars.templates[locationsView.getName()](locationsView.enrichData(vm));
+    res.status(200).send(locationsView.render());
+    //.render("main", html);
 });
 
 app.post("/directory-search.html", function(req, res) {
@@ -69,7 +73,8 @@ app.post("/directory-search.html", function(req, res) {
   locations.fetch({},
     function(code, data) {
       // success
-      res.status(code).render(locationsView.getName(), locationsView.enrichData(data));
+      res.status(code).send(locationsView.render(data));
+      //.render(locationsView.getName(), locationsView.enrichData(data));
     },
     function(e) {
       // error
