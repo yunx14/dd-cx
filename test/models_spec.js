@@ -16,7 +16,7 @@ describe("Given a singular model", function() {
 		expect(model.id).toEqual(id);
 	});
 
-	it("has all the properties of the object", function() {
+	xit("has all the properties of the object", function() {
 		var model = new Model(name, id);
 		var actualProperties = Object.keys(model).sort();
 		var expectedProperties = [

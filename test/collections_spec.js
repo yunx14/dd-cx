@@ -1,6 +1,6 @@
 var Collection = require("../collections/collection.js");
 
-describe("Given Locations Collection", function() {
+describe("Given a Collection", function() {
 	it("is defined", function() {
 		expect(Collection).toBeDefined();
 	});
@@ -12,21 +12,11 @@ describe("Given Locations Collection", function() {
 
 	it("has all the properties of the object", function() {
 		var collection = new Collection();
-		var actualProperties = Object.keys(collection).sort();
-		var expectedProperties = [
-			'host',
-			'path',
-			'port',
-			'attributes',
-			'query',
-			'getURI',
-			'fetch',
-			'toString',
-			'index',
-			'toJSON',
-			'reset'
-		].sort();
-		expect(actualProperties).toEqual(expectedProperties);
+    const props = {"bubba": "My Name is bubba!"};
+
+    collection.reset(props);
+
+		expect(collection.toJSON()).toEqual(props);
 	});
 
 	it("functions are defined", function() {

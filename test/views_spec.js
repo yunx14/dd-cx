@@ -17,20 +17,6 @@ describe("Given Locations View", function() {
     expect(view.propertyMap).toEqual(map);
   });
 
-  it("has all the properties of the object", function() {
-    var view = new View(n, vm, map);
-    var actualProperties = Object.keys(view).sort();
-    var expectedProperties = [
-      'collection',
-      'model',
-      'viewModel',
-      'propertyMap',
-      'getName',
-      'enrichData'
-    ].sort();
-    expect(actualProperties).toEqual(expectedProperties);
-  });
-
   it("functions are defined", function() {
     var view = new View(n, vm, map);
     expect(view.getName).toBeDefined();
