@@ -66,7 +66,9 @@ app.post("/directory-search.html", function(req, res) {
     vm, // viewModel
     { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
-  providers.fetch({ "query": req.body },
+  var query = parseLocation(req.body);
+  query.distance = Number(req.body.distance);
+  providers.fetch({ "query": query },
     function(code, data) {
       // success
       res.status(code).send(providersPresenter.render(data));
@@ -78,6 +80,14 @@ app.post("/directory-search.html", function(req, res) {
     }
   );
 });
+
+var parseLocation = function(location) {
+  var arrayLocation = location.split(",");
+  var result = {};
+  result.lat = Number(arrayLocation[0]);
+  result.long = Number(arrayLocation[1]);
+  return result;
+};
 
 /* REST API */
 
