@@ -66,7 +66,7 @@ app.post("/directory-search.html", function(req, res) {
     vm, // viewModel
     { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
-  var query = parseLocation(req.body);
+  var query = parseLocation(req.body.location);
   query.distance = Number(req.body.distance);
   providers.fetch({ "query": query },
     function(code, data) {
