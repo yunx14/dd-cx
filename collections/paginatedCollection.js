@@ -101,7 +101,7 @@ PaginatedCollection.prototype.setPaginationConfiguration = function(config) {
  * @memberof PaginatedCollection
  * @borrows Collection.fetch
  */
-PaginatedCollection.prototype.fetch = function(options) {
+PaginatedCollection.prototype.fetch = function(options, success, error) {
     options = (options) ? options : {};
     var data = (options.data || {});
     var p = this.paginationConfiguration;
@@ -111,7 +111,7 @@ PaginatedCollection.prototype.fetch = function(options) {
 
     options.data = d;
 
-    return Collection.prototype.fetch.call(this, options);
+    return Collection.prototype.fetch.call(this, options, success, error);
 };
 /**
  * Moves to the next page
