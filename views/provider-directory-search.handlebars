@@ -77,8 +77,8 @@
               <section>
 
                 <header class="provider__name">
-                  <h5>{{name.first}} {{name.last}}</h5>
-                  <p class="provider__specialty">{{speciality}}</p>
+                  <h5>{{firstName}} {{lastName}}</h5>
+                  <p class="provider__specialty">{{specialty}}</p>
                 </header>
 
 
@@ -93,7 +93,7 @@
                   <p><i class="icon icon-check-circle" aria-label=""></i> Accepting new patients</p>
                 </div>
 
-                <div class="provider__address-name">{{location}}</div>
+                <div class="provider__address-name">{{locationName}}</div>
                 <ul>
                   {{#each addresses}}
                     <div class="provider__address">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
