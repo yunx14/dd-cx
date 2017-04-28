@@ -1,82 +1,108 @@
 var Collection = require("../collections/collection.js");
+var PaginatedCollection = require("../collections/PaginatedCollection.js");
 
-describe("Given a Collection", function() {
-	it("is defined", function() {
-		expect(Collection).toBeDefined();
-	});
+describe("Given Collection classes", function() {
 
-	it("can create an object", function() {
-		var collection = new Collection();
-		expect(collection).toBeDefined();
-	});
+  describe("Given a standard Collection", function() {
+  	it("is defined", function() {
+  		expect(Collection).toBeDefined();
+  	});
 
-	it("has all the properties of the object", function() {
-		var collection = new Collection();
-    const props = {"bubba": "My Name is bubba!"};
+  	it("can create an object", function() {
+  		var collection = new Collection();
+  		expect(collection).toBeDefined();
+  	});
 
-    collection.reset(props);
+  	it("has all the properties of the object", function() {
+  		var collection = new Collection();
+      const props = {"bubba": "My Name is bubba!"};
 
-		expect(collection.toJSON()).toEqual(props);
-	});
+      collection.reset(props);
 
-	it("functions are defined", function() {
-		var collection = new Collection();
-		expect(collection.fetch).toBeDefined();
-		expect(collection.toString).toBeDefined();
-		expect(collection.index).toBeDefined();
-		expect(collection.toJSON).toBeDefined();
-		expect(collection.reset).toBeDefined();
-	});
+  		expect(collection.toJSON()).toEqual(props);
+  	});
 
-	it("matches typeof the object properties", function() {
-		var collection = new Collection();
-		expect(typeof collection.host).toEqual('string');
-		expect(typeof collection.port).toEqual('number');
-		expect(typeof collection.getURI).toEqual('function');
-		expect(typeof collection.attributes).toEqual('object');
-	});
+  	it("functions are defined", function() {
+  		var collection = new Collection();
+  		expect(collection.fetch).toBeDefined();
+  		expect(collection.toString).toBeDefined();
+  		expect(collection.index).toBeDefined();
+  		expect(collection.toJSON).toBeDefined();
+  		expect(collection.reset).toBeDefined();
+  	});
 
-	it("matches objects with the expect key/value pairs", function() {
-		var collection = new Collection();
-		expect(collection).toEqual(jasmine.objectContaining({
-			attributes: {}
-		}));
-		expect(collection).toEqual(jasmine.objectContaining({
-			query: {}
-		}));
-	});
-});
+  	it("matches typeof the object properties", function() {
+  		var collection = new Collection();
+  		expect(typeof collection.host).toEqual('string');
+  		expect(typeof collection.port).toEqual('number');
+  		expect(typeof collection.getURI).toEqual('function');
+  		expect(typeof collection.attributes).toEqual('object');
+  	});
 
-describe("As a collection", function() {
-	var collection = null;
+  	it("matches objects with the expect key/value pairs", function() {
+  		var collection = new Collection();
+  		expect(collection).toEqual(jasmine.objectContaining({
+  			attributes: {}
+  		}));
+  		expect(collection).toEqual(jasmine.objectContaining({
+  			query: {}
+  		}));
+  	});
 
-	beforeEach(function() {
-		collection = new Collection();
-	});
+    describe("As a collection", function() {
+    	var collection = null;
 
-	afterEach(function() {
-		collection = null;
-	});
+    	beforeEach(function() {
+    		collection = new Collection();
+    	});
 
-	it("can stringify data", function() {
-		var result = collection.toString();
-		expect(JSON.stringify(collection.attributes)).toEqual(result);
-	});
+    	afterEach(function() {
+    		collection = null;
+    	});
 
-	it("can return JSON data", function() {
-		var result = collection.toJSON();
-		expect(collection.attributes).toEqual(result);
-	});
+    	it("can stringify data", function() {
+    		var result = collection.toString();
+    		expect(JSON.stringify(collection.attributes)).toEqual(result);
+    	});
 
-	it("can retrieve data through index", function() {
-		var result = collection.index(1);
-		expect(collection.attributes[1]).toEqual(result);
-	});
+    	it("can return JSON data", function() {
+    		var result = collection.toJSON();
+    		expect(collection.attributes).toEqual(result);
+    	});
 
-	it("can set data", function() {
-		var result = ["I am a test", 123];
-		collection.reset(result);
-		expect(collection.attributes).toEqual(result);
-	});
+    	it("can retrieve data through index", function() {
+    		var result = collection.index(1);
+    		expect(collection.attributes[1]).toEqual(result);
+    	});
+
+    	it("can set data", function() {
+    		var result = ["I am a test", 123];
+    		collection.reset(result);
+    		expect(collection.attributes).toEqual(result);
+    	});
+    });
+
+  });
+
+  describe("Given a Paginated Collection", function() {
+  	it("is defined", function() {
+  		expect(PaginatedCollection).toBeDefined();
+  	});
+
+    it("can create an object", function() {
+  		var collection = new PaginatedCollection();
+  		expect(collection).toBeDefined();
+  	});
+
+    it("has all the properties of the object", function() {
+  		var collection = new PaginatedCollection();
+      const props = {"bubba": "My Name is bubba!"};
+
+      collection.reset(props);
+
+  		expect(collection.toJSON()).toEqual(props);
+  	});
+
+  });
 
 });

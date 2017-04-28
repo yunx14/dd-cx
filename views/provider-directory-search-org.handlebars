@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link href="./styles/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+
+
+<header class="page-header header--banner">
+  <ul>
+    <li>
+      <i class="icon icon-home" aria-label="home icon"></i>
+    </li>
+    <li class="logo__container">
+      <img class="{{imgClass}}" src="../../images/logo-unbounded-alternate-reversed.png" srcset="../../images/logo-unbounded-alternate-reversed.svg" alt="{{ company.name }}" />
+    </li>
+    <li class="login__container">
+      <a href="#{{ linkHref }}" class="{{ aLinkInverted }}">{{ aLink }}</a>
+    </li>
+  </ul>
+</header>
+<main role="main" class="page-main">
+
+
+  <form action="directory-search.html" method="post" id='address_form' autocomplete="off" >
+    <h2 class="{{ styleModifier }}" {{# attribute}}{{/ attribute}}>{{heading}}</h2>
+    <p><a>Log in</a> to find dentists in your plan.</p>
+    <fieldset>
+      {{#each form.formFields}}
+      <label for="{{ field-id }}" {{#each labelAttribute}} >{{label}}{{/each}}</label>
+      <input id="{{ field-id }}" {{#each inputAttribute}}{{attributeName}}="{{attributeValue}}"{{/each}} {{#each inputSecondaryAttribute}}{{attributeName}}{{/each}} />
+      {{/each}}
+    </fieldset>
+    <button type="submit" class="{{ btnClass }} btn--primary">{{btnTextPrimary}}</button>
+	</form>
+
+  <!--if results -->
+  {{#if provider}}
+  <h3>Results</h3>
+    <ul class='provider-list' id="provider-list">
+      {{#each provider}}
+      <li class="provider-facility">
+        <div class="">NPI: {{npi}}</div>
+        <div class="">Name: {{name.first}} {{name.last}}</div>
+        <div class="">Gender: {{gender}}</div>
+        <div class="">Speciality: {{speciality}}</div>
+        <div class="">Accepting: {{accepting}}</div>
+        <div class="">Languages: {{languages}}</div>
+
+        <ul>
+          {{#each addresses}}
+            <div class="provider__addresses">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
+            <div class="provider__phone">Phone: {{phone}}</div>
+          {{/each}}
+        </ul>
+
+        <div class="provider__network">{{network}}</div></br>
+      </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+
+</main>
+<footer class="page-footer" role="contentinfo">
+	<div>
+    <a href="{{ company.url }}" class="c-logo-link">
+      <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" srcset="../../images/logo-primary-alternate.svg" alt="{{ company.name }}" />
+    </a>
+	</div>
+
+	<ul class="contact g-half ">
+		<li class="gi">
+			<div id="feedback" class="feedback">
+				<button class="{{ btnClass }} btn--feedback">{{ btnTextFeedback }}</button>
+			</div>
+		</li>
+		<li class="gi">
+			<p>Need Help?</p>
+			<a class="phone-number" href="tel:+{{contact.phoneNumber}}">{{contact.phoneNumber}}</a>
+		</li>
+	</ul>
+
+	<div class="footer-links">
+		<ul>
+			{{#each footerLinks}}
+			<li><a href="#{{ linkHref }}" class="">{{ aLink }}</a></li>
+			{{/each}}
+		</ul>
+	</div>
+
+	<p class="copyright">&copy; {{company.name}}</p>
+
+	<p class="disclaimer">
+		This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.
+	</p>
+</footer>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"></script>
+<script src="./jquery.min.js" defer="defer"></script>
+<script src="./main.js" defer="defer"></script>
+
+</body>
+</html>

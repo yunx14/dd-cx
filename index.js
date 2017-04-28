@@ -66,7 +66,7 @@ app.post("/directory-search.html", function(req, res) {
     vm, // viewModel
     { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
-  providers.fetch({},
+  providers.fetch({ "query": req.body },
     function(code, data) {
       // success
       res.status(code).send(providersView.render(data));
