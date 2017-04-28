@@ -4,7 +4,7 @@ var path = require("path");
     Handlebars = require("handlebars");
 var hb = require("express-handlebars");
 
-var View = require("./views/view.js");
+var Presenter = require("./views/presenter.js");
 var AtomicPower = require("./views/pds.js");
 var Collection = require("./collections/collection.js");
 var Logger = require("./utility/logger.js");
@@ -43,7 +43,7 @@ app.get("/directory-search.html", function(req, res) {
   logger.log("GET /directory-search.html");
   var vm = require("./views/provider-directory-search.js");
 
-  var locationsView = new View(
+  var locationsView = new Presenter(
     "provider-directory-search", // name
     vm, // viewModel
     { "provider": "", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
@@ -61,7 +61,7 @@ app.post("/directory-search.html", function(req, res) {
 
   var vm = require("./views/provider-directory-search.js");
 
-  var providersView = new View(
+  var providersPresenter = new Presenter(
     "provider-directory-search", // name
     vm, // viewModel
     { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
@@ -69,7 +69,7 @@ app.post("/directory-search.html", function(req, res) {
   providers.fetch({ "query": req.body },
     function(code, data) {
       // success
-      res.status(code).send(providersView.render(data));
+      res.status(code).send(providersPresenter.render(data));
     },
     function(e) {
       // error

@@ -1,4 +1,4 @@
-var View = require("../views/view.js");
+var View = require("../views/presenter.js");
 
 describe("Given Locations View", function() {
 
@@ -11,20 +11,20 @@ describe("Given Locations View", function() {
   });
 
   it("can create an object", function() {
-    var view = new View(n, vm, map);
+    var view = new Presenter(n, vm, map);
     expect(view).toBeDefined();
     expect(view.viewModel).toEqual(vm);
     expect(view.propertyMap).toEqual(map);
   });
 
   it("functions are defined", function() {
-    var view = new View(n, vm, map);
+    var view = new Presenter(n, vm, map);
     expect(view.getName).toBeDefined();
     expect(view.enrichData).toBeDefined();
   });
 
   it("matches typeof the object properties", function() {
-    var view = new View(n, vm, map);
+    var view = new Presenter(n, vm, map);
     expect(typeof view.viewModel).toEqual('object');
     expect(typeof view.propertyMap).toEqual('object');
     expect(typeof view.getName).toEqual('function');
@@ -32,7 +32,7 @@ describe("Given Locations View", function() {
   });
 
   it("matches objects with the expect key/value pairs", function() {
-    var view = new View(n, vm, map);
+    var view = new Presenter(n, vm, map);
     expect(view).toEqual(jasmine.objectContaining({
       collection: null
     }));
@@ -49,7 +49,7 @@ describe("As a view", function() {
     var n = "locations";
     var vm = { "locations": [], "title": "" };
     var map = { "locations": ["SF", "LA"], "title": "Locations:" };
-    view = new View(n, vm, map);
+    view = new Presenter(n, vm, map);
   });
 
   afterEach(function() {
