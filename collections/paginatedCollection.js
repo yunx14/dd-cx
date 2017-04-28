@@ -1,13 +1,13 @@
 var Collection = require("./collection.js");
 
-var PaginatedCollection = function() {
-    // Apply BaseController constructor (i.e. call super())
-    Collection.apply(this, arguments)
+var PaginatedCollection = function(name) {
+  this.name = name;
+  // Apply BaseController constructor (i.e. call super())
+  Collection.apply(this, arguments);
 };
 
 
 PaginatedCollection.prototype = new Collection();
-
 PaginatedCollection.prototype.create = function() {};
 
 /**
@@ -16,42 +16,57 @@ PaginatedCollection.prototype.create = function() {};
  * @extends Collection
  */
 
+ /**
+  * name of the collection
+  * @property name
+  * @memberof PaginatedCollection
+  * @private
+  */
+ PaginatedCollection.prototype.name = "";
+
 /**
  * Configuration for the pagination
  * @property paginationConfiguration
  * @memberof PaginatedCollection
  * @private
  */
-PaginatedCollection.paginationConfiguration = {
+PaginatedCollection.prototype.paginationConfiguration = {
     currentPageParam: "page",
     pageSizeParam: "per_page"
 };
+/**
+ *  total for the collection
+ * @property total
+ * @memberof PaginatedCollection
+ * @private
+ */
+PaginatedCollection.prototype.total = 0;
 /**
  * Page Size for the collection
  * @property pageSize
  * @memberof PaginatedCollection
  * @private
  */
-PaginatedCollection.pageSize = 20;
+PaginatedCollection.prototype.pageSize = 10;
 /**
  * Current page for the collection
  * @property currentPage
  * @memberof PaginatedCollection
  */
-PaginatedCollection.currentPage = 1;
+PaginatedCollection.prototype.currentPage = 1;
 /**
  * Total pages for the collection
  * @property totalPages
  * @memberof PaginatedCollection
  */
-PaginatedCollection.totalPages = 1;
+PaginatedCollection.prototype.totalPages = 1;
 /**
  * Sets the number of items in a page
  * @method setPageSize
  * @memberof PaginatedCollection
  * @param {number} size Number of items in each page
  */
-PaginatedCollection.setPageSize = function(size) {
+PaginatedCollection.prototype.setPageSize = function(size) {
     if (size) {
         this.pageSize = size;
     }
@@ -63,7 +78,7 @@ PaginatedCollection.setPageSize = function(size) {
  * @memberof PaginatedCollection
  * @param {number} page Current page in collection
  */
-PaginatedCollection.setCurrentPage = function(page) {
+PaginatedCollection.prototype.setCurrentPage = function(page) {
     if (!page) {
         page = 1;
     }
@@ -77,7 +92,7 @@ PaginatedCollection.setCurrentPage = function(page) {
  * @param {object} config pagination configuration
  * @private
  */
-PaginatedCollection.setPaginationConfiguration = function(config) {
+PaginatedCollection.prototype.setPaginationConfiguration = function(config) {
     this.paginationConfiguration = config;
 };
 /**
@@ -86,7 +101,7 @@ PaginatedCollection.setPaginationConfiguration = function(config) {
  * @memberof PaginatedCollection
  * @borrows Collection.fetch
  */
-PaginatedCollection.fetch = function(options) {
+PaginatedCollection.prototype.fetch = function(options) {
     options = (options) ? options : {};
     var data = (options.data || {});
     var p = this.paginationConfiguration;
@@ -103,7 +118,7 @@ PaginatedCollection.fetch = function(options) {
  * @method nextPage
  * @memberof PaginatedCollection
  */
-PaginatedCollection.nextPage = function() {
+PaginatedCollection.prototype.nextPage = function() {
     if (this.currentPage < this.totalPages) {
         this.currentPage = this.currentPage + 1;
         this.refresh();
@@ -114,7 +129,7 @@ PaginatedCollection.nextPage = function() {
  * @method previousPage
  * @memberof PaginatedCollection
  */
-PaginatedCollection.previousPage = function() {
+PaginatedCollection.prototype.previousPage = function() {
     if (this.currentPage > 0) {
         this.currentPage = this.currentPage - 1;
         this.refresh();
@@ -126,7 +141,7 @@ PaginatedCollection.previousPage = function() {
  * @memberof PaginatedCollection
  * @param {number} page Page to go to
  */
-PaginatedCollection.goToPage = function(page) {
+PaginatedCollection.prototype.goToPage = function(page) {
     if ((page) && (page < this.totalPages) && (page > 0)) {
         this.currentPage = page;
         this.refresh();
@@ -137,7 +152,7 @@ PaginatedCollection.goToPage = function(page) {
  * @method firstPage
  * @memberof PaginatedCollection
  */
-PaginatedCollection.firstPage = function() {
+PaginatedCollection.prototype.firstPage = function() {
     this.currentPage = 1;
     this.refresh();
 };
@@ -146,7 +161,7 @@ PaginatedCollection.firstPage = function() {
  * @method lastPage
  * @memberof PaginatedCollection
  */
-PaginatedCollection.lastPage = function() {
+PaginatedCollection.prototype.lastPage = function() {
     this.currentPage = this.totalPages;
     this.refresh();
 };
@@ -155,7 +170,7 @@ PaginatedCollection.lastPage = function() {
  * @method refresh
  * @memberof PaginatedCollection
  */
-PaginatedCollection.refresh = function() {
+PaginatedCollection.prototype.refresh = function() {
     this.fetch();
 };
 

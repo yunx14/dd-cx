@@ -1,5 +1,5 @@
 var Collection = require("../collections/collection.js");
-var PaginatedCollection = require("../collections/PaginatedCollection.js");
+var PaginatedCollection = require("../collections/paginatedCollection.js");
 
 describe("Given Collection classes", function() {
 
@@ -85,17 +85,29 @@ describe("Given Collection classes", function() {
   });
 
   describe("Given a Paginated Collection", function() {
+    var collection = null;
+
+    beforeEach(function() {
+      collection = new PaginatedCollection();
+    });
+
+    afterEach(function() {
+      collection = null;
+    });
+
   	it("is defined", function() {
   		expect(PaginatedCollection).toBeDefined();
   	});
 
     it("can create an object", function() {
-  		var collection = new PaginatedCollection();
   		expect(collection).toBeDefined();
   	});
 
+    it("is an instance of Collection", function() {
+      expect(collection instanceof Collection).toBeTruthy();
+    });
+
     it("has all the properties of the object", function() {
-  		var collection = new PaginatedCollection();
       const props = {"bubba": "My Name is bubba!"};
 
       collection.reset(props);

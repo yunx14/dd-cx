@@ -42,6 +42,13 @@ Collection.prototype.query = {};
 Collection.prototype.getURI = function() {
   return this.host + ":" + String(this.port) + this.path;
 };
+var formatQuery = function(query) {
+  var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
+  for (i = 0; i < l; i++) {
+    formatQuery = formatQuery + keys[i] + "=" + query[keys[i]] + "&";
+  }
+  return formatQuery.slice(0, -1);
+};
 /**
  * @method fetch Fetches data from a remove URI and populates this collection
  * @param options {object} Options to pass to the remove call
@@ -62,7 +69,11 @@ Collection.prototype.fetch = function(options, success, error) {
   if (!options.path) {
     options.path = this.path;
   }
-  // TODO: Support query for filtering
+  if (!options.query) {
+    options.query = this.query;
+  }
+
+
 console.log("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
@@ -75,7 +86,7 @@ console.log("Query " + JSON.stringify(options.query));
     }
   }
 
-  const uri = options.host + ":" + String(options.port) + options.path;
+  const uri = options.host + ":" + String(options.port) + options.path + formatQuery(options.query);
   console.log("uri " + uri);
   var req = http.get(uri, function(res) {
     console.log("STATUS: " + res.statusCode);
