@@ -1,5 +1,8 @@
 // abstract model
 var http = require("http");
+var Logger = require("../utility/logger.js");
+
+var logger = new Logger();
 
 /**
  *  A model class for use of holding and retrieving data
@@ -71,19 +74,19 @@ module.exports = Model = function(name, id) {
 
         if (!success) {
           success = function(status, data) {
-            console.log("Fetched Data! " + status);
+            logger.log("Fetched Data! " + status);
           }
         }
         if (!error) {
           error = function(e) {
-            console.log("Failed to fetched Data! " + e);
+            logger.log("Failed to fetched Data! " + e);
           }
         }
 
         var uri = options.host + ":" + String(options.port) + options.path;
-        console.log("uri " + uri);
+        logger.log("uri " + uri);
         var req = http.get(uri, function(res) {
-          console.log("STATUS: " + res.statusCode);
+          logger.log("STATUS: " + res.statusCode);
           // Buffer the body entirely for processing as a whole.
           var buffer = "";
           res.on("data", function(chunk) {
@@ -93,7 +96,7 @@ module.exports = Model = function(name, id) {
               var data = JSON.parse(buffer);
               this.attributes = data;
 
-              console.log("data " + JSON.stringify(data));
+              logger.log("data " + JSON.stringify(data));
               success(res.statusCode, data);
             } catch(e) {
               error(e);

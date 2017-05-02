@@ -1,5 +1,8 @@
 // Abstract Collection
 var http = require("http");
+var Logger = require("../utility/logger.js");
+
+var logger = new Logger();
 
 /**
  * A collection class for use of holding and retrieving models
@@ -73,42 +76,44 @@ Collection.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
-
-console.log("Query " + JSON.stringify(options.query));
+  logger.log("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
-      console.log("Fetched Data! " + status);
+      logger.log("Fetched Data! " + status);
     }
   }
   if (!error) {
     error = function(e) {
-      console.log("Failed to fetched Data! " + e);
+      logger.log("Failed to fetched Data! " + e);
     }
   }
 
   const uri = options.host + ":" + String(options.port) + options.path + formatQuery(options.query);
-  console.log("uri " + uri);
+  logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
-    console.log("STATUS: " + res.statusCode);
-    // Buffer the body entirely for processing as a whole.
-    var buffer = "";
-    res.on("data", function(chunk) {
-      buffer += chunk;
-    }).on("end", function() {
-      try {
-        var data = JSON.parse(buffer);
-        this.attributes = data;
+    logger.log("STATUS: " + res.statusCode);
 
-        //console.log("data " + JSON.stringify(data));
-        success(res.statusCode, data);
-      } catch(e) {
-        error(e);
-      }
-    });
+    if (res.statusCode > 399) {
+      error(res.statusCode, res);
+    } else {
+      // Buffer the body entirely for processing as a whole.
+      var buffer = "";
+      res.on("data", function(chunk) {
+        buffer += chunk;
+      }).on("end", function() {
+        try {
+          var data = JSON.parse(buffer);
+          this.attributes = data;
+          success(res.statusCode, data);
+        } catch(e) {
+          error(500, e);
+        }
+      });
+    }
   });
 
   req.on("error", function(e) {
-    error(e);
+    error(500, e);
   });
 };
 

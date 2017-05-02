@@ -9,10 +9,7 @@ var AtomicPower = require("./views/pds.js");
 var Collection = require("./collections/collection.js");
 var Logger = require("./utility/logger.js");
 
-const PORT = 80,
-      ABOUT = "This is the Directory Experience EndPoint.",
-      SERVICE_HOST = "http://localhost",
-      SERVICE_PORT = 8080;
+const CONSTANTS = require("./constants.js");
 
 var logger = new Logger();
 
@@ -55,8 +52,8 @@ app.post("/directory-search.html", function(req, res) {
   logger.log("POST /directory-search.html");
 
   var providers = new Collection();
-  providers.host = SERVICE_HOST;
-  providers.port = SERVICE_PORT;
+  providers.host = CONSTANTS.APP_SERVICE_HOST;
+  providers.port = CONSTANTS.APP_SERVICE_PORT;
   providers.path = "/providers";
 
   var vm = require("./views/provider-directory-search.js");
@@ -98,9 +95,9 @@ app.get("/", function(req, res) {
 
 app.get("/about", function(req, res) {
   logger.log("GET /ABOUT");
-  res.send(ABOUT);
+  res.send(CONSTANTS.EE_ABOUT);
 });
 
-app.listen(PORT, function () {
-  logger.log("Provider Directory Experience EndPoint listening on port " + PORT);
+app.listen(CONSTANTS.EE_PORT, function () {
+  logger.log("Provider Directory Experience EndPoint listening on port " + CONSTANTS.EE_PORT);
 });

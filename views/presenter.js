@@ -1,6 +1,5 @@
+const CONSTANTS = require("../constants.js");
 /* Abstract View */
-
-const VIEW_MODEL_COLLECTION_KEY = "{{collection}}";
 
 /**
  *  A view class for managing presentation and managing view data
@@ -46,7 +45,7 @@ module.exports = Presenter = function(n, vm, map) {
       for (i = 0; i < l; i++) {
         keyName = k[i];
 
-        if (this.propertyMap[keyName] === VIEW_MODEL_COLLECTION_KEY) {
+        if (this.propertyMap[keyName] === CONSTANTS.VIEW_MODEL_COLLECTION_KEY) {
           fullData[keyName] = data;
         } else {
           fullData[keyName] = this.propertyMap[keyName];
@@ -58,6 +57,12 @@ module.exports = Presenter = function(n, vm, map) {
     return data;
   };
 
+  /**
+   * @method render Renders the Presenter
+   * @param data {array} Collection data to enrich the ViewModel
+   * @returns {Object} The View in HTML
+   * @memberof Presenter
+   */
   this.render = function(data) {
     return Handlebars.templates[this.getName()](this.enrichData( ((data) ? data : this.viewModel)) );
   };
