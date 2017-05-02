@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: collections/paginatedCollection.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: collections/paginatedCollection.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>var Collection = require("./collection.js");
+
+var PaginatedCollection = function(name) {
+  this.name = name;
+  // Apply BaseController constructor (i.e. call super())
+  Collection.apply(this, arguments);
+};
+
+
+PaginatedCollection.prototype = new Collection();
+PaginatedCollection.prototype.create = function() {};
+
+/**
+ * Paginated Collection Class - A Collection that handles pagination from client or server-side
+ * @constructor PaginatedCollection
+ * @extends Collection
+ */
+
+ /**
+  * name of the collection
+  * @property name
+  * @memberof PaginatedCollection
+  * @private
+  */
+ PaginatedCollection.prototype.name = "";
+
+/**
+ * Configuration for the pagination
+ * @property paginationConfiguration
+ * @memberof PaginatedCollection
+ * @private
+ */
+PaginatedCollection.prototype.paginationConfiguration = {
+    currentPageParam: "page",
+    pageSizeParam: "per_page"
+};
+/**
+ *  total for the collection
+ * @property total
+ * @memberof PaginatedCollection
+ * @private
+ */
+PaginatedCollection.prototype.total = 0;
+/**
+ * Page Size for the collection
+ * @property pageSize
+ * @memberof PaginatedCollection
+ * @private
+ */
+PaginatedCollection.prototype.pageSize = 10;
+/**
+ * Current page for the collection
+ * @property currentPage
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.currentPage = 1;
+/**
+ * Total pages for the collection
+ * @property totalPages
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.totalPages = 1;
+/**
+ * Sets the number of items in a page
+ * @method setPageSize
+ * @memberof PaginatedCollection
+ * @param {number} size Number of items in each page
+ */
+PaginatedCollection.prototype.setPageSize = function(size) {
+    if (size) {
+        this.pageSize = size;
+    }
+    this.refresh();
+};
+/**
+ * Sets the current page
+ * @method setCurrentPage
+ * @memberof PaginatedCollection
+ * @param {number} page Current page in collection
+ */
+PaginatedCollection.prototype.setCurrentPage = function(page) {
+    if (!page) {
+        page = 1;
+    }
+    this.currentPage = page;
+    this.refresh();
+};
+/**
+ * Sets pagination configuration
+ * @method setPaginationConfiguration
+ * @memberof PaginatedCollection
+ * @param {object} config pagination configuration
+ * @private
+ */
+PaginatedCollection.prototype.setPaginationConfiguration = function(config) {
+    this.paginationConfiguration = config;
+};
+/**
+ * fetch - rewritten fetch method from Collection.fetch
+ * @method fetch
+ * @memberof PaginatedCollection
+ * @borrows Collection.fetch
+ */
+PaginatedCollection.prototype.fetch = function(options, success, error) {
+    options = (options) ? options : {};
+    var data = (options.data || {});
+    var p = this.paginationConfiguration;
+    var d = {};
+    d[p.currentPageParam] = this.currentPage;
+    d[p.pageSizeParam] = this.pageSize;
+
+    options.data = d;
+
+    return Collection.prototype.fetch.call(this, options, success, error);
+};
+/**
+ * Moves to the next page
+ * @method nextPage
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.nextPage = function() {
+    if (this.currentPage &lt; this.totalPages) {
+        this.currentPage = this.currentPage + 1;
+        this.refresh();
+    }
+};
+/**
+ * Moves to the previous page
+ * @method previousPage
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.previousPage = function() {
+    if (this.currentPage > 0) {
+        this.currentPage = this.currentPage - 1;
+        this.refresh();
+    }
+};
+/**
+ * Goes to page
+ * @method goToPage
+ * @memberof PaginatedCollection
+ * @param {number} page Page to go to
+ */
+PaginatedCollection.prototype.goToPage = function(page) {
+    if ((page) &amp;&amp; (page &lt; this.totalPages) &amp;&amp; (page > 0)) {
+        this.currentPage = page;
+        this.refresh();
+    }
+};
+/**
+ * Moves to the first page
+ * @method firstPage
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.firstPage = function() {
+    this.currentPage = 1;
+    this.refresh();
+};
+/**
+ * Moves to the last page
+ * @method lastPage
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.lastPage = function() {
+    this.currentPage = this.totalPages;
+    this.refresh();
+};
+/**
+ * Refreshes the collection
+ * @method refresh
+ * @memberof PaginatedCollection
+ */
+PaginatedCollection.prototype.refresh = function() {
+    this.fetch();
+};
+
+module.exports = PaginatedCollection;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="Model.html">Model</a></li><li><a href="PaginatedCollection.html">PaginatedCollection</a></li><li><a href="Presenter.html">Presenter</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue May 02 2017 14:24:37 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

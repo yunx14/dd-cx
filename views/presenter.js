@@ -3,7 +3,7 @@ const CONSTANTS = require("../constants.js");
 
 /**
  *  A view class for managing presentation and managing view data
- * @constructor View
+ * @constructor Presenter
  * @param n {string} Name of the view/template
  * @param vm {Object} A property-based ViewModel
  * @param map {object} Property Map used to map data to the ViewModel
