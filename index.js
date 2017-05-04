@@ -6,7 +6,8 @@ var hb = require("express-handlebars");
 
 var Presenter = require("./views/presenter.js");
 var AtomicPower = require("./views/pds.js");
-var Collection = require("./collections/collection.js");
+//var Collection = require("./collections/collection.js");
+var SolrCollection = require("./collections/solrCollection.js");
 var Logger = require("./utility/logger.js");
 
 const CONSTANTS = require("./constants.js");
@@ -51,17 +52,28 @@ app.get("/directory-search.html", function(req, res) {
 app.post("/directory-search.html", function(req, res) {
   logger.log("POST /directory-search.html");
 
+  var providers = new SolrCollection("providers");
+  if (req.query) {
+    logger.log("query " + JSON.stringify(req.query));
+    providers.query = req.query;
+  }
+
+  providers.host = CONSTANTS.SEARCH_SERVICE_HOST;
+  providers.port = CONSTANTS.SEARCH_SERVICE_PORT;
+  providers.path = "/providers";
+
+/* call the service tier vs SOLR directly
   var providers = new Collection();
   providers.host = CONSTANTS.APP_SERVICE_HOST;
   providers.port = CONSTANTS.APP_SERVICE_PORT;
   providers.path = "/providers";
-
+*/
   var vm = require("./views/provider-directory-search.js");
 
   var providersPresenter = new Presenter(
     "provider-directory-search", // name
     vm, // viewModel
-    { "provider": "{{collection}}", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
+    { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
   var query = parseLocation(req.body.location);
   query.distance = Number(req.body.distance);
