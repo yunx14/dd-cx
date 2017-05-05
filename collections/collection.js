@@ -48,7 +48,9 @@ Collection.prototype.getURI = function() {
 var formatQuery = function(query) {
   var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
   for (i = 0; i < l; i++) {
-    formatQuery = formatQuery + keys[i] + "=" + query[keys[i]] + "&";
+    if (typeof query[keys[i]] !== "function") {
+      formatQuery = formatQuery + String(keys[i]) + "=" + String(query[keys[i]]) + "&";
+    }
   }
   return formatQuery.slice(0, -1);
 };

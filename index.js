@@ -77,6 +77,7 @@ app.post("/directory-search.html", function(req, res) {
 
   var query = parseLocation(req.body.location);
   query.distance = Number(req.body.distance);
+  query.specialty = req.body.specialty;
   providers.fetch({ "query": query },
     function(code, data) {
       // success
