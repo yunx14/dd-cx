@@ -57,6 +57,14 @@ module.exports = {
         res.status(500).send(e);
       }
     );
+  },
+  "getHome": function(req, res) {
+    logger.log("GET / -> ABOUT");
+    res.render("about");
+  },
+  "getAbout": function(req, res) {
+    logger.log("GET /ABOUT");
+    res.send(CONSTANTS.EE_ABOUT);
   }
 }
 
