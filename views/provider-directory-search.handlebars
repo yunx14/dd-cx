@@ -1,161 +1,207 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>{{title}}</title>
-    <link href="./styles/style.css" rel="stylesheet"/>
-  </head>
-  <body>
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
 
-<header class="page-header">
-  <a href="#go-home" class="home-icon">
-    <i class="icon  icon-home" aria-label="home icon"></i>
-  </a>
-
-  <nav class="page-nav">
-    <ul>
-      <li>
-        <a href="#go-somewhere" class="inverted">Log in</a>
-      </li>
-    </ul>
-  </nav>
-
-  <div class="logo-container">
-    <a href="#go-home" class="logo">
-      <img src="../../images/logo-unbounded-alternate-reversed.png" srcset="../../images/logo-unbounded-alternate-reversed.svg" alt="Delta Dental Logo" width="205px">
+  <header class="page-header">
+    <a href="#go-home" class="home-icon">
+      <i class="icon  icon-home" aria-label="home icon"></i>
     </a>
-  </div>
-</header>
 
-<main>
-  <section>
+    <nav class="page-nav">
+      <ul>
+        <li>
+          <a href="#go-somewhere" class="inverted">Log in</a>
+        </li>
+      </ul>
+    </nav>
 
-    <header class="section-heading">
-      <h1>Find a Dentist</h1>
-      <p><a>Log in</a> to find dentists in your plan.</p>
-    </header>
+    <div class="logo-container">
+      <a href="#go-home" class="logo">
+        <img src="../../images/logo-unbounded-alternate-reversed.png" srcset="../../images/logo-unbounded-alternate-reversed.svg" alt="Delta Dental Logo" width="205px">
+      </a>
+    </div>
+  </header>
 
-    <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
-      <label for="location">Near</label>
+  <main>
+    <section>
 
-      <input id="location" type="text" name="location" placeholder="Zip code, city, or address">
+      <header class="section-heading">
+        <h1>Find a Dentist</h1>
+        <p><a>Log in</a> to find dentists in your plan.</p>
+      </header>
 
-      <label for="distance">Distance</label>
-      <select name="distance" id="distance">
-        <option value="5" title="Within 5 Miles">Within 5 Miles</option>
-        <option value="10" title="Within 10 Miles">Within 10 Miles</option>
-        <option value="15" title="Within 15 Miles">Within 15 Miles</option>
-        <option value="25" title="Within 25 Miles">Within 25 Miles</option>
-        <option value="35" title="Within 35 Miles">Within 35 Miles</option>
-        <option value="60" title="Within 60 Miles" selected="selected">Within 60 Miles</option>
-      </select>
+      <form>
+        <div class="form-element">
+          <label for="location">Near</label>
+          <input id="location" type="text" name="location" placeholder="Zip code, city, or address">
+        </div>
 
-      <button class="btn--primary" type="submit">
-        View Dentists
-      </button>
+        <div class="form-element">
+          <label for="distance">Distance</label>
+          <select id="distance" name="distance">
+            <option value="5">Within 5 Miles</option>
+            <option value="10">Within 10 Miles</option>
+            <option value="15">Within 15 Miles</option>
+            <option value="25">Within 25 Miles</option>
+            <option value="35">Within 35 Miles</option>
+            <option value="60" selected="">Within 60 Miles</option>
+          </select>
+        </div>
 
-    </form>
+        <fieldset class="form-element">
+          <legend>Specialty</legend>
+          <label for="specialty_General-Dentist" class="form-element__checkbox">
+            <input id="specialty_General-Dentist" type="checkbox" name="specialty" value="General Dentist">General Dentist
+          </label>
 
-    {{#if provider }} <!-- if results are returned back from the search -->
+          <label for="specialty_Endodontist" class="form-element__checkbox">
+            <input id="specialty_Endodontist" type="checkbox" name="specialty" value="Endodontist">Endodontist
+          </label>
+
+          <label for="specialty_Oral-Surgeon" class="form-element__checkbox">
+            <input id="specialty_Oral-Surgeon" type="checkbox" name="specialty" value="Oral Surgeon">Oral Surgeon
+          </label>
+
+          <label for="specialty_Orthodontist" class="form-element__checkbox">
+            <input id="specialty_Orthodontist" type="checkbox" name="specialty" value="Orthodontist">Orthodontist
+          </label>
+
+          <label for="specialty_Pediatric-Dentist" class="form-element__checkbox">
+            <input id="specialty_Pediatric-Dentist" type="checkbox" name="specialty" value="Pediatric Dentist">Pediatric Dentist
+          </label>
+
+          <label for="specialty_Periodontist" class="form-element__checkbox">
+            <input id="specialty_Periodontist" type="checkbox" name="specialty" value="Periodontist">Periodontist
+          </label>
+
+          <label for="specialty_Prosthodontist" class="form-element__checkbox">
+            <input id="specialty_Prosthodontist" type="checkbox" name="specialty" value="Prosthodontist">Prosthodontist
+          </label>
+
+          <label for="specialty_Public-Health-Dentist" class="form-element__checkbox">
+            <input id="specialty_Public-Health-Dentist" type="checkbox" name="specialty" value="Public Health Dentist">Public Health Dentist
+          </label>
+
+          <label for="specialty_Full-Time-Faculty" class="form-element__checkbox">
+            <input id="specialty_Full-Time-Faculty" type="checkbox" name="specialty" value="Full-time Faculty">Full-time Faculty
+          </label>
+
+          <label for="specialty_Hygenist" class="form-element__checkbox">
+            <input id="specialty_Hygenist" type="checkbox" name="specialty" value="Hygenist">Hygenist
+          </label>
+
+          <label for="specialty_XR-Laboratory" class="form-element__checkbox">
+            <input id="specialty_XR-Laboratory" type="checkbox" name="specialty" value="XR Laboratory">XR Laboratory
+          </label>
+
+          <label for="specialty_Oral-Pathology" class="form-element__checkbox">
+            <input id="specialty_Oral-Pathology" type="checkbox" name="specialty" value="Oral Pathology">Oral Pathology
+          </label>
+        </fieldset>
+
+        <div class="form-element form-element--spacing-large">
+          <button class="btn--primary" type="submit">View Dentists</button>
+        </div>
+      </form>
+
+      {{#if provider }}
       <ul class="provider-list">
-        {{#each provider }} <!-- for each provider -->
-          <li class="provider-listing">
-            <article>
-              <aside>
+        {{#each provider }}
+        <li class="provider-listing">
+          <article>
+            <aside>
 
-                <div class="provider__distance">
-                  <i class="icon  icon-map-marker" aria-label=""></i>
-                  <span>{{distance}}</span>
-                </div>
+              <div class="provider__distance">
+                <i class="icon  icon-map-marker" aria-label=""></i>
+                <span>{{distance}}</span>
+              </div>
 
-                <div class="provider__link">
-                  <a href="{{provider.link}}">View <i class="icon icon-right-arrow" aria-label="right arrow"></i></a>
-                </div>
+              <div class="provider__link">
+                <a href="{{link}}">View <i class="icon icon-right-arrow" aria-label="right arrow"></i></a>
+              </div>
 
-              </aside>
+            </aside>
 
-              <section>
+            <section>
 
-                <header class="provider__name">
-                  <h5>{{firstName}} {{lastName}}</h5>
-                  <p class="provider__specialty">{{specialty}}</p>
-                </header>
+              <header class="provider__name">
+                <h5>{{firstName}} {{lastName}}</h5>
+                <p class="provider__specialty">{{specialty}}</p>
+              </header>
 
+              <div class="provider__network">
+                <p><i class="icon icon-info" aria-label=""></i>{{network}}</p>
 
-                <div class="provider__network">
-                  {{#if inNetwork}}
-                    <i class="icon icon-check-circle" aria-label=""></i>
-                  {{else}}
-                    <i class="icon icon-check-warning" aria-label=""></i>
-                  {{/if}}
-                  In network
+                <p><i class="icon icon-check-circle" aria-label=""></i> Accepting new patients</p>
+              </div>
 
-                  <p><i class="icon icon-check-circle" aria-label=""></i> Accepting new patients</p>
-                </div>
+              <div class="provider__address-name">{{locationName}}</div>
+              <ul>
+                {{#each addresses}}
+                <div class="provider__address">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
+                <div class="provider__phone">Phone: {{phone}}</div>
+                {{/each}}
+              </ul>
 
-                <div class="provider__address-name">{{locationName}}</div>
-                <ul>
-                  {{#each addresses}}
-                    <div class="provider__address">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
-                    <div class="provider__phone">Phone: {{phone}}</div>
-                  {{/each}}
-                </ul>
-                <!-- div class="provider__address">--address--</div -->
-
-              </section>
-            </article>
-          </li>
+            </section>
+          </article>
+        </li>
         {{/each}}
       </ul>
-    {{/if}}
+      {{/if}}
 
-  </section>
-</main>
+    </section>
+  </main>
 
-<footer class="page-footer">
-  <a href="#go-home" class="logo">
-    <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" alt="Delta Dental Logo">
+  <footer class="page-footer">
+    <a href="#go-home" class="logo">
+      <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" alt="Delta Dental Logo">
 
-  </a>
+    </a>
 
-  <div class="footer__feedback">
-    <div class="footer__feedback-button">
-      <button class="btn--feedback">
-        FEEDBACK
-      </button>
+    <div class="footer__feedback">
+      <div class="footer__feedback-button">
+        <button class="btn--feedback">
+          FEEDBACK
+        </button>
 
+      </div>
+      <div class="footer__feedback-contact">
+        <span>Need Help?</span>
+        <p><a class="phone-link">844.847.9516</a></p>
+      </div>
     </div>
-    <div class="footer__feedback-contact">
-      <span>Need Help?</span>
-      <p><a class="phone-link">844.847.9516</a></p>
-    </div>
-  </div>
-  <nav class="footer-nav">
-    <ul class="footer-nav">
-      <li>
-        <a href="#go-somewhere">Contact Us</a>
-      </li>
-      <li>
-        <a href="#go-somewhere">Language Assistance</a>
-      </li>
-      <li>
-        <a href="#go-somewhere">Legal Notices</a>
-      </li>
-      <li>
-        <a href="#go-somewhere">Privacy</a>
-      </li>
-    </ul>
-  </nav>
+    <nav class="footer-nav">
+      <ul class="footer-nav">
+        <li>
+          <a href="#go-somewhere">Contact Us</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Language Assistance</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Legal Notices</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Privacy</a>
+        </li>
+      </ul>
+    </nav>
 
-  <p class="copyright">© Delta Dental</p>
-  <p class="disclaimer">This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta
-    Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.</p>
-</footer>
+    <p class="copyright">© Delta Dental</p>
+    <p class="disclaimer">This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta
+      Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.</p>
+    </footer>
 
 
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places" defer="defer"></script>
-<script src="./jquery.min.js" defer="defer"></script>
-<script src="./main.js" defer="defer"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places" defer="defer"></script>
+    <script src="./jquery.min.js" defer="defer"></script>
+    <script src="./main.js" defer="defer"></script>
 
-</body>
-</html>
+  </body>
+  </html>
