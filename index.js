@@ -34,8 +34,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /* UI Requests */
 
 // template versions
-app.get("/directory-search.html", helpers.getDirectorySearch);
-app.post("/directory-search.html", helpers.postDirectorySearch);
+app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.getDirectorySearch);
+app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.postDirectorySearch);
 
 /* REST API */
 app.get("/", helpers.getHome);

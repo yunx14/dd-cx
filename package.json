@@ -1,7 +1,7 @@
 {
   "name": "simple-service",
   "version": "1.0.0",
-  "description": "simple rest service",
+  "description": "Provider Directory Application Service",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

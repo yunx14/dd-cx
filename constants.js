@@ -8,4 +8,6 @@ module.exports = {
   "SEARCH_SERVICE_PORT": 19096,
   "APP_SERVICE_ABOUT": "This is the Directory Service (App).",
   "SEARCH_SERVICE_HOST": "http://aw-lx0095"
+
+  "DIRECTORY_SEARCH_PAGE": "/directory-search.html"
 }
