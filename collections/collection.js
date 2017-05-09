@@ -28,10 +28,10 @@ Collection.prototype.path = "";
  */
 Collection.prototype.port = 0;
 /**
- * @property attributes {object} The data of the Collection
+ * @property attributes {array} The data of the Collection
  * @memberof Collection
  */
-Collection.prototype.attributes = {};
+Collection.prototype.attributes = [];
 /**
  * @property query {object} The query params for use in REST calls
  * @memberof Collection
@@ -131,6 +131,15 @@ Collection.prototype.fetch = function(options, success, error) {
 };
 
 /**
+ * @method isEmpty Returns true if collection is empty
+ * @returns {boolean} true if empty
+ * @memberof Collection
+ */
+Collection.prototype.isEmpty = function() {
+  return this.attributes.length === 0;
+};
+
+/**
  * @method toString Returns a string representation of the data
  * @returns {string} string representation of the data
  * @memberof Collection
@@ -167,7 +176,7 @@ Collection.prototype.reset = function(data) {
   if (data) {
     this.attributes = data;
   } else {
-    this.attributes = {};
+    this.attributes = [];
   }
 };
 

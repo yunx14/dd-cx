@@ -65,6 +65,17 @@ describe("Given Collection classes", function() {
     		expect(JSON.stringify(collection.attributes)).toEqual(result);
     	});
 
+      it("can return true if empty", function() {
+    		var result = collection.isEmpty();
+    		expect(result).toBeTruthy();
+    	});
+
+      it("can return false if not empty", function() {
+        collection.reset({});
+    		var result = collection.isEmpty();
+    		expect(result).toBeFalsy();
+    	});
+
     	it("can return JSON data", function() {
     		var result = collection.toJSON();
     		expect(collection.attributes).toEqual(result);

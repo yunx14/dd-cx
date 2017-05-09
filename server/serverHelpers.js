@@ -49,14 +49,62 @@ module.exports = {
     providers.fetch({ "query": query },
       function(code, data) {
         // success
+        if (providers.isEmpty()) {
+          res.redirect(CONSTANTS.ERROR_NO_RESULTS);
+        }
         res.status(code).send(providersPresenter.render(data));
       },
-      function(e) {
+      function(code, data) {
         // error
-        logger.log("ERROR: Failed to request providers: " + e.message);
-        res.status(500).send(e);
+        logger.log("ERROR: Failed to request providers: " + code);
+        if (code === 504) {
+          res.redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (code === 400) {
+          res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        }
+        res.redirect(CONSTANTS.ERROR_DOWN);
       }
     );
+  },
+  "errorInvalidZip": function(req, res) {
+    logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
+    var vm = require("../views/provider-directory-search.js");
+
+    var errorPresenter = new Presenter(
+      "errorInvalidZip", // name
+      vm, // viewModel
+      {}); // property map
+      res.status(200).send(errorPresenter.render());
+  },
+  "errorTimeOut": function(req, res) {
+    logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
+    var vm = require("../views/provider-directory-search.js");
+
+    var errorPresenter = new Presenter(
+      "errorTimeOut", // name
+      vm, // viewModel
+      {}); // property map
+      res.status(200).send(errorPresenter.render());
+  },
+  "errorNoResults": function(req, res) {
+    logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
+    var vm = require("../views/provider-directory-search.js");
+
+    var errorPresenter = new Presenter(
+      "errorNoResults", // name
+      vm, // viewModel
+      {}); // property map
+      res.status(200).send(errorPresenter.render());
+  },
+  "errorDown": function(req, res) {
+    logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
+    var vm = require("../views/provider-directory-search.js");
+
+    var errorPresenter = new Presenter(
+      "errorDown", // name
+      vm, // viewModel
+      {}); // property map
+      res.status(200).send(errorPresenter.render());
   },
   "getHome": function(req, res) {
     logger.log("GET / -> ABOUT");
@@ -66,7 +114,7 @@ module.exports = {
     logger.log("GET /ABOUT");
     res.send(CONSTANTS.EE_ABOUT);
   }
-}
+};
 
 var parseLocation = function(location) {
   var arrayLocation = location.split(",");

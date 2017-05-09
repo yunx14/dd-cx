@@ -9,5 +9,9 @@ module.exports = {
   "APP_SERVICE_ABOUT": "This is the Directory Service (App).",
   "SEARCH_SERVICE_HOST": "http://aw-lx0095",
 
-  "DIRECTORY_SEARCH_PAGE": "/directory-search.html"
+  "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
+  "ERROR_INVALID_ZIP": "/errorInvalidZip.html",
+  "ERROR_NO_RESULTS": "/errorNoResults.html",
+  "ERROR_TIMEOUT": "/errorTimeOut.html",
+  "ERROR_DOWN": "/errorDown.html"
 }
