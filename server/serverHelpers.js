@@ -11,14 +11,14 @@ module.exports = {
     var vm = require("../views/provider-directory-search.js");
 
     var locationsView = new Presenter(
-      "template1", // name
+      "directorySearch", // name
       vm, // viewModel
       { "provider": "", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
       res.status(200).send(locationsView.render());
   },
-  "postDirectorySearch": function(req, res) {
-    logger.log("POST /directory-search.html");
+  "postDirectorySearchResults": function(req, res) {
+    logger.log("POST /directory-search-results.html");
 
     var providers = new SolrCollection("providers");
     if (req.query) {
@@ -39,7 +39,7 @@ module.exports = {
     var vm = require("../views/provider-directory-search.js");
 
     var providersPresenter = new Presenter(
-      "template2", // name
+      "directorySearchResults", // name
       vm, // viewModel
       { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
