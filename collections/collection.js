@@ -119,7 +119,7 @@ Collection.prototype.fetch = function(options, success, error) {
           this.attributes = data;
           success(res.statusCode, data);
         } catch(e) {
-          logger.log("Error: " + e);
+          logger.log("Exception: " + e);
           error(500, e);
         }
       });
