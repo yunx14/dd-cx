@@ -44,8 +44,12 @@ module.exports = {
       { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
     var query = parseLocation(req.body.location);
-    query.distance = Number(req.body.distance);
-    query.specialty = req.body.specialty;
+    if (req.body.distance) {
+      query.distance = Number(req.body.distance);
+    }
+    if (req.body.specialty) {
+      query.specialty = req.body.specialty;
+    }
     providers.fetch({ "query": query },
       function(code, data) {
         // success
