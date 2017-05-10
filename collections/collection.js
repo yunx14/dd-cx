@@ -104,10 +104,11 @@ Collection.prototype.fetch = function(options, success, error) {
   const uri = options.host + ":" + String(options.port) + options.path + formatQuery(options.query);
   logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
-    logger.log("STATUS: " + res.statusCode);
+    var status = res.statusCode;
+    logger.log("STATUS: " + status);
 
-    if (res.statusCode > 399) {
-      error(res.statusCode, res);
+    if (status > 399) {
+      error(status, res);
     } else {
       // Buffer the body entirely for processing as a whole.
       var buffer = "";
@@ -122,7 +123,8 @@ Collection.prototype.fetch = function(options, success, error) {
           data = {};
         }
         this.attributes = data;
-        success(res.statusCode, data);
+        logger.log("calling success");
+        success(status, data);
       });
     }
   });
