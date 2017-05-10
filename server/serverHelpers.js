@@ -51,8 +51,9 @@ module.exports = {
         // success
         if (providers.isEmpty()) {
           res.redirect(CONSTANTS.ERROR_NO_RESULTS);
+        } else {
+          res.status(code).send(providersPresenter.render(data));
         }
-        res.status(code).send(providersPresenter.render(data));
       },
       function(code, data) {
         // error
