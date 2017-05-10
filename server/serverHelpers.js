@@ -72,6 +72,38 @@ module.exports = {
       }
     );
   },
+  "getProviderDetails": function(req, res) {
+    logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
+
+    var id = req.param.id;
+    var vm = require("../views/provider-directory-search.js");
+
+    //TODO: Make an API call
+    var provider = new Model("provider/" + id);
+
+    var providerPresenter = new Presenter(
+      "TBD", // name
+      vm, // viewModel
+      {}); // property map
+
+    provider.fetch({},
+      function(code, data) {
+        // success
+        res.status(code).send(providerPresenter.render(data));
+      },
+      function(code, data) {
+        // error
+        logger.log("ERROR: Failed to request provider: " + code);
+        if (code === 504) {
+          res.redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (code === 400) {
+          res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        } else {
+          res.redirect(CONSTANTS.ERROR_DOWN);
+        }
+      }
+    );
+  },
   "errorInvalidZip": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
     var vm = require("../views/provider-directory-search.js");
