@@ -98,7 +98,7 @@ module.exports = {
       res.status(200).send(errorPresenter.render());
   },
   "errorDown": function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
+    logger.log("GET " + CONSTANTS.ERROR_DOWN);
     var vm = require("../views/provider-directory-search.js");
 
     var errorPresenter = new Presenter(
