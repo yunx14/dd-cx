@@ -11,7 +11,7 @@ module.exports = {
     var vm = require("../views/provider-directory-search.js");
 
     var locationsView = new Presenter(
-      "provider-directory-search", // name
+      "template1", // name
       vm, // viewModel
       { "provider": "", "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
@@ -39,7 +39,7 @@ module.exports = {
     var vm = require("../views/provider-directory-search.js");
 
     var providersPresenter = new Presenter(
-      "provider-directory-search", // name
+      "template2", // name
       vm, // viewModel
       { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
 
