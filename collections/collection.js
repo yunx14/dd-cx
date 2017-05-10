@@ -114,14 +114,15 @@ Collection.prototype.fetch = function(options, success, error) {
       res.on("data", function(chunk) {
         buffer += chunk;
       }).on("end", function() {
+        var data;
         try {
-          var data = JSON.parse(buffer);
-          this.attributes = data;
-          success(res.statusCode, data);
+          data = JSON.parse(buffer);
         } catch(e) {
           logger.log("Exception: " + e);
-          error(500, e);
+          data = {};
         }
+        this.attributes = data;
+        success(res.statusCode, data);
       });
     }
   });
