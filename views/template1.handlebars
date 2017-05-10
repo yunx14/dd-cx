@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link href="./styles/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="#go-home" class="home-icon">
+      <i class="icon  icon-home" aria-label="home icon"></i>
+    </a>
+
+    <nav class="page-nav">
+      <ul>
+        <li>
+          <a href="#go-somewhere" class="inverted">Log in</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="logo-container">
+      <a href="#go-home" class="logo">
+        <img src="../../images/logo-unbounded-alternate-reversed.png" srcset="../../images/logo-unbounded-alternate-reversed.svg" alt="Delta Dental Logo" width="205px">
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section>
+
+      <header class="section-heading">
+        <h1>Find a Dentist</h1>
+        <p><a>Log in</a> to find dentists in your plan.</p>
+      </header>
+
+      <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
+        <div class="form-element">
+          <label for="location">Near</label>
+          <input id="location" type="text" name="location" placeholder="Zip code, city, or address">
+        </div>
+
+        <div class="form-element form-element--spacing-large">
+          <button class="btn--primary" type="submit">View Dentists</button>
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <a href="#go-home" class="logo">
+      <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" alt="Delta Dental Logo">
+
+    </a>
+
+    <div class="footer__feedback">
+      <div class="footer__feedback-button">
+        <button class="btn--feedback">
+          FEEDBACK
+        </button>
+
+      </div>
+      <div class="footer__feedback-contact">
+        <span>Need Help?</span>
+        <p><a class="phone-link">844.847.9516</a></p>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <ul class="footer-nav">
+        <li>
+          <a href="#go-somewhere">Contact Us</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Language Assistance</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Legal Notices</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Privacy</a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="copyright">© Delta Dental</p>
+    <p class="disclaimer">This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta
+      Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.</p>
+    </footer>
+
+
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places" defer="defer"></script>
+    <script src="./jquery.min.js" defer="defer"></script>
+    <script src="./main.js" defer="defer"></script>
+
+  </body>
+  </html>

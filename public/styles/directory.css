@@ -1,0 +1,36 @@
+.form-element--location {
+  position: absolute;
+  top: 0;
+  left: 2.75rem;
+  width: calc(99% - 3.25rem);
+}
+
+.form-element--location label {
+  position: absolute;
+  left: -999px;
+  visibility: hidden;
+}
+
+.form-element--location input {
+  margin: .25rem;
+  height: 2.625rem;
+}
+
+.form-element--submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.25rem;
+}
+
+.form-element--submit button {
+  height: 2.625rem;
+  padding: 0.525rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-element--submit button i {
+  height: 1.5rem;
+  width: 1.5rem;
+}
