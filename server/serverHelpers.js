@@ -61,8 +61,9 @@ module.exports = {
           res.redirect(CONSTANTS.ERROR_TIMEOUT);
         } else if (code === 400) {
           res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        } else {
+          res.redirect(CONSTANTS.ERROR_DOWN);
         }
-        res.redirect(CONSTANTS.ERROR_DOWN);
       }
     );
   },
