@@ -1082,6 +1082,9 @@ input.success {
   .icon.icon-search {
     background-image: url(../../images/icon-search.png);
     background-image: url(../../images/icon-search.svg), linear-gradient(transparent, transparent); }
+  .icon.icon-search-black {
+    background-image: url(../../images/icon-search-black.png);
+    background-image: url(../../images/icon-search-black.svg), linear-gradient(transparent, transparent); }
   .icon.icon-down-arrow {
     background-image: url(../images/icon-down-arrow.png);
     background-image: url(../images/icon-down-arrow.svg), linear-gradient(transparent, transparent); }
@@ -1101,6 +1104,37 @@ input.success {
     background-image: url("../images/icon-map-marker.png");
     background-image: url("../images/icon-map-marker.svg"), linear-gradient(transparent, transparent);
     background-size: 1rem 1rem; }
+
+.chevron::after {
+  content: "";
+  display: inline-block;
+  position: relative;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 0.0625rem solid #000;
+  border-top: 0.0625rem solid #000;
+  -webkit-transition: transform 1s;
+  transition: transform 0.25s; }
+
+.chevron.chevron--white::after {
+  border-right: 0.0625rem solid #fff;
+  border-top: 0.0625rem solid #fff; }
+
+.chevron.chevron--right::after {
+  left: 0;
+  transform: rotate(45deg); }
+
+.chevron.chevron--left::after {
+  left: 0;
+  transform: rotate(225deg); }
+
+.chevron.chevron--down::after {
+  left: 0;
+  transform: rotate(135deg); }
+
+.chevron.chevron--up::after {
+  left: 0;
+  transform: rotate(-45deg); }
 
 .page-progress-piece-active {
   display: inline-block;
@@ -1242,6 +1276,10 @@ header {
 header.page-header {
   background-color: #563d82;
   max-height: 3.125rem; }
+  header.page-header .back-link {
+    display: inline-block;
+    margin: 1rem;
+    text-decoration: none; }
 
 header.section-heading {
   margin: 1.625rem 0 1.5rem; }
@@ -1318,6 +1356,12 @@ header .logo-container {
   display: block; }
   .provider .provider__header {
     margin-bottom: 1rem; }
+  .provider .data__row {
+    text-align: left; }
+    .provider .data__row .data__row--heading::after {
+      content: ":"; }
+    .provider .data__row .data__row--cell {
+      padding-left: 1rem; }
 
 .provider__languages,
 .provider__access,
