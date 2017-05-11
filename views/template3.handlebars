@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link href="./styles/style.css" rel="stylesheet"/>
+  <link href="./styles/directory.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <header class="page-header">
+    <a href="#go-back" class="inverted back-link">
+      <span class="chevron chevron--left chevron--white"></span>
+      <span>Back to search results</span>
+    </a>
+
+  </header>
+
+  <main>
+    <article class="provider">
+      <aside class="provider__aside">
+        <div class="provider__distance">
+          <i class="icon  icon-map-marker" aria-label=""></i>
+
+          <span>0.4 mi</span>
+        </div>
+      </aside>
+      <section>
+        <header class="provider__header">
+          <div class="provider__name">Mrs Pain In The Mouth</div>
+          <div class="provider__specialty">Cavity filling</div>
+        </header>
+
+
+        <div class="provider__indicators">
+          <div class="provider__network"><i class="icon icon-info icon-default" aria-label=""></i> Premier
+          </div>
+          <div class="provider__availability"><i class="icon icon-check-circle icon-default" aria-label=""></i> Accepting new patients</div>
+        </div>
+
+        <div class="provider__map">
+          <div id="map" style="width: 100%; height: 100%;"></div>
+
+        </div>
+
+        <div class="provider__place" itemscope="" itemprop="place" itemtype="http://schema.org/Place">
+          <div class="provider__place-name" itemprop="name">Enamel Place</div>
+          <div class="provider__address" itemscope="" itemprop="address" itemtype="http://schema.org/PostalAddress">
+            <div class="provider__address-street" itemprop="streetAddress">32 Root Canal</div>
+            <span class="provider__address-city" itemprop="addressLocality">San Francisco</span>,
+            <abbr class="provider__address-state" itemprop="addressRegion">CA</abbr>
+            <span class="provider__address-zip" itemprop="postalCode">94105</span>
+            <div class="provider__phone" itemprop="telephone">(415) 641-8900</div>
+          </div>
+        </div>
+
+        <div class="provider__hours">
+          <dl>
+            <dt>Hours</dt>
+            <dd>Open today 7:30am-4:30pm</dd>
+          </dl>
+
+        </div>
+
+        <div class="provider__access">
+          <dl>
+            <dt>Office Access</dt>
+            <dd>Public Transit, Wheelchair Accessible</dd>
+          </dl>
+
+        </div>
+
+        <div class="provider__languages">
+          <dl>
+            <dt>Languages at this office</dt>
+            <dd>English, Chinese, Spanish</dd>
+          </dl>
+
+        </div>
+
+        <div class="provider__data">
+          <table class="data__table">
+            <tbody><tr class="data__row">
+              <th class="data__row--heading">Provider NPI</th>
+              <td class="data__row--cell">##############</td>
+            </tr>
+            <tr class="data__row">
+              <th class="data__row--heading">License #</th>
+              <td class="data__row--cell">######</td>
+            </tr>
+            <tr class="data__row">
+              <th class="data__row--heading">License State</th>
+              <td class="data__row--cell">California</td>
+            </tr>
+            <tr class="data__row">
+              <th class="data__row--heading">Education</th>
+              <td class="data__row--cell">UoP 1999</td>
+            </tr>
+            <tr class="data__row">
+              <th class="data__row--heading">Gender</th>
+              <td class="data__row--cell">Male</td>
+            </tr>
+          </tbody></table>
+        </div>
+
+      </section>
+    </article>
+  </main>
+
+  <footer class="page-footer">
+    <a href="#go-home" class="logo">
+      <img src="../../images/logo-primary-alternate.png" srcset="../../images/logo-primary-alternate.svg" alt="Delta Dental Logo">
+
+    </a>
+
+    <div class="footer__feedback">
+      <div class="footer__feedback-button">
+        <button class="btn--feedback">
+          FEEDBACK
+        </button>
+
+      </div>
+      <div class="footer__feedback-contact">
+        <span>Need Help?</span>
+        <p><a class="phone-link">844.847.9516</a></p>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <ul class="footer-nav">
+        <li>
+          <a href="#go-somewhere">Contact Us</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Language Assistance</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Legal Notices</a>
+        </li>
+        <li>
+          <a href="#go-somewhere">Privacy</a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="copyright">© Delta Dental</p>
+    <p class="disclaimer">This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta
+      Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website.</p>
+  </footer>
+
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places" defer="defer"></script>
+  <script src="./jquery.min.js" defer="defer"></script>
+  <script src="./template3.js" defer="defer"></script>
+
+</body>
+</html>
