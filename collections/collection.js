@@ -28,10 +28,10 @@ Collection.prototype.path = "";
  */
 Collection.prototype.port = 0;
 /**
- * @property attributes {object} The data of the Collection
+ * @property attributes {array} The data of the Collection
  * @memberof Collection
  */
-Collection.prototype.attributes = {};
+Collection.prototype.attributes = [];
 /**
  * @property query {object} The query params for use in REST calls
  * @memberof Collection
@@ -104,23 +104,27 @@ Collection.prototype.fetch = function(options, success, error) {
   const uri = options.host + ":" + String(options.port) + options.path + formatQuery(options.query);
   logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
-    logger.log("STATUS: " + res.statusCode);
+    var status = res.statusCode;
+    logger.log("STATUS: " + status);
 
-    if (res.statusCode > 399) {
-      error(res.statusCode, res);
+    if (status > 399) {
+      error(status, res);
     } else {
       // Buffer the body entirely for processing as a whole.
       var buffer = "";
       res.on("data", function(chunk) {
         buffer += chunk;
       }).on("end", function() {
+        var data;
         try {
-          var data = JSON.parse(buffer);
-          this.attributes = data;
-          success(res.statusCode, data);
+          data = JSON.parse(buffer);
         } catch(e) {
-          error(500, e);
+          logger.log("Exception: " + e);
+          data = {};
         }
+        this.attributes = data;
+        logger.log("calling success");
+        success(status, data);
       });
     }
   });
@@ -128,6 +132,15 @@ Collection.prototype.fetch = function(options, success, error) {
   req.on("error", function(e) {
     error(500, e);
   });
+};
+
+/**
+ * @method isEmpty Returns true if collection is empty
+ * @returns {boolean} true if empty
+ * @memberof Collection
+ */
+Collection.prototype.isEmpty = function() {
+  return this.attributes.length === 0;
 };
 
 /**
@@ -167,7 +180,7 @@ Collection.prototype.reset = function(data) {
   if (data) {
     this.attributes = data;
   } else {
-    this.attributes = {};
+    this.attributes = [];
   }
 };
 
