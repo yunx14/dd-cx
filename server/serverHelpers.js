@@ -114,22 +114,22 @@ module.exports = {
       {}); // property map
       res.status(200).send(errorPresenter.render());
   },
-  "errorTimeOut": function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
-    var vm = require("../views/provider-directory-search.js");
-
-    var errorPresenter = new Presenter(
-      "errorTimeOut", // name
-      vm, // viewModel
-      {}); // property map
-      res.status(200).send(errorPresenter.render());
-  },
   "errorNoResults": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
     var vm = require("../views/provider-directory-search.js");
 
     var errorPresenter = new Presenter(
       "errorNoResults", // name
+      vm, // viewModel
+      {}); // property map
+      res.status(200).send(errorPresenter.render());
+  },
+  "errorTimeOut": function(req, res) {
+    logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
+    var vm = require("../views/provider-directory-search.js");
+
+    var errorPresenter = new Presenter(
+      "errorTimeOut", // name
       vm, // viewModel
       {}); // property map
       res.status(200).send(errorPresenter.render());
