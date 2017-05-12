@@ -161,7 +161,7 @@ module.exports = {
     var about = new Presenter(
       "about", // name
       {}, // viewModel
-      { "runtime-details": "<h4>Runtime Details</h4><p>PORT: " + CONSTANTS.EE_PORT + "</p><p>Search Searvice: " + CONSTANTS.SEARCH_SERVICE_HOST + ":" + + CONSTANTS.SEARCH_SERVICE_PORT + "</p>"}); // property map
+      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT}); // property map
     res.status(200).send(about.render());
     //res.send(CONSTANTS.EE_ABOUT);
   }
