@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 // template versions
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.postDirectorySearchResults);
+app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, helpers.getProviderDetails);
 
 // error template
 app.get(CONSTANTS.ERROR_INVALID_ZIP, helpers.errorInvalidZip);
