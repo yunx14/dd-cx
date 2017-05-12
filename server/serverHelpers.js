@@ -158,7 +158,12 @@ module.exports = {
   },
   "getAbout": function(req, res) {
     logger.log("GET /ABOUT");
-    res.send(CONSTANTS.EE_ABOUT);
+    var about = new Presenter(
+      "about", // name
+      {}, // viewModel
+      { "runtime-details": "<h4>Runtime Details</h4><p>PORT: " + CONSTANTS.EE_PORT + "</p><p>Search Searvice: " + CONSTANTS.SEARCH_SERVICE_HOST + ":" + + CONSTANTS.SEARCH_SERVICE_PORT + "</p>"}); // property map
+    res.status(200).send(about.render());
+    //res.send(CONSTANTS.EE_ABOUT);
   }
 };
 

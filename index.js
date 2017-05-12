@@ -44,7 +44,7 @@ app.get(CONSTANTS.ERROR_TIMEOUT, helpers.errorTimeOut);
 app.get(CONSTANTS.ERROR_DOWN, helpers.errorDown);
 
 /* REST API */
-app.get("/", helpers.getHome);
+app.get("/", helpers.getAbout);
 app.get("/about", helpers.getAbout);
 
 // Fire up server and print friendly message to console
