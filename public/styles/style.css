@@ -1427,3 +1427,18 @@ header .logo-container {
 \*------------------------------------*/
 /*------------------------------------*    #LAYOUT
 \*------------------------------------*/
+
+.dropdown {
+  position:relative;
+}
+
+.dropdown__menu{
+  display: none;
+  position: absolute;
+  z-index: 1;
+  background-color: #fff;
+}
+
+.dropdown__toggle {
+  display:block;
+}
