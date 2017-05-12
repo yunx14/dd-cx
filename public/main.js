@@ -14,3 +14,7 @@ function fillInAddress() {
 
 autocomplete.setComponentRestrictions({'country': ['us', 'pr', 'vi', 'gu', 'mp']});
 autocomplete.addListener('place_changed', fillInAddress);
+
+$(".dropdown__toggle").click(function(){
+  $(".dropdown__menu").toggle();
+});
