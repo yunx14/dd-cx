@@ -131,16 +131,15 @@
               </header>
 
               <div class="provider__network">
-                <p><i class="icon icon-info" aria-label=""></i>{{network}}</p>
+                <p><i class="icon icon-info" aria-label=""></i>{{providerNetworks}}</p>
 
                 <p><i class="icon icon-check-circle" aria-label=""></i> Accepting new patients</p>
               </div>
 
-              <div class="provider__address-name">{{locationName}}</div>
+              <div class="provider__address-name">{{officeName}}</div>
               <ul>
                 {{#each addresses}}
-                <div class="provider__address">Address: {{address}}, {{city}}, {{state}} {{zip}}</div>
-                <div class="provider__phone">Phone: {{phone}}</div>
+                <div class="provider__address">Address: {{address.addressLine}}, {{address.city}}, {{address.state}} {{address.zipcode}}</div>
                 {{/each}}
               </ul>
 
