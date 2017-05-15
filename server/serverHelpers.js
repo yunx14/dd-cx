@@ -41,7 +41,7 @@ module.exports = {
     var providersPresenter = new Presenter(
       "directorySearchResults", // name
       vm, // viewModel
-      { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback" }); // property map
+      { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback", "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE }); // property map
 
     var query = parseLocation(req.body.location);
     if (req.body.distance) {
@@ -93,7 +93,7 @@ module.exports = {
         "providerDetails", // name
         vm, // viewModel
         // TODO: Pass data to template - I Am!!!
-        {"providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE}); // property map
+        {}); // property map
 
       provider.fetch({},
         function(code, data) {
