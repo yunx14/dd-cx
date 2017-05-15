@@ -75,8 +75,8 @@ module.exports = {
   "getProviderDetails": function(req, res) {
     logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
-    if (req.param && req.param.providerKey) {
-      var id = req.param.providerKey;
+    if (req.params && req.params.providerKey) {
+      var id = req.params.providerKey;
       var vm = require("../views/provider-directory-search.js");
 
       var provider = new Model();
@@ -114,7 +114,7 @@ module.exports = {
       );
     } else {
       // TODO: need generic bad request page
-      logger.log("No params or bad provider Key " + JSON.stringify(req.param));
+      logger.log("No params or bad provider Key " + JSON.stringify(req.params));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   },
