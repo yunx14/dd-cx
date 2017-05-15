@@ -122,41 +122,41 @@ module.exports = {
   },
   "errorInvalidZip": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
-    var vm = require("../views/provider-directory-search.js");
+    var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorInvalidZip", // name
-      vm, // viewModel
+      "errorMessage", // name
+      vm.errorMessages.invalidAddress, // viewModel
       {}); // property map
       res.status(200).send(errorPresenter.render());
   },
   "errorNoResults": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
-    var vm = require("../views/provider-directory-search.js");
+    var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorNoResults", // name
-      vm, // viewModel
+      "errorMessage", // name
+      vm.errorMessages.noResults, // viewModel
       {}); // property map
       res.status(200).send(errorPresenter.render());
   },
   "errorTimeOut": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
-    var vm = require("../views/provider-directory-search.js");
+    var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorTimeOut", // name
-      vm, // viewModel
+      "errorMessage", // name
+      vm.errorMessages.serverTimeout, // viewModel
       {}); // property map
       res.status(200).send(errorPresenter.render());
   },
   "errorDown": function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
-    var vm = require("../views/provider-directory-search.js");
+    var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorDown", // name
-      vm, // viewModel
+      "errorMessage", // name
+      vm.errorMessages.servicesDown, // viewModel
       {}); // property map
       res.status(200).send(errorPresenter.render());
   },
