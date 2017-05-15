@@ -92,8 +92,8 @@ module.exports = {
       var providerPresenter = new Presenter(
         "providerDetails", // name
         vm, // viewModel
-        // TODO: Pass data to template
-        {}); // property map
+        // TODO: Pass data to template - I Am!!!
+        {"providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE}); // property map
 
       provider.fetch({},
         function(code, data) {
@@ -114,6 +114,7 @@ module.exports = {
       );
     } else {
       // TODO: need generic bad request page
+      logger.log("No params or bad provider Key " + JSON.stringify(req.param));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   },
