@@ -1,5 +1,6 @@
 const CONSTANTS = require("../constants.js");
 var Presenter = require("../views/presenter.js");
+var Model = require("../models/model.js");
 var AtomicPower = require("../views/pds.js");
 var SolrCollection = require("../collections/solrCollection.js");
 var Logger = require("../utility/logger.js");
@@ -75,8 +76,8 @@ module.exports = {
   "getProviderDetails": function(req, res) {
     logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
-    if (req.params && req.params.providerKey) {
-      var id = req.params.providerKey;
+    if (req.query && req.query.providerKey) {
+      var id = req.query.providerKey;
       var vm = require("../views/provider-directory-search.js");
 
       var provider = new Model();
