@@ -27,13 +27,13 @@
       </aside>
       <section>
         <header class="provider__header">
-          <div class="provider__name">Mrs Pain In The Mouth</div>
-          <div class="provider__specialty">Cavity filling</div>
+          <div class="provider__name">{{provider.firstName}} {{provider.lastName}}</div>
+          <div class="provider__specialty">{{provider.specialty}}</div>
         </header>
 
 
         <div class="provider__indicators">
-          <div class="provider__network"><i class="icon icon-info icon-default" aria-label=""></i> Premier
+          <div class="provider__network"><i class="icon icon-info icon-default" aria-label=""></i> {{provider.providerNetworks}}
           </div>
           <div class="provider__availability"><i class="icon icon-check-circle icon-default" aria-label=""></i> Accepting new patients</div>
         </div>
@@ -44,14 +44,14 @@
         </div>
 
         <div class="provider__place" itemscope="" itemprop="place" itemtype="http://schema.org/Place">
-          <div class="provider__place-name" itemprop="name">Enamel Place</div>
-          <div class="provider__facility" itemprop="id">Facility ID</div>
+          <div class="provider__place-name" itemprop="name">{{provider.officeName}}</div>
+          <div class="provider__facility" itemprop="id">{{provider.facilityName}}</div>
           <div class="provider__address" itemscope="" itemprop="address" itemtype="http://schema.org/PostalAddress">
-            <div class="provider__address-street" itemprop="streetAddress">32 Root Canal</div>
-            <span class="provider__address-city" itemprop="addressLocality">San Francisco</span>,
-            <abbr class="provider__address-state" itemprop="addressRegion">CA</abbr>
-            <span class="provider__address-zip" itemprop="postalCode">94105</span>
-            <div class="provider__phone" itemprop="telephone">(415) 641-8900</div>
+            <div class="provider__address-street" itemprop="streetAddress">{{provider.address.addressLine}}</div>
+            <span class="provider__address-city" itemprop="addressLocality">{{provider.address.city}}</span>,
+            <abbr class="provider__address-state" itemprop="addressRegion">{{provider.address.state}}</abbr>
+            <span class="provider__address-zip" itemprop="postalCode">{{provider.address.zipcode}}</span>
+            <div class="provider__phone" itemprop="telephone">{{provider.address.phoneNumber}}</div>
           </div>
         </div>
 
@@ -66,7 +66,7 @@
         <div class="provider__access">
           <dl>
             <dt>Office Access</dt>
-            <dd>Public Transit, Wheelchair Accessible</dd>
+            <dd>{{provider.accessibility}}</dd>
           </dl>
 
         </div>
@@ -74,7 +74,7 @@
         <div class="provider__languages">
           <dl>
             <dt>Languages at this office</dt>
-            <dd>English, Chinese, Spanish</dd>
+            <dd>{{provider.languages}}</dd>
           </dl>
 
         </div>
@@ -83,23 +83,23 @@
           <table class="data__table">
             <tbody><tr class="data__row">
               <th class="data__row--heading">Provider NPI</th>
-              <td class="data__row--cell">##############</td>
+              <td class="data__row--cell">{{provider.npi}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">License #</th>
-              <td class="data__row--cell">######</td>
+              <td class="data__row--cell">{{provider.license.licenseNumber}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">License State</th>
-              <td class="data__row--cell">California</td>
+              <td class="data__row--cell">{{provider.license.licenseState}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Education</th>
-              <td class="data__row--cell">UoP 1999</td>
+              <td class="data__row--cell">{{provider.education.institute}} {{provider.education.year}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Gender</th>
-              <td class="data__row--cell">Male</td>
+              <td class="data__row--cell">{{provider.gender}}</td>
             </tr>
           </tbody></table>
         </div>
