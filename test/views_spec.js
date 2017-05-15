@@ -67,4 +67,10 @@ describe("As a view", function() {
     expect(view.viewModel).toEqual(expectedData);
   });
 
+  it("can ste the proprty map", function() {
+    var data = view.propertyMap;
+    view.setPropertyMap({"Blah": "More Blah"});
+    expect(view.propertyMap).toEqual({"Blah": "More Blah"});
+    expect(view.propertyMap).not.toEqual(data);
+  });
 });

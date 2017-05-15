@@ -1,4 +1,4 @@
-{
+module.exports = {
   "errorMessages": {
     "noResults": {
       "severity": "error--moderate",
@@ -21,4 +21,4 @@
       "body": "<p>We are having trouble finding the address you typed.</p>"
     }
   }
-}
+};

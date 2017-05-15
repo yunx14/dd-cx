@@ -33,6 +33,14 @@ module.exports = Presenter = function(n, vm, map) {
     return name;
   };
   /**
+   * @method setPropertyMap Sets the property map to a new set of values
+   * @param myMap {object} The map to set
+   * @memberof Presenter
+   */
+  this.setPropertyMap = function(myMap) {
+    this.propertyMap = myMap;
+  };
+  /**
    * @method enrichData Enriches the ViewModel with data passed in
    * @param data {array} Collection data to enrich the ViewModel
    * @returns {Object} The enriched ViewModel for the view/template

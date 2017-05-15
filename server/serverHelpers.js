@@ -78,7 +78,7 @@ module.exports = {
 
     if (req.query && req.query.providerKey) {
       var id = req.query.providerKey;
-      var vm = require("../views/provider-directory-search.js");
+      var vm = {};//require("../views/provider-directory-search.js");
 
       var provider = new Model();
       if (req.query) {
@@ -99,7 +99,8 @@ module.exports = {
       provider.fetch({},
         function(code, data) {
           // success
-          res.status(code).send(providerPresenter.render(data));
+          providerPresenter.setPropertyMap(data);
+          res.status(code).send(providerPresenter.render());
         },
         function(code, data) {
           // error
