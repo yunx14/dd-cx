@@ -22,18 +22,18 @@
         <div class="provider__distance">
           <i class="icon  icon-map-marker" aria-label=""></i>
 
-          <span>0.4 mi</span>
+          <span>{{distance}} mi</span>
         </div>
       </aside>
       <section>
         <header class="provider__header">
-          <div class="provider__name">{{provider.firstName}} {{provider.lastName}}</div>
-          <div class="provider__specialty">{{provider.specialty}}</div>
+          <div class="provider__name">{{firstName}} {{lastName}}</div>
+          <div class="provider__specialty">{{specialty}}</div>
         </header>
 
 
         <div class="provider__indicators">
-          <div class="provider__network"><i class="icon icon-info icon-default" aria-label=""></i> {{provider.providerNetworks}}
+          <div class="provider__network"><i class="icon icon-info icon-default" aria-label=""></i> {{providerNetworks}}
           </div>
           <div class="provider__availability"><i class="icon icon-check-circle icon-default" aria-label=""></i> Accepting new patients</div>
         </div>
@@ -44,21 +44,21 @@
         </div>
 
         <div class="provider__place" itemscope="" itemprop="place" itemtype="http://schema.org/Place">
-          <div class="provider__place-name" itemprop="name">{{provider.officeName}}</div>
-          <div class="provider__facility" itemprop="id">{{provider.facilityName}}</div>
+          <div class="provider__place-name" itemprop="name">{{officeName}}</div>
+          <div class="provider__facility" itemprop="id">{{facilityName}}</div>
           <div class="provider__address" itemscope="" itemprop="address" itemtype="http://schema.org/PostalAddress">
-            <div class="provider__address-street" itemprop="streetAddress">{{provider.address.addressLine}}</div>
-            <span class="provider__address-city" itemprop="addressLocality">{{provider.address.city}}</span>,
-            <abbr class="provider__address-state" itemprop="addressRegion">{{provider.address.state}}</abbr>
-            <span class="provider__address-zip" itemprop="postalCode">{{provider.address.zipcode}}</span>
-            <div class="provider__phone" itemprop="telephone">{{provider.address.phoneNumber}}</div>
+            <div class="provider__address-street" itemprop="streetAddress">{{address.addressLine}}</div>
+            <span class="provider__address-city" itemprop="addressLocality">{{address.city}}</span>,
+            <abbr class="provider__address-state" itemprop="addressRegion">{{address.state}}</abbr>
+            <span class="provider__address-zip" itemprop="postalCode">{{address.zipcode}}</span>
+            <div class="provider__phone" itemprop="telephone">{{officePhone}}</div>
           </div>
         </div>
 
         <div class="provider__hours">
           <dl>
             <dt>Hours</dt>
-            <dd>Open today 7:30am-4:30pm</dd>
+            <dd>{{practiceHours}}</dd>
           </dl>
 
         </div>
@@ -66,7 +66,7 @@
         <div class="provider__access">
           <dl>
             <dt>Office Access</dt>
-            <dd>{{provider.accessibility}}</dd>
+            <dd>{{accessibility}}</dd>
           </dl>
 
         </div>
@@ -74,7 +74,7 @@
         <div class="provider__languages">
           <dl>
             <dt>Languages at this office</dt>
-            <dd>{{provider.languages}}</dd>
+            <dd>{{languages}}</dd>
           </dl>
 
         </div>
@@ -83,23 +83,23 @@
           <table class="data__table">
             <tbody><tr class="data__row">
               <th class="data__row--heading">Provider NPI</th>
-              <td class="data__row--cell">{{provider.npi}}</td>
+              <td class="data__row--cell">{{npi}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">License #</th>
-              <td class="data__row--cell">{{provider.license.licenseNumber}}</td>
+              <td class="data__row--cell">{{license.licenseNumber}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">License State</th>
-              <td class="data__row--cell">{{provider.license.licenseState}}</td>
+              <td class="data__row--cell">{{license.licenseState}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Education</th>
-              <td class="data__row--cell">{{provider.education.institute}} {{provider.education.year}}</td>
+              <td class="data__row--cell">{{education}}</td>
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Gender</th>
-              <td class="data__row--cell">{{provider.gender}}</td>
+              <td class="data__row--cell">{{gender}}</td>
             </tr>
           </tbody></table>
         </div>
