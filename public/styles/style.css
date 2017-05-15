@@ -1381,8 +1381,8 @@ header .logo-container {
 .provider__name {
   font-size: 1.25rem; }
 
-.provider__network {
-    font-size: 0.875rem; 
+.provider__specialty {
+    font-size: 0.875rem;
 }
 
 .provider__map {
