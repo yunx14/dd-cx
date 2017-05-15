@@ -58,7 +58,13 @@
         <div class="provider__hours">
           <dl>
             <dt>Hours</dt>
-            <dd>{{practiceHours}}</dd>
+            <dd>Monday: {{practiceHours.mondayHours}}</dd>
+            <dd>Tuesday: {{practiceHours.tuesdayHours}}</dd>
+            <dd>Wednesday: {{practiceHours.wednesdayHours}}</dd>
+            <dd>Thursday: {{practiceHours.thursdayHours}}</dd>
+            <dd>Friday: {{practiceHours.fridayHours}}</dd>
+            <dd>Saturday: {{practiceHours.saturdayHours}}</dd>
+            <dd>Sunday: {{practiceHours.sundayHours}}</dd>
           </dl>
 
         </div>
@@ -66,7 +72,10 @@
         <div class="provider__access">
           <dl>
             <dt>Office Access</dt>
-            <dd>{{accessibility}}</dd>
+            <dd>Free Parking: {{accessibility.freeParking}}</dd>
+            <dd>Wheel Chair Access: {{accessibility.wheelChairAccess}}</dd>
+            <dd>Public Transit Access: {{accessibility.publicTransitAccess}}</dd>
+            <dd>Internet Access: {{accessibility.internetAccess}}</dd>
           </dl>
 
         </div>
@@ -95,7 +104,9 @@
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Education</th>
-              <td class="data__row--cell">{{education}}</td>
+              {{#each education}}
+                <td class="data__row--cell">{{institute}}</td>
+              {{/each}}
             </tr>
             <tr class="data__row">
               <th class="data__row--heading">Gender</th>
