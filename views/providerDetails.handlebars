@@ -58,49 +58,47 @@
         <div class="provider__hours">
           <dl>
             <dt>Hours</dt>
-            {{#each practiceHours}}
-              {{#if mondayHours}}
-                <dd>Monday: {{mondayHours}}</dd>
-              {{else}}
-                <dd>Monday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.mondayHours}}
+              <dd>Monday: {{practiceHours.mondayHours}}</dd>
+            {{else}}
+              <dd>Monday: N/A</dd>
+            {{/if}}
 
-              {{#if tuesdayHours}}
-                <dd>Tuesday: {{tuesdayHours}}</dd>
-              {{else}}
-                <dd>Tuesday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.tuesdayHours}}
+              <dd>Tuesday: {{practiceHours.tuesdayHours}}</dd>
+            {{else}}
+              <dd>Tuesday: N/A</dd>
+            {{/if}}
 
-              {{#if wednesdayHours}}
-                <dd>Wednesday: {{wednesdayHours}}</dd>
-              {{else}}
-                <dd>Wednesday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.wednesdayHours}}
+              <dd>Wednesday: {{practiceHours.wednesdayHours}}</dd>
+            {{else}}
+              <dd>Wednesday: N/A</dd>
+            {{/if}}
 
-              {{#if thursdayHours}}
-                <dd>Thursday: {{thursdayHours}}</dd>
-              {{else}}
-                <dd>Thursday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.thursdayHours}}
+              <dd>Thursday: {{practiceHours.thursdayHours}}</dd>
+            {{else}}
+              <dd>Thursday: N/A</dd>
+            {{/if}}
 
-              {{#if fridayHours}}
-                <dd>Friday: {{fridayHours}}</dd>
-              {{else}}
-                <dd>Friday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.fridayHours}}
+              <dd>Friday: {{practiceHours.fridayHours}}</dd>
+            {{else}}
+              <dd>Friday: N/A</dd>
+            {{/if}}
 
-              {{#if saturdayHours}}
-                <dd>Saturday: {{saturdayHours}}</dd>
-              {{else}}
-                <dd>Saturday: N/A</dd>
-              {{/if}}
+            {{#if practiceHours.saturdayHours}}
+              <dd>Saturday: {{practiceHours.saturdayHours}}</dd>
+            {{else}}
+              <dd>Saturday: N/A</dd>
+            {{/if}}
 
-              {{#if sundayHours}}
-                <dd>Sunday: {{sundayHours}}</dd>
-              {{else}}
-                <dd>Sunday: N/A</dd>
-              {{/if}}
-            {{/each}}
+            {{#if practiceHours.sundayHours}}
+              <dd>Sunday: {{practiceHours.sundayHours}}</dd>
+            {{else}}
+              <dd>Sunday: N/A</dd>
+            {{/if}}
             <!-- <dd>Monday: {{practiceHours.mondayHours}}</dd>
             <dd>Tuesday: {{practiceHours.tuesdayHours}}</dd>
             <dd>Wednesday: {{practiceHours.wednesdayHours}}</dd>
