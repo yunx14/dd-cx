@@ -58,13 +58,56 @@
         <div class="provider__hours">
           <dl>
             <dt>Hours</dt>
-            <dd>Monday: {{practiceHours.mondayHours}}</dd>
+            {{#each this.practiceHours}}
+              {{#if mondayHours}}
+                <dd>Monday: {{mondayHours}}</dd>
+              {{else}}
+                <dd>Monday: N/A</dd>
+              {{/if}}
+
+              {{#if tuesdayHours}}
+                <dd>Tuesday: {{tuesdayHours}}</dd>
+              {{else}}
+                <dd>Tuesday: N/A</dd>
+              {{/if}}
+
+              {{#if wednesdayHours}}
+                <dd>Wednesday: {{wednesdayHours}}</dd>
+              {{else}}
+                <dd>Wednesday: N/A</dd>
+              {{/if}}
+
+              {{#if thursdayHours}}
+                <dd>Thursday: {{thursdayHours}}</dd>
+              {{else}}
+                <dd>Thursday: N/A</dd>
+              {{/if}}
+
+              {{#if fridayHours}}
+                <dd>Friday: {{fridayHours}}</dd>
+              {{else}}
+                <dd>Friday: N/A</dd>
+              {{/if}}
+
+              {{#if saturdayHours}}
+                <dd>Saturday: {{saturdayHours}}</dd>
+              {{else}}
+                <dd>Saturday: N/A</dd>
+              {{/if}}
+
+              {{#if sundayHours}}
+                <dd>Sunday: {{sundayHours}}</dd>
+              {{else}}
+                <dd>Sunday: N/A</dd>
+              {{/if}}
+            {{/each}}
+            <!-- <dd>Monday: {{practiceHours.mondayHours}}</dd>
             <dd>Tuesday: {{practiceHours.tuesdayHours}}</dd>
             <dd>Wednesday: {{practiceHours.wednesdayHours}}</dd>
             <dd>Thursday: {{practiceHours.thursdayHours}}</dd>
             <dd>Friday: {{practiceHours.fridayHours}}</dd>
             <dd>Saturday: {{practiceHours.saturdayHours}}</dd>
-            <dd>Sunday: {{practiceHours.sundayHours}}</dd>
+            <dd>Sunday: {{practiceHours.sundayHours}}</dd> -->
           </dl>
 
         </div>
@@ -106,6 +149,8 @@
               <th class="data__row--heading">Education</th>
               {{#each education}}
                 <td class="data__row--cell">{{institute}}</td>
+              {{else}}
+                <td class="data__row--cell">N/A</td>
               {{/each}}
             </tr>
             <tr class="data__row">
