@@ -10,14 +10,14 @@ describe("Given a singular model", function() {
   afterEach(function() {
     model = null;
   });
+
 	it("is defined", function() {
 		expect(Model).toBeDefined();
 	});
 
 	it("can create an object", function() {
 		expect(model).toBeDefined();
-		expect(model.name).toEqual(name);
-		expect(model.id).toEqual(id);
+		expect(model.attributes).toEqual({"name": "John Smith", "id": 1});
 	});
 
 	it("functions are defined", function() {
@@ -37,10 +37,13 @@ describe("Given a singular model", function() {
 
 	it("matches objects with the expect key/value pairs", function() {
 		expect(model).toEqual(jasmine.objectContaining({
-			attributes: {"name": "John Smith", "id": 1};
+			attributes: {"name": "John Smith", "id": 1}
+		}));
+		expect(model).toEqual(jasmine.objectContaining({
+			query: {}
 		}));
 		expect(model).not.toEqual(jasmine.objectContaining({
-			query: {}
+			collection: []
 		}));
 	});
 });
