@@ -2,11 +2,24 @@ const CONSTANTS = require("../constants.js");
 var Presenter = require("../views/presenter.js");
 var Model = require("../models/model.js");
 var AtomicPower = require("../views/pds.js");
+var AtomicPower2 = require("../views/atomicPower.js");
+
+
 var SolrCollection = require("../collections/solrCollection.js");
 var Logger = require("../utility/logger.js");
 var logger = new Logger();
 
 module.exports = {
+  "getHomepage": function(req, res) {
+    var vm = require("../views/viewModel.js");
+
+    var homepageView = new Presenter(
+      "pages-homepage", // name
+      vm.pages_homepage, // viewModel
+      {}); // property map
+
+      res.status(200).send(homepageView.render());
+  },
   "getDirectorySearch": function(req, res) {
     logger.log("GET /directory-search.html");
     var vm = require("../views/provider-directory-search.js");
@@ -38,13 +51,22 @@ module.exports = {
     providers.path = "/providers";
   */
     var vm = require("../views/provider-directory-search.js");
+    var query = parseLocation(req.body.location);
 
     var providersPresenter = new Presenter(
       "directorySearchResults", // name
       vm, // viewModel
-      { "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY, "btnTextPrimary": "Submit", "btnTextFeedback": "Feedback", "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE }); // property map
+      {
+        "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
+        "btnTextPrimary": "Submit",
+        "btnTextFeedback":
+        "Feedback",
+        "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+        "lat": query.lat,
+        "long": query.long
+      }); // property map
 
-    var query = parseLocation(req.body.location);
+
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
     }

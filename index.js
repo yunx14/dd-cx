@@ -9,6 +9,9 @@ var helpers = require("./server/serverHelpers.js");
 var Logger = require("./utility/logger.js");
 var logger = new Logger();
 
+//patch partials
+Handlebars.partials = Handlebars.templates;
+
 var app = express();
 
 // For enabling view caching vs compile and render again
@@ -47,6 +50,8 @@ app.get(CONSTANTS.ERROR_DOWN, helpers.errorDown);
 /* REST API */
 app.get("/", helpers.getAbout);
 app.get("/about", helpers.getAbout);
+
+app.get("/homepage", helpers.getHomepage);
 
 // Fire up server and print friendly message to console
 app.listen(CONSTANTS.EE_PORT, function () {
