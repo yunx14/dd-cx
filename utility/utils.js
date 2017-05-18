@@ -1,4 +1,15 @@
-module.exports = {
+/**
+ * A static utility class
+ * @class Utils
+ * @example Utils.formatQuery({ ... });
+ */
+module.exports = Utils = {
+  /**
+   * @method formatQuery formats query object to query string
+   * @param query {object}
+   * @memberof Utils
+   * @returns {string} web standards query string
+   */
   "formatQuery": function(query) {
     var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
     for (i = 0; i < l; i++) {

@@ -40,7 +40,7 @@
 
     
 
-    <h4 class="name" id="Model"><span class="type-signature"></span>new Model<span class="signature">(name, id)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="Model"><span class="type-signature"></span>new Model<span class="signature">(attributes)</span><span class="type-signature"></span></h4>
 
     
 
@@ -83,13 +83,13 @@
 
         <tr>
             
-                <td class="name"><code>name</code></td>
+                <td class="name"><code>attributes</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">object</span>
 
 
             
@@ -99,30 +99,7 @@
 
             
 
-            <td class="description last">Name of the Model</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID of the model</td>
+            <td class="description last">attributes of the Model</td>
         </tr>
 
     
@@ -190,7 +167,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var model = new Model("Bubba", "myModel");</code></pre>
+    <pre class="prettyprint"><code>var model = new Model({"name": Bubba", "id": 1});</code></pre>
 
 
 
@@ -212,7 +189,117 @@
 
         
             
-<h4 class="name" id=".attributes"><span class="type-signature">(static) </span>attributes<span class="type-signature"></span></h4>
+<h4 class="name" id=".this.attributes"><span class="type-signature">(static) </span>this.attributes<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attributes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">data of the model</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="attributes"><span class="type-signature"></span>attributes<span class="type-signature"></span></h4>
 
 
 
@@ -304,7 +391,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line45">line 45</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line39">line 39</a>
     </li></ul></dd>
     
 
@@ -322,7 +409,7 @@
 
         
             
-<h4 class="name" id=".host"><span class="type-signature">(static) </span>host<span class="type-signature"></span></h4>
+<h4 class="name" id="host"><span class="type-signature"></span>host<span class="type-signature"></span></h4>
 
 
 
@@ -414,7 +501,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line30">line 30</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -432,227 +519,7 @@
 
         
             
-<h4 class="name" id=".id"><span class="type-signature">(static) </span>id<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">ID of the model</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line20">line 20</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".name"><span class="type-signature">(static) </span>name<span class="type-signature"></span></h4>
-
-
-
-
-
-
-
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>name</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Name of the model</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id=".path"><span class="type-signature">(static) </span>path<span class="type-signature"></span></h4>
+<h4 class="name" id="path"><span class="type-signature"></span>path<span class="type-signature"></span></h4>
 
 
 
@@ -744,7 +611,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line35">line 35</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -762,7 +629,7 @@
 
         
             
-<h4 class="name" id=".port"><span class="type-signature">(static) </span>port<span class="type-signature"></span></h4>
+<h4 class="name" id="port"><span class="type-signature"></span>port<span class="type-signature"></span></h4>
 
 
 
@@ -854,7 +721,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line40">line 40</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line34">line 34</a>
     </li></ul></dd>
     
 
@@ -1023,7 +890,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line54">line 54</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -1150,7 +1017,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line127">line 127</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -1250,7 +1117,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line46">line 46</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line45">line 45</a>
     </li></ul></dd>
     
 
@@ -1422,7 +1289,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line136">line 136</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -1500,7 +1367,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line119">line 119</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line121">line 121</a>
     </li></ul></dd>
     
 
@@ -1600,7 +1467,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line111">line 111</a>
+        <a href="models_model.js.html">models/model.js</a>, <a href="models_model.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -1664,13 +1531,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="Model.html">Model</a></li><li><a href="PaginatedCollection.html">PaginatedCollection</a></li><li><a href="Presenter.html">Presenter</a></li><li><a href="SolrCollection.html">SolrCollection</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Collection.html">Collection</a></li><li><a href="Model.html">Model</a></li><li><a href="PaginatedCollection.html">PaginatedCollection</a></li><li><a href="Presenter.html">Presenter</a></li><li><a href="SolrCollection.html">SolrCollection</a></li><li><a href="Utils.html">Utils</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Mon May 15 2017 16:07:04 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Thu May 18 2017 16:16:42 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>

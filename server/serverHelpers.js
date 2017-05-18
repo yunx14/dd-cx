@@ -6,6 +6,7 @@ var AtomicPower2 = require("../views/atomicPower.js");
 
 
 var SolrCollection = require("../collections/solrCollection.js");
+var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 var logger = new Logger();
 
@@ -98,8 +99,10 @@ module.exports = {
   "getProviderDetails": function(req, res) {
     logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
-    if (req.query && req.query.providerKey) {
+    if (req.query && req.query.providerKey && req.query.lat && req.query.long) {
       var id = req.query.providerKey;
+      var lat = req.query.lat;
+      var long = req.query.long;
       var vm = {};//require("../views/provider-directory-search.js");
 
       var provider = new Model();
@@ -110,7 +113,7 @@ module.exports = {
 
       provider.host = CONSTANTS.SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS.SEARCH_SERVICE_PORT;
-      provider.path = "/providers/" + id;
+      provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new Presenter(
         "providerDetails", // name

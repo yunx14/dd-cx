@@ -1,6 +1,6 @@
 // Abstract Collection
 var http = require("http");
-var utils = require("../utility/utils.js");
+var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 
 var logger = new Logger();
@@ -82,7 +82,7 @@ Collection.prototype.fetch = function(options, success, error) {
     }
   }
 
-  const uri = options.host + ":" + String(options.port) + options.path + utils.formatQuery(options.query);
+  const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
   logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
     var status = res.statusCode;
