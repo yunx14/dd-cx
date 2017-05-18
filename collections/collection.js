@@ -1,5 +1,6 @@
 // Abstract Collection
 var http = require("http");
+var utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 
 var logger = new Logger();
@@ -45,26 +46,6 @@ Collection.prototype.query = {};
 Collection.prototype.getURI = function() {
   return this.host + ":" + String(this.port) + this.path;
 };
-var formatQuery = function(query) {
-  var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
-  for (i = 0; i < l; i++) {
-    if (typeof query[keys[i]] !== "function" && Array.isArray(query[keys[i]])) {
-      var tempVal = query[keys[i]];
-      // for loop method:
-      // var result = "";
-      // for (var j = 0; j < tempVal.length; j++) {
-      //   result = result + String(keys[i]) + "=" + tempVal[j] + "&";
-      // }
-      // formatQuery = formatQuery + result;
-
-      // array.join method:
-      formatQuery = formatQuery + String(keys[i]) + "=" + tempVal.join("&" + String(keys[i]) + "=") + "&";
-    } else if (typeof query[keys[i]] !== "function") {
-      formatQuery = formatQuery + String(keys[i]) + "=" + String(query[keys[i]]) + "&";
-    }
-  }
-  return formatQuery.slice(0, -1);
-};
 /**
  * @method fetch Fetches data from a remove URI and populates this collection
  * @param options {object} Options to pass to the remove call
@@ -101,7 +82,7 @@ Collection.prototype.fetch = function(options, success, error) {
     }
   }
 
-  const uri = options.host + ":" + String(options.port) + options.path + formatQuery(options.query);
+  const uri = options.host + ":" + String(options.port) + options.path + utils.formatQuery(options.query);
   logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
     var status = res.statusCode;
