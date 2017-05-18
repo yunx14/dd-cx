@@ -1,16 +1,16 @@
 var Model = require("../models/model.js");
 
 describe("Given a singular model", function() {
-  var model = null;
+	var model = null;
 
-  beforeEach(function() {
-      model = new Model({"name": "John Smith", "id": 1});
-  });
+	beforeEach(function() {
+		model = new Model({"name": "John Smith", "id": 1});
+	});
 
-  afterEach(function() {
-    model = null;
-  });
-
+	afterEach(function() {
+		model = null;
+	});
+	
 	it("is defined", function() {
 		expect(Model).toBeDefined();
 	});
