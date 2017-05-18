@@ -1,43 +1,26 @@
 var Model = require("../models/model.js");
 
 describe("Given a singular model", function() {
+  var model = null;
 
-	var name = "John Smith";
-	var id = 1;
+  beforeEach(function() {
+      model = new Model({"name": "John Smith", "id": 1});
+  });
 
+  afterEach(function() {
+    model = null;
+  });
 	it("is defined", function() {
 		expect(Model).toBeDefined();
 	});
 
 	it("can create an object", function() {
-		var model = new Model(name, id);
 		expect(model).toBeDefined();
 		expect(model.name).toEqual(name);
 		expect(model.id).toEqual(id);
 	});
 
-	xit("has all the properties of the object", function() {
-		var model = new Model(name, id);
-		var actualProperties = Object.keys(model).sort();
-		var expectedProperties = [
-			'id',
-			'name',
-			'host',
-			'path',
-			'port',
-			'attributes',
-			'getURI',
-			'fetch',
-			'toString',
-			'toJSON',
-			'get',
-			'set'
-		].sort();
-		expect(actualProperties).toEqual(expectedProperties);
-	});
-
 	it("functions are defined", function() {
-		var model = new Model(name, id);
 		expect(model.fetch).toBeDefined();
 		expect(model.toString).toBeDefined();
 		expect(model.toJSON).toBeDefined();
@@ -46,7 +29,6 @@ describe("Given a singular model", function() {
 	});
 
 	it("matches typeof the object properties", function() {
-		var model = new Model(name, id);
 		expect(typeof model.host).toEqual('string');
 		expect(typeof model.port).toEqual('number');
 		expect(typeof model.getURI).toEqual('function');
@@ -54,9 +36,8 @@ describe("Given a singular model", function() {
 	});
 
 	it("matches objects with the expect key/value pairs", function() {
-		var model = new Model(name, id);
 		expect(model).toEqual(jasmine.objectContaining({
-			attributes: {}
+			attributes: {"name": "John Smith", "id": 1};
 		}));
 		expect(model).not.toEqual(jasmine.objectContaining({
 			query: {}
@@ -65,13 +46,10 @@ describe("Given a singular model", function() {
 });
 
 describe("As a model", function() {
-
 	var model = null;
 
 	beforeEach(function() {
-		var name = "John Smith";
-		var id = 1;
-		model = new Model(name, id);
+		model = new Model({"name": "John Smith", "id": 1});
 	});
 
 	afterEach(function() {
