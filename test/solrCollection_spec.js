@@ -16,7 +16,7 @@ describe("Given a Solr Collection", function() {
 		expect(SolrCollection).toBeDefined();
 	});
 
-  it("can create an object", function() {
+	it("can create an object", function() {
 		expect(collection).toBeDefined();
 	});
 
@@ -24,19 +24,17 @@ describe("Given a Solr Collection", function() {
 		expect(collection instanceof PaginatedCollection).toBeTruthy();
 	});
 
-  it("can set the name", function() {
-    expect(collection.name).toEqual("Bob");
-  });
+	it("can set the name", function() {
+		expect(collection.name).toEqual("Bob");
+	});
+	
+	it("can check current page", function() {
+		expect(collection.currentPage).toEqual(1);
+	});
 
-  it("can check current page", function() {
-    expect(collection.currentPage).toEqual(1);
-  });
-
-  it("has all the properties of the object", function() {
-    const props = {"bubba": "My Name is bubba!"};
-
-    collection.reset(props);
-
+	it("has all the properties of the object", function() {
+		const props = {"bubba": "My Name is bubba!"};
+		collection.reset(props);
 		expect(collection.toJSON()).toEqual(props);
 	});
 
