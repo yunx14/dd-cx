@@ -1,5 +1,5 @@
 module.exports = {
-  "EE_PORT": 8080,
+  "EE_PORT": 80,
   "EE_ABOUT": "This is the Directory Experience EndPoint.",
   "APP_SERVICE_HOST": "http://localhost",
   "APP_SERVICE_PORT": 8080,
