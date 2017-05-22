@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
+  <!-- <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
     <div class="form-element">
       <label for="location">Near</label>
       <input id="location" type="text" name="location" placeholder="Zip code, city, or address" value="{{lat}}, {{long}}">
@@ -17,14 +17,14 @@
     <div class="form-element form-element--spacing-large">
       <button class="btn--primary" type="submit">View Dentists</button>
     </div>
-  </form>
+  </form> -->
 
   <header class="page-header">
-    <a href="{{@root.directorySearchPage}}?&lat={{@root.lat}}&long={{@root.long}}" class="inverted back-link">
+    <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
       <span class="chevron chevron--left chevron--white"></span>
-      <span>Back to search results</span>
-    </a>
-
+      <input id="location" type="text" name="location" placeholder="Zip code, city, or address" value="{{lat}}, {{long}}">
+      <button class="btn--primary" type="submit">Back to search results</button>
+    </form>
   </header>
 
   <main>
