@@ -21,8 +21,10 @@
 
   <header class="page-header">
     <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
-      <span class="chevron chevron--left chevron--white"></span>
-      <span class="btn--primary" type="submit">Back to search results</span>
+      <a class="inverted back-link">
+        <span class="chevron chevron--left chevron--white"></span>
+        <span>Back to search results</span>
+      </a>
       <input id="location" type="text" name="location" placeholder="Zip code, city, or address" value="{{lat}}, {{long}}">
     </form>
   </header>
