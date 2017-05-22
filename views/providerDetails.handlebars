@@ -7,12 +7,17 @@
   <link href="./styles/directory.css" rel="stylesheet"/>
 </head>
 <body>
-  <a href="{{@root.directorySearchPage}}?&lat={{@root.lat}}&long={{@root.long}}" class="inverted back-link">
-    hi</a>
-    <a href="{{directorySearchPage}}?&lat={{@root.lat}}&long={{@root.long}}" class="inverted back-link">
-      hi2</a>
-      <a href="{{@root.providerDetailsPage}}?providerKey={{providerKey}}&lat={{@root.lat}}&long={{@root.long}}">View <i class="icon icon-right-arrow" aria-label="right arrow"></i></a>
-      <a href="{{providerDetailsPage}}?providerKey={{providerKey}}&lat={{@root.lat}}&long={{@root.long}}">View <i class="icon icon-right-arrow" aria-label="right arrow"></i></a>
+
+  <form action="directory-search.html" method="post" id='address_form' autocomplete="off">
+    <div class="form-element">
+      <label for="location">Near</label>
+      <input id="location" type="text" name="location" placeholder="Zip code, city, or address" value="{{lat}}, {{long}}">
+    </div>
+
+    <div class="form-element form-element--spacing-large">
+      <button class="btn--primary" type="submit">View Dentists</button>
+    </div>
+  </form>
 
   <header class="page-header">
     <a href="{{@root.directorySearchPage}}?&lat={{@root.lat}}&long={{@root.long}}" class="inverted back-link">
