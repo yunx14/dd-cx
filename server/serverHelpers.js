@@ -118,8 +118,11 @@ module.exports = {
       var providerPresenter = new Presenter(
         "providerDetails", // name
         vm, // viewModel
-        // TODO: Pass data to template - I Am!!!
-        {}); // property map
+        {
+          "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
+          "lat": lat,
+          "long": long
+        }); // property map
 
       provider.fetch({},
         function(code, data) {
