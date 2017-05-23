@@ -1,7 +1,7 @@
 const CONSTANTS = require("../constants.js");
 var Presenter = require("../views/presenter.js");
 var Model = require("../models/model.js");
-var AtomicPower = require("../views/atomicPower.js");
+var AtomicPower = require("../views/atomicPower2.js");
 
 var SolrCollection = require("../collections/solrCollection.js");
 var Utils = require("../utility/utils.js");
