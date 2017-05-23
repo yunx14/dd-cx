@@ -11,7 +11,7 @@ var logger = new Logger();
 module.exports = {
   getDirectorySearch: function(req, res) {
     logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-    var vm = require("../views/viewModel.js");
+    var vm = require("../views/viewModel2.js");
 
     if (req.query && req.query.lat && req.query.long) {
       logger.log("query " + JSON.stringify(req.query));
@@ -46,7 +46,7 @@ module.exports = {
       var id = req.query.providerKey;
       var lat = req.query.lat;
       var long = req.query.long;
-      var vm = {};//require("../views/viewModel.js");
+      var vm = {};//require("../views/viewModel2.js");
 
       var provider = new Model();
       if (req.query) {
@@ -161,7 +161,7 @@ var getResults = function(query, req, res) {
   providers.path = "/providers";
   providers.query = query;
 
-  var vm = require("../views/viewModel.js");
+  var vm = require("../views/viewModel2.js");
   var providersPresenter = new Presenter(
     "directorySearchResults",
     vm,
