@@ -1,4 +1,244 @@
-module.exports.pages_personal-info{
+module.exports.atoms_button_destructive = {
+  "button": {
+    "class": "btn--destructive",
+    "text": "Destructive Button"
+  }
+}
+;
+module.exports.atoms_button_destructive_inverted = {
+  "button": {
+    "class": "btn--destructive inverted",
+    "text": "Destructive Button"
+  }
+}
+;
+module.exports.atoms_button_feedback = {
+  "button": {
+    "class": "btn--feedback",
+    "text": "feedback"
+  }
+}
+;
+module.exports.atoms_button_feedback_side = {
+  "button": {
+    "class": "btn--feedback",
+    "text": "FEEDBACK"
+  }
+}
+;
+module.exports.atoms_button_full_width = {
+  "button": {
+    "class": "btn--primary full-width",
+    "text": "Full Width Button"
+  }
+}
+;
+module.exports.atoms_button_icon_after = {
+  "button": {
+    "class": "btn--primary",
+    "text": "I have an icon",
+    "iconAfter" : true
+  },
+  "icon": {
+    "class": "icon-info",
+    "ariaLabel": "info icon"
+  }
+}
+;
+module.exports.atoms_button_icon_before = {
+  "button": {
+    "class": "btn--primary",
+    "text": "I have an icon",
+    "iconBefore" : true
+  },
+  "icon": {
+    "class": "icon-pass",
+    "ariaLabel": "pass icon"
+  }
+}
+;
+module.exports.atoms_button_primary_inverted = {
+  "button": {
+    "class": "btn--primary inverted",
+    "text": "Primary Button"
+  }
+}
+;
+module.exports.atoms_button_secondary = {
+  "button": {
+    "class": "btn--secondary",
+    "text": "Secondary Button"
+  }
+}
+;
+module.exports.atoms_button_secondary_inverted = {
+  "button": {
+    "class": "btn--secondary inverted",
+    "text": "Secondary Button"
+  }
+}
+;
+module.exports.pages_dependents = {
+  "dependents" : [
+    {
+      "dependent" : {
+        "addDependentButton" : {
+          "button" : {
+            "class" : "btn--secondary",
+            "text" : "Add Dependent",
+            "iconBefore" : {
+              "class" : "icon-add"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
+;
+module.exports.atoms_dl_inline = {
+  "dl": {
+    "class": "dl--inline"
+  }
+}
+;
+module.exports.atoms_icon_accordion = {
+  "icon": {
+    "class": "icon-accordion",
+    "ariaLabel": "accordion icon"
+  }
+}
+;
+module.exports.atoms_icon_add = {
+  "icon": {
+    "class": "icon-add icon-small",
+    "ariaLabel": "add icon"
+  }
+}
+;
+module.exports.atoms_icon_check_circle = {
+  "icon": {
+    "class": "icon-check-circle",
+    "ariaLabel": "check circle icon"
+  }
+}
+;
+module.exports.atoms_icon_delete = {
+  "icon": {
+    "class": "icon-delete icon-medium",
+    "ariaLabel": "delete icon"
+  }
+}
+;
+module.exports.atoms_icon_down_arrow = {
+  "icon": {
+    "class": "icon-down-arrow",
+    "ariaLabel": "down arrow icon"
+  }
+}
+;
+module.exports.atoms_icon_error = {
+  "icon": {
+    "class": "icon-error",
+    "ariaLabel": "error icon"
+  }
+}
+;
+module.exports.atoms_icon_exit = {
+  "icon": {
+    "class": "icon-exit",
+    "ariaLabel": "exit icon"
+  }
+}
+;
+module.exports.atoms_icon_home = {
+  "icon": {
+    "class": "icon-home",
+    "ariaLabel": "home icon"
+  }
+}
+;
+module.exports.atoms_icon_info = {
+  "icon": {
+    "class": "icon-info",
+    "ariaLabel": "info icon"
+  }
+}
+;
+module.exports.atoms_icon_map_marker = {
+  "icon": {
+    "class": "icon-map-marker",
+    "ariaLabel": "map-marker icon"
+  }
+}
+;
+module.exports.atoms_icon_pass = {
+  "icon": {
+    "class": "icon-pass",
+    "ariaLabel": "pass icon"
+  }
+}
+;
+module.exports.atoms_icon_question_mark = {
+  "icon": {
+    "class": "icon-question-mark",
+    "ariaLabel": "question mark icon"
+  }
+}
+;
+module.exports.atoms_icon_refresh = {
+  "icon": {
+    "class": "icon-refresh",
+    "ariaLabel": "refresh icon"
+  }
+}
+;
+module.exports.atoms_icon_right_arrow = {
+  "icon": {
+    "class": "icon-right-arrow",
+    "ariaLabel": "arrow right icon"
+  }
+}
+;
+module.exports.atoms_icon_search = {
+  "icon": {
+    "class": "icon-search",
+    "ariaLabel": "search icon"
+  }
+}
+;
+module.exports.atoms_icon_warning = {
+  "icon": {
+    "class": "icon-warning",
+    "ariaLabel": "warning icon"
+  }
+}
+;
+module.exports.atoms_input_field_checkbox = {
+  "field": {
+    "type": "checkbox"
+  }
+}
+;
+module.exports.atoms_input_field_radio = {
+  "field": {
+    "type": "radio"
+  }
+}
+;
+module.exports.molecules_label_containing_input_checkbox = {
+  "field": {
+    "type": "checkbox"
+  }
+}
+;
+module.exports.atoms_link_inverted = {
+  "anchorLink": {
+    "class": "inverted"
+  }
+}
+;
+module.exports.pages_personal_info = {
   "enrolleePersonalInfo" : {
     "fieldset" : {
       "id" : "about_user"
@@ -750,7 +990,7 @@ module.exports.pages_personal-info{
         ]
 }
 ;
-module.exports.pages_template1{
+module.exports.pages_template1 = {
   "homeIcon" : {
     "icon": {
       "class": "icon-home",
@@ -826,7 +1066,7 @@ module.exports.pages_template1{
   }
 }
 ;
-module.exports.pages_template2{
+module.exports.pages_template2 = {
   "homeIcon" : {
     "icon": {
       "class": "icon-home",
@@ -1126,7 +1366,7 @@ module.exports.pages_template2{
   }
 }
 ;
-module.exports.pages_template3{
+module.exports.pages_template3 = {
   "page": {
     "header": {
       "text": "Back to search results"
