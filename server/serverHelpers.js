@@ -59,13 +59,13 @@ module.exports = {
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new Presenter(
-        "providerDetails", // name
-        vm, // viewModel
+        "providerDetails",
+        vm,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "lat": lat,
           "long": long
-        }); // property map
+        });
 
       provider.fetch({},
         function(code, data) {
@@ -96,9 +96,9 @@ module.exports = {
     var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorMessage", // name
-      vm.errorMessages.invalidAddress, // viewModel
-      {}); // property map
+      "errorMessage",
+      vm.errorMessages.invalidAddress,
+      {});
       res.status(200).send(errorPresenter.render());
   },
   errorNoResults: function(req, res) {
@@ -106,9 +106,9 @@ module.exports = {
     var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorMessage", // name
-      vm.errorMessages.noResults, // viewModel
-      {}); // property map
+      "errorMessage",
+      vm.errorMessages.noResults,
+      {});
       res.status(200).send(errorPresenter.render());
   },
   errorTimeOut: function(req, res) {
@@ -116,9 +116,9 @@ module.exports = {
     var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorMessage", // name
-      vm.errorMessages.serverTimeout, // viewModel
-      {}); // property map
+      "errorMessage",
+      vm.errorMessages.serverTimeout,
+      {});
       res.status(200).send(errorPresenter.render());
   },
   errorDown: function(req, res) {
@@ -126,9 +126,9 @@ module.exports = {
     var vm = require("../views/errorMessage.js");
 
     var errorPresenter = new Presenter(
-      "errorMessage", // name
-      vm.errorMessages.servicesDown, // viewModel
-      {}); // property map
+      "errorMessage",
+      vm.errorMessages.servicesDown,
+      {});
       res.status(200).send(errorPresenter.render());
   },
   getHome: function(req, res) {
@@ -138,9 +138,9 @@ module.exports = {
   getAbout: function(req, res) {
     logger.log("GET /ABOUT");
     var about = new Presenter(
-      "about", // name
-      {}, // viewModel
-      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT}); // property map
+      "about",
+      {},
+      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT});
     res.status(200).send(about.render());
     //res.send(CONSTANTS.EE_ABOUT);
   }
