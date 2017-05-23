@@ -6,7 +6,7 @@
     <link href="{{stylesheet}}" rel="stylesheet"/>
   </head>
   <body>
-  {{{body}}}
+  {{> (lookup . "body") }}
   </body>
   <script src="{{script}}" defer="defer"></script>
 </html>

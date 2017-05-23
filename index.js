@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
     Handlebars = require("handlebars");
-var hb = require("express-handlebars");
 
 const CONSTANTS = require("./constants.js");
 var helpers = require("./server/serverHelpers.js");
@@ -23,8 +22,8 @@ var options = {
   index: false
 };
 
-app.engine("handlebars", hb({defaultLayout: "main"}));
-app.set("view engine", "handlebars");
+//app.engine("handlebars", hb({defaultLayout: "main"}));
+//app.set("view engine", "handlebars");
 
 // Serve up public static files
 app.use(express.static(path.join(__dirname, "public"), options));

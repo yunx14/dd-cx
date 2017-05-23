@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: views/handlebarsPresenter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,37 +17,34 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: views/handlebarsPresenter.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Provider Directory Experience Endpoint</h1><p>An express-based Experience endpoint solely for use on HTML-based clients</p>
-<h2>API</h2><h3>/location-search.html</h3><p>Searches the Directory by zip code</p></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>var Presenter = require("./presenter.js");
+
+var HandlebarsPresenter = function() {
+  Presenter.apply(this, arguments);
+};
+
+HandlebarsPresenter.prototype = new Presenter();
+/**
+ * @method render Renders the Presenter
+ * @param data {array} Collection data to enrich the ViewModel
+ * @returns {Object} The View in HTML from Handlebars
+ * @memberof HandlebarsPresenter
+ */
+HandlebarsPresenter.render = function(data) {
+  return Handlebars.templates[this.getName()](this.enrichData( ((data) ? data : this.viewModel)) );
+};
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

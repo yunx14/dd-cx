@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Presenter</title>
+    <title>JSDoc: Class: MainPresenter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Presenter</h1>
+    <h1 class="page-title">Class: MainPresenter</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>Presenter</h2>
+        <h2>MainPresenter</h2>
         
     
 </header>
@@ -40,14 +40,14 @@
 
     
 
-    <h4 class="name" id="Presenter"><span class="type-signature"></span>new Presenter<span class="signature">(n, vm, map)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="MainPresenter"><span class="type-signature"></span>new MainPresenter<span class="signature">(n, vm, map, main)</span><span class="type-signature"></span></h4>
 
     
 
 
 
 <div class="description">
-    A view class for managing presentation and managing view data
+    A view class for managing presentation and managing view data</br>Wraps a <em>main</em> template around the template passed
 </div>
 
 
@@ -149,6 +149,29 @@
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>main</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The main template to wrap</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -186,7 +209,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line3">line 3</a>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -211,11 +234,9 @@
 
 
 
-    <h5>Examples</h5>
+    <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var myPresenter = new Presenter();</code></pre>
-
-    <pre class="prettyprint"><code>var myPresenter = new Presenter("MyTemplate", ViewModel, { "something": "this" });</code></pre>
+    <pre class="prettyprint"><code>var myPresenter = new MainPresenter("MyTemplate", ViewModel, { "something": "this" }, "main");</code></pre>
 
 
 
@@ -234,6 +255,116 @@
 
     
         <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id=".this.mainTemplate"><span class="type-signature">(static) </span>this.mainTemplate<span class="type-signature"></span></h4>
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>main</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The name of the 'main' template to wrap</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
 
         
             
@@ -329,7 +460,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line17">line 17</a>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -439,7 +570,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line27">line 27</a>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -549,7 +680,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line22">line 22</a>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -576,7 +707,7 @@
 
     
 
-    <h4 class="name" id=".enrichDataEnrichestheViewModelwithdatapassedin"><span class="type-signature">(static) </span>enrichData Enriches the ViewModel with data passed in<span class="signature">(data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id=".renderRendersthePresenterandwrapsthemaintemplateareoundsub-template"><span class="type-signature">(static) </span>render Renders the Presenter and wraps the main template areound sub-template<span class="signature">(data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
 
     
 
@@ -672,7 +803,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line56">line 56</a>
+        <a href="views_mainPresenter.js.html">views/mainPresenter.js</a>, <a href="views_mainPresenter.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -699,7 +830,7 @@
 
         
 <div class="param-desc">
-    The enriched ViewModel for the view/template
+    The View in HTML from Handlebars
 </div>
 
 
@@ -717,509 +848,6 @@
 </dl>
 
     
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".getNamereturnsthenameoftheview/template"><span class="type-signature">(static) </span>getName returns the name of the view/template<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line29">line 29</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    name of the view/template
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">string</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".mergePropertyMapMergesthepropertymapwithanewsetofvalues"><span class="type-signature">(static) </span>mergePropertyMap Merges the property map with a new set of values<span class="signature">(myMap)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>myMap</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The map to merge</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line45">line 45</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".renderRendersthePresenter"><span class="type-signature">(static) </span>render Renders the Presenter<span class="signature">(data)</span><span class="type-signature"> &rarr; {Object}</span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>data</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">array</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">Collection data to enrich the ViewModel</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line80">line 80</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-<div class="param-desc">
-    The View
-</div>
-
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Object</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".setPropertyMapSetsthepropertymaptoanewsetofvalues"><span class="type-signature">(static) </span>setPropertyMap Sets the property map to a new set of values<span class="signature">(myMap)</span><span class="type-signature"></span></h4>
-
-    
-
-
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>myMap</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">object</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The map to set</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="views_presenter.js.html">views/presenter.js</a>, <a href="views_presenter.js.html#line37">line 37</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
