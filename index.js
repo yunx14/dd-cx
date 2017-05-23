@@ -27,7 +27,7 @@ app.engine("handlebars", hb({defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
 // Serve up public static files
-app.use(express.static(path.join(__dirname, "public"), options ));
+app.use(express.static(path.join(__dirname, "public"), options));
 
 // Allow parsing json and url
 app.use(bodyParser.json()); // support json encoded bodies
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // template versions
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.getDirectorySearch);
-app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.postDirectorySearchResults);
+app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, helpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, helpers.getProviderDetails);
 
 // error template
