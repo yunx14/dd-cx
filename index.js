@@ -51,8 +51,6 @@ app.get(CONSTANTS.ERROR_DOWN, helpers.errorDown);
 app.get("/", helpers.getAbout);
 app.get("/about", helpers.getAbout);
 
-app.get("/homepage", helpers.getHomepage);
-
 // Fire up server and print friendly message to console
 app.listen(CONSTANTS.EE_PORT, function () {
   logger.log("Provider Directory Experience EndPoint listening on port " + CONSTANTS.EE_PORT);
