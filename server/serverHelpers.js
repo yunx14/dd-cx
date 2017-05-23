@@ -1,7 +1,7 @@
 const CONSTANTS = require("../constants.js");
 var Presenter = require("../views/presenter.js");
 var Model = require("../models/model.js");
-var AtomicPower = require("../views/atomicPower2.js");
+var AtomicPower = require("../views/atomicPower.js");
 
 var SolrCollection = require("../collections/solrCollection.js");
 var Utils = require("../utility/utils.js");
@@ -11,7 +11,7 @@ var logger = new Logger();
 module.exports = {
   getDirectorySearch: function(req, res) {
     logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-    var vm = require("../views/viewModel2.js");
+    var vm = require("../views/viewModel.js");
 
     if (req.query && req.query.lat && req.query.long) {
       logger.log("query " + JSON.stringify(req.query));
@@ -19,8 +19,8 @@ module.exports = {
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new Presenter(
-        "directorySearch",
-        vm,
+        "pages-template1",
+        vm.pages_template1,
         {}
       );
       res.status(200).send(directorySearchPresenter.render());
@@ -46,7 +46,7 @@ module.exports = {
       var id = req.query.providerKey;
       var lat = req.query.lat;
       var long = req.query.long;
-      var vm = {};//require("../views/viewModel2.js");
+      var vm = {};//require("../views/viewModel.js");
 
       var provider = new Model();
       if (req.query) {
@@ -59,8 +59,8 @@ module.exports = {
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new Presenter(
-        "providerDetails",
-        vm,
+        "pages-template3",
+        vm.pages_template3,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "lat": lat,
@@ -161,10 +161,10 @@ var getResults = function(query, req, res) {
   providers.path = "/providers";
   providers.query = query;
 
-  var vm = require("../views/viewModel2.js");
+  var vm = require("../views/viewModel.js");
   var providersPresenter = new Presenter(
-    "directorySearchResults",
-    vm,
+    "pages-template2",
+    vm.pages_template2,
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
