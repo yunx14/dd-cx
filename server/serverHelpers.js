@@ -174,7 +174,7 @@ var getResults = function(query, req, res) {
     }
   );
 
-  providers.fetch({ "query": query },
+  providers.fetch({},
     function(code, data) {
       // success
       if (providers.isEmpty()) {
