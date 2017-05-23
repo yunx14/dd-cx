@@ -10,7 +10,7 @@ var logger = new Logger();
 
 module.exports = {
   getDirectorySearch: function(req, res) {
-    logger.log("GET /directory-search.html");
+    logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
     var vm = require("../views/provider-directory-search.js");
 
     if (req.query && req.query.lat && req.query.long) {
@@ -27,7 +27,7 @@ module.exports = {
     }
   },
   postDirectorySearch: function(req, res) {
-    logger.log("POST /directory-search.html");
+    logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
     var query = parseLocation(req.body.location);
     if (req.body.distance) {
@@ -36,7 +36,8 @@ module.exports = {
     if (req.body.specialty) {
       query.specialty = req.body.specialty;
     }
-    getResults(query, req, res);
+    res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    // getResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
     logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
