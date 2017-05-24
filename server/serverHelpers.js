@@ -16,13 +16,14 @@ module.exports = {
 
     if (req.query && req.query.lat && req.query.long) {
       logger.log("query " + JSON.stringify(req.query));
-      getResults(req.query, req, res);
+      getListsResults(req.query, req, res);
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
         "pages-template1",
         ViewModel.pages_template1,
-        {}
+        {},
+        "main"
       );
       res.status(200).send(directorySearchPresenter.render());
     }
@@ -38,7 +39,7 @@ module.exports = {
       query.specialty = req.body.specialty;
     }
     res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
-    // getResults(query, req, res);
+    // getListsResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
     logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
@@ -65,7 +66,9 @@ module.exports = {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "lat": lat,
           "long": long
-        });
+        },
+        "main"
+      );
 
       provider.fetch({},
         function(code, data) {
@@ -98,8 +101,10 @@ module.exports = {
     var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.invalidAddress,
-      {});
-      res.status(200).send(errorPresenter.render());
+      {},
+      "main"
+    );
+    res.status(200).send(errorPresenter.render());
   },
   errorNoResults: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
@@ -108,8 +113,10 @@ module.exports = {
     var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.noResults,
-      {});
-      res.status(200).send(errorPresenter.render());
+      {},
+      "main"
+    );
+    res.status(200).send(errorPresenter.render());
   },
   errorTimeOut: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
@@ -118,8 +125,10 @@ module.exports = {
     var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.serverTimeout,
-      {});
-      res.status(200).send(errorPresenter.render());
+      {},
+      "main"
+    );
+    res.status(200).send(errorPresenter.render());
   },
   errorDown: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
@@ -128,8 +137,10 @@ module.exports = {
     var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.servicesDown,
-      {});
-      res.status(200).send(errorPresenter.render());
+      {},
+      "main"
+    );
+    res.status(200).send(errorPresenter.render());
   },
   getHome: function(req, res) {
     logger.log("GET / -> ABOUT");
@@ -140,7 +151,9 @@ module.exports = {
     var about = new MainPresenter(
       "about",
       {},
-      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT});
+      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
+      "main"
+    );
     res.status(200).send(about.render());
     //res.send(CONSTANTS.EE_ABOUT);
   }
@@ -154,7 +167,7 @@ var parseLocation = function(location) {
   return result;
 };
 
-var getResults = function(query, req, res) {
+var getListsResults = function(query, req, res) {
   var providers = new SolrCollection("providers");
   providers.host = CONSTANTS.SEARCH_SERVICE_HOST;
   providers.port = CONSTANTS.SEARCH_SERVICE_PORT;
@@ -171,7 +184,8 @@ var getResults = function(query, req, res) {
       "long": query.long,
       "distance": query.distance,
       "specialty": query.specialty
-    }
+    },
+    "main"
   );
 
   providers.fetch({},
