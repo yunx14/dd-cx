@@ -11,21 +11,7 @@ var Presenter = require("./presenter.js");
  * @example var myPresenter = new MainPresenter("MyTemplate", ViewModel, { "something": "this" }, "main");
  */
 var MainPresenter = function(n, vm, map, main) {
-  /**
-   * @property name {string} name of view/template
-   * @memberof MainPresenter
-   */
-  this.name = n;
-  /**
-   * @property viewModel {Object} A property-based ViewModel
-   * @memberof MainPresenter
-   */
-  this.viewModel = vm;
-  /**
-   * @property propertyMap {Object} Property Map used to map data to the ViewModel
-   * @memberof MainPresenter
-   */
-  this.propertyMap = map;
+  Presenter.call(this, n, vm, map);
   /**
    * @property main {string} The name of the 'main' template to wrap
    * @memberof MainPresenter
@@ -33,15 +19,18 @@ var MainPresenter = function(n, vm, map, main) {
   this.mainTemplate = main;
 };
 
-MainPresenter.prototype = new Presenter();
+MainPresenter.prototype = Object.create(Presenter.prototype);
 /**
  * @method render Renders the Presenter and wraps the main template areound sub-template
  * @param data {array} Collection data to enrich the ViewModel
  * @returns {Object} The View in HTML from Handlebars
  * @memberof MainPresenter
  */
-MainPresenter.render = function(data) {
+MainPresenter.prototype.render = function(data) {
   var enriched = this.enrichData( ((data) ? data : this.viewModel));
   enriched.body = this.getName();
   return Handlebars.templates[this.mainTemplate](enriched);
 };
+
+
+module.exports = MainPresenter;

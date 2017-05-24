@@ -90,17 +90,15 @@ describe("Given a base Presenter", function() {
       expect(presenter.getName()).toEqual("locations");
     });
 
-      it("is defined", function() {
-        expect(MainPresenter).toBeDefined();
-      });
-
+    it("is defined", function() {
+      expect(MainPresenter).toBeDefined();
     });
-
+    
     it("can enrich data", function() {
       var data = presenter.propertyMap;
       var expectedData = presenter.enrichData(data);
       expect(typeof expectedData).toEqual("object");
       expect(presenter.viewModel).toEqual(expectedData);
     });
-
+  });
 });
