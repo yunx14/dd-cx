@@ -11,4 +11,6 @@
   {{#each scripts}}
   <script src="{{script}}" defer="defer"></script>
   {{/each}}
+  <input id="latlong" type="hidden" name="location" value="{{lat}}, {{long}}">
+  <script src="../public/template3.js" defer="defer">mapLocation($('#latlong').val())</script>
 </html>
