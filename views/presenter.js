@@ -9,7 +9,7 @@ const CONSTANTS = require("../constants.js");
  * @example var myPresenter = new Presenter();
  * @example var myPresenter = new Presenter("MyTemplate", ViewModel, { "something": "this" });
  */
-module.exports = Presenter = function(n, vm, map) {
+var Presenter = function(n, vm, map) {
   /**
    * @property name {string} name of view/template
    * @memberof Presenter
@@ -31,7 +31,7 @@ module.exports = Presenter = function(n, vm, map) {
  * @returns {string} name of the view/template
  * @memberof Presenter
  */
-this.prototype.getName = function() {
+Presenter.prototype.getName = function() {
   return this.name;
 };
 /**
@@ -39,7 +39,7 @@ this.prototype.getName = function() {
  * @param myMap {object} The map to set
  * @memberof Presenter
  */
-this.prototype.setPropertyMap = function(myMap) {
+Presenter.prototype.setPropertyMap = function(myMap) {
   this.propertyMap = myMap;
 };
 /**
@@ -47,7 +47,7 @@ this.prototype.setPropertyMap = function(myMap) {
  * @param myMap {object} The map to merge
  * @memberof Presenter
  */
-this.prototype.mergePropertyMap = function(myMap) {
+Presenter.prototype.mergePropertyMap = function(myMap) {
   var key = null;
   for (key in myMap) {
     this.propertyMap[key] = myMap[key];
@@ -59,7 +59,7 @@ this.prototype.mergePropertyMap = function(myMap) {
  * @returns {Object} The enriched ViewModel for the view/template
  * @memberof Presenter
  */
-this.prototype.enrichData = function(data) {
+Presenter.prototype.enrichData = function(data) {
   if (data && this.viewModel) {
     var fullData = this.viewModel, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
 
@@ -83,6 +83,8 @@ this.prototype.enrichData = function(data) {
  * @returns {Object} The View
  * @memberof Presenter
  */
-this.prototype.render = function(data) {
+Presenter.prototype.render = function(data) {
   return {};
 };
+
+module.exports = Presenter;
