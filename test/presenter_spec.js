@@ -86,6 +86,10 @@ describe("Given a base Presenter", function() {
       presenter = null;
     });
 
+    it("can get name", function() {
+      expect(presenter.getName()).toEqual("locations");
+    });
+
       it("is defined", function() {
         expect(MainPresenter).toBeDefined();
       });
