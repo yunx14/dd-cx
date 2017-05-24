@@ -96,6 +96,381 @@ module.exports.pages_dependents = {
   ]
 }
 ;
+module.exports.pages_directorySearch = {
+  "homeIcon" : {
+    "icon": {
+      "class": "icon-home",
+      "ariaLabel": "home icon"
+    }
+  },
+  "logInLink": {
+    "anchorLink": {
+      "href": "#go-somewhere",
+      "text": "Log In",
+      "class" : "inverted"
+    }
+  },
+  "page": {
+    "heading": {
+      "h1": "Find a dentist",
+      "anchorLink": {
+        "text": "Log in"
+      },
+      "paragraph": " to find dentists in your plan."
+    }
+  },
+  "searchInput": {
+    "field": {
+      "id": "location",
+      "type": "text",
+      "name": "location",
+      "placeholder": "Zip code, city, or address",
+      "label": {
+        "text": ""
+      }
+    }
+  },
+  "viewDentist": {
+    "button": {
+      "id": "",
+      "class": "btn--primary",
+      "text": "View Dentists",
+      "type": "submit"
+    }
+  },
+  "feedback": {
+    "button": {
+      "class": "btn--feedback",
+      "text": "FEEDBACK"
+    }
+  },
+  "footer": {
+    "contact": {
+      "text": "Need Help?",
+      "number": "844.847.9516"
+    },
+    "navItem": [
+      {
+        "href": "#go-somewhere",
+        "text": "Contact Us"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Language Assistance"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Legal Notices"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Privacy"
+      }
+    ],
+    "copyright": "© Delta Dental",
+    "disclaimer": "This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website."
+  }
+}
+;
+module.exports.pages_directorySearchResults = {
+  "homeIcon" : {
+    "icon": {
+      "class": "icon-home",
+      "ariaLabel": "home icon"
+    }
+  },
+  "page": {
+    "heading": {
+      "h1": "Find a dentist",
+      "anchorLink": {
+        "text": "Log in"
+      },
+      "paragraph": " to find dentists in your plan."
+    }
+  },
+  "searchInput": {
+    "field": {
+      "id": "location",
+      "type": "text",
+      "name": "location",
+      "placeholder": "Zip code, city, or address",
+      "label": {
+        "text": ""
+      }
+    }
+  },
+  "refineSearch": {
+    "text": "Refine Search",
+    "icon": {
+      "class": "icon-down-arrow icon--small",
+      "ariaLabel": "down arrow"
+    }
+  },
+  "distanceSelect": {
+    "select": {
+      "id": "distance",
+      "class": "",
+      "name": "distance",
+      "options": [
+        {
+          "option": {
+            "value": "5",
+            "text": "Within 5 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "10",
+            "text": "Within 10 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "15",
+            "text": "Within 15 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "25",
+            "text": "Within 25 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "35",
+            "text": "Within 35 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "60",
+            "text": "Within 60 Miles",
+            "valuelessAttribute": "selected"
+          }
+        }
+      ]
+    },
+    "field": {
+      "id": "distance",
+      "label": {
+        "text": "Distance"
+      }
+    }
+  },
+  "filter": {
+    "specialty": "Specialty",
+    "inputs": [
+      {
+        "field": {
+          "id": "specialty_General-Dentist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "general",
+          "label": {
+            "text": "General Dentist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Endodontist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "endodontist",
+          "label": {
+            "text": "Endodontist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Oral-Surgeon",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "surgeon",
+          "label": {
+            "text": "Oral Surgeon",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Orthodontist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "orthodontist",
+          "label": {
+            "text": "Orthodontist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Pediatric-Dentist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "pediatric",
+          "label": {
+            "text": "Pediatric Dentist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Periodontist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "periodontist",
+          "label": {
+            "text": "Periodontist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Prosthodontist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "prosthodontist",
+          "label": {
+            "text": "Prosthodontist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Public-Health-Dentist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "public",
+          "label": {
+            "text": "Public Health Dentist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Full-Time-Faculty",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "full-time",
+          "label": {
+            "text": "Full Time Faculty",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Hygienist",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "hygienist",
+          "label": {
+            "text": "Hygienist",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_XR-Laboratory",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "xr",
+          "label": {
+            "text": "XR-Laboratory",
+            "class": "form-element__checkbox"
+          }
+        }
+      },
+      {
+        "field": {
+          "id": "specialty_Oral-Pathology",
+          "type": "checkbox",
+          "name": "specialty",
+          "value": "pathology",
+          "label": {
+            "text": "Oral Pathology",
+            "class": "form-element__checkbox"
+          }
+        }
+      }
+    ]
+  },
+  "searchButton": {
+    "icon": {
+      "class": "icon icon-before icon-search-black",
+      "ariaLabel": "search icon"
+    }
+  },
+  "applyButton": {
+    "button": {
+      "class": "btn--secondary",
+      "text": "Apply",
+      "type": "submit"
+    }
+  },
+  "availability": "Accepting new patients",
+  "provider": [
+    {
+      "firstName": "Dr. Dentist",
+      "specialty": "Pulling teeth",
+      "officeName": "Dreary Office of Dread",
+      "address": {
+          "addressLine": "214 Ortho Way",
+          "city": "San Francisco",
+          "state": "CA",
+          "zipcode": "94105"
+      },
+      "distance": "0.4 mi",
+      "providerNetworks": "PPO",
+      "provider-link": "View",
+    }
+  ],
+  "feedback": {
+    "button": {
+      "class": "btn--feedback",
+      "text": "FEEDBACK"
+    }
+  },
+  "footer": {
+    "contact": {
+      "text": "Need Help?",
+      "number": "844.847.9516"
+    },
+    "navItem": [
+      {
+        "href": "#go-somewhere",
+        "text": "Contact Us"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Language Assistance"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Legal Notices"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Privacy"
+      }
+    ],
+    "copyright": "© Delta Dental",
+    "disclaimer": "This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website."
+  }
+}
+;
 module.exports.atoms_dl_inline = {
   "dl": {
     "class": "dl--inline"
@@ -990,388 +1365,14 @@ module.exports.pages_personal_info = {
         ]
 }
 ;
-module.exports.pages_template1 = {
-  "homeIcon" : {
-    "icon": {
-      "class": "icon-home",
-      "ariaLabel": "home icon"
-    }
-  },
-  "logInLink": {
-    "anchorLink": {
-      "href": "#go-somewhere",
-      "text": "Log In",
-      "class" : "inverted"
-    }
-  },
-  "page": {
-    "heading": {
-      "h1": "Find a dentist",
-      "anchorLink": {
-        "text": "Log in"
-      },
-      "paragraph": " to find dentists in your plan."
-    }
-  },
-  "searchInput": {
-    "field": {
-      "id": "location",
-      "type": "text",
-      "name": "location",
-      "placeholder": "Zip code, city, or address",
-      "label": {
-        "text": ""
-      }
-    }
-  },
-  "viewDentist": {
-    "button": {
-      "id": "",
-      "class": "btn--primary",
-      "text": "View Dentists",
-      "type": "submit"
-    }
-  },
-  "feedback": {
-    "button": {
-      "class": "btn--feedback",
-      "text": "FEEDBACK"
-    }
-  },
-  "footer": {
-    "contact": {
-      "text": "Need Help?",
-      "number": "844.847.9516"
-    },
-    "navItem": [
-      {
-        "href": "#go-somewhere",
-        "text": "Contact Us"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Language Assistance"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Legal Notices"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Privacy"
-      }
-    ],
-    "copyright": "© Delta Dental",
-    "disclaimer": "This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website."
-  }
-}
-;
-module.exports.pages_template2 = {
-  "homeIcon" : {
-    "icon": {
-      "class": "icon-home",
-      "ariaLabel": "home icon"
-    }
-  },
-  "page": {
-    "heading": {
-      "h1": "Find a dentist",
-      "anchorLink": {
-        "text": "Log in"
-      },
-      "paragraph": " to find dentists in your plan."
-    }
-  },
-  "searchInput": {
-    "field": {
-      "id": "location",
-      "type": "text",
-      "name": "location",
-      "placeholder": "Zip code, city, or address",
-      "label": {
-        "text": ""
-      }
-    }
-  },
-  "refineSearch": {
-    "text": "Refine Search",
-    "icon": {
-      "class": "icon-down-arrow icon--small",
-      "ariaLabel": "down arrow"
-    }
-  },
-  "distanceSelect": {
-    "select": {
-      "id": "distance",
-      "class": "",
-      "name": "distance",
-      "options": [
-        {
-          "option": {
-            "value": "5",
-            "text": "Within 5 Miles"
-          }
-        },
-        {
-          "option": {
-            "value": "10",
-            "text": "Within 10 Miles"
-          }
-        },
-        {
-          "option": {
-            "value": "15",
-            "text": "Within 15 Miles"
-          }
-        },
-        {
-          "option": {
-            "value": "25",
-            "text": "Within 25 Miles"
-          }
-        },
-        {
-          "option": {
-            "value": "35",
-            "text": "Within 35 Miles"
-          }
-        },
-        {
-          "option": {
-            "value": "60",
-            "text": "Within 60 Miles",
-            "valuelessAttribute": "selected"
-          }
-        }
-      ]
-    },
-    "field": {
-      "id": "distance",
-      "label": {
-        "text": "Distance"
-      }
-    }
-  },
-  "filter": {
-    "specialty": "Specialty",
-    "inputs": [
-      {
-        "field": {
-          "id": "specialty_General-Dentist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "general",
-          "label": {
-            "text": "General Dentist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Endodontist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "endodontist",
-          "label": {
-            "text": "Endodontist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Oral-Surgeon",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "surgeon",
-          "label": {
-            "text": "Oral Surgeon",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Orthodontist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "orthodontist",
-          "label": {
-            "text": "Orthodontist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Pediatric-Dentist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "pediatric",
-          "label": {
-            "text": "Pediatric Dentist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Periodontist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "periodontist",
-          "label": {
-            "text": "Periodontist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Prosthodontist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "prosthodontist",
-          "label": {
-            "text": "Prosthodontist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Public-Health-Dentist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "public",
-          "label": {
-            "text": "Public Health Dentist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Full-Time-Faculty",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "full-time",
-          "label": {
-            "text": "Full Time Faculty",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Hygienist",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "hygienist",
-          "label": {
-            "text": "Hygienist",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_XR-Laboratory",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "xr",
-          "label": {
-            "text": "XR-Laboratory",
-            "class": "form-element__checkbox"
-          }
-        }
-      },
-      {
-        "field": {
-          "id": "specialty_Oral-Pathology",
-          "type": "checkbox",
-          "name": "specialty",
-          "value": "pathology",
-          "label": {
-            "text": "Oral Pathology",
-            "class": "form-element__checkbox"
-          }
-        }
-      }
-    ]
-  },
-  "searchButton": {
-    "icon": {
-      "class": "icon icon-before icon-search-black",
-      "ariaLabel": "search icon"
-    }
-  },
-  "provider": [
-    {
-      "firstName": "Dr. Dentist",
-      "specialty": "Pulling teeth",
-      "officeName": "Dreary Office of Dread",
-      "address": {
-          "addressLine": "214 Ortho Way",
-          "city": "San Francisco",
-          "state": "CA",
-          "zipcode": "94105"
-      },
-      "distance": "0.4 mi",
-      "providerNetworks": "PPO",
-      "provider-link": {
-        "anchorLink": {
-          "href": "#",
-          "text": "View"
-        },
-        "icon": {
-          "class": "icon-right-arrow",
-          "ariaLabel": "right arrow"
-        }
-      }
-    }
-  ],
-  "feedback": {
-    "button": {
-      "class": "btn--feedback",
-      "text": "FEEDBACK"
-    }
-  },
-  "footer": {
-    "contact": {
-      "text": "Need Help?",
-      "number": "844.847.9516"
-    },
-    "navItem": [
-      {
-        "href": "#go-somewhere",
-        "text": "Contact Us"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Language Assistance"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Legal Notices"
-      },
-      {
-        "href": "#go-somewhere",
-        "text": "Privacy"
-      }
-    ],
-    "copyright": "© Delta Dental",
-    "disclaimer": "This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website."
-  }
-}
-;
-module.exports.pages_template3 = {
+module.exports.pages_providerDetails = {
   "page": {
     "header": {
       "text": "Back to search results"
     }
   },
+  "availability": " Accepting new patients",
+  "hours": "Hours",
   "provider": {
     "firstName": "Dr. Dentist",
     "specialty": "Pulling teeth",
