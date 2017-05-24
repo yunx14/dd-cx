@@ -14,3 +14,5 @@ HandlebarsPresenter.prototype = new Presenter();
 HandlebarsPresenter.render = function(data) {
   return Handlebars.templates[this.getName()](this.enrichData( ((data) ? data : this.viewModel)) );
 };
+
+module.exports = HandlebarsPresenter;
