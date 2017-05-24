@@ -20,8 +20,8 @@ module.exports = {
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
-        "pages-template1",
-        ViewModel.pages_template1,
+        "pages-directorySearch",
+        ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
           "stylesheet": "../styles/style.css",
@@ -64,8 +64,8 @@ module.exports = {
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new MainPresenter(
-        "pages-template3",
-        ViewModel.pages_template3,
+        "pages-providerDetails",
+        ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "lat": lat,
@@ -80,7 +80,7 @@ module.exports = {
       provider.fetch({},
         function(code, data) {
           // success
-          providerPresenter.setPropertyMap(data);
+          providerPresenter.mergePropertyMap(data);
           res.status(code).send(providerPresenter.render());
         },
         function(code, data) {
@@ -182,8 +182,8 @@ var getListsResults = function(query, req, res) {
   providers.query = query;
 
   var providersPresenter = new MainPresenter(
-    "pages-template2",
-    ViewModel.pages_template2,
+    "pages-directorySearchResults",
+    ViewModel.pages_directorySearchResults,
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
