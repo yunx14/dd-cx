@@ -25,7 +25,7 @@ module.exports = {
         {
           "title": "Provider Directory Search",
           "stylesheet": "../styles/style.css",
-          "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "geocoder.js"} ]
+          "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "main.js"}, {"script": "geocoder.js"} ]
         },
         "main"
       );
@@ -193,7 +193,7 @@ var getListsResults = function(query, req, res) {
       "specialty": query.specialty,
       "title": "Provider Directory Search Results",
       "stylesheet": "../styles/style.css",
-      "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "geocoder.js"} ]
+      "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "main.js"}, {"script": "geocoder.js"} ]
     },
     "main"
   );
