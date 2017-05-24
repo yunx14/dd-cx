@@ -62,14 +62,13 @@ describe("Given Presenter", function() {
       presenter.mergePropertyMap({"Blah": "More Blah"});
       expect(presenter.propertyMap).toEqual({"locations": ["SF", "LA"], "title": "Locations:", "Blah": "More Blah"});
     });
-  });
 
+    it("can enrich data", function() {
+      var data = presenter.propertyMap;
+      var expectedData = presenter.enrichData(data);
+      expect(typeof expectedData).toEqual("object");
+      expect(presenter.viewModel).toEqual(expectedData);
+    });
+  });
   
-  it("can enrich data", function() {
-    var data = presenter.propertyMap;
-    var expectedData = presenter.enrichData(data);
-    expect(typeof expectedData).toEqual("object");
-    expect(presenter.viewModel).toEqual(expectedData);
-  });
-
 });
