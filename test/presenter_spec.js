@@ -1,21 +1,22 @@
 var Presenter = require("../views/presenter.js");
 var MainPresenter = require("../views/mainPresenter.js");
+var HandlebarsPresenter = require("../views/handlebarsPresenter.js");
 
 describe("Given Presenters", function() {
 
-describe("Given a base Presenter", function() {
-  var presenter = null;
+  describe("Given a base Presenter", function() {
+    var presenter = null;
 
-  beforeEach(function() {
-    var n = "locations";
-    var vm = { "locations": [], "title": "" };
-    var map = { "locations": ["SF", "LA"], "title": "Locations:" };
-    presenter = new Presenter(n, vm, map);
-  });
+    beforeEach(function() {
+      var n = "locations";
+      var vm = { "locations": [], "title": "" };
+      var map = { "locations": ["SF", "LA"], "title": "Locations:" };
+      presenter = new Presenter(n, vm, map);
+    });
 
-  afterEach(function() {
-    presenter = null;
-  });
+    afterEach(function() {
+      presenter = null;
+    });
 
     it("is defined", function() {
       expect(Presenter).toBeDefined();
@@ -69,7 +70,6 @@ describe("Given a base Presenter", function() {
       expect(typeof expectedData).toEqual("object");
       expect(presenter.viewModel).toEqual(expectedData);
     });
-
   });
 
   describe("Given a MainPresenter", function() {
@@ -93,7 +93,7 @@ describe("Given a base Presenter", function() {
     it("is defined", function() {
       expect(MainPresenter).toBeDefined();
     });
-    
+
     it("can enrich data", function() {
       var data = presenter.propertyMap;
       var expectedData = presenter.enrichData(data);
