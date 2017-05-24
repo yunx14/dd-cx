@@ -1,6 +1,9 @@
 var Presenter = require("../views/presenter.js");
+var MainPresenter = require("../views/mainPresenter.js");
 
-describe("Given Presenter", function() {
+describe("Given Presenters", function() {
+
+describe("Given a base Presenter", function() {
   var presenter = null;
 
   beforeEach(function() {
@@ -14,7 +17,6 @@ describe("Given Presenter", function() {
     presenter = null;
   });
 
-  describe("Given a presenter", function() {
     it("is defined", function() {
       expect(Presenter).toBeDefined();
     });
@@ -43,9 +45,7 @@ describe("Given Presenter", function() {
       expect(typeof presenter.mergePropertyMap).toEqual('function');
       expect(typeof presenter.enrichData).toEqual('function');
     });
-  });
 
-  describe("As a presenter", function() {
     it("can get name", function() {
       expect(presenter.getName()).toEqual("locations");
     });
@@ -69,6 +69,34 @@ describe("Given Presenter", function() {
       expect(typeof expectedData).toEqual("object");
       expect(presenter.viewModel).toEqual(expectedData);
     });
+
   });
-  
+
+  describe("Given a MainPresenter", function() {
+    var presenter = null;
+
+    beforeEach(function() {
+      var n = "locations";
+      var vm = { "locations": [], "title": "" };
+      var map = { "locations": ["SF", "LA"], "title": "Locations:" };
+      presenter = new MainPresenter(n, vm, map, "main");
+    });
+
+    afterEach(function() {
+      presenter = null;
+    });
+
+      it("is defined", function() {
+        expect(MainPresenter).toBeDefined();
+      });
+
+    });
+
+    it("can enrich data", function() {
+      var data = presenter.propertyMap;
+      var expectedData = presenter.enrichData(data);
+      expect(typeof expectedData).toEqual("object");
+      expect(presenter.viewModel).toEqual(expectedData);
+    });
+
 });
