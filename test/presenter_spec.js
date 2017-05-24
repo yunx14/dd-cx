@@ -72,6 +72,36 @@ describe("Given Presenters", function() {
     });
   });
 
+  describe("Given a HandlebarsPresenter", function() {
+    var presenter = null;
+
+    beforeEach(function() {
+      var n = "locations";
+      var vm = { "locations": [], "title": "" };
+      var map = { "locations": ["SF", "LA"], "title": "Locations:" };
+      presenter = new HandlebarsPresenter(n, vm, map);
+    });
+
+    afterEach(function() {
+      presenter = null;
+    });
+
+    it("can get name", function() {
+      expect(presenter.getName()).toEqual("locations");
+    });
+
+    it("is defined", function() {
+      expect(HandlebarsPresenter).toBeDefined();
+    });
+
+    it("can enrich data", function() {
+      var data = presenter.propertyMap;
+      var expectedData = presenter.enrichData(data);
+      expect(typeof expectedData).toEqual("object");
+      expect(presenter.viewModel).toEqual(expectedData);
+    });
+  });
+
   describe("Given a MainPresenter", function() {
     var presenter = null;
 
