@@ -22,7 +22,11 @@ module.exports = {
       var directorySearchPresenter = new MainPresenter(
         "pages-template1",
         ViewModel.pages_template1,
-        {},
+        {
+          "title": "Provider Directory Search",
+          "stylesheet": "../styles/main.css",
+          "scripts": [ {"script": "jquery.min.js"}, {"script": "geocoder.js"} ]
+        },
         "main"
       );
       res.status(200).send(directorySearchPresenter.render());
