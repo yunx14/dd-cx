@@ -15,10 +15,9 @@ module.exports = {
   errorInvalidZip: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
     // var ErrorViewModel = require("../views/errorMessage.js");
-
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.errorMessages.invalidAddress,
+      ViewModel.pages_directoryError.errorMessages.invalidAddress,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -30,7 +29,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.errorMessages.noResults,
+      ViewModel.pages_directoryError.errorMessages.noResults,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -42,7 +41,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.errorMessages.serverTimeout,
+      ViewModel.pages_directoryError.errorMessages.serverTimeout,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -51,10 +50,9 @@ module.exports = {
   errorDown: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
     // var ErrorViewModel = require("../views/errorMessage.js");
-
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.errorMessages.servicesDown,
+      ViewModel.pages_directoryError.errorMessages.servicesDown,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
