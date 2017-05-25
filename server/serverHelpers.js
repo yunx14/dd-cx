@@ -10,6 +10,12 @@ var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 var logger = new Logger();
 
+// My instance class extenion
+var MyMainPresenter = function() {
+  MainPresenter.apply(this, arguments);
+  this.mainTemplate = CONSTANTS.MAIN_PRESENTER_TEMPLATE;
+};
+
 module.exports = {
   getDirectorySearch: function(req, res) {
     logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
@@ -25,7 +31,12 @@ module.exports = {
         {
           "title": "Provider Directory Search",
           "stylesheet": "../styles/style.css",
-          "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "main.js"}, {"script": "geocoder.js"} ]
+          "scripts": [
+            {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+            {"script": "jquery.min.js"},
+            {"script": "main.js"},
+            {"script": "geocoder.js"}
+          ]
         },
         "main"
       );
@@ -63,7 +74,7 @@ module.exports = {
       provider.port = CONSTANTS.SEARCH_SERVICE_PORT;
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
-      var providerPresenter = new MainPresenter(
+      var providerPresenter = new MyMainPresenter(
         "pages-providerDetails",
         ViewModel.pages_providerDetails,
         {
@@ -72,9 +83,12 @@ module.exports = {
           "long": long,
           "title": "Provider Detail",
           "stylesheet": "../styles/style.css",
-          "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "template3.js"} ]
-        },
-        "main"
+          "scripts": [
+            {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+            {"script": "jquery.min.js"},
+            {"script": "template3.js"}
+          ]
+        }
       );
 
       provider.fetch({},
@@ -105,11 +119,10 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MainPresenter(
+    var errorPresenter = new MyMainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.invalidAddress,
-      {},
-      "main"
+      {}
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -117,11 +130,10 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MainPresenter(
+    var errorPresenter = new MyMainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.noResults,
-      {},
-      "main"
+      {}
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -129,11 +141,10 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MainPresenter(
+    var errorPresenter = new MyMainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.serverTimeout,
-      {},
-      "main"
+      {}
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -141,11 +152,10 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MainPresenter(
+    var errorPresenter = new MyMainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.servicesDown,
-      {},
-      "main"
+      {}
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -155,11 +165,10 @@ module.exports = {
   },
   getAbout: function(req, res) {
     logger.log("GET /ABOUT");
-    var about = new MainPresenter(
+    var about = new MyMainPresenter(
       "about",
       {},
-      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
-      "main"
+      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT}
     );
     res.status(200).send(about.render());
     //res.send(CONSTANTS.EE_ABOUT);
@@ -181,7 +190,7 @@ var getListsResults = function(query, req, res) {
   providers.path = "/providers";
   providers.query = query;
 
-  var providersPresenter = new MainPresenter(
+  var providersPresenter = new MyMainPresenter(
     "pages-directorySearchResults",
     ViewModel.pages_directorySearchResults,
     {
@@ -193,9 +202,13 @@ var getListsResults = function(query, req, res) {
       "specialty": query.specialty,
       "title": "Provider Directory Search Results",
       "stylesheet": "../styles/style.css",
-      "scripts": [ {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"}, {"script": "jquery.min.js"}, {"script": "main.js"}, {"script": "geocoder.js"} ]
-    },
-    "main"
+      "scripts": [
+        {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+        {"script": "jquery.min.js"},
+        {"script": "main.js"},
+        {"script": "geocoder.js"}
+      ]
+    }
   );
 
   providers.fetch({},

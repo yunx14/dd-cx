@@ -5,6 +5,8 @@ module.exports = {
   "SEARCH_SERVICE_PORT": 19096,
   "SEARCH_SERVICE_HOST": "http://aw-lx0095",
 
+  "MAIN_PRESENTER_TEMPLATE": "main",
+
   "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/provider-details.html",
 
