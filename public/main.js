@@ -11,8 +11,8 @@ function fillInAddress() {
     "lat": place.geometry.location.lat(),
     "lng": place.geometry.location.lng()
   };
-  $latitudeInput.val(latlng.lat);
-  $longitudeInput.val(latlng.lng);
+  $latitudeInput.val(latLng.lat);
+  $longitudeInput.val(latLng.lng);
 }
 
 autocomplete.setComponentRestrictions({'country': ['us', 'pr', 'vi', 'gu', 'mp']});
