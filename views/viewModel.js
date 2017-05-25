@@ -790,6 +790,8 @@ module.exports.pages_directorySearchResults = {
     }
   },
   "availability": "Accepting new patients",
+  "provider-link": "View",
+  "distance-unit": " mi",
   "provider": [
     {
       "firstName": "Dr. Dentist",
@@ -802,9 +804,7 @@ module.exports.pages_directorySearchResults = {
           "zipcode": "94105"
       },
       "distance": "0.4",
-      "providerNetworks": "PPO",
-      "provider-link": "View",
-      "distance-unit": " mi"
+      "providerNetworks": "PPO"
     }
   ],
   "feedback": {
