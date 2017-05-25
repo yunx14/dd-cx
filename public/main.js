@@ -19,5 +19,5 @@ autocomplete.setComponentRestrictions({'country': ['us', 'pr', 'vi', 'gu', 'mp']
 autocomplete.addListener('place_changed', fillInAddress);
 
 $(".refine__toggle").click(function(){
-  (".refine__menu").toggleClass("open");
+  $(".refine__menu").toggleClass("open");
 });
