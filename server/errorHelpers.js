@@ -14,11 +14,11 @@ var logger = new Logger();
 module.exports = {
   errorInvalidZip: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
-    var ErrorViewModel = require("../views/errorMessage.js");
+    // var ErrorViewModel = require("../views/errorMessage.js");
 
     var errorPresenter = new MainPresenter(
-      "errorMessage",
-      ErrorViewModel.errorMessages.invalidAddress,
+      "pages-directoryError",
+      ViewModel.errorMessages.invalidAddress,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -26,11 +26,11 @@ module.exports = {
   },
   errorNoResults: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
-    var ErrorViewModel = require("../views/errorMessage.js");
+    // var ErrorViewModel = require("../views/errorMessage.js");
 
     var errorPresenter = new MainPresenter(
-      "errorMessage",
-      ErrorViewModel.errorMessages.noResults,
+      "pages-directoryError",
+      ViewModel.errorMessages.noResults,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -38,11 +38,11 @@ module.exports = {
   },
   errorTimeOut: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
-    var ErrorViewModel = require("../views/errorMessage.js");
+    // var ErrorViewModel = require("../views/errorMessage.js");
 
     var errorPresenter = new MainPresenter(
-      "errorMessage",
-      ErrorViewModel.errorMessages.serverTimeout,
+      "pages-directoryError",
+      ViewModel.errorMessages.serverTimeout,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
@@ -50,11 +50,11 @@ module.exports = {
   },
   errorDown: function(req, res) {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
-    var ErrorViewModel = require("../views/errorMessage.js");
+    // var ErrorViewModel = require("../views/errorMessage.js");
 
     var errorPresenter = new MainPresenter(
-      "errorMessage",
-      ErrorViewModel.errorMessages.servicesDown,
+      "pages-directoryError",
+      ViewModel.errorMessages.servicesDown,
       {},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
