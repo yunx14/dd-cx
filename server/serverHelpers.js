@@ -10,12 +10,6 @@ var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 var logger = new Logger();
 
-// My instance class extenion
-var MyMainPresenter = function() {
-  MainPresenter.apply(this, arguments);
-  this.mainTemplate = CONSTANTS.MAIN_PRESENTER_TEMPLATE;
-};
-
 module.exports = {
   getDirectorySearch: function(req, res) {
     logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
@@ -38,7 +32,7 @@ module.exports = {
             {"script": "geocoder.js"}
           ]
         },
-        "main"
+        CONSTANTS.MAIN_PRESENTER_TEMPLATE
       );
       res.status(200).send(directorySearchPresenter.render());
     }
@@ -74,7 +68,7 @@ module.exports = {
       provider.port = CONSTANTS.SEARCH_SERVICE_PORT;
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
-      var providerPresenter = new MyMainPresenter(
+      var providerPresenter = new MainPresenter(
         "pages-providerDetails",
         ViewModel.pages_providerDetails,
         {
@@ -88,7 +82,8 @@ module.exports = {
             {"script": "jquery.min.js"},
             {"script": "template3.js"}
           ]
-        }
+        },
+        CONSTANTS.MAIN_PRESENTER_TEMPLATE
       );
 
       provider.fetch({},
@@ -119,10 +114,11 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MyMainPresenter(
+    var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.invalidAddress,
-      {}
+      {},
+      CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -130,10 +126,11 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MyMainPresenter(
+    var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.noResults,
-      {}
+      {},
+      CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -141,10 +138,11 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MyMainPresenter(
+    var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.serverTimeout,
-      {}
+      {},
+      CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -152,10 +150,11 @@ module.exports = {
     logger.log("GET " + CONSTANTS.ERROR_DOWN);
     var ErrorViewModel = require("../views/errorMessage.js");
 
-    var errorPresenter = new MyMainPresenter(
+    var errorPresenter = new MainPresenter(
       "errorMessage",
       ErrorViewModel.errorMessages.servicesDown,
-      {}
+      {},
+      CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -165,10 +164,11 @@ module.exports = {
   },
   getAbout: function(req, res) {
     logger.log("GET /ABOUT");
-    var about = new MyMainPresenter(
+    var about = new MainPresenter(
       "about",
       {},
-      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT}
+      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
+      CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(about.render());
     //res.send(CONSTANTS.EE_ABOUT);
@@ -190,7 +190,7 @@ var getListsResults = function(query, req, res) {
   providers.path = "/providers";
   providers.query = query;
 
-  var providersPresenter = new MyMainPresenter(
+  var providersPresenter = new MainPresenter(
     "pages-directorySearchResults",
     ViewModel.pages_directorySearchResults,
     {
@@ -208,7 +208,8 @@ var getListsResults = function(query, req, res) {
         {"script": "main.js"},
         {"script": "geocoder.js"}
       ]
-    }
+    },
+    CONSTANTS.MAIN_PRESENTER_TEMPLATE
   );
 
   providers.fetch({},
