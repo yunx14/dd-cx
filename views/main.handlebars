@@ -11,7 +11,10 @@
   {{#each scripts}}
   <script src="{{script}}" defer="defer"></script>
   {{/each}}
-  <input type='hidden' name='latlonglat[]' value='{{lat}}'>
-  <input type='hidden' name='latlonglong[]' value='{{long}}'>
-  <script src="../public/template3.js" defer="defer">mapLocation(['latlonglat'], ['latlonglong'])</script>
+  <input type='hidden' id='lat' name='lat' value='{{lat}}'/>
+  <input type='hidden' id='long' name='long' value='{{long}}'/>
+  <script src="../public/template3.js" defer="defer"> </script>
+  <script>
+  // if this doesn't work grab the above field values and pass to this function
+    mapLocation({{lat}}, {{long}})</script>
 </html>
