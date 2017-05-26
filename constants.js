@@ -1,4 +1,5 @@
 module.exports = {
+  "ENVIRONMENT": "dev",
   "EE_PORT": 80,
   "EE_PORT_SSL": 443,
   "EE_ABOUT": "This is the Directory Experience EndPoint.",
@@ -6,10 +7,10 @@ module.exports = {
   "SEARCH_SERVICE_PORT": 19096,
   "SEARCH_SERVICE_HOST": "http://aw-lx0095",
 
+  "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
   "MAIN_PRESENTER_TEMPLATE": "main",
-  "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
-
+  "ABOUT_TEMPLATE": "about",
   "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/provider-details.html",
 

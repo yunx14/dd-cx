@@ -4,8 +4,8 @@ var path = require("path");
 var https = require("https");
     Handlebars = require("handlebars");
 
-const ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
 const CONSTANTS = require("./constants.js");
+    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
 var mainHelpers = require("./server/mainHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
@@ -14,8 +14,6 @@ var logger = new Logger();
 
 //patch partials
 Handlebars.partials = Handlebars.templates;
-
-
 
 var app = express();
 
@@ -57,9 +55,9 @@ app.get("/", testHelpers.getAbout);
 app.get("/about", testHelpers.getAbout);
 
 // Fire up servers and print friendly message to console
-https.createServer(options, app).listen(CONSTANTS.EE_PORT_SSL, function () {
-  logger.log("(" + ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[ENVIRONMENT].EE_PORT_SSL);
+https.createServer(options, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
+  logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
 });
-app.listen(CONSTANTS.EE_PORT, function () {
-  logger.log("(" + ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[ENVIRONMENT].EE_PORT);
+app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
+  logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);
 });

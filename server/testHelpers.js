@@ -19,11 +19,14 @@ module.exports = {
   getAbout: function(req, res) {
     logger.log("GET /ABOUT");
     var about = new MainPresenter(
-      "about",
+      CONSTANTS.ABOUT_TEMPLATE,
       {},
-      { "ee-port": CONSTANTS.EE_PORT,
-      "ee-port-ssl": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT
-      "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
+      {
+        "environment": CONSTANTS.ENVIRONMENT,
+        "ee-port": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT,
+        "ee-port-ssl": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL,
+        "search-service-host": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST + ":" + CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT
+      },
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(about.render());
