@@ -1,8 +1,8 @@
 // Detail View Page Logic
 
 var map = document.getElementById('map'),
-    queryString = {},
-    query = window.location.search.substring(1);
+    latitude = $("#latitude").val(),
+    longitude = $("#longitude").val();
 
 function mapLocation(lat, lng) {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -23,11 +23,5 @@ function mapLocation(lat, lng) {
 }
 
 window.onload = function() {
-  var vars = query.split("&");
-  for (var i=0;i<vars.length;i++) {
-     var pair = vars[i].split("=");
-     queryString[pair[0]] = decodeURIComponent(pair[1]);
-  }
-
-  mapLocation(queryString.lat, queryString.long);
+  mapLocation(latitude, longitude);
 };
