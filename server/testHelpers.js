@@ -17,7 +17,9 @@ module.exports = {
     var about = new MainPresenter(
       "about",
       {},
-      { "ee-port": CONSTANTS.EE_PORT, "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
+      { "ee-port": CONSTANTS.EE_PORT,
+      "ee-port-ssl": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT
+      "search-service-host": CONSTANTS.SEARCH_SERVICE_HOST + ":" + CONSTANTS.SEARCH_SERVICE_PORT},
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(about.render());
