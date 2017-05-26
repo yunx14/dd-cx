@@ -12,10 +12,6 @@ var Logger = require("../utility/logger.js");
 var logger = new Logger();
 
 module.exports = {
-  getHome: function(req, res) {
-    logger.log("GET / -> ABOUT");
-    res.render("about");
-  },
   getAbout: function(req, res) {
     logger.log("GET /ABOUT");
     var about = new MainPresenter(
@@ -25,6 +21,5 @@ module.exports = {
       CONSTANTS.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(about.render());
-    //res.send(CONSTANTS.EE_ABOUT);
   }
 };
