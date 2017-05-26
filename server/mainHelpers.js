@@ -41,9 +41,13 @@ module.exports = {
   postDirectorySearch: function(req, res) {
     logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
-    var query = parseLocation(req.body.location);
+    var query = {};
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
+    }
+    if (req.body.latitude && req.body.longitude) {
+      query.lat = Number(req.body.latitude);
+      query.long = Number(req.body.longitude);
     }
     if (req.body.specialty) {
       query.specialty = req.body.specialty;
@@ -56,8 +60,8 @@ module.exports = {
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long) {
       var id = req.query.providerKey;
-      var lat = req.query.lat;
-      var long = req.query.long;
+      var lat = Number(req.query.lat);
+      var long = Number(req.query.long);
 
       var provider = new Model();
       if (req.query) {
