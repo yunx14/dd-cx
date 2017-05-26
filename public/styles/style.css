@@ -1467,6 +1467,13 @@ header .logo-container {
     .provider .data__row .data__row--cell {
       padding-left: 1rem; }
 
+/*------------------------------------*    Error Messages
+\*------------------------------------*/
+.refine__menu {
+  display: none; }
+  .refine__menu.open {
+    display: block; }
+
 /*------------------------------------*    $LAYOUT
 \*------------------------------------*/
 /*------------------------------------*    #LAYOUT

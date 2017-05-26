@@ -1,6 +1,8 @@
 // Detail View Page Logic
 
-var map = document.getElementById('map');
+var map = document.getElementById('map'),
+    latitude = $("#latitude").text(),
+    longitude = $("#longitude").text();
 
 function mapLocation(lat, lng) {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -19,3 +21,7 @@ function mapLocation(lat, lng) {
     map: map
   });
 }
+
+window.onload = function() {
+  mapLocation(latitude, longitude);
+};
