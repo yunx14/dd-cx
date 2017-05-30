@@ -33,7 +33,7 @@ module.exports = {
             {"script": "geocoder.js"}
           ]
         },
-        CONSTANTS.MAIN_PRESENTER_TEMPLATE
+        CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
       res.status(200).send(directorySearchPresenter.render());
     }
@@ -88,7 +88,7 @@ module.exports = {
             {"script": "template3.js"}
           ]
         },
-        CONSTANTS.MAIN_PRESENTER_TEMPLATE
+        CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
 
       provider.fetch({},
@@ -151,7 +151,7 @@ var getListsResults = function(query, req, res) {
         {"script": "geocoder.js"}
       ]
     },
-    CONSTANTS.MAIN_PRESENTER_TEMPLATE
+    CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
 
   providers.fetch({},

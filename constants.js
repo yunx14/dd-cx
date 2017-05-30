@@ -9,12 +9,12 @@ module.exports = {
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
-  "MAIN_PRESENTER_TEMPLATE": "main",
   "ABOUT_TEMPLATE": "about",
   "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/provider-details.html",
 
   "TEMPLATES": {
+    "MAIN_PRESENTER_TEMPLATE": "main",
     "SEARCH_RESULTS": "pages-directorySearchResults",
     "DETAILS": "pages-providerDetails"
     "SEARCH": "pages-directorySearch"
