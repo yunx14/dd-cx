@@ -21,7 +21,7 @@ module.exports = {
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
-        "pages-directorySearch",
+        CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
@@ -74,7 +74,7 @@ module.exports = {
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new MainPresenter(
-        "pages-providerDetails",
+        CONSTANTS.TEMPLATES.DETAILS,
         ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
@@ -133,7 +133,7 @@ var getListsResults = function(query, req, res) {
   providers.query = query;
 
   var providersPresenter = new MainPresenter(
-    "pages-directorySearchResults",
+    CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,

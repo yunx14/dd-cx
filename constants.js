@@ -14,6 +14,12 @@ module.exports = {
   "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/provider-details.html",
 
+  "TEMPLATES": {
+    "SEARCH_RESULTS": "pages-directorySearchResults",
+    "DETAILS": "pages-providerDetails"
+    "SEARCH": "pages-directorySearch"
+
+  },
   "ERROR_INVALID_ZIP": "/errorInvalidZip.html",
   "ERROR_NO_RESULTS": "/errorNoResults.html",
   "ERROR_TIMEOUT": "/errorTimeOut.html",
