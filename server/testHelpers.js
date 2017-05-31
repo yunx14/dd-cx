@@ -19,11 +19,12 @@ module.exports = {
       {},
       {
         "environment": CONSTANTS.ENVIRONMENT,
+        "ssl_enabled": CONSTANTS.SSL_ENABLED,
         "ee-port": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT,
         "ee-port-ssl": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL,
         "search-service-host": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST + ":" + CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT
       },
-      CONSTANTS.MAIN_PRESENTER_TEMPLATE
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(about.render());
   }

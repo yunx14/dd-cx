@@ -58,6 +58,7 @@ app.get("/about", testHelpers.getAbout);
 try {
   var privatekey = fs.readFileSync("/opt/docker/certs/node.key");
   var cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  CONSTANTS.SSL_ENABLED = true;
 
   // Fire up servers and print friendly message to console
   https.createServer({ "key": privatekey, "cert": cert }, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
@@ -65,6 +66,7 @@ try {
   });
 } catch (e) {
   logger.log("Could not read certs for https!");
+  CONSTANTS.SSL_ENABLED = false;
 }
 
 app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {

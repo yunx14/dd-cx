@@ -4,6 +4,9 @@
 <hr/>
 <p>Environment: {{environment}}</p>
 <p>HTTP Port: {{ee-port}}</p>
+{{#if ssl_enabled}}
 <p>HTTPS Port: {{ee-port-ssl}}</p>
-
+{{else}}
+<p>HTTPS is not enabled.</p>
+{{/if}}
 <p>Search Service: {{search-service-host}}</p>

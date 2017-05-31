@@ -19,7 +19,7 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError.errorMessages.invalidAddress,
       {},
-      CONSTANTS.MAIN_PRESENTER_TEMPLATE
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -30,7 +30,7 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError.errorMessages.noResults,
       {},
-      CONSTANTS.MAIN_PRESENTER_TEMPLATE
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -41,7 +41,7 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError.errorMessages.serverTimeout,
       {},
-      CONSTANTS.MAIN_PRESENTER_TEMPLATE
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   },
@@ -52,7 +52,7 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError.errorMessages.servicesDown,
       {},
-      CONSTANTS.MAIN_PRESENTER_TEMPLATE
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
     res.status(200).send(errorPresenter.render());
   }

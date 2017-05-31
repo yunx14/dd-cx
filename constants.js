@@ -1,5 +1,6 @@
 module.exports = {
   "ENVIRONMENT": "dev",
+  "SSL_ENABLED": true,
   "EE_PORT": 80,
   "EE_PORT_SSL": 443,
   "EE_ABOUT": "This is the Directory Experience EndPoint.",
