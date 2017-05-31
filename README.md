@@ -14,7 +14,7 @@ API documentation
 Searches the Directory by location
 
 ### /provider-details.html?providerKey=...&lat=...&long=...
-Provider details where
-providerKey = the key used for identifying the provider
-lat = latitude from location (optional)
-long = longitude from location (optional)
+Provider details where:
+  providerKey = the key used for identifying the provider
+  lat = latitude from location (optional)
+  long = longitude from location (optional)
