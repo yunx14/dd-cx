@@ -117,14 +117,6 @@ module.exports = {
   }
 };
 
-var parseLocation = function(location) {
-  var arrayLocation = location.split(",");
-  var result = {};
-  result.lat = Number(arrayLocation[0]);
-  result.long = Number(arrayLocation[1]);
-  return result;
-};
-
 var getListsResults = function(query, req, res) {
   var providers = new SolrCollection("providers");
   providers.host = CONSTANTS.SEARCH_SERVICE_HOST;
