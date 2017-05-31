@@ -53,6 +53,26 @@ Presenter.prototype.mergePropertyMap = function(myMap) {
     this.propertyMap[key] = myMap[key];
   }
 };
+
+/**
+ * @method setProperty Sets a property in property map
+ * @param key {string} the key
+ * @param value {object} the value
+ * @memberof Presenter
+ */
+Presenter.prototype.setProperty = function(key, value) {
+    this.propertyMap[key] = value;
+};
+/**
+ * @method getProperty Gets a property in property map
+ * @param key {string} the key
+ * @returns {object} Returns the value from the property map
+ * @memberof Presenter
+ */
+Presenter.prototype.getProperty = function(key) {
+    return this.propertyMap[key];
+};
+
 /**
  * @method enrichData Enriches the ViewModel with data passed in
  * @param data {array} Collection data to enrich the ViewModel

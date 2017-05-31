@@ -94,7 +94,9 @@ module.exports = {
       provider.fetch({},
         function(code, data) {
           // success
-          providerPresenter.mergePropertyMap(data);
+          if (data) {
+            providerPresenter.mergePropertyMap(data);
+          }
           res.status(code).send(providerPresenter.render());
         },
         function(code, data) {
