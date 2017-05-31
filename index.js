@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var https = require("https");
+var fs = require("fs");
     Handlebars = require("handlebars");
 
 const CONSTANTS = require("./constants.js");
@@ -54,10 +55,18 @@ app.get(CONSTANTS.ERROR_DOWN, errorHelpers.errorDown);
 app.get("/", testHelpers.getAbout);
 app.get("/about", testHelpers.getAbout);
 
-// Fire up servers and print friendly message to console
-https.createServer(options, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
-  logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
-});
+try {
+  var privatekey = fs.readFileSync("/opt/docker/certs/node.key");
+  var cert = fs.readFileSync("/opt/docker/certs/node.cer");
+
+  // Fire up servers and print friendly message to console
+  https.createServer({ "key": privatekey, "cert": cert }, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
+    logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
+  });
+} catch (e) {
+  logger.log("Could not read certs for https!");
+}
+
 app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
   logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);
 });
