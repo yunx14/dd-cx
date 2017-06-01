@@ -1,16 +1,16 @@
 /**
- * A static utility class
- * @class Utils
- * @example Utils.formatQuery({ ... });
- */
+* A static utility class
+* @class Utils
+* @example Utils.formatQuery({ ... });
+*/
 module.exports = Utils = {
   /**
-   * @method formatQuery formats query object to query string
-   * @param query {object}
-   * @memberof Utils
-   * @returns {string} web standards query string
-   */
-  "formatQuery": function(query) {
+  * @method formatQuery formats query object to query string
+  * @param query {object}
+  * @memberof Utils
+  * @returns {string} web standards query string
+  */
+  formatQuery: function(query) {
     var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
     for (i = 0; i < l; i++) {
       if (typeof query[keys[i]] !== "function" && Array.isArray(query[keys[i]])) {
@@ -29,5 +29,19 @@ module.exports = Utils = {
       }
     }
     return formatQuery.slice(0, -1);
+  },
+  formatDistance: function(distance) {
+    if (distance < 0.1) {
+      distance = "<0.1";
+    }
+  },
+  formatData: function(data) {
+    if (Array.isArray(data)) {
+      for (var i = 0; i < data.length; i++) {
+        formatDistance(data[i].distance);
+      }
+    } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
+      formatDistance(data.distance);
+    }
   }
 }

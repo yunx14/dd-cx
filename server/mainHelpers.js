@@ -95,6 +95,9 @@ module.exports = {
         function(code, data) {
           // success
           if (data) {
+            if (data.distance) {
+              data.distance = Utils.formatDistance(data.distance);
+            }
             providerPresenter.mergePropertyMap(data);
           }
           res.status(code).send(providerPresenter.render());
