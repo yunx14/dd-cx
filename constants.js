@@ -39,8 +39,8 @@ module.exports = {
   "mot": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 19096,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095"
+    "SEARCH_SERVICE_PORT": 8443,
+    "SEARCH_SERVICE_HOST": "https://mot-cxservices.ut.dentegra.lab"
   },
   "pit": {
     "EE_PORT": 80,
