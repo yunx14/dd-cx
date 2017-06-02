@@ -17,7 +17,14 @@ module.exports = {
 
     if (req.query && req.query.lat && req.query.long) {
       logger.log("query " + JSON.stringify(req.query));
-      getListsResults(req.query, req, res);
+      var inputLat = req.query.lat;
+      var inputLong = req.query.long;
+      if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
+        console.log("comone");
+        getListsResults(req.query, req, res);
+      } else {
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
@@ -40,7 +47,6 @@ module.exports = {
   },
   postDirectorySearch: function(req, res) {
     logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-
     var query = {};
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
@@ -55,7 +61,7 @@ module.exports = {
     if (query && query.lat && query.long) {
       res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
     } else {
-      res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
     // getListsResults(query, req, res);
   },
@@ -120,7 +126,7 @@ module.exports = {
       );
     } else {
       // TODO: need generic bad request page
-      logger.log("No params or bad provider Key " + JSON.stringify(req.query));
+      logger.log("No params or bad provider Key " + JSON.stringify(req.params));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   }
