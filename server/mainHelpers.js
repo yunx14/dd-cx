@@ -20,7 +20,6 @@ module.exports = {
       var inputLat = req.query.lat;
       var inputLong = req.query.long;
       if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
-        console.log("comone");
         getListsResults(req.query, req, res);
       } else {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
