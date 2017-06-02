@@ -95,7 +95,7 @@ module.exports = {
         function(code, data) {
           // success
           if (data) {
-            if (data.distance) {
+            if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
             }
             providerPresenter.mergePropertyMap(data);
