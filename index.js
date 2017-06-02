@@ -10,8 +10,8 @@ const CONSTANTS = require("./constants.js");
 var mainHelpers = require("./server/mainHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
-var Logger = require("./utility/logger.js");
-var logger = new Logger();
+var logger = require("./utility/logger.js");
+//var logger = new Logger();
 
 //patch partials
 Handlebars.partials = Handlebars.templates;

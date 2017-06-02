@@ -1,9 +1,6 @@
 // Abstract Collection
 var http = require("http");
 var Utils = require("../utility/utils.js");
-var Logger = require("../utility/logger.js");
-
-var logger = new Logger();
 
 /**
  * A collection class for use of holding and retrieving models
@@ -70,23 +67,23 @@ Collection.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
-  logger.log("Query " + JSON.stringify(options.query));
+  //logger.log("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
-      logger.log("Fetched Data! " + status);
+      //logger.log("Fetched Data! " + status);
     }
   }
   if (!error) {
     error = function(e) {
-      logger.log("Failed to fetched Data! " + e);
+      //logger.log("Failed to fetched Data! " + e);
     }
   }
 
   const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
-  logger.log("uri " + uri);
+  //logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
     var status = res.statusCode;
-    logger.log("STATUS: " + status);
+    //logger.log("STATUS: " + status);
 
     if (status > 399) {
       error(status, res);
@@ -100,11 +97,11 @@ Collection.prototype.fetch = function(options, success, error) {
         try {
           data = JSON.parse(buffer);
         } catch(e) {
-          logger.log("Exception: " + e);
+          //logger.log("Exception: " + e);
           data = {};
         }
         this.attributes = data;
-        logger.log("calling success");
+        //logger.log("calling success");
         success(status, data);
       });
     }
