@@ -34,6 +34,7 @@ module.exports = Utils = {
     if (distance < 0.1) {
       return "<0.1";
     }
+    return distance;
   },
   formatData: function(data) {
     var formattedData = data;
@@ -44,5 +45,6 @@ module.exports = Utils = {
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
       this.formatDistance(data.distance);
     }
+    return formattedData;
   }
 }
