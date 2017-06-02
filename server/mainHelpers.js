@@ -120,7 +120,7 @@ module.exports = {
       );
     } else {
       // TODO: need generic bad request page
-      logger.log("No params or bad provider Key " + JSON.stringify(req.params));
+      logger.log("No params or bad provider Key " + JSON.stringify(req.query));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   }
