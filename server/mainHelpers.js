@@ -69,8 +69,8 @@ module.exports = {
         provider.query = req.query;
       }
 
-      provider.host = CONSTANTS.SEARCH_SERVICE_HOST;
-      provider.port = CONSTANTS.SEARCH_SERVICE_PORT;
+      provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+      provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
       provider.path = "/providers/" + id + Utils.formatQuery({"lat": lat, "long": long});
 
       var providerPresenter = new MainPresenter(
@@ -124,8 +124,8 @@ module.exports = {
 
 var getListsResults = function(query, req, res) {
   var providers = new SolrCollection("providers");
-  providers.host = CONSTANTS.SEARCH_SERVICE_HOST;
-  providers.port = CONSTANTS.SEARCH_SERVICE_PORT;
+  providers.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+  providers.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
   providers.path = "/providers";
   providers.query = query;
 

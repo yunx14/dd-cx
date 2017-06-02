@@ -3,9 +3,6 @@ module.exports = {
   "SSL_ENABLED": true,
   "EE_ABOUT": "This is the Directory Experience EndPoint.",
 
-  "SEARCH_SERVICE_PORT": 19096,
-  "SEARCH_SERVICE_HOST": "http://aw-lx0095",
-
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
   "ABOUT_TEMPLATE": "about",
