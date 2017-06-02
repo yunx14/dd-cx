@@ -86,7 +86,7 @@ Model.prototype.fetch = function(options, success, error) {
   }
 
   var uri = options.host + ":" + String(options.port) + options.path;
-  logger.log("uri " + uri);
+  //logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
     //logger.log("STATUS: " + res.statusCode);
     // Buffer the body entirely for processing as a whole.
