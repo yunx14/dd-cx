@@ -39,10 +39,10 @@ module.exports = Utils = {
     var formattedData = data;
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        formattedData[i].distance = formatDistance(data[i].distance);
+        formattedData[i].distance = this.formatDistance(data[i].distance);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
-      formatDistance(data.distance);
+      this.formatDistance(data.distance);
     }
   }
 }
