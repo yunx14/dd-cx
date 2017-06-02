@@ -52,7 +52,11 @@ module.exports = {
     if (req.body.specialty) {
       query.specialty = req.body.specialty;
     }
-    res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    if (query && query.lat && query.long) {
+      res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    } else {
+      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    }
     // getListsResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
