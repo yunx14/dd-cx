@@ -23,8 +23,7 @@
     "filelogger": "^1.0.3"
   },
   "devDependencies": {
-    "frisby": "^0.8.5",
-    "jasmine-node": "^1.3.1",
+    "jasmine-node": "^2.0.0",
     "jsdoc": "*"
   }
 }
