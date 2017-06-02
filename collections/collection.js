@@ -1,9 +1,9 @@
 // Abstract Collection
 var http = require("http");
 var Utils = require("../utility/utils.js");
-var Logger = require("../utility/logger.js");
+var logger = require("../utility/logger.js");
 
-var logger = new Logger();
+//var logger = new Logger();
 
 /**
  * A collection class for use of holding and retrieving models

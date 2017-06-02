@@ -1,8 +1,8 @@
 // abstract model
 var http = require("http");
-var Logger = require("../utility/logger.js");
+var logger = require("../utility/logger.js");
 
-var logger = new Logger();
+//var logger = new Logger();
 
 /**
  *  A model class for use of holding and retrieving data

@@ -19,7 +19,8 @@
     "body-parser": "*",
     "express": "^4.14.0",
     "handlebars": "^4.0.0",
-    "express-handlebars": "*"
+    "express-handlebars": "*",
+    "filelogger": "^1.0.3"
   },
   "devDependencies": {
     "frisby": "^0.8.5",

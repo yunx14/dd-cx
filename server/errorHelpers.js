@@ -8,8 +8,8 @@ var AtomicPower = require("../views/atomicPower.js");
 var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
-var Logger = require("../utility/logger.js");
-var logger = new Logger();
+var logger = require("../utility/logger.js");
+//var logger = new Logger();
 
 module.exports = {
   errorInvalidZip: function(req, res) {
