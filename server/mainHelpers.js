@@ -157,7 +157,7 @@ var getListsResults = function(query, req, res) {
       if (providers.isEmpty()) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
-        res.status(code).send(providersPresenter.render({"providers": providers.toJSON()}));
+        res.status(code).send(providersPresenter.render(providers.toJSON()));
       }
     },
     function(code, data)  {
