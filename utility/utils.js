@@ -32,13 +32,14 @@ module.exports = Utils = {
   },
   formatDistance: function(distance) {
     if (distance < 0.1) {
-      distance = "<0.1";
+      return "<0.1";
     }
   },
   formatData: function(data) {
+    var formattedData = data;
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        formatDistance(data[i].distance);
+        formattedData[i].distance = formatDistance(data[i].distance);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
       formatDistance(data.distance);
