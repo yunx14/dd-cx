@@ -55,7 +55,7 @@ module.exports = {
     if (query && query.lat && query.long) {
       res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
     } else {
-      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
     // getListsResults(query, req, res);
   },
