@@ -17,7 +17,13 @@ module.exports = {
 
     if (req.query && req.query.lat && req.query.long) {
       logger.log("query " + JSON.stringify(req.query));
-      getListsResults(req.query, req, res);
+      var inputLat = req.query.lat;
+      var inputLong = req.query.long;
+      if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
+        getListsResults(req.query, req, res);
+      } else {
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
     } else {
       logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
@@ -40,7 +46,6 @@ module.exports = {
   },
   postDirectorySearch: function(req, res) {
     logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-
     var query = {};
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
@@ -52,7 +57,11 @@ module.exports = {
     if (req.body.specialty) {
       query.specialty = req.body.specialty;
     }
-    res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    if (query && query.lat && query.long) {
+      res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    } else {
+      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    }
     // getListsResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
@@ -95,7 +104,7 @@ module.exports = {
         function(code, data) {
           // success
           if (data) {
-            if (data.distance) {
+            if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
             }
             providerPresenter.mergePropertyMap(data);
@@ -195,7 +204,8 @@ var getListsResults = function(query, req, res) {
       if (providers.isEmpty()) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
-        res.status(code).send(providersPresenter.render(providers.toJSON()));
+        var formattedData = Utils.formatData(providers.toJSON());
+        res.status(code).send(providersPresenter.render(formattedData));
       }
     },
     function(code, data)  {

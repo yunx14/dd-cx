@@ -15,14 +15,6 @@ module.exports = Utils = {
     for (i = 0; i < l; i++) {
       if (typeof query[keys[i]] !== "function" && Array.isArray(query[keys[i]])) {
         var tempVal = query[keys[i]];
-        // for loop method:
-        // var result = "";
-        // for (var j = 0; j < tempVal.length; j++) {
-        //   result = result + String(keys[i]) + "=" + tempVal[j] + "&";
-        // }
-        // formatQuery = formatQuery + result;
-
-        // array.join method:
         formatQuery = formatQuery + String(keys[i]) + "=" + tempVal.join("&" + String(keys[i]) + "=") + "&";
       } else if (typeof query[keys[i]] !== "function") {
         formatQuery = formatQuery + String(keys[i]) + "=" + String(query[keys[i]]) + "&";
@@ -34,15 +26,17 @@ module.exports = Utils = {
     if (distance < 0.1) {
       return "<0.1";
     }
+    return distance;
   },
   formatData: function(data) {
     var formattedData = data;
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
-        formattedData[i].distance = formatDistance(data[i].distance);
+        formattedData[i].distance = this.formatDistance(data[i].distance);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
-      formatDistance(data.distance);
+      this.formatDistance(data.distance);
     }
+    return formattedData;
   }
 }
