@@ -146,7 +146,45 @@ var getListsResults = function(query, req, res) {
         {"script": "jquery.min.js"},
         {"script": "main.js"},
         {"script": "geocoder.js"}
-      ]
+      ],
+      "searchInput": {
+        "field": {
+          "id": "location",
+          "type": "text",
+          "name": "location",
+          "placeholder": "Zip code, city, or address",
+          "label": {
+            "text": ""
+          },
+          "value": "your last entry"
+        }
+      },
+      "hiddenFields": [
+        {
+          "field": {
+            "id": "latitude",
+            "type": "hidden",
+            "name": "latitude",
+            "value": query.lat,
+            "label": {
+              "text": "latitude",
+              "class": "hidden"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "longitude",
+            "type": "hidden",
+            "name": "longitude",
+            "value": query.long,
+            "label": {
+              "text": "longitude",
+              "class": "hidden"
+            }
+          }
+        }
+    ]
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
