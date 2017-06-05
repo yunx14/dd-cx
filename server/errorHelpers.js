@@ -8,12 +8,11 @@ var AtomicPower = require("../views/atomicPower.js");
 var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
-var logger = require("../utility/logger.js");
-//var logger = new Logger();
+var Logger = require("../utility/logger.js");
 
 module.exports = {
   errorInvalidZip: function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
+    Logger.log("GET " + CONSTANTS.ERROR_INVALID_ZIP);
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
@@ -24,7 +23,7 @@ module.exports = {
     res.status(200).send(errorPresenter.render());
   },
   errorNoResults: function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
+    Logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
@@ -35,7 +34,7 @@ module.exports = {
     res.status(200).send(errorPresenter.render());
   },
   errorTimeOut: function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
+    Logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
@@ -46,7 +45,7 @@ module.exports = {
     res.status(200).send(errorPresenter.render());
   },
   errorDown: function(req, res) {
-    logger.log("GET " + CONSTANTS.ERROR_DOWN);
+    Logger.log("GET " + CONSTANTS.ERROR_DOWN);
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",

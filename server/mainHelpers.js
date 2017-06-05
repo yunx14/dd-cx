@@ -8,15 +8,14 @@ var AtomicPower = require("../views/atomicPower.js");
 var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
-var logger = require("../utility/logger.js");
-//var logger = new Logger();
+var Logger = require("../utility/logger.js");
 
 module.exports = {
   getDirectorySearch: function(req, res) {
-    logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
+    Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
     if (req.query && req.query.lat && req.query.long) {
-      logger.log("query " + JSON.stringify(req.query));
+      Logger.log("query " + JSON.stringify(req.query));
       var inputLat = req.query.lat;
       var inputLong = req.query.long;
       if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
@@ -25,7 +24,7 @@ module.exports = {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       }
     } else {
-      logger.log("There is no query, showing empty search page");
+      Logger.log("There is no query, showing empty search page");
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
@@ -45,7 +44,7 @@ module.exports = {
     }
   },
   postDirectorySearch: function(req, res) {
-    logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
+    Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
     var query = {};
     if (req.body) {
       query = req.body;
@@ -65,7 +64,7 @@ module.exports = {
     // getListsResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
-    logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
+    Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long) {
       var id = req.query.providerKey;
@@ -74,7 +73,7 @@ module.exports = {
 
       var provider = new Model();
       if (req.query) {
-        logger.log("query " + JSON.stringify(req.query));
+        Logger.log("query " + JSON.stringify(req.query));
         provider.query = req.query;
       }
 
@@ -113,7 +112,7 @@ module.exports = {
         },
         function(code, data) {
           // error
-          logger.log("ERROR: Failed to request provider: " + code);
+          Logger.log("ERROR: Failed to request provider: " + code);
           if (code === 504) {
             res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
           } else if (code === 400) {
@@ -125,7 +124,7 @@ module.exports = {
       );
     } else {
       // TODO: need generic bad request page
-      logger.log("No params or bad provider Key " + JSON.stringify(req.params));
+      Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   }
@@ -210,7 +209,7 @@ var getListsResults = function(query, req, res) {
     },
     function(code, data)  {
       // error
-      logger.log("ERROR: Failed to request providers: " + code);
+      Logger.log("ERROR: Failed to request providers: " + code);
       if (code === 504) {
         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
       } else if (code === 400) {
