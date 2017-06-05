@@ -47,15 +47,15 @@ module.exports = {
   postDirectorySearch: function(req, res) {
     logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
     var query = {};
-    if (req.body.distance) {
-      query.distance = Number(req.body.distance);
-    }
-    if (req.body.latitude && req.body.longitude) {
-      query.lat = Number(req.body.latitude);
-      query.long = Number(req.body.longitude);
-    }
-    if (req.body.specialty) {
-      query.specialty = req.body.specialty;
+    if (req.body) {
+      query = req.body;
+      if (req.body.distance) {
+        query.distance = Number(req.body.distance);
+      }
+      if (req.body.latitude && req.body.longitude) {
+        query.lat = Number(req.body.latitude);
+        query.long = Number(req.body.longitude);
+      }
     }
     if (query && query.lat && query.long) {
       res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
