@@ -1,5 +1,6 @@
 // Abstract Collection
 var http = require("http");
+var https = require("https");
 var Utils = require("../utility/utils.js");
 
 /**
@@ -9,6 +10,12 @@ var Utils = require("../utility/utils.js");
  */
 var Collection = function() {
 };
+
+/**
+ * @property secure {boolean} Secure (SSL) for use in the Collection's fetch method
+ * @memberof Collection
+ */
+Collection.prototype.secure = false;
 
 /**
  * @property host {string} host for use in the Collection's fetch method
@@ -81,7 +88,11 @@ Collection.prototype.fetch = function(options, success, error) {
 
   const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
   //logger.log("uri " + uri);
-  var req = http.get(uri, function(res) {
+
+  this.secure = (uri.indexOf("https") !== -1);
+
+  var requester = (this.secure) ? https : http;
+  var req = requester.get(uri, function(res) {
     var status = res.statusCode;
     //logger.log("STATUS: " + status);
 
