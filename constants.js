@@ -25,30 +25,35 @@ module.exports = {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19001,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095"
+    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
+    "SEARCH_SERVICE_PATH": "/providers"
   },
   "dit": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19201,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0195"
+    "SEARCH_SERVICE_HOST": "http://aw-lx0195",
+    "SEARCH_SERVICE_PATH": "/providers"
   },
   "mot": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 8443,
-    "SEARCH_SERVICE_HOST": "https://mot-cxservices.ut.dentegra.lab/api"
+    "SEARCH_SERVICE_PORT": 8243,
+    "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
+    "SEARCH_SERVICE_PATH": "/api/cx/providerDirectory/v1/providers"
   },
   "pit": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19096,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095"
+    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
+    "SEARCH_SERVICE_PATH": "/providers"
   },
   "prod": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19096,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095"
+    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
+    "SEARCH_SERVICE_PATH": "/providers"
   }
 };
