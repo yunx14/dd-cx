@@ -8,12 +8,11 @@ var AtomicPower = require("../views/atomicPower.js");
 var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
-var logger = require("../utility/logger.js");
-//var logger = new Logger();
+var Logger = require("../utility/logger.js");
 
 module.exports = {
   getAbout: function(req, res) {
-    logger.log("GET /ABOUT");
+    Logger.log("GET /ABOUT");
     var about = new MainPresenter(
       CONSTANTS.ABOUT_TEMPLATE,
       {},
