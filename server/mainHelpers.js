@@ -157,13 +157,6 @@ var getListsResults = function(query, req, res) {
       ],
       "searchInput": {
         "field": {
-          "id": "location",
-          "type": "text",
-          "name": "location",
-          "placeholder": "Zip code, city, or address",
-          "label": {
-            "text": ""
-          },
           "value": query.location
         }
       },
