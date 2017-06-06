@@ -157,6 +157,24 @@ var getListsResults = function(query, req, res) {
       ],
       "searchInput": {
         "field": {
+          "value": query.location
+        }
+      },
+      "hiddenFields": [
+        {
+          "field": {
+            "value": query.lat
+          }
+        },
+        {
+          "field": {
+            "value": query.long
+          }
+        }
+      ]
+      /*
+      "searchInput": {
+        "field": {
           "id": "location",
           "type": "text",
           "name": "location",
@@ -192,7 +210,7 @@ var getListsResults = function(query, req, res) {
             }
           }
         }
-    ]
+      ]*/
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );

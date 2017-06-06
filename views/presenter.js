@@ -48,10 +48,12 @@ Presenter.prototype.setPropertyMap = function(myMap) {
  * @memberof Presenter
  */
 Presenter.prototype.mergePropertyMap = function(myMap) {
-  var key = null;
-  for (key in myMap) {
+  var fullData = {};
+  Object.assign(fullData, this.propertyMap, myMap);
+  /*for (key in myMap) {
     this.propertyMap[key] = myMap[key];
-  }
+  }*/
+  this.propertyMap = fullData;
 };
 
 /**
@@ -81,15 +83,16 @@ Presenter.prototype.getProperty = function(key) {
  */
 Presenter.prototype.enrichData = function(data) {
   if (data && this.viewModel) {
-    var fullData = this.viewModel, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
+    var fullData = {}, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
+    Object.assign(fullData, this.propertyMap, this.viewModel);
 
     for (i = 0; i < l; i++) {
       keyName = k[i];
 
       if (this.propertyMap[keyName] === CONSTANTS.VIEW_MODEL_COLLECTION_KEY) {
         fullData[keyName] = data;
-      } else {
-        fullData[keyName] = this.propertyMap[keyName];
+      /*} else {
+        fullData[keyName] = this.propertyMap[keyName];*/
       }
     }
     return fullData;
