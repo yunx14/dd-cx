@@ -84,7 +84,7 @@ Presenter.prototype.getProperty = function(key) {
 Presenter.prototype.enrichData = function(data) {
   if (data && this.viewModel) {
     var fullData = {}, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
-    Object.assign(fullData, this.propertyMap, this.viewModel);
+    Object.assign(fullData, this.viewModel, this.propertyMap);
 
     for (i = 0; i < l; i++) {
       keyName = k[i];
