@@ -30,7 +30,7 @@ module.exports = {
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheet": "../styles/style.css",
+          "stylesheets": [{ "stylesheet": "../styles/style.css", }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
@@ -89,7 +89,7 @@ module.exports = {
           "lat": lat,
           "long": long,
           "title": "Provider Detail",
-          "stylesheet": "../styles/style.css",
+          "stylesheets": [{ "stylesheet": "../styles/style.css", }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
@@ -148,7 +148,7 @@ var getListsResults = function(query, req, res) {
       "distance": query.distance,
       "specialty": query.specialty,
       "title": "Provider Directory Search Results",
-      "stylesheet": "../styles/style.css",
+      "stylesheets": [{ "stylesheet": "../styles/style.css", }],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},

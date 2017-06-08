@@ -1,12 +1,14 @@
-<h1>Welcome</h1>
-<h2>This is the Provider Directory Search <em>Experience EndPoint</em></h2>
-<h3>Runtime Details</h3>
-<hr/>
-<p>Environment: {{environment}}</p>
-<p>HTTP Port: {{ee-port}}</p>
-{{#if ssl_enabled}}
-<p>HTTPS Port: {{ee-port-ssl}}</p>
-{{else}}
-<p>HTTPS is not enabled.</p>
-{{/if}}
-<p>Search Service: {{search-service-host}}</p>
+<main>
+  <h1>Welcome</h1>
+  <h2>This is the Provider Directory Search <em>Experience EndPoint</em></h2>
+  <h3>Runtime Details</h3>
+  <hr/>
+  <p>Environment: {{environment}}</p>
+  <p>HTTP Port: {{ee-port}}</p>
+  {{#if ssl_enabled}}
+  <p>HTTPS Port: {{ee-port-ssl}}</p>
+  {{else}}
+  <p>HTTPS is not enabled.</p>
+  {{/if}}
+  <p>Search Service: {{search-service-host}}</p>
+</main>
