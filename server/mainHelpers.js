@@ -30,7 +30,7 @@ module.exports = {
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheets": [{ "stylesheet": "../styles/style.css", }],
+          "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
@@ -89,7 +89,7 @@ module.exports = {
           "lat": lat,
           "long": long,
           "title": "Provider Detail",
-          "stylesheets": [{ "stylesheet": "../styles/style.css", }],
+          "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
@@ -148,7 +148,7 @@ var getListsResults = function(query, req, res) {
       "distance": query.distance,
       "specialty": query.specialty,
       "title": "Provider Directory Search Results",
-      "stylesheets": [{ "stylesheet": "../styles/style.css", }],
+      "stylesheets": [{ "stylesheet": "../styles/style.css" }],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},
@@ -196,6 +196,10 @@ var getListsResults = function(query, req, res) {
       if (providers.isEmpty()) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
+        providersPresenter.propertyMap.total = providers.total;
+        providersPresenter.propertyMap.totalPages = providers.totalPages;
+        providersPresenter.propertyMap.pageSize = providers.pageSize;
+        providersPresenter.propertyMap.currentPage = providers.currentPage;
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
       }
