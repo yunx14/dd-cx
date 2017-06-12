@@ -87,7 +87,7 @@ Collection.prototype.fetch = function(options, success, error) {
   }
 
   const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
-  //logger.log("uri " + uri);
+  console.log("uri " + uri);
 
   this.secure = (uri.indexOf("https") !== -1);
 

@@ -51,9 +51,9 @@ module.exports = {
       if (req.body.distance) {
         query.distance = Number(req.body.distance);
       }
-      if (req.body.latitude && req.body.longitude) {
-        query.lat = Number(req.body.latitude);
-        query.long = Number(req.body.longitude);
+      if (req.body.lat && req.body.long) {
+        query.lat = Number(req.body.lat);
+        query.long = Number(req.body.long);
       }
     }
     if (query && query.lat && query.long) {
@@ -165,7 +165,7 @@ var getListsResults = function(query, req, res) {
           "field": {
             "id": "latitude",
             "type": "hidden",
-            "name": "latitude",
+            "name": "lat",
             "value": query.lat,
             "label": {
               "text": "latitude",
@@ -177,7 +177,7 @@ var getListsResults = function(query, req, res) {
           "field": {
             "id": "longitude",
             "type": "hidden",
-            "name": "longitude",
+            "name": "long",
             "value": query.long,
             "label": {
               "text": "longitude",
