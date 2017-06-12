@@ -33,11 +33,7 @@ module.exports = {
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
-<<<<<<< HEAD
-    "SEARCH_SERVICE_PATH": "/api/v1/providers"
-=======
     "SEARCH_SERVICE_PATH": "/provider/v1/providers"
->>>>>>> 96d23ee5612d1c3723924b373fcb695c00302afa
   },
   "mot": {
     "EE_PORT": 80,
