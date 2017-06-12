@@ -1,5 +1,5 @@
 var Logger = require("filelogger"),
-    logger = new Logger("info", "debug", "/var/log/provider-directory.log");
+    logger = new Logger("info", "debug", CONSTANTS.SERVER_LOG_PATH);
 
 module.exports = {
   "log": function(message) {

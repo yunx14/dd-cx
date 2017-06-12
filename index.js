@@ -69,6 +69,8 @@ try {
   CONSTANTS.SSL_ENABLED = false;
 }
 
-app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
+var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
   Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);
 });
+
+CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = server.address().address;

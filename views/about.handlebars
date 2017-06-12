@@ -3,12 +3,16 @@
   <h2>This is the Provider Directory Search <em>Experience EndPoint</em></h2>
   <h3>Runtime Details</h3>
   <hr/>
+  <h4>Endpoint</h4>
   <p>Environment: {{environment}}</p>
-  <p>HTTP Port: {{ee-port}}</p>
+  <p>Host: {{ee-host}}</p>
   {{#if ssl_enabled}}
   <p>HTTPS Port: {{ee-port-ssl}}</p>
   {{else}}
   <p>HTTPS is not enabled.</p>
   {{/if}}
-  <p>Search Service: {{search-service-host}}</p>
+  <br/>
+  <h4>Search Service</h4>
+  <p>Host: {{search-service-host}}</p>
+  <p>API: {{search-service-api}}</p>
 </main>

@@ -3,6 +3,8 @@ module.exports = {
   "SSL_ENABLED": true,
   "EE_ABOUT": "This is the Directory Experience EndPoint.",
 
+  "SERVER_LOG_PATH": "/var/log/provider-directory.log",
+
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
   "ABOUT_TEMPLATE": "about",
