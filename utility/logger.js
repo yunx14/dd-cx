@@ -1,5 +1,6 @@
-var Logger = require("filelogger"),
-    logger = new Logger("info", "debug", CONSTANTS.SERVER_LOG_PATH);
+const CONSTANTS = require("../constants.js"),
+      Logger = require("filelogger"),
+      logger = new Logger("info", "debug", CONSTANTS.SERVER_LOG_PATH);
 
 module.exports = {
   "log": function(message) {
