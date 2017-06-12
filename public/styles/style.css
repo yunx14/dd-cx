@@ -633,17 +633,12 @@ form.form--inline {
   position: relative; }
   .form-element + .form-element {
     margin-top: 0.75rem; }
+  .form-element--spacing-large,
   .form-element + .form-element--spacing-large {
     margin-top: 2.5rem; }
 
 .form-element__checkbox + .form-element__checkbox {
   margin-top: 0.375rem; }
-
-.refine__menu {
-  display: none; }
-
-#refineSearch:checked ~ .refine__menu {
-  display: block; }
 
 /**
  * Fieldset base styles
@@ -2041,6 +2036,12 @@ header .logo-link > img {
     padding: 0 1rem 0.25rem;
     background-color: #563d82; }
 
+.refine__menu {
+  display: none; }
+
+#refineSearch:checked ~ .refine__menu {
+  display: block; }
+
 .form-element--location input, .form-element--keyword input {
   margin-top: 0; }
 
@@ -2049,14 +2050,16 @@ header .logo-link > img {
   left: -999rem;
   visibility: hidden; }
 
+.form-element--keyword input {
+  width: 99%; }
+
 .form-element--location {
   margin-top: 0.25rem !important; }
 
 .form-element--submit {
   position: absolute;
   top: 0;
-  right: 0;
-  margin-right: 0.9rem; }
+  right: 0; }
   .form-element--submit button {
     height: 2.7rem;
     padding: 0.525rem;
