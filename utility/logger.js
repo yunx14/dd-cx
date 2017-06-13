@@ -13,9 +13,9 @@ module.exports = {
     logger.log("debug", message);
   },
   "info": function(message) {
-    logger.info("info", message);
+    logger.log("info", message);
   },
   "warn": function(message) {
-    logger.info("warn", message);
+    logger.log("warn", message);
   }
 };

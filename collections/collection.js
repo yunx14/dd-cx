@@ -2,6 +2,7 @@
 var http = require("http");
 var https = require("https");
 var Utils = require("../utility/utils.js");
+var Logger = require("../utility/logger.js");
 
 /**
  * A collection class for use of holding and retrieving models
@@ -74,27 +75,27 @@ Collection.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
-  //logger.log("Query " + JSON.stringify(options.query));
+  Logger.debug("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
-      //logger.log("Fetched Data! " + status);
+      Logger.debug("Fetched Data! " + status);
     }
   }
   if (!error) {
     error = function(e) {
-      //logger.log("Failed to fetched Data! " + e);
+      Logger.warn("Failed to fetched Data! " + e);
     }
   }
 
   const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
-  console.log("uri " + uri);
+  Logger.debug("uri " + uri);
 
   this.secure = (uri.indexOf("https") !== -1);
 
   var requester = (this.secure) ? https : http;
   var req = requester.get(uri, function(res) {
     var status = res.statusCode;
-    //logger.log("STATUS: " + status);
+    Logger.debug("STATUS: " + status);
 
     if (status > 399) {
       error(status, res);
@@ -108,17 +109,29 @@ Collection.prototype.fetch = function(options, success, error) {
         try {
           data = JSON.parse(buffer);
         } catch(e) {
-          //logger.log("Exception: " + e);
+          Logger.warn("Exception: " + e);
           data = {};
         }
         this.attributes = data;
-        //logger.log("calling success");
+        Logger.debug("calling success");
         success(status, data);
       });
     }
   });
 
   req.on("error", function(e) {
+    var data = {};
+    try {
+      if (typeof e === "object") {
+        data = JSON.stringify(e);
+      } else {
+        data = e;
+      }
+    } catch(ex) {
+      Logger.warn("Exception: " + ex);
+      data = {};
+    }
+    Logger.warn("Exception " + JSON.stringify(data));
     error(500, e);
   });
 };

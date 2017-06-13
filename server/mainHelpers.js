@@ -112,7 +112,7 @@ module.exports = {
         },
         function(code, data) {
           // error
-          Logger.log("ERROR: Failed to request provider: " + code);
+          Logger.warn("ERROR: Failed to request provider: " + code);
           if (code === 504) {
             res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
           } else if (code === 400) {
