@@ -1057,6 +1057,9 @@ dl {
     dl.dl--inline dd + dt {
       margin-top: 0; }
 
+abbr {
+  text-decoration: none; }
+
 /*
 
   UTILITY CLASSES
@@ -2051,7 +2054,11 @@ header .logo-link > img {
   z-index: 10; }
 
 #refineSearch:checked ~ .refine__menu {
-  display: block; }
+  display: block;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0px 5px 10px 0px #cccccc;
+  -moz-box-shadow: 0px 5px 10px 0px #cccccc;
+  box-shadow: 0px 5px 10px 0px #cccccc; }
 
 .form-element--location input, .form-element--keyword input {
   margin-top: 0; }
