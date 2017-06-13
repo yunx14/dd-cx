@@ -66,10 +66,13 @@ module.exports = {
   getProviderDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
-    if (req.query && req.query.providerKey && req.query.lat && req.query.long) {
+    if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
       var id = req.query.providerKey;
       var lat = Number(req.query.lat);
       var long = Number(req.query.long);
+      var location = req.query.location;
+      var keyword = req.query.keyword;
+      var network = req.query.network;
 
       var provider = new Model();
       if (req.query) {
@@ -79,7 +82,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + id + Utils.formatQuery({"lat": lat, "long": long});
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + id + Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
@@ -88,6 +91,9 @@ module.exports = {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "lat": lat,
           "long": long,
+          "location": location,
+          "keyword": keyword,
+          "network": network,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
@@ -147,6 +153,8 @@ var getListsResults = function(query, req, res) {
       "long": query.long,
       "distance": query.distance,
       "specialty": query.specialty,
+      "keyword": query.keyword,
+      "network": query.network,
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "../styles/style.css" }],
       "scripts": [
