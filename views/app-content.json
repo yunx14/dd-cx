@@ -1,0 +1,979 @@
+{
+  "pageHeader": {
+    "homeIcon" : {
+      "icon": {
+        "class": "icon-home",
+        "ariaLabel": "home icon"
+      }
+    },
+    "logInLink": {
+      "anchorLink": {
+        "href": "#go-somewhere",
+        "text": "",
+        "class" : "inverted"
+      }
+    }
+  },
+  "page": {
+    "heading": {
+      "h1": "Find a Dentist",
+      "anchorLink": {
+        "text": "Log in"
+      },
+      "paragraph": " to find dentists in your plan."
+    }
+  },
+  "freeTextInput": {
+    "field": {
+      "id": "keyword",
+      "type": "text",
+      "name": "keyword",
+      "placeholder": "Name, specialty, keyword, etc.",
+      "label": {
+        "text": ""
+      }
+    }
+  },
+  "searchInput": {
+    "field": {
+      "id": "location",
+      "type": "text",
+      "name": "location",
+      "placeholder": "Zip code, city, or address",
+      "label": {
+        "text": ""
+      }
+    }
+  },
+  "refine-search-display": "hidden",
+  "refineSearch": {
+    "text": "Refine Search",
+    "icon": {
+      "class": "icon-down-arrow icon--small",
+      "ariaLabel": "down arrow"
+    }
+  },
+  "distanceSelect": {
+    "select": {
+      "id": "distance",
+      "class": "",
+      "name": "distance",
+      "options": [
+        {
+          "option": {
+            "value": "5",
+            "text": "Within 5 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "10",
+            "text": "Within 10 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "15",
+            "text": "Within 15 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "25",
+            "text": "Within 25 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "35",
+            "text": "Within 35 Miles"
+          }
+        },
+        {
+          "option": {
+            "value": "60",
+            "text": "Within 60 Miles",
+            "valuelessAttribute": "selected"
+          }
+        }
+      ]
+    },
+    "field": {
+      "id": "distance",
+      "label": {
+        "text": "Distance"
+      }
+    }
+  },
+  "filter": {
+    "specialty": {
+      "legend": "Specialty",
+      "inputs": [
+        {
+          "field": {
+            "id": "specialty_General-Dentist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "general",
+            "label": {
+              "text": "General Dentist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Endodontist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "endodontist",
+            "label": {
+              "text": "Endodontist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Oral-Surgeon",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "surgeon",
+            "label": {
+              "text": "Oral Surgeon",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Orthodontist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "orthodontist",
+            "label": {
+              "text": "Orthodontist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Pediatric-Dentist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "pediatric",
+            "label": {
+              "text": "Pediatric Dentist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Periodontist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "periodontist",
+            "label": {
+              "text": "Periodontist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Prosthodontist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "prosthodontist",
+            "label": {
+              "text": "Prosthodontist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Public-Health-Dentist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "public",
+            "label": {
+              "text": "Public Health Dentist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Full-Time-Faculty",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "full-time",
+            "label": {
+              "text": "Full Time Faculty",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Hygienist",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "hygienist",
+            "label": {
+              "text": "Hygienist",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_XR-Laboratory",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "xr",
+            "label": {
+              "text": "XR-Laboratory",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "specialty_Oral-Pathology",
+            "type": "checkbox",
+            "name": "specialty",
+            "value": "pathology",
+            "label": {
+              "text": "Oral Pathology",
+              "class": "form-element__checkbox"
+            }
+          }
+        }
+      ]
+    },
+    "network": {
+      "legend": "Insurance networks",
+      "inputs": [
+        {
+          "field": {
+            "id": "network_PPO",
+            "type": "checkbox",
+            "name": "network",
+            "value": "ppo",
+            "label": {
+              "text": "Delta Dental PPO",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "network_Premier",
+            "type": "checkbox",
+            "name": "network",
+            "value": "premier",
+            "label": {
+              "text": "Delta Dental Premier",
+              "class": "form-element__checkbox"
+            }
+          }
+        },
+        {
+          "field": {
+            "id": "network_DeltaCare",
+            "type": "checkbox",
+            "name": "network",
+            "value": "delta-care",
+            "label": {
+              "text": "DeltaCare USA",
+              "class": "form-element__checkbox"
+            }
+          }
+        }
+      ]
+    },
+    "language": {
+      "legend": "Languages",
+      "select": {
+        "id": "language_filter",
+        "class": "language-filter",
+        "name": "language",
+        "options": [
+          {
+            "option": {
+              "value": "english",
+              "text": "English"
+            }
+          },
+          {
+            "option": {
+              "value": "spanish",
+              "text": "Spanish"
+            }
+          },
+          {
+            "option": {
+              "value": "chinese",
+              "text": "Chinese"
+            }
+          },
+          {
+            "option": {
+              "value": "french",
+              "text": "French"
+            }
+          },
+          {
+            "option": {
+              "value": "german",
+              "text": "German"
+            }
+          },
+          {
+            "option": {
+              "value": "farsi",
+              "text": "Farsi"
+            }
+          },
+          {
+            "option": {
+              "value": "afrikaans",
+              "text": "Afrikaans"
+            }
+          },
+          {
+            "option": {
+              "value": "asl",
+              "text": "American Sign Language"
+            }
+          },
+          {
+            "option": {
+              "value": "amharic",
+              "text": "Amharic"
+            }
+          },
+          {
+            "option": {
+              "value": "arabic",
+              "text": "Arabic"
+            }
+          },
+          {
+            "option": {
+              "value": "aramaic",
+              "text": "Aramaic"
+            }
+          },
+          {
+            "option": {
+              "value": "armenian",
+              "text": "Armenian"
+            }
+          },
+          {
+            "option": {
+              "value": "assyrian",
+              "text": "Assyrian"
+            }
+          },
+          {
+            "option": {
+              "value": "azeri",
+              "text": "Azeri"
+            }
+          },
+          {
+            "option": {
+              "value": "bahasa",
+              "text": "Bahasa"
+            }
+          },
+          {
+            "option": {
+              "value": "bengali",
+              "text": "Bangla/Bengali"
+            }
+          },
+          {
+            "option": {
+              "value": "bosnian",
+              "text": "Bosnian"
+            }
+          },
+          {
+            "option": {
+              "value": "bulgarian",
+              "text": "Bulgarian"
+            }
+          },
+          {
+            "option": {
+              "value": "burmese",
+              "text": "Burmese"
+            }
+          },
+          {
+            "option": {
+              "value": "cambodian",
+              "text": "Cambodian"
+            }
+          },
+          {
+            "option": {
+              "value": "cantonese",
+              "text": "Cantonese"
+            }
+          },
+          {
+            "option": {
+              "value": "chaldean",
+              "text": "Chaldean"
+            }
+          },
+          {
+            "option": {
+              "value": "chiu-chow",
+              "text": "Chiu Chow"
+            }
+          },
+          {
+            "option": {
+              "value": "creole",
+              "text": "Creole"
+            }
+          },
+          {
+            "option": {
+              "value": "croatian",
+              "text": "Croatian"
+            }
+          },
+          {
+            "option": {
+              "value": "czech",
+              "text": "Czech"
+            }
+          },
+          {
+            "option": {
+              "value": "danish",
+              "text": "Danish"
+            }
+          },
+          {
+            "option": {
+              "value": "dari",
+              "text": "Dari"
+            }
+          },
+          {
+            "option": {
+              "value": "dutch",
+              "text": "Dutch"
+            }
+          },
+          {
+            "option": {
+              "value": "east-indian",
+              "text": "East Indian"
+            }
+          },
+          {
+            "option": {
+              "value": "estonian",
+              "text": "Estonian"
+            }
+          },
+          {
+            "option": {
+              "value": "finnish",
+              "text": "Finnish"
+            }
+          },
+          {
+            "option": {
+              "value": "fujianese",
+              "text": "Fujianese"
+            }
+          },
+          {
+            "option": {
+              "value": "fukien",
+              "text": "Fukien Chinese Dialect"
+            }
+          },
+          {
+            "option": {
+              "value": "greek",
+              "text": "Greek"
+            }
+          },
+          {
+            "option": {
+              "value": "gujarati",
+              "text": "Gujarati"
+            }
+          },
+          {
+            "option": {
+              "value": "hebrew",
+              "text": "Hebrew"
+            }
+          },
+          {
+            "option": {
+              "value": "hindi",
+              "text": "Hindi"
+            }
+          },
+          {
+            "option": {
+              "value": "hmong",
+              "text": "Hmong"
+            }
+          },
+          {
+            "option": {
+              "value": "hungarian",
+              "text": "Hungarian"
+            }
+          },
+          {
+            "option": {
+              "value": "ibo",
+              "text": "Ibo"
+            }
+          },
+          {
+            "option": {
+              "value": "icelandic",
+              "text": "Icelandic"
+            }
+          },
+          {
+            "option": {
+              "value": "ilacano",
+              "text": "Ilacano"
+            }
+          },
+          {
+            "option": {
+              "value": "ilocano",
+              "text": "Ilocano"
+            }
+          },
+          {
+            "option": {
+              "value": "indian",
+              "text": "Indian"
+            }
+          },
+          {
+            "option": {
+              "value": "indonesian",
+              "text": "Indonesian"
+            }
+          },
+          {
+            "option": {
+              "value": "iranian",
+              "text": "Iranian"
+            }
+          },
+          {
+            "option": {
+              "value": "gaelic",
+              "text": "Irish Gaelic"
+            }
+          },
+          {
+            "option": {
+              "value": "israeli",
+              "text": "Israeli"
+            }
+          },
+          {
+            "option": {
+              "value": "italian",
+              "text": "Italian"
+            }
+          },
+          {
+            "option": {
+              "value": "japanese",
+              "text": "Japanese"
+            }
+          },
+          {
+            "option": {
+              "value": "kannada",
+              "text": "Kannada"
+            }
+          },
+          {
+            "option": {
+              "value": "karuk",
+              "text": "Karuk"
+            }
+          },
+          {
+            "option": {
+              "value": "korean",
+              "text": "Korean"
+            }
+          },
+          {
+            "option": {
+              "value": "latvian",
+              "text": "Latvian"
+            }
+          },
+          {
+            "option": {
+              "value": "lithuanian",
+              "text": "Lithuanian"
+            }
+          },
+          {
+            "option": {
+              "value": "macedonian",
+              "text": "Macedonian"
+            }
+          },
+          {
+            "option": {
+              "value": "malay",
+              "text": "Malay"
+            }
+          },
+          {
+            "option": {
+              "value": "malayalan",
+              "text": "Malayalan"
+            }
+          },
+          {
+            "option": {
+              "value": "mandarin",
+              "text": "Mandarin"
+            }
+          },
+          {
+            "option": {
+              "value": "marathi",
+              "text": "Marathi"
+            }
+          },
+          {
+            "option": {
+              "value": "melayu",
+              "text": "Melayu"
+            }
+          },
+          {
+            "option": {
+              "value": "mien",
+              "text": "Mien"
+            }
+          },
+          {
+            "option": {
+              "value": "other",
+              "text": "Other"
+            }
+          },
+          {
+            "option": {
+              "value": "other-chinese",
+              "text": "Other Chinese"
+            }
+          },
+          {
+            "option": {
+              "value": "pakistani",
+              "text": "Pakistani"
+            }
+          },
+          {
+            "option": {
+              "value": "pampangan",
+              "text": "Pampangan"
+            }
+          },
+          {
+            "option": {
+              "value": "pangasinan",
+              "text": "Pangasinan"
+            }
+          },
+          {
+            "option": {
+              "value": "panjabi",
+              "text": "Panjabi"
+            }
+          },
+          {
+            "option": {
+              "value": "pashto",
+              "text": "Pashto"
+            }
+          },
+          {
+            "option": {
+              "value": "persian",
+              "text": "Persian"
+            }
+          },
+          {
+            "option": {
+              "value": "polish",
+              "text": "Polish"
+            }
+          },
+          {
+            "option": {
+              "value": "portuguese",
+              "text": "Portuguese"
+            }
+          },
+          {
+            "option": {
+              "value": "punjabi",
+              "text": "Punjabi"
+            }
+          },
+          {
+            "option": {
+              "value": "romanian",
+              "text": "Romanian"
+            }
+          },
+          {
+            "option": {
+              "value": "russian",
+              "text": "Russian"
+            }
+          },
+          {
+            "option": {
+              "value": "samoan",
+              "text": "Samoan"
+            }
+          },
+          {
+            "option": {
+              "value": "serbian",
+              "text": "Serbian"
+            }
+          },
+          {
+            "option": {
+              "value": "shanghainese",
+              "text": "Shanghainese"
+            }
+          },
+          {
+            "option": {
+              "value": "si-up",
+              "text": "Si Up"
+            }
+          },
+          {
+            "option": {
+              "value": "slovak",
+              "text": "Slovak"
+            }
+          },
+          {
+            "option": {
+              "value": "swahili",
+              "text": "Swahili"
+            }
+          },
+          {
+            "option": {
+              "value": "swedish",
+              "text": "Swedish"
+            }
+          },
+          {
+            "option": {
+              "value": "tagalog",
+              "text": "Tagalog"
+            }
+          },
+          {
+            "option": {
+              "value": "tagalog-filipino",
+              "text": "Tagalog/Filipino"
+            }
+          },
+          {
+            "option": {
+              "value": "taishun",
+              "text": "Taishun"
+            }
+          },
+          {
+            "option": {
+              "value": "taiwanese",
+              "text": "Taiwanese"
+            }
+          },
+          {
+            "option": {
+              "value": "tamil",
+              "text": "Tamil"
+            }
+          },
+          {
+            "option": {
+              "value": "telugu",
+              "text": "Telugu"
+            }
+          },
+          {
+            "option": {
+              "value": "thai",
+              "text": "Thai"
+            }
+          },
+          {
+            "option": {
+              "value": "tigrigna",
+              "text": "Tigrigna"
+            }
+          },
+          {
+            "option": {
+              "value": "toi-san",
+              "text": "Toi San Dialect"
+            }
+          },
+          {
+            "option": {
+              "value": "toisanese",
+              "text": "Toisanese"
+            }
+          },
+          {
+            "option": {
+              "value": "turkish",
+              "text": "Turkish"
+            }
+          },
+          {
+            "option": {
+              "value": "ukranian",
+              "text": "Ukranian"
+            }
+          },
+          {
+            "option": {
+              "value": "urdu",
+              "text": "Urdu"
+            }
+          },
+          {
+            "option": {
+              "value": "vietnamese",
+              "text": "Vietnamese"
+            }
+          },
+          {
+            "option": {
+              "value": "Visayan/Cebuano",
+              "text": "Visayan/Cebuano"
+            }
+          },
+          {
+            "option": {
+              "value": "Yiddish",
+              "text": "Yiddish"
+            }
+          },
+          {
+            "option": {
+              "value": "Yugoslavian",
+              "text": "Yugoslavian"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "hiddenFields": [
+    {
+      "field": {
+        "id": "latitude",
+        "type": "hidden",
+        "name": "lat",
+        "label": {
+          "text": "latitude",
+          "class": "hidden"
+        }
+      }
+    },
+    {
+      "field": {
+        "id": "longitude",
+        "type": "hidden",
+        "name": "long",
+        "label": {
+          "text": "longitude",
+          "class": "hidden"
+        }
+      }
+    }
+  ],
+  "searchButton": {
+    "icon": {
+      "class": "icon icon-before icon-search-black",
+      "ariaLabel": "search icon"
+    }
+  },
+  "applyButton": {
+    "button": {
+      "class": "btn--secondary",
+      "text": "Apply",
+      "type": "submit"
+    }
+  },
+  "feedback": {
+    "button": {
+      "class": "btn--feedback",
+      "text": "FEEDBACK"
+    }
+  },
+  "footer": {
+    "contact": {
+      "text": "Need Help?",
+      "number": "844.847.9516"
+    },
+    "navItem": [
+      {
+        "href": "#go-somewhere",
+        "text": "Contact Us"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Language Assistance"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Legal Notices"
+      },
+      {
+        "href": "#go-somewhere",
+        "text": "Privacy"
+      }
+    ],
+    "copyright": "© Delta Dental",
+    "disclaimer": "This site is the home of Delta Dental of California, Delta Dental Insurance Company, Delta Dental of Pennsylvania, Delta Dental of the District of Columbia, Delta Dental of Delaware, Delta Dental of West Virginia, their affiliated companies, and Delta Dental of New York. For other Delta Dental Plans Association member companies, visit the Delta Dental Plans Association website."
+  }
+}
