@@ -17,8 +17,34 @@ Handlebars.partials = Handlebars.templates;
 
 var app = express();
 
+// initialize request and request_options
+var request = require('request');
+
+try {
+  var privatekey = fs.readFileSync("/opt/docker/certs/node.key");
+  var cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  CONSTANTS.SSL_ENABLED = true;
+
+  const global_request_options = {
+    agentOptions: {
+        rejectUnauthorized: false,
+        ca: cert
+      }
+  };
+  global.global_request_options = global_request_options;
+
+} catch (e) {
+  Logger.log("Could not read certs for https!");
+  CONSTANTS.SSL_ENABLED = false;
+}
+
+global.request = request;
+
 // For enabling view caching vs compile and render again
 app.enable("view cache");
+
+//Disabled the 'x-powered-by: Express' Header for security reasons
+app.disable('x-powered-by');
 
 var options = {
   dotfiles: "ignore",
