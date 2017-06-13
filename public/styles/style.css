@@ -2082,6 +2082,8 @@ header .logo-link > img {
 .provider-listing {
   padding-bottom: 1rem;
   border-bottom: 0.0625rem solid #bfbfbf; }
+  .provider-listing + .provider-listing {
+    margin-top: 1rem; }
 
 .provider__aside {
   float: right; }
