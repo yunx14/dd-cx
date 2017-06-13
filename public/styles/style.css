@@ -2005,11 +2005,9 @@ header .logo-link > img {
 /*------------------------------------*    Error Messages
 \*------------------------------------*/
 .error-message {
-  display: block;
-  margin: 1.5rem; }
+  display: block; }
 
 .error-message__header {
-  margin: 1.5rem 0;
   font-size: 1.5rem; }
 
 .error-message__body {
@@ -2028,16 +2026,29 @@ header .logo-link > img {
 
 .provider-form {
   position: relative;
-  margin: 0; }
+  margin: 0 0 -1rem 0; }
   .provider-form .provider-form--refine {
     padding: 0 1rem;
-    background-color: #ffffff; }
+    background-color: #ffffff;
+    position: relative; }
+    .provider-form .provider-form--refine > label {
+      position: absolute;
+      top: -3rem; }
+      .provider-form .provider-form--refine > label > span {
+        color: #ffffff; }
   .provider-form .provider-form--default {
-    padding: 0 1rem 0.25rem;
+    padding: 0 1rem 2rem;
     background-color: #563d82; }
 
 .refine__menu {
-  display: none; }
+  display: none;
+  background-color: #ffffff;
+  padding: 0 1.5rem 1.5rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10; }
 
 #refineSearch:checked ~ .refine__menu {
   display: block; }
