@@ -73,6 +73,8 @@ module.exports = {
       var location = req.query.location;
       var keyword = req.query.keyword;
       var network = req.query.network;
+      var specialty = req.query.specialty;
+      var distance = req.query.distance;
 
       var provider = new Model();
       if (req.query) {
@@ -94,6 +96,8 @@ module.exports = {
           "location": location,
           "keyword": keyword,
           "network": network,
+          "specialty": specialty,
+          "distance": distance,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
