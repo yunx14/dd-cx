@@ -153,6 +153,7 @@ var getListsResults = function(query, req, res) {
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+      "location": query.location,
       "lat": query.lat,
       "long": query.long,
       "distance": query.distance,
