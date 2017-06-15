@@ -101,11 +101,9 @@ Collection.prototype.fetch = function(options, success, error) {
 
   this.secure = (uri.indexOf("https") !== -1);
 
-  var requester = request;// (this.secure) ? https : http;
-
   Logger.debug("Requesting with options: " + JSON.stringify(options));
 
-  let req = requester.get(options, function (err, res, body) {
+  let req = request.get(options, function (err, res, body) {
     Logger.debug("error " + err);
     Logger.debug("res " + res);
     Logger.debug("body " + body);
@@ -113,37 +111,23 @@ Collection.prototype.fetch = function(options, success, error) {
     let status = 200;
 
     if (err) {
-      //error(500, {"error": err});
       Logger.warn("Exception " + err);
-      //return;
       status = 500;
     } else {
       status = (res && res.statusCode) ? res.statusCode : 200;
+      Logger.debug("STATUS: " + status);
 
-
-    Logger.debug("STATUS: " + status);
-
-    /*if (status > 399) {
-      error(status, res);
-    } else {*/
-      // Buffer the body entirely for processing as a whole.
-      //let buffer = "";
-      //res.on("data", function(chunk) {
-        //buffer += chunk;
-      //}).on("end", function() {
-        let data;
-        try {
-          data = body;
-        } catch(e) {
-          Logger.warn("Exception: " + e);
-          data = {};
-        }
-        this.attributes = data;
-        Logger.debug("calling success");
-        success(status, data);
+      let data = {};
+      try {
+        data = JSON.parse(body);
+      } catch(e) {
+        Logger.warn("Exception, data was not in expected format: " + e);
+        // TODO: we need to do something with bad server responses that are not expected or formatted correctly
       }
-    //  });
-    /*}*/
+      this.attributes = data;
+      Logger.debug("calling success");
+      success(status, data);
+    }
   });
 
   req.on("error", function(e) {
