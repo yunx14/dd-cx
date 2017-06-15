@@ -4,6 +4,7 @@ var path = require("path");
 var https = require("https");
 var fs = require("fs");
     Handlebars = require("handlebars");
+var request = require('request');
 
 const CONSTANTS = require("./constants.js");
     CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
@@ -12,29 +13,28 @@ var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
 var Logger = require("./utility/logger.js");
 
+
 //patch partials
 Handlebars.partials = Handlebars.templates;
 
 var app = express();
 
-// initialize request and request_options
-var request = require('request');
+var privatekey = null;
+var cert = null;
+global.global_request_options = {};
 
 try {
-  var privatekey = fs.readFileSync("/opt/docker/certs/node.key");
-  var cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  privatekey = fs.readFileSync("/opt/docker/certs/node.key");
+  cert = fs.readFileSync("/opt/docker/certs/node.cer");
   CONSTANTS.SSL_ENABLED = true;
-
-  const global_request_options = {
+  global.global_request_options = {
     agentOptions: {
         rejectUnauthorized: false,
         ca: cert
       }
   };
-  global.global_request_options = global_request_options;
-
 } catch (e) {
-  Logger.log("Could not read certs for https!");
+  Logger.warn("Could not read certs for https! " + e);
   CONSTANTS.SSL_ENABLED = false;
 }
 
@@ -63,7 +63,6 @@ app.use("/docs",express.static(path.join(__dirname, "jsdoc"), options));
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-
 /* UI Requests */
 
 // template versions
@@ -82,16 +81,16 @@ app.get("/", testHelpers.getAbout);
 app.get("/about", testHelpers.getAbout);
 
 try {
-  var privatekey = fs.readFileSync("/opt/docker/certs/node.key");
-  var cert = fs.readFileSync("/opt/docker/certs/node.cer");
-  CONSTANTS.SSL_ENABLED = true;
+  if (privatekey && cert) {
+    CONSTANTS.SSL_ENABLED = true;
 
-  // Fire up servers and print friendly message to console
-  https.createServer({ "key": privatekey, "cert": cert }, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
-    Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
-  });
+    // Fire up servers and print friendly message to console
+    https.createServer({ "key": privatekey, "cert": cert }, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
+      Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
+    });
+  }
 } catch (e) {
-  Logger.log("Could not read certs for https!");
+  Logger.warn("Could not read certs for https! " + e);
   CONSTANTS.SSL_ENABLED = false;
 }
 

@@ -1,8 +1,10 @@
 // Abstract Collection
-var http = require("http");
-var https = require("https");
+//var http = require("http");
+//var https = require("https");
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
+
+// now using request
 
 /**
  * A collection class for use of holding and retrieving models
@@ -75,6 +77,11 @@ Collection.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
+  // add any request options defined globally in node
+  if (global_request_options && global_request_options.agentOptions) {
+    options.agentOptions = global_request_options.agentOptions;
+  }
+
   Logger.debug("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
@@ -90,24 +97,43 @@ Collection.prototype.fetch = function(options, success, error) {
   const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
   Logger.debug("uri " + uri);
 
+  options.url = uri;
+
   this.secure = (uri.indexOf("https") !== -1);
 
-  var requester = (this.secure) ? https : http;
-  var req = requester.get(uri, function(res) {
-    var status = res.statusCode;
+  var requester = request;// (this.secure) ? https : http;
+
+  Logger.debug("Requesting with options: " + JSON.stringify(options));
+
+  let req = requester.get(options, function (err, res, body) {
+    Logger.debug("error " + err);
+    Logger.debug("res " + res);
+    Logger.debug("body " + body);
+
+    let status = 200;
+
+    if (err) {
+      //error(500, {"error": err});
+      Logger.warn("Exception " + err);
+      //return;
+      status = 500;
+    } else {
+      status = (res && res.statusCode) ? res.statusCode : 200;
+
+
     Logger.debug("STATUS: " + status);
 
-    if (status > 399) {
+    /*if (status > 399) {
       error(status, res);
-    } else {
+    } else {*/
       // Buffer the body entirely for processing as a whole.
-      var buffer = "";
-      res.on("data", function(chunk) {
-        buffer += chunk;
-      }).on("end", function() {
-        var data;
+      //let buffer = "";
+      //res.on("data", function(chunk) {
+        //buffer += chunk;
+      //}).on("end", function() {
+        let data;
         try {
-          data = JSON.parse(buffer);
+          data = body;
         } catch(e) {
           Logger.warn("Exception: " + e);
           data = {};
@@ -115,12 +141,14 @@ Collection.prototype.fetch = function(options, success, error) {
         this.attributes = data;
         Logger.debug("calling success");
         success(status, data);
-      });
-    }
+      }
+    //  });
+    /*}*/
   });
 
   req.on("error", function(e) {
-    var data = {};
+    Logger.debug("Error handler " + e);
+    let data = {};
     try {
       if (typeof e === "object") {
         data = JSON.stringify(e);
