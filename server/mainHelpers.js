@@ -76,6 +76,7 @@ module.exports = {
         keyword: req.query.keyword,
         network: req.query.network,
         specialty: req.query.specialty,
+        language: req.query.language,
         distance: req.query.distance
       };
 
@@ -100,6 +101,7 @@ module.exports = {
           "searchQueryKeyword": searchQuery.keyword,
           "searchQueryNetwork": searchQuery.network,
           "searchQuerySpecialty": searchQuery.specialty,
+          "searchQueryLanguage": searchQuery.language,
           "searchQueryDistance": searchQuery.distance,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "../styles/style.css" }],
@@ -161,6 +163,7 @@ var getListsResults = function(query, req, res) {
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
       "searchQuerySpecialty": query.specialty,
+      "searchQueryLanguage": query.language,
       "searchQueryKeyword": query.keyword,
       "searchQueryNetwork": query.network,
       "title": "Provider Directory Search Results",
