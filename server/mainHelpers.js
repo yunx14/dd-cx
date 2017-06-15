@@ -67,14 +67,18 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var id = req.query.providerKey;
-      var lat = Number(req.query.lat);
-      var long = Number(req.query.long);
-      var location = req.query.location;
-      var keyword = req.query.keyword;
-      var network = req.query.network;
-      var specialty = req.query.specialty;
-      var distance = req.query.distance;
+
+      var searchQuery = {
+        id: req.query.providerKey,
+        lat: Number(req.query.lat),
+        long: Number(req.query.long),
+        location: req.query.location,
+        keyword: req.query.keyword,
+        network: req.query.network,
+        specialty: req.query.specialty,
+        language: req.query.language,
+        distance: req.query.distance
+      };
 
       var provider = new Model();
       if (req.query) {
@@ -84,20 +88,21 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + id + Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQuery.id + Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
         ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
-          "lat": lat,
-          "long": long,
-          "location": location,
-          "keyword": keyword,
-          "network": network,
-          "specialty": specialty,
-          "distance": distance,
+          "searchQueryLat": searchQuery.lat,
+          "searchQueryLong": searchQuery.long,
+          "searchQueryLocation": searchQuery.location,
+          "searchQueryKeyword": searchQuery.keyword,
+          "searchQueryNetwork": searchQuery.network,
+          "searchQuerySpecialty": searchQuery.specialty,
+          "searchQueryLanguage": searchQuery.language,
+          "searchQueryDistance": searchQuery.distance,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
@@ -153,13 +158,14 @@ var getListsResults = function(query, req, res) {
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
-      "location": query.location,
-      "lat": query.lat,
-      "long": query.long,
-      "distance": query.distance,
-      "specialty": query.specialty,
-      "keyword": query.keyword,
-      "network": query.network,
+      "searchQueryLocation": query.location,
+      "searchQueryLat": query.lat,
+      "searchQueryLong": query.long,
+      "searchQueryDistance": query.distance,
+      "searchQuerySpecialty": query.specialty,
+      "searchQueryLanguage": query.language,
+      "searchQueryKeyword": query.keyword,
+      "searchQueryNetwork": query.network,
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "../styles/style.css" }],
       "scripts": [
