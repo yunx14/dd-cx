@@ -7,7 +7,7 @@
     "start": "node index.js",
     "test": "jasmine-node ./test --verbose",
     "build": "browserify ",
-    "docs": "jsdoc ./views ./utility ./collections ./models -r -d ./jsdoc/ -R ./README.md"
+    "docs": "jsdoc ./views ./utility ./collections ./models ./components -r -d ./jsdoc/ -R ./README.md"
   },
   "keywords": [
     "node",
