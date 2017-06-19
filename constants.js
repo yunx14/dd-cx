@@ -42,7 +42,7 @@ module.exports = {
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
-    "SEARCH_SERVICE_PATH": "/api/cx/providerDirectory/v1/providers"
+    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
     /*"SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://rc-lx1621.ut.dentegra.lab",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"*/
