@@ -1,9 +1,5 @@
 // abstract model
 var http = require("http");
-//var logger = require("../utility/logger.js");
-
-//var logger = new Logger();
-
 /**
  *  A model class for use of holding and retrieving data
  * @constructor Model
@@ -86,9 +82,7 @@ Model.prototype.fetch = function(options, success, error) {
   }
 
   var uri = options.host + ":" + String(options.port) + options.path;
-  //logger.log("uri " + uri);
   var req = http.get(uri, function(res) {
-    //logger.log("STATUS: " + res.statusCode);
     // Buffer the body entirely for processing as a whole.
     var buffer = "";
     res.on("data", function(chunk) {
@@ -97,8 +91,6 @@ Model.prototype.fetch = function(options, success, error) {
       try {
         var data = JSON.parse(buffer);
         this.attributes = data;
-
-        //logger.log("data " + JSON.stringify(data));
         success(res.statusCode, data);
       } catch(e) {
         error(e);
