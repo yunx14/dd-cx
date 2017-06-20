@@ -13,46 +13,36 @@ module.exports = PaginationControl = {
   * @returns {array} web standards query string
   */
   render: function(baseURI, current, total) {
-    var vm = [];
-    if (current > 1) {
-      vm = vm.unshift({ "label":  "previous", "URI": baseURI + "page=" + current - 1, "current": false });
-    }
+    var vm = [ { "text":  current, "url": baseURI + "page=" + current, "active": true } ];
 
     if (current > 2) {
-      vm = vm.unshift({ "label":  "...", "URI": baseURI + "page=" + 1, "current": false });
+      vm = vm.unshift({ "text":  "...", "url": "", "active": false });
     }
 
-    if (current === 2) {
-      vm[1] = { "label":  "1", "URI": baseURI + "page=" + 1, "current": false };
+    if (current > 1) {
+      vm = vm.unshift({ "text":  "previous", "url": baseURI + "page=" + current - 1, "active": false });
     }
 
-    var vm = [
-     {
-       "label":  "previous",
-       "URI": baseURI + "page=" + current - 1,
-       "current": false
-     },
-     {
-       "label":  "1",
-       "URI": "x",
-       "current": false
-     },
-     {
-       "label":  "2",
-       "URI": "x",
-       "current": true
-     },
-     {
-       "label":  "3",
-       "URI": "x",
-       "current": false
-     },
-     {
-       "label":  "next",
-       "URI": "x",
-       "current": false
-     }
-   ];
+    if (current < (total + 1)) {
+      vm.push({ "text":  String(current + 1), "url": baseURI + "page=" + current + 1, "active": false });
+    }
+
+    if (current < (total + 2)) {
+      vm.push({ "text":  String(current + 2), "url": baseURI + "page=" + current + 2, "active": false });
+    }
+
+    if (current < (total + 3)) {
+      vm.push({ "text":  "...", "url": "", "active": false });
+    }
+
+    if (total !== current && !(current < (total + 1)) (current < (total + 2))) {
+      vm.push( { "text":  String(total), "url": baseURI + "page=" + total, "active": false } );
+    }
+
+    if (current < (total)) {
+      vm.push({ "text":  "Next", "url": baseURI + "page=" + current + 1, "active": false });
+    }
+
     return vm;
   }
 }
