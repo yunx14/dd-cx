@@ -1,7 +1,9 @@
 // Abstract Collection
-// now using request
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
+
+// now using request
+
 /**
  * A collection class for use of holding and retrieving models
  * @constructor Collection
@@ -87,7 +89,7 @@ Collection.prototype.fetch = function(options, success, error) {
     }
   }
 
-  var uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
+  const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
   Logger.debug("uri " + uri);
 
   options.url = uri;
