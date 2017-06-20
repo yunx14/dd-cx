@@ -76,7 +76,6 @@ Collection.prototype.fetch = function(options, success, error) {
     options.agentOptions = global_request_options.agentOptions;
   }
 
-  Logger.debug("Query " + JSON.stringify(options.query));
   if (!success) {
     success = function(status, data) {
       Logger.debug("Fetched Data! " + status);
@@ -88,19 +87,14 @@ Collection.prototype.fetch = function(options, success, error) {
     }
   }
 
-  const uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
+  var uri = options.host + ":" + String(options.port) + options.path + Utils.formatQuery(options.query);
   Logger.debug("uri " + uri);
 
   options.url = uri;
 
   this.secure = (uri.indexOf("https") !== -1);
 
-  Logger.debug("Requesting with options: " + JSON.stringify(options));
-
   let req = request.get(options, function (err, res, body) {
-    Logger.debug("error " + err);
-    Logger.debug("res " + res);
-    Logger.debug("body " + body);
 
     let status = 200;
 
@@ -115,11 +109,10 @@ Collection.prototype.fetch = function(options, success, error) {
       try {
         data = JSON.parse(body);
       } catch(e) {
-        Logger.warn("Exception, data was not in expected format: " + e);
+        error(e);
         // TODO: we need to do something with bad server responses that are not expected or formatted correctly
       }
       this.attributes = data;
-      Logger.debug("calling success");
       success(status, data);
     }
   });
@@ -141,7 +134,6 @@ Collection.prototype.fetch = function(options, success, error) {
     error(500, e);
   });
 };
-
 /**
  * @method isEmpty Returns true if collection is empty
  * @returns {boolean} true if empty
@@ -150,7 +142,6 @@ Collection.prototype.fetch = function(options, success, error) {
 Collection.prototype.isEmpty = function() {
   return this.attributes.length === 0;
 };
-
 /**
  * @method toString Returns a string representation of the data
  * @returns {string} string representation of the data
@@ -159,7 +150,6 @@ Collection.prototype.isEmpty = function() {
 Collection.prototype.toString = function() {
   return JSON.stringify(this.attributes);
 };
-
 /**
  * @method index Returns a model at a specified index
  * @param i {number} The index of the model
@@ -169,7 +159,6 @@ Collection.prototype.toString = function() {
 Collection.prototype.index = function(i) {
   return (i) ? this.attributes[i] : null;
 };
-
 /**
  * @method toJSON Returns a JSON representation of the data
  * @returns {object} JSON representation of the data
@@ -178,7 +167,6 @@ Collection.prototype.index = function(i) {
 Collection.prototype.toJSON = function() {
   return this.attributes;
 };
-
 /**
  * @method reset resets the collection data
  * @param data {array} The data to set(optional)
