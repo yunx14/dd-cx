@@ -10,6 +10,8 @@ var ViewModel = require("../views/viewModel.js");
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 
+var PaginationControl = require("../components/paginationControl.js");
+
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
@@ -215,17 +217,24 @@ var getListsResults = function(query, req, res) {
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
-
+  if (query.page) {
+    providers.currentPage = query.page;
+  }
   providers.fetch({},
     function(code, data) {
       // success
       if (providers.isEmpty()) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
+
+        var baseURI = "";
+
         providersPresenter.propertyMap.total = providers.total;
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
+        providersPresenter.propertyMap.pagination = PaginationControl.render(baseURI, providers.currentPage, providers.total);
+
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
       }
