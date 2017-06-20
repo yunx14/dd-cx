@@ -70,17 +70,6 @@ Model.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
-  if (!success) {
-    success = function(status, data) {
-      //logger.log("Fetched Data! " + status);
-    }
-  }
-  if (!error) {
-    error = function(e) {
-      //logger.log("Failed to fetched Data! " + e);
-    }
-  }
-
   var uri = options.host + ":" + String(options.port) + options.path;
   var req = http.get(uri, function(res) {
     // Buffer the body entirely for processing as a whole.
