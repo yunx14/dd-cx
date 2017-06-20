@@ -23,15 +23,15 @@ module.exports = PaginationControl = {
       vm = vm.unshift({ "text":  "previous", "url": baseURI + "page=" + current - 1, "active": false });
     }
 
-    if (current < (total + 1)) {
+    if (current + 1 < total) {
       vm.push({ "text":  String(current + 1), "url": baseURI + "page=" + current + 1, "active": false });
     }
 
-    if (current < (total + 2)) {
+    if (current + 2 < total) {
       vm.push({ "text":  String(current + 2), "url": baseURI + "page=" + current + 2, "active": false });
     }
 
-    if (current < (total + 3)) {
+    if (current + 3 < total && (current + 3 !== total)) {
       vm.push({ "text":  "...", "url": "", "active": false });
     }
 
