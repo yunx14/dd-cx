@@ -13,8 +13,18 @@ module.exports = PaginationControl = {
   * @returns {array} web standards query string
   */
   render: function(baseURI, current, total) {
+    var vm = [];
+    if (current > 1) {
+      vm = vm.unshift({ "label":  "previous", "URI": baseURI + "page=" + current - 1, "current": false });
+    }
 
+    if (current > 2) {
+      vm = vm.unshift({ "label":  "...", "URI": baseURI + "page=" + 1, "current": false });
+    }
 
+    if (current === 2) {
+      vm[1] = { "label":  "1", "URI": baseURI + "page=" + 1, "current": false };
+    }
 
     var vm = [
      {
