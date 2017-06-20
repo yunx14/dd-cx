@@ -1,11 +1,7 @@
 // Abstract Collection
-//var http = require("http");
-//var https = require("https");
+// now using request
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
-
-// now using request
-
 /**
  * A collection class for use of holding and retrieving models
  * @constructor Collection
@@ -13,13 +9,11 @@ var Logger = require("../utility/logger.js");
  */
 var Collection = function() {
 };
-
 /**
  * @property secure {boolean} Secure (SSL) for use in the Collection's fetch method
  * @memberof Collection
  */
 Collection.prototype.secure = false;
-
 /**
  * @property host {string} host for use in the Collection's fetch method
  * @memberof Collection

@@ -1,5 +1,4 @@
 var Presenter = require("./presenter.js");
-
 /**
  * A view class for managing presentation and managing view data</br>
  * Designed to use Handlebars as a render engine
@@ -12,7 +11,6 @@ var Presenter = require("./presenter.js");
 var HandlebarsPresenter = function() {
   Presenter.apply(this, arguments);
 };
-
 HandlebarsPresenter.prototype = new Presenter();
 /**
  * @method render Renders the Presenter using Handlebars

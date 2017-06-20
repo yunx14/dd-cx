@@ -1,8 +1,6 @@
 // abstract model
-//var http = require("http");
-//var logger = require("../utility/logger.js");
-
-//var logger = new Logger();
+var Utils = require("../utility/utils.js");
+var Logger = require("../utility/logger.js");
 
 // now using request
 
@@ -174,19 +172,19 @@ Model.prototype.fetch = function(options, success, error) {
 
   if (!success) {
     success = function(status, data) {
-      //logger.log("Fetched Data! " + status);
+      Logger.debug("Fetched Data! " + status);
     }
   }
   if (!error) {
     error = function(e) {
-      //logger.log("Failed to fetched Data! " + e);
+      Logger.warn("Failed to fetched Data! " + e);
     }
   }
 
   var uri = options.host + ":" + String(options.port) + options.path;
-  //logger.log("uri " + uri);
+  Logger.debug("uri " + uri);
+
   var req = http.get(uri, function(res) {
-    //logger.log("STATUS: " + res.statusCode);
     // Buffer the body entirely for processing as a whole.
     var buffer = "";
     res.on("data", function(chunk) {
@@ -195,8 +193,6 @@ Model.prototype.fetch = function(options, success, error) {
       try {
         var data = JSON.parse(buffer);
         this.attributes = data;
-
-        //logger.log("data " + JSON.stringify(data));
         success(res.statusCode, data);
       } catch(e) {
         error(e);

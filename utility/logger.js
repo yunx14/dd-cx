@@ -3,19 +3,19 @@ const CONSTANTS = require("../constants.js"),
       logger = new Logger("info", "debug", CONSTANTS.SERVER_LOG_PATH);
 
 module.exports = {
-  "log": function(message) {
+  log: function(message) {
     logger.log("info", message);
   },
-  "error": function(message) {
+  error: function(message) {
     logger.log("error", message);
   },
-  "debug": function(message) {
+  debug: function(message) {
     logger.log("debug", message);
   },
-  "info": function(message) {
+  info: function(message) {
     logger.log("info", message);
   },
-  "warn": function(message) {
+  warn: function(message) {
     logger.log("warn", message);
   }
 };

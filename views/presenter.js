@@ -1,5 +1,4 @@
 const CONSTANTS = require("../constants.js");
-
 /**
  *  A view class for managing presentation and managing view data
  * @constructor Presenter
@@ -50,12 +49,8 @@ Presenter.prototype.setPropertyMap = function(myMap) {
 Presenter.prototype.mergePropertyMap = function(myMap) {
   var fullData = {};
   Object.assign(fullData, this.propertyMap, myMap);
-  /*for (key in myMap) {
-    this.propertyMap[key] = myMap[key];
-  }*/
   this.propertyMap = fullData;
 };
-
 /**
  * @method setProperty Sets a property in property map
  * @param key {string} the key
@@ -63,7 +58,7 @@ Presenter.prototype.mergePropertyMap = function(myMap) {
  * @memberof Presenter
  */
 Presenter.prototype.setProperty = function(key, value) {
-    this.propertyMap[key] = value;
+  this.propertyMap[key] = value;
 };
 /**
  * @method getProperty Gets a property in property map
@@ -72,9 +67,8 @@ Presenter.prototype.setProperty = function(key, value) {
  * @memberof Presenter
  */
 Presenter.prototype.getProperty = function(key) {
-    return this.propertyMap[key];
+  return this.propertyMap[key];
 };
-
 /**
  * @method enrichData Enriches the ViewModel with data passed in
  * @param data {array} Collection data to enrich the ViewModel
@@ -88,18 +82,14 @@ Presenter.prototype.enrichData = function(data) {
 
     for (i = 0; i < l; i++) {
       keyName = k[i];
-
       if (this.propertyMap[keyName] === CONSTANTS.VIEW_MODEL_COLLECTION_KEY) {
         fullData[keyName] = data;
-      /*} else {
-        fullData[keyName] = this.propertyMap[keyName];*/
       }
     }
     return fullData;
   }
   return data;
 };
-
 /**
  * @method render Renders the Presenter
  * @param data {array} Collection data to enrich the ViewModel
