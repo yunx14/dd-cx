@@ -6,7 +6,6 @@ var PaginatedCollection = function(name) {
   Collection.apply(this, arguments);
 };
 
-
 PaginatedCollection.prototype = new Collection();
 PaginatedCollection.prototype.create = function() {};
 
@@ -23,7 +22,6 @@ PaginatedCollection.prototype.create = function() {};
   * @private
   */
  PaginatedCollection.prototype.name = "";
-
 /**
  * Configuration for the pagination
  * @property paginationConfiguration
@@ -31,8 +29,8 @@ PaginatedCollection.prototype.create = function() {};
  * @private
  */
 PaginatedCollection.prototype.paginationConfiguration = {
-    currentPageParam: "page",
-    pageSizeParam: "per_page"
+  currentPageParam: "page",
+  pageSizeParam: "per_page"
 };
 /**
  *  total for the collection
@@ -67,10 +65,10 @@ PaginatedCollection.prototype.totalPages = 1;
  * @param {number} size Number of items in each page
  */
 PaginatedCollection.prototype.setPageSize = function(size) {
-    if (size) {
-        this.pageSize = size;
-    }
-    this.refresh();
+  if (size) {
+    this.pageSize = size;
+  }
+  this.refresh();
 };
 /**
  * Sets the current page
@@ -79,11 +77,11 @@ PaginatedCollection.prototype.setPageSize = function(size) {
  * @param {number} page Current page in collection
  */
 PaginatedCollection.prototype.setCurrentPage = function(page) {
-    if (!page) {
-        page = 1;
-    }
-    this.currentPage = page;
-    this.refresh();
+  if (!page) {
+    page = 1;
+  }
+  this.currentPage = page;
+  this.refresh();
 };
 /**
  * Sets pagination configuration
@@ -93,7 +91,7 @@ PaginatedCollection.prototype.setCurrentPage = function(page) {
  * @private
  */
 PaginatedCollection.prototype.setPaginationConfiguration = function(config) {
-    this.paginationConfiguration = config;
+  this.paginationConfiguration = config;
 };
 /**
  * fetch - rewritten fetch method from Collection.fetch
@@ -102,16 +100,16 @@ PaginatedCollection.prototype.setPaginationConfiguration = function(config) {
  * @borrows Collection.fetch
  */
 PaginatedCollection.prototype.fetch = function(options, success, error) {
-    options = (options) ? options : {};
-    var data = (options.data || {});
-    var p = this.paginationConfiguration;
-    var d = {};
-    d[p.currentPageParam] = this.currentPage;
-    d[p.pageSizeParam] = this.pageSize;
+  options = (options) ? options : {};
+  var data = (options.data || {});
+  var p = this.paginationConfiguration;
+  var d = {};
+  d[p.currentPageParam] = this.currentPage;
+  d[p.pageSizeParam] = this.pageSize;
 
-    options.data = d;
+  options.data = d;
 
-    return Collection.prototype.fetch.call(this, options, success, error);
+  return Collection.prototype.fetch.call(this, options, success, error);
 };
 /**
  * Moves to the next page
@@ -119,10 +117,10 @@ PaginatedCollection.prototype.fetch = function(options, success, error) {
  * @memberof PaginatedCollection
  */
 PaginatedCollection.prototype.nextPage = function() {
-    if (this.currentPage < this.totalPages) {
-        this.currentPage = this.currentPage + 1;
-        this.refresh();
-    }
+  if (this.currentPage < this.totalPages) {
+    this.currentPage = this.currentPage + 1;
+    this.refresh();
+  }
 };
 /**
  * Moves to the previous page
@@ -130,10 +128,10 @@ PaginatedCollection.prototype.nextPage = function() {
  * @memberof PaginatedCollection
  */
 PaginatedCollection.prototype.previousPage = function() {
-    if (this.currentPage > 0) {
-        this.currentPage = this.currentPage - 1;
-        this.refresh();
-    }
+  if (this.currentPage > 0) {
+    this.currentPage = this.currentPage - 1;
+    this.refresh();
+  }
 };
 /**
  * Goes to page
@@ -142,10 +140,10 @@ PaginatedCollection.prototype.previousPage = function() {
  * @param {number} page Page to go to
  */
 PaginatedCollection.prototype.goToPage = function(page) {
-    if ((page) && (page < this.totalPages) && (page > 0)) {
-        this.currentPage = page;
-        this.refresh();
-    }
+  if ((page) && (page < this.totalPages) && (page > 0)) {
+    this.currentPage = page;
+    this.refresh();
+  }
 };
 /**
  * Moves to the first page
@@ -153,8 +151,8 @@ PaginatedCollection.prototype.goToPage = function(page) {
  * @memberof PaginatedCollection
  */
 PaginatedCollection.prototype.firstPage = function() {
-    this.currentPage = 1;
-    this.refresh();
+  this.currentPage = 1;
+  this.refresh();
 };
 /**
  * Moves to the last page
@@ -162,8 +160,8 @@ PaginatedCollection.prototype.firstPage = function() {
  * @memberof PaginatedCollection
  */
 PaginatedCollection.prototype.lastPage = function() {
-    this.currentPage = this.totalPages;
-    this.refresh();
+  this.currentPage = this.totalPages;
+  this.refresh();
 };
 /**
  * Refreshes the collection
@@ -171,7 +169,7 @@ PaginatedCollection.prototype.lastPage = function() {
  * @memberof PaginatedCollection
  */
 PaginatedCollection.prototype.refresh = function() {
-    this.fetch();
+  this.fetch();
 };
 
 module.exports = PaginatedCollection;
