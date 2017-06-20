@@ -1,5 +1,4 @@
 var Presenter = require("./presenter.js");
-
 /**
  * A view class for managing presentation and managing view data</br>
  * Wraps a <em>main</em> template around the template passed
@@ -18,7 +17,6 @@ var MainPresenter = function(n, vm, map, main) {
    */
   this.mainTemplate = main;
 };
-
 MainPresenter.prototype = Object.create(Presenter.prototype);
 /**
  * @method render Renders the Presenter and wraps the main template areound sub-template
@@ -31,6 +29,5 @@ MainPresenter.prototype.render = function(data) {
   enriched.body = this.getName();
   return Handlebars.templates[this.mainTemplate](enriched);
 };
-
 
 module.exports = MainPresenter;
