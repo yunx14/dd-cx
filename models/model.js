@@ -1,5 +1,6 @@
 // abstract model
 var http = require("http");
+var Logger = require("../utility/logger.js");
 /**
  *  A model class for use of holding and retrieving data
  * @constructor Model
@@ -70,7 +71,20 @@ Model.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
+  if (!success) {
+    success = function(status, data) {
+      Logger.debug("Fetched Data! " + status);
+    }
+  }
+  if (!error) {
+    error = function(e) {
+      Logger.warn("Failed to fetched Data! " + e);
+    }
+  }
+
   var uri = options.host + ":" + String(options.port) + options.path;
+  Logger.debug("uri " + uri);
+  
   var req = http.get(uri, function(res) {
     // Buffer the body entirely for processing as a whole.
     var buffer = "";
