@@ -233,7 +233,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.pagination = PaginationControl.render(baseURI, providers.currentPage, providers.total);
+        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.total);
 
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
