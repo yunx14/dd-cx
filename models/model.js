@@ -19,10 +19,10 @@ var Model = function(attributes) {
 };
 
 /**
- * @property secure {boolean} Secure (SSL) for use in the Collection's fetch method
- * @memberof Collection
+ * @property secure {boolean} Secure (SSL) for use in the Model's fetch method
+ * @memberof Model
  */
-Collection.prototype.secure = false;
+Model.prototype.secure = false;
 
 /**
  * @property host {string} host for use in the model's fetch method
@@ -46,7 +46,7 @@ Model.prototype.port = 0;
 Model.prototype.attributes = {};
 /**
  * @property query {object} The query params for use in REST calls
- * @memberof Collection
+ * @memberof Model
  */
 Model.prototype.query = {};
 /**
