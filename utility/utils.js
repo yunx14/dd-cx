@@ -39,4 +39,4 @@ module.exports = Utils = {
     }
     return formattedData;
   }
-}
+};
