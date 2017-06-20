@@ -35,7 +35,7 @@ module.exports = PaginationControl = {
       vm.push({ "text":  "...", "url": "", "active": false });
     }
 
-    if (total !== current && !(current < (total + 1)) (current < (total + 2))) {
+    if (total !== current && !(current < (total + 1)) && !(current < (total + 2))) {
       vm.push( { "text":  String(total), "url": baseURI + "page=" + total, "active": false } );
     }
 
