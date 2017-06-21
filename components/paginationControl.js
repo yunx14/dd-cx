@@ -12,23 +12,24 @@ module.exports = PaginationControl = {
   * @memberof PaginationControl
   * @returns {array} web standards query string
   */
-  render: function(baseURI, current, total) {
-    var vm = [ { "text":  current, "url": baseURI + "page=" + current, "active": true } ];
+  render: function(baseURI, c, total) {
+    var current = c + 1;
+    var vm = [ { "text":  current, "url": baseURI + "&page=" + current, "active": true } ];
 
     if (current > 2) {
       vm = vm.unshift({ "text":  "...", "url": "", "active": false });
     }
 
     if (current > 1) {
-      vm = vm.unshift({ "text":  "previous", "url": baseURI + "page=" + current - 1, "active": false });
+      vm = vm.unshift({ "text":  "previous", "url": baseURI + "&page=" + current - 1, "active": false });
     }
 
     if (current + 1 < total) {
-      vm.push({ "text":  String(current + 1), "url": baseURI + "page=" + current + 1, "active": false });
+      vm.push({ "text":  String(current + 1), "url": baseURI + "&page=" + current + 1, "active": false });
     }
 
     if (current + 2 < total) {
-      vm.push({ "text":  String(current + 2), "url": baseURI + "page=" + current + 2, "active": false });
+      vm.push({ "text":  String(current + 2), "url": baseURI + "&page=" + current + 2, "active": false });
     }
 
     if (current + 3 < total && (current + 3 !== total)) {
@@ -36,11 +37,11 @@ module.exports = PaginationControl = {
     }
 
     if (total !== current && !(current < (total + 1)) && !(current < (total + 2))) {
-      vm.push( { "text":  String(total), "url": baseURI + "page=" + total, "active": false } );
+      vm.push( { "text":  String(total), "url": baseURI + "&page=" + total, "active": false } );
     }
 
     if (current < (total)) {
-      vm.push({ "text":  "Next", "url": baseURI + "page=" + current + 1, "active": false });
+      vm.push({ "text":  "Next", "url": baseURI + "&page=" + current + 1, "active": false });
     }
 
     return vm;
