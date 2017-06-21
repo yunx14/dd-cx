@@ -55,7 +55,7 @@ Model.prototype.query = {};
  * @memberof Model
  */
 Model.prototype.getURI = function() {
-  return this.host + ":" + String(this.port) + this.path;
+  return this.host + ":" + String(this.port) + this.path + Utils.formatQuery(this.query);
 };
  /**
   * @method fetch Fetches data from a remove URI and populates this model

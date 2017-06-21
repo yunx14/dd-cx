@@ -47,7 +47,7 @@ Collection.prototype.query = {};
  * @memberof Collection
  */
 Collection.prototype.getURI = function() {
-  return this.host + ":" + String(this.port) + this.path;
+  return this.host + ":" + String(this.port) + this.path + Utils.formatQuery(this.query);
 };
 /**
  * @method fetch Fetches data from a remove URI and populates this collection
