@@ -47,7 +47,7 @@ Collection.prototype.query = {};
  * @memberof Collection
  */
 Collection.prototype.getURI = function() {
-  return this.host + ":" + String(this.port) + this.path;
+  return this.host + ":" + String(this.port) + this.path + Utils.formatQuery(this.query);
 };
 /**
  * @method fetch Fetches data from a remove URI and populates this collection
@@ -71,6 +71,19 @@ Collection.prototype.fetch = function(options, success, error) {
   }
   if (!options.query) {
     options.query = this.query;
+  }
+
+  if (options.host) {
+    this.host = options.host;
+  }
+  if (options.port) {
+    this.port = options.port;
+  }
+  if (options.path) {
+    this.path = options.path;
+  }
+  if (options.query) {
+    this.query = options.query;
   }
 
   // add any request options defined globally in node
