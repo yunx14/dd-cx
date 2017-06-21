@@ -73,6 +73,19 @@ Collection.prototype.fetch = function(options, success, error) {
     options.query = this.query;
   }
 
+  if (options.host) {
+    this.host = options.host;
+  }
+  if (options.port) {
+    this.port = options.port;
+  }
+  if (options.path) {
+    this.path = options.path;
+  }
+  if (options.query) {
+    this.query = options.query;
+  }
+
   // add any request options defined globally in node
   if (global_request_options && global_request_options.agentOptions) {
     options.agentOptions = global_request_options.agentOptions;
