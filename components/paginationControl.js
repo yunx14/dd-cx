@@ -13,35 +13,82 @@ module.exports = PaginationControl = {
   * @returns {array} web standards query string
   */
   render: function(baseURI, c, total) {
-    var current = c + 1;
-    var vm = [ { "text":  current, "url": baseURI + "&page=" + current, "active": true } ];
+    var vm = [ { "text":  c+1, "url": baseURI, "active": true } ];
 
-    if (current > 2) {
-      vm = vm.unshift({ "text":  "...", "url": "", "active": false });
+    if (c+2 < total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  String(c+2), "url": baseURI + "&page=" + Number(c+1), "active": false });
     }
 
-    if (current > 1) {
-      vm = vm.unshift({ "text":  "previous", "url": baseURI + "&page=" + current - 1, "active": false });
+    if (c+4 === total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&page=" + Number(c+2), "active": false });
+      vm.push({ "text":  String(total), "url": baseURI + "&page=" + Number(total-1), "active": false });
+      vm.push({ "text":  "Next", "url": baseURI + "&page=" + Number(c+1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
+      return vm;
     }
 
-    if (current + 1 < total) {
-      vm.push({ "text":  String(current + 1), "url": baseURI + "&page=" + current + 1, "active": false });
+    if (c+3 === total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&page=" + Number(c+2), "active": false });
+      vm.push({ "text":  "Next", "url": baseURI + "&page=" + Number(c+1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
+      return vm;
     }
 
-    if (current + 2 < total) {
-      vm.push({ "text":  String(current + 2), "url": baseURI + "&page=" + current + 2, "active": false });
+    if (c+2 === total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  String(c+2), "url": baseURI + "&page=" + Number(c+1), "active": false });
+      vm.push({ "text":  "Next", "url": baseURI + "&page=" + Number(c+1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
+      return vm;
     }
 
-    if (current + 3 < total && (current + 3 !== total)) {
+    if (c+1 === total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
+      return vm;
+    }
+
+    if (c+3 < total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  String(c+3), "url": baseURI + "&page=" + Number(c+2), "active": false });
       vm.push({ "text":  "...", "url": "", "active": false });
+      vm.push({ "text":  String(total), "url": baseURI + "&page=" + Number(total-1), "active": false });
     }
 
-    if (total !== current && !(current < (total + 1)) && !(current < (total + 2))) {
-      vm.push( { "text":  String(total), "url": baseURI + "&page=" + total, "active": false } );
+    if (c+1 < total) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.push({ "text":  "Next", "url": baseURI + "&page=" + Number(c+1), "active": false });
     }
 
-    if (current < (total)) {
-      vm.push({ "text":  "Next", "url": baseURI + "&page=" + current + 1, "active": false });
+    if (c === 2) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.unshift({ "text":  String(c), "url": baseURI + "&page=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
+      return vm;
+    }
+
+    if (c > 1) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.unshift({ "text":  String(c), "url": baseURI + "&page=" + Number(c-1), "active": false });
+      vm.unshift({ "text":  "...", "url": "", "active": false });
+    }
+
+    if (c > 0) {
+      baseURI = baseURI.split("&page=")[0];
+      vm.unshift({ "text":  "1", "url": baseURI + "&page=0", "active": false });
+      vm.unshift({ "text":  "Prev", "url": baseURI + "&page=" + Number(c-1), "active": false });
     }
 
     return vm;
