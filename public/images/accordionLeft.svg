@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="5px" height="9px" viewBox="0 0 5 9" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>Accordion Plus</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Accordion-Plus" fill="#000000">
+            <g id="double-arrow" transform="translate(2.500000, 4.500000) rotate(-90.000000) translate(-2.500000, -4.500000) translate(-2.000000, 2.000000)">
+                <path d="M8.87063128,0.102281015 C8.72666357,-0.0340936717 8.49367766,-0.0340936717 8.35044261,0.102281015 L4.58310438,4.05015336 L0.816498803,0.102281015 C0.672897424,-0.0340936717 0.439911512,-0.0340936717 0.296310132,0.102281015 C0.152708753,0.242152489 0.152708753,0.465946847 0.296310132,0.602321533 L4.30505987,4.80196253 C4.38162285,4.87539505 4.48309627,4.90686613 4.58310438,4.89987256 C4.68347881,4.90686613 4.78495223,4.87539505 4.86188155,4.80196253 L8.87063128,0.602321533 C9.01386633,0.465946847 9.01386633,0.242152489 8.87063128,0.102281015" id="arrow-copy"></path>
+            </g>
+        </g>
+    </g>
+</svg>
