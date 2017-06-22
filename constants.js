@@ -14,7 +14,7 @@ module.exports = {
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
     "SEARCH_RESULTS": "pages-directorySearchResults",
-    "DETAILS": "pages-directoryDetail",
+    "DETAILS": "pages-providerDetails",
     "SEARCH": "pages-directorySearch"
 
   },
