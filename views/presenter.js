@@ -76,8 +76,9 @@ Presenter.prototype.getProperty = function(key) {
  * @memberof Presenter
  */
 Presenter.prototype.enrichData = function(data) {
+  var fullData = { "body" : "" };
   if (data && this.viewModel) {
-    var fullData = {}, i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
+    var i = 0, k = Object.keys(this.propertyMap), l = k.length, keyName = "";
     Object.assign(fullData, this.viewModel, this.propertyMap);
 
     for (i = 0; i < l; i++) {
@@ -87,8 +88,10 @@ Presenter.prototype.enrichData = function(data) {
       }
     }
     return fullData;
+  } else if (data) {
+    return data;
   }
-  return data;
+  return fullData;
 };
 /**
  * @method render Renders the Presenter
