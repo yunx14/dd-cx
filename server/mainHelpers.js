@@ -228,6 +228,7 @@ var getListsResults = function(query, req, res) {
 
       if (providers.isEmpty()) {
         formattedData.noResults = true;
+        formattedData.noResultsMessage = true;
       } else {
         formattedData = Utils.formatData(providers.toJSON());
         providersPresenter.propertyMap.total = providers.total;
