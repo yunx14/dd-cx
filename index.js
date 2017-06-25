@@ -7,7 +7,7 @@ var fs = require("fs");
 var request = require('request');
 
 const CONSTANTS = require("./constants.js");
-    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
+    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dit";
 var mainHelpers = require("./server/mainHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
@@ -24,8 +24,8 @@ var cert = null;
 global.global_request_options = {};
 
 try {
-  privatekey = fs.readFileSync("/opt/docker/certs/node.key");
-  cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  privatekey = fs.readFileSync("node.key");
+  cert = fs.readFileSync("node.cer");
   CONSTANTS.SSL_ENABLED = true;
   global.global_request_options = {
     agentOptions: {

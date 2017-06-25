@@ -31,7 +31,7 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/providers"
   },
   "dit": {
-    "EE_PORT": 80,
+    "EE_PORT": 8081,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
