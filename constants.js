@@ -47,15 +47,15 @@ module.exports = {
   "pit": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 19096,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
-    "SEARCH_SERVICE_PATH": "/providers"
+    "SEARCH_SERVICE_PORT": 0,
+    "SEARCH_SERVICE_HOST": "please fill out",
+    "SEARCH_SERVICE_PATH": "----"
   },
   "prod": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
-    "SEARCH_SERVICE_PORT": 19096,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
-    "SEARCH_SERVICE_PATH": "/providers"
+    "SEARCH_SERVICE_PORT": 8243,
+    "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
+    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
   }
 };

@@ -72,7 +72,7 @@ app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
 
 // error template
 app.get(CONSTANTS.ERROR_INVALID_ZIP, errorHelpers.errorInvalidZip);
-// app.get(CONSTANTS.ERROR_NO_RESULTS, errorHelpers.errorNoResults);
+app.get(CONSTANTS.ERROR_NO_RESULTS, errorHelpers.errorNoResults);
 app.get(CONSTANTS.ERROR_TIMEOUT, errorHelpers.errorTimeOut);
 app.get(CONSTANTS.ERROR_DOWN, errorHelpers.errorDown);
 
