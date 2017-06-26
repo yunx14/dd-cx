@@ -222,22 +222,21 @@ var getListsResults = function(query, req, res) {
   }
   providers.fetch({},
     function(code, data) {
-
-      var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
-      var formattedData = {};
-
+      // success
       if (providers.isEmpty()) {
-        formattedData.noResults = true;
-        formattedData.noResultsMessage = true;
+        res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
-        formattedData = Utils.formatData(providers.toJSON());
+
+        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
         providersPresenter.propertyMap.total = providers.total;
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+
+        var formattedData = Utils.formatData(providers.toJSON());
+        res.status(code).send(providersPresenter.render(formattedData));
       }
-      res.status(code).send(providersPresenter.render(formattedData));
     },
     function(code, data)  {
       // error

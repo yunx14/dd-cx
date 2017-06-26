@@ -25,20 +25,20 @@ module.exports = {
     );
     res.status(200).send(errorPresenter.render());
   },
-  // errorNoResults: function(req, res) {
-  //   Logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
-  //
-  //   var errorPresenter = new MainPresenter(
-  //     "pages-directoryError",
-  //     ViewModel.pages_directoryError.errorMessages.noResults,
-  //     {
-  //       "title": "Provider Directory No Results",
-  //       "stylesheets": [{ "stylesheet": "../styles/style.css" }]
-  //     },
-  //     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
-  //   );
-  //   res.status(200).send(errorPresenter.render());
-  // },
+  errorNoResults: function(req, res) {
+    Logger.log("GET " + CONSTANTS.ERROR_NO_RESULTS);
+
+    var errorPresenter = new MainPresenter(
+      "pages-directoryError",
+      ViewModel.pages_directoryError.errorMessages.noResults,
+      {
+        "title": "Provider Directory No Results",
+        "stylesheets": [{ "stylesheet": "../styles/style.css" }]
+      },
+      CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
+    );
+    res.status(200).send(errorPresenter.render());
+  },
   errorTimeOut: function(req, res) {
     Logger.log("GET " + CONSTANTS.ERROR_TIMEOUT);
 
