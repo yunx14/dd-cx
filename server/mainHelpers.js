@@ -57,6 +57,10 @@ module.exports = {
         query.lat = Number(req.body.lat);
         query.long = Number(req.body.long);
       }
+      if (req.body.keyword) {
+        query.free_text = req.body.keyword;
+        query.keyword = null;
+      }
     }
     if (query && query.lat && query.long) {
       res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
@@ -69,13 +73,12 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-
       var searchQuery = {
         id: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
-        keyword: req.query.keyword,
+        free_text: req.query.keyword,
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
@@ -84,6 +87,8 @@ module.exports = {
 
       var provider = new Model();
       if (req.query) {
+        req.query.free_text = req.query.keyword;
+        req.query.keyword = null;
         Logger.log("query " + JSON.stringify(req.query));
         provider.query = req.query;
       }
@@ -100,7 +105,7 @@ module.exports = {
           "searchQueryLat": searchQuery.lat,
           "searchQueryLong": searchQuery.long,
           "searchQueryLocation": searchQuery.location,
-          "searchQueryKeyword": searchQuery.keyword,
+          "searchQueryKeyword": searchQuery.free_text,
           "searchQueryNetwork": searchQuery.network,
           "searchQuerySpecialty": searchQuery.specialty,
           "searchQueryLanguage": searchQuery.language,
@@ -166,7 +171,7 @@ var getListsResults = function(query, req, res) {
       "searchQueryDistance": query.distance,
       "searchQuerySpecialty": query.specialty,
       "searchQueryLanguage": query.language,
-      "searchQueryKeyword": query.keyword,
+      "searchQueryKeyword": query.free_text,
       "searchQueryNetwork": query.network,
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "../styles/style.css" }],
