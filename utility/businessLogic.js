@@ -1,5 +1,5 @@
 module.exports.returnNetworkFormFields = function(network) {
-  const networks = {
+  let networks = {
   	legend: "Insurance networks",
   	inputs: [{
   		field: {
@@ -50,6 +50,8 @@ module.exports.returnNetworkFormFields = function(network) {
       networks.inputs[2].field.valuelessAttribute = "checked";
     }
   }
+
+  console.log("networks", networks);
 
   return networks;
 };
