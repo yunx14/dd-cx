@@ -66,6 +66,13 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /* UI Requests */
 
 // template versions
+
+app.get("/find-a-dentist/alpha/" + CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
+app.post("/find-a-dentist/alpha/" + CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
+
+// map the new URIs
+app.get("/find-a-dentist/alpha/" + CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
+
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
