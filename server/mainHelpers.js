@@ -9,6 +9,7 @@ var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
+var BusinessLogic = require("../utility/businessLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 
@@ -176,6 +177,7 @@ var getListsResults = function(query, req, res) {
         {"script": "main.js"},
         {"script": "geocoder.js"}
       ],
+      "network": BusinessLogic.returnNetworkFormFields(query.network),
       "searchInput": {
         "field": {
           "id": "location",
