@@ -37,14 +37,18 @@ module.exports.returnNetworkFormFields = function(network) {
   	}]
   };
 
-  if (networks.inputs[0].field.value === network) {
-    networks.inputs[0].field.valuelessAttribute = "checked";
-  }
-  if (networks.inputs[1].field.value === network) {
-    networks.inputs[1].field.valuelessAttribute = "checked";
-  }
-  if (networks.inputs[2].field.value === network) {
-    networks.inputs[2].field.valuelessAttribute = "checked";
+  var i, l = network.length;
+
+  for (i = 0; i < l; i++) {
+    if (networks.inputs[0].field.value === network[i]) {
+      networks.inputs[0].field.valuelessAttribute = "checked";
+    }
+    if (networks.inputs[1].field.value === network[i]) {
+      networks.inputs[1].field.valuelessAttribute = "checked";
+    }
+    if (networks.inputs[2].field.value === network[i]) {
+      networks.inputs[2].field.valuelessAttribute = "checked";
+    }
   }
 
   return networks;
