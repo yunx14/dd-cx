@@ -175,7 +175,6 @@ var getListsResults = function(query, req, res) {
         {"script": "main.js"},
         {"script": "geocoder.js"}
       ],
-      "network": BusinessLogic.returnNetworkFormFields(query.network),
       "searchInput": {
         "field": {
           "id": "location",
