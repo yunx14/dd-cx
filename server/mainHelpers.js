@@ -102,14 +102,7 @@ module.exports = {
         ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
-          "searchQueryLat": searchQuery.lat,
-          "searchQueryLong": searchQuery.long,
-          "searchQueryLocation": searchQuery.location,
-          "searchQueryKeyword": searchQuery.free_text,
-          "searchQueryNetwork": searchQuery.network,
-          "searchQuerySpecialty": searchQuery.specialty,
-          "searchQueryLanguage": searchQuery.language,
-          "searchQueryDistance": searchQuery.distance,
+          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQuery)}`,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "../styles/style.css" }],
           "scripts": [
