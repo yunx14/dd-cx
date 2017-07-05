@@ -37,17 +37,19 @@ module.exports.returnNetworkFormFields = function(network) {
   	}]
   };
 
-  var i, l = network.length;
+  if (network) {
+    var i, l = network.length;
 
-  for (i = 0; i < l; i++) {
-    if (networks.inputs[0].field.value === network[i]) {
-      networks.inputs[0].field.valuelessAttribute = "checked";
-    }
-    if (networks.inputs[1].field.value === network[i]) {
-      networks.inputs[1].field.valuelessAttribute = "checked";
-    }
-    if (networks.inputs[2].field.value === network[i]) {
-      networks.inputs[2].field.valuelessAttribute = "checked";
+    for (i = 0; i < l; i++) {
+      if (networks.inputs[0].field.value === network[i]) {
+        networks.inputs[0].field.valuelessAttribute = "checked";
+      }
+      if (networks.inputs[1].field.value === network[i]) {
+        networks.inputs[1].field.valuelessAttribute = "checked";
+      }
+      if (networks.inputs[2].field.value === network[i]) {
+        networks.inputs[2].field.valuelessAttribute = "checked";
+      }
     }
   }
 
