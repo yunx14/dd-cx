@@ -11,7 +11,7 @@ module.exports = {
   "BASE_URI": "/find-a-dentist/alpha",
   "DIRECTORY_SEARCH_PAGE": "/find-a-dentist/alpha/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/find-a-dentist/alpha/provider-details.html",
-  "INACCURATE_PAGE": "/find-a-dentist/alpha//inaccurate.html",
+  "INACCURATE_PAGE": "/find-a-dentist/alpha/inaccurate.html",
 
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
