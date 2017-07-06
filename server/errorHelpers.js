@@ -19,7 +19,7 @@ module.exports = {
       ViewModel.pages_directoryError.errorMessages.invalidAddress,
       {
         "title": "Provider Directory Invalid Zip Code",
-        "stylesheets": [{ "stylesheet": "../styles/style.css" }]
+        "stylesheets": [{ "stylesheet": "./styles/style.css" }]
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -33,7 +33,7 @@ module.exports = {
       ViewModel.pages_directoryError.errorMessages.noResults,
       {
         "title": "Provider Directory No Results",
-        "stylesheets": [{ "stylesheet": "../styles/style.css" }]
+        "stylesheets": [{ "stylesheet": "./styles/style.css" }]
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -47,7 +47,7 @@ module.exports = {
       ViewModel.pages_directoryError.errorMessages.serverTimeout,
       {
         "title": "Provider Directory Server Timeout",
-        "stylesheets": [{ "stylesheet": "../styles/style.css" }]
+        "stylesheets": [{ "stylesheet": "./styles/style.css" }]
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -61,7 +61,7 @@ module.exports = {
       ViewModel.pages_directoryError.errorMessages.servicesDown,
       {
         "title": "Provider Directory Server is Down",
-        "stylesheets": [{ "stylesheet": "../styles/style.css" }]
+        "stylesheets": [{ "stylesheet": "./styles/style.css" }]
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );

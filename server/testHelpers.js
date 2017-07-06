@@ -18,7 +18,7 @@ module.exports = {
       {},
       {
         "title": CONSTANTS.EE_ABOUT,
-        "stylesheets": [{ "stylesheet": "../styles/style.css" }],
+        "stylesheets": [{ "stylesheet": "./styles/style.css" }],
         "environment": CONSTANTS.ENVIRONMENT,
         "ssl_enabled": CONSTANTS.SSL_ENABLED,
         "ee-host": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST + ":" + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT,
