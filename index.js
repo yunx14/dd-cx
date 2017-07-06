@@ -56,9 +56,9 @@ var options = {
 //app.set("view engine", "handlebars");
 
 // Serve up public static files
-app.use(express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
+app.use("/", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
 app.use("/find-a-dentist/alpha", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
-app.use("/docs",express.static(path.join(__dirname, "jsdoc"), options));
+app.use("/docs", express.static(path.join(__dirname, "jsdoc"), options));
 
 // Allow parsing json and url
 app.use(bodyParser.json()); // support json encoded bodies
