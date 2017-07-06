@@ -57,7 +57,7 @@ var options = {
 
 // Serve up public static files
 app.use("/", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
-app.use("/find-a-dentist/alpha", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
+app.use(CONSTANTS.BASE_URI, express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
 app.use("/docs", express.static(path.join(__dirname, "jsdoc"), options));
 
 // Allow parsing json and url
@@ -67,12 +67,6 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /* UI Requests */
 
 // template versions
-
-app.get("/find-a-dentist/alpha" + CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
-app.post("/find-a-dentist/alpha" + CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
-
-// map the new URIs
-app.get("/find-a-dentist/alpha" + CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
 
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);

@@ -8,8 +8,9 @@ module.exports = {
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
   "ABOUT_TEMPLATE": "about",
-  "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
-  "PROVIDER_DETAILS_PAGE": "/provider-details.html",
+  "BASE_URI": "/find-a-dentist/alpha",
+  "DIRECTORY_SEARCH_PAGE": "/find-a-dentist/alpha/directory-search.html",
+  "PROVIDER_DETAILS_PAGE": "/find-a-dentist/alpha/provider-details.html",
 
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
@@ -18,10 +19,10 @@ module.exports = {
     "SEARCH": "pages-directorySearch"
 
   },
-  "ERROR_INVALID_ZIP": "/errorInvalidZip.html",
-  "ERROR_NO_RESULTS": "/errorNoResults.html",
-  "ERROR_TIMEOUT": "/errorTimeOut.html",
-  "ERROR_DOWN": "/errorDown.html",
+  "ERROR_INVALID_ZIP": "/find-a-dentist/alpha/errorInvalidZip.html",
+  "ERROR_NO_RESULTS": "/find-a-dentist/alpha/errorNoResults.html",
+  "ERROR_TIMEOUT": "/find-a-dentist/alpha/errorTimeOut.html",
+  "ERROR_DOWN": "/find-a-dentist/alpha/errorDown.html",
 
   "dev": {
     "EE_PORT": 81,
