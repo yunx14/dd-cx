@@ -11,13 +11,14 @@ module.exports = {
   "BASE_URI": "/find-a-dentist/alpha",
   "DIRECTORY_SEARCH_PAGE": "/find-a-dentist/alpha/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/find-a-dentist/alpha/provider-details.html",
+  "INACCURATE_PAGE": "/find-a-dentist/alpha//inaccurate.html",
 
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
     "SEARCH_RESULTS": "pages-directorySearchResults",
     "DETAILS": "pages-providerDetails",
-    "SEARCH": "pages-directorySearch"
-
+    "SEARCH": "pages-directorySearch",
+    "INACCURATE": "pages-inaccurate"
   },
   "ERROR_INVALID_ZIP": "/find-a-dentist/alpha/errorInvalidZip.html",
   "ERROR_NO_RESULTS": "/find-a-dentist/alpha/errorNoResults.html",
