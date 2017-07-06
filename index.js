@@ -56,7 +56,7 @@ var options = {
 //app.set("view engine", "handlebars");
 
 // Serve up public static files
-app.use(express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options
+app.use(express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
 app.use(express.static(path.join(__dirname, "/find-a-dentist/alpha"), options));
 app.use("/docs",express.static(path.join(__dirname, "jsdoc"), options));
 
