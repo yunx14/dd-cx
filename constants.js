@@ -10,13 +10,14 @@ module.exports = {
   "ABOUT_TEMPLATE": "about",
   "DIRECTORY_SEARCH_PAGE": "/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/provider-details.html",
+  "INACCURATE_PAGE": "/inaccurate.html",
 
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
     "SEARCH_RESULTS": "pages-directorySearchResults",
     "DETAILS": "pages-providerDetails",
-    "SEARCH": "pages-directorySearch"
-
+    "SEARCH": "pages-directorySearch",
+    "INACCURATE": "pages-inaccurate"
   },
   "ERROR_INVALID_ZIP": "/errorInvalidZip.html",
   "ERROR_NO_RESULTS": "/errorNoResults.html",
