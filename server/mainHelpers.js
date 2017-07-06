@@ -181,7 +181,7 @@ module.exports = {
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQuery)}`,
           "title": "inaccurate",
-          "stylesheets": [{ "stylesheet": "../styles/style.css" }],
+          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
