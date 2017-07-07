@@ -74,8 +74,19 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQuery = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
+        lat: Number(req.query.lat),
+        long: Number(req.query.long),
+        location: req.query.location,
+        free_text: req.query.keyword,
+        network: req.query.network,
+        specialty: req.query.specialty,
+        language: req.query.language,
+        distance: req.query.distance
+      };
+
+      var searchQueryWithoutKey = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -96,15 +107,15 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQuery.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
         ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
-          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQuery)}`,
-          "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQuery)}`,
+          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
+          "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
@@ -149,7 +160,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQuery = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
@@ -171,7 +182,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQuery.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
@@ -179,7 +190,7 @@ module.exports = {
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
-          "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQuery)}`,
+          "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
