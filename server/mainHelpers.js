@@ -252,7 +252,7 @@ var getListsResults = function(query, req, res) {
       "searchQueryDistance": query.distance,
       "searchQuerySpecialty": query.specialty,
       "searchQueryLanguage": query.language,
-      "searchQueryKeyword": query.free_text,
+      "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": query.network,
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "./styles/style.css" }],

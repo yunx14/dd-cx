@@ -11,13 +11,17 @@ module.exports = Utils = {
   * @returns {string} web standards query string
   */
   formatQuery: function(query) {
-    var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length;
+    var formatQuery = "?", i = 0, keys = Object.keys(query), l = keys.length, tempVal;
     for (i = 0; i < l; i++) {
+      tempVal = query[keys[i]];
       if (typeof query[keys[i]] !== "function" && Array.isArray(query[keys[i]])) {
-        var tempVal = query[keys[i]];
-        formatQuery = formatQuery + String(keys[i]) + "=" + tempVal.join("&" + String(keys[i]) + "=") + "&";
+        if (tempVal) {
+          formatQuery = formatQuery + String(keys[i]) + "=" + tempVal.join("&" + String(keys[i]) + "=") + "&";
+        }
       } else if (typeof query[keys[i]] !== "function") {
-        formatQuery = formatQuery + String(keys[i]) + "=" + String(query[keys[i]]) + "&";
+        if (tempVal) {
+          formatQuery = formatQuery + String(keys[i]) + "=" + String(query[keys[i]]) + "&";
+        }
       }
     }
     return formatQuery.slice(0, -1);
