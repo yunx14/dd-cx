@@ -61,17 +61,18 @@ module.exports = {
       query.free_text = req.body.keyword;
       query.keyword = null;
     }
-
-    geocoder.geocode(req.body.location, function(err, response) {
-      query.location = response[0].formattedAddress;
-      query.lat = Number(response[0].latitude);
-      query.long = Number(response[0].longitude);
-      if (query && query.lat && query.long) {
-        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
-      } else {
-        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
-      }
-    });
+    if (req.body.location) {
+      geocoder.geocode(req.body.location, function(err, response) {
+        query.location = response[0].formattedAddress;
+        query.lat = Number(response[0].latitude);
+        query.long = Number(response[0].longitude);
+        if (query && query.lat && query.long) {
+          res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+        }
+      });
+    } else {
+      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    }
   },
   getProviderDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
