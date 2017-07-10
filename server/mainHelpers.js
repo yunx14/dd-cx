@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var BusinessLogic = require("../utility/businessLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
+var NodeGeocoder = require('node-geocoder');
 
 module.exports = {
   getDirectorySearch: function(req, res) {
@@ -48,27 +49,29 @@ module.exports = {
   },
   postDirectorySearch: function(req, res) {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
+    var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
-      if (req.body.distance) {
-        query.distance = Number(req.body.distance);
-      }
-      if (req.body.lat && req.body.long) {
-        query.lat = Number(req.body.lat);
-        query.long = Number(req.body.long);
-      }
-      if (req.body.keyword) {
-        query.free_text = req.body.keyword;
-        query.keyword = null;
-      }
     }
-    if (query && query.lat && query.long) {
-      res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
-    } else {
-      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    if (req.body.distance) {
+      query.distance = Number(req.body.distance);
     }
-    // getListsResults(query, req, res);
+    if (req.body.keyword) {
+      query.free_text = req.body.keyword;
+      query.keyword = null;
+    }
+
+    geocoder.geocode(req.body.location, function(err, response) {
+      query.location = response[0].formattedAddress;
+      query.lat = Number(response[0].latitude);
+      query.long = Number(response[0].longitude);
+      if (query && query.lat && query.long) {
+        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+      } else {
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
+    });
   },
   getProviderDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
