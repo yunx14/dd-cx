@@ -84,8 +84,8 @@ module.exports = {
         long: Number(req.query.long),
         location: req.query.location,
         free_text: req.query.free_text,
-        network: req.query.network.split(","),
-        specialty: req.query.specialty.split(","),
+        network: req.query.network,
+        specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance)
       };
@@ -95,8 +95,8 @@ module.exports = {
         long: Number(req.query.long),
         location: req.query.location,
         free_text: req.query.free_text,
-        network: req.query.network.split(","),
-        specialty: req.query.specialty.split(","),
+        network: req.query.network,
+        specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance)
       };
@@ -173,7 +173,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
