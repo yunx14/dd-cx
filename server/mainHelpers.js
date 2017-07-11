@@ -260,6 +260,19 @@ var getListsResults = function(query, req, res) {
   providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
   providers.query = query;
 
+  console.log("sdhfkjsdhfjkdsfh", req.query);
+  var searchQueryWithKey = {
+    providerKey: req.query.providerKey,
+    lat: Number(req.query.lat),
+    long: Number(req.query.long),
+    location: req.query.location,
+    free_text: req.query.free_text,
+    network: req.query.network,
+    specialty: req.query.specialty,
+    language: req.query.language,
+    distance: Number(req.query.distance)
+  };
+
   var providersPresenter = new MainPresenter(
     CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
@@ -270,10 +283,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
-      "searchQuerySpecialty": query.specialty,
+      "searchQuerySpecialty": Utils.formatQueryParam("specialty", query.specialty),
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
-      "searchQueryNetwork": query.network,
+      "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "./styles/style.css" }],
       "scripts": [
@@ -290,7 +303,7 @@ var getListsResults = function(query, req, res) {
           "name": "location",
           "placeholder": "Zip code, city, or address",
           "label": {
-            "text": ""
+            "text": "Near"
           }
         }
       },
