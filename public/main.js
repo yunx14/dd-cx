@@ -52,7 +52,7 @@ function selectLocation(elementID) {
 
   })(pac_input);
 }
-selectLocation($locationInput);
+selectLocation("location");
 
 $(".refine__toggle").click(function(){
   $(".refine__menu").toggleClass("open");
