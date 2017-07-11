@@ -27,13 +27,14 @@ module.exports = Utils = {
     return formatQuery.slice(0, -1);
   },
   formatQueryParam: function(name, array) {
-    console.log("utils, formatQueryParam", name, array);
     if (name && array) {
       var formatQuery = "", i = 0, l = array.length;
       for (i = 0; i < l; i++) {
         formatQuery = formatQuery + name + "=" + array[i] + "&";
       }
      return formatQuery.slice(0, -1);
+    } else if (name) {
+     return name + "=";
     }
     return "";
   },

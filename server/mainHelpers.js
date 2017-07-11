@@ -260,7 +260,6 @@ var getListsResults = function(query, req, res) {
   providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
   providers.query = query;
 
-  console.log("sdhfkjsdhfjkdsfh", req.query);
   var searchQueryWithKey = {
     providerKey: req.query.providerKey,
     lat: Number(req.query.lat),
