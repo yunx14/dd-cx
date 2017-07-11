@@ -61,14 +61,7 @@ module.exports = {
       query.free_text = req.body.keyword;
       query.keyword = null;
     }
-    if (!req.body.lat && !req.body.long) {
-      query.location = req.body.location;
-      query.lat = Number(req.body.lat);
-      query.long = Number(req.body.long);
-      if (query && query.lat && query.long) {
-        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
-      }
-    } else {
+    if (req.body.location) {
       try {
         geocoder.geocode(req.body.location, function(err, response) {
           if (err) {
@@ -87,6 +80,13 @@ module.exports = {
       } catch (e) {
         Logger.log("geo error", e);
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
+    } else {
+      query.location = req.body.location;
+      query.lat = Number(req.body.lat);
+      query.long = Number(req.body.long);
+      if (query && query.lat && query.long) {
+        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
       }
     }
   },
