@@ -57,3 +57,7 @@ selectLocation($locationInput);
 $(".refine__toggle").click(function(){
   $(".refine__menu").toggleClass("open");
 });
+
+$(".banner__close").click(function() {
+  $(".banner-container").hide();
+});
