@@ -62,16 +62,32 @@ module.exports = {
       query.keyword = null;
     }
     if (req.body.location) {
-      geocoder.geocode(req.body.location, function(err, response) {
-        query.location = response[0].formattedAddress;
-        query.lat = Number(response[0].latitude);
-        query.long = Number(response[0].longitude);
-        if (query && query.lat && query.long) {
-          res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
-        }
-      });
+      try {
+        geocoder.geocode(req.body.location, function(err, response) {
+          if (err) {
+            res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+          } else if (!response || (Array.isArray(response) && response.length === 0)) {
+            res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+          } else {
+            query.location = response[0].formattedAddress;
+            query.lat = Number(response[0].latitude);
+            query.long = Number(response[0].longitude);
+            if (query && query.lat && query.long) {
+              res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+            }
+          }
+        });
+      } catch (e) {
+        Logger.log("geo error", e);
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
     } else {
-      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      query.location = req.body.location;
+      query.lat = Number(req.body.lat);
+      query.long = Number(req.body.long);
+      if (query && query.lat && query.long) {
+        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+      }
     }
   },
   getProviderDetails: function(req, res) {
@@ -87,7 +103,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var searchQueryWithoutKey = {
@@ -98,7 +114,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
@@ -173,7 +189,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
@@ -244,6 +260,18 @@ var getListsResults = function(query, req, res) {
   providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
   providers.query = query;
 
+  var searchQueryWithKey = {
+    providerKey: req.query.providerKey,
+    lat: Number(req.query.lat),
+    long: Number(req.query.long),
+    location: req.query.location,
+    free_text: req.query.free_text,
+    network: req.query.network,
+    specialty: req.query.specialty,
+    language: req.query.language,
+    distance: Number(req.query.distance)
+  };
+
   var providersPresenter = new MainPresenter(
     CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
@@ -254,10 +282,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
-      "searchQuerySpecialty": query.specialty,
+      "searchQuerySpecialty": Utils.formatQueryParam("specialty", query.specialty),
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
-      "searchQueryNetwork": query.network,
+      "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "./styles/style.css" }],
       "scripts": [
@@ -274,7 +302,7 @@ var getListsResults = function(query, req, res) {
           "name": "location",
           "placeholder": "Zip code, city, or address",
           "label": {
-            "text": ""
+            "text": "Near"
           }
         }
       },

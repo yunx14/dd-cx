@@ -22,6 +22,10 @@ function mapLocation(lat, lng) {
   });
 }
 
+$(".collapse__toggle").click(function() {
+  $(this).siblings(".collapse__content").toggle();
+});
+
 window.onload = function() {
   mapLocation(latitude, longitude);
 };
