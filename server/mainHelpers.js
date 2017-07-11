@@ -61,7 +61,7 @@ module.exports = {
       query.free_text = req.body.keyword;
       query.keyword = null;
     }
-    if (req.body.location) {
+    if (req.body.location && !req.body.lat && !req.body.long) {
         try {
           geocoder.geocode(req.body.location, function(err, response) {
             if (err) {
