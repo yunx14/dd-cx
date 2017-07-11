@@ -84,10 +84,10 @@ module.exports = {
         long: Number(req.query.long),
         location: req.query.location,
         free_text: req.query.free_text,
-        network: req.query.network,
-        specialty: req.query.specialty,
+        network: req.query.network.split(","),
+        specialty: req.query.specialty.split(","),
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var searchQueryWithoutKey = {
@@ -95,10 +95,10 @@ module.exports = {
         long: Number(req.query.long),
         location: req.query.location,
         free_text: req.query.free_text,
-        network: req.query.network,
-        specialty: req.query.specialty,
+        network: req.query.network.split(","),
+        specialty: req.query.specialty.split(","),
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
