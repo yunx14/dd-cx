@@ -38,6 +38,9 @@ module.exports.returnNetworkFormFields = function(network) {
   };
 
   if (network) {
+    if (typeof network === "string") {
+      network = network.split(" ");
+    }
     var i, l = network.length;
 
     for (i = 0; i < l; i++) {

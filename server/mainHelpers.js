@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var BusinessLogic = require("../utility/businessLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
+var NodeGeocoder = require('node-geocoder');
 
 module.exports = {
   getDirectorySearch: function(req, res) {
@@ -48,42 +49,72 @@ module.exports = {
   },
   postDirectorySearch: function(req, res) {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
+    var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
-      if (req.body.distance) {
-        query.distance = Number(req.body.distance);
-      }
-      if (req.body.lat && req.body.long) {
-        query.lat = Number(req.body.lat);
-        query.long = Number(req.body.long);
-      }
-      if (req.body.keyword) {
-        query.free_text = req.body.keyword;
-        query.keyword = null;
-      }
     }
-    if (query && query.lat && query.long) {
-      res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+    if (req.body.distance) {
+      query.distance = Number(req.body.distance);
+    }
+    if (req.body.keyword) {
+      query.free_text = req.body.keyword;
+      query.keyword = null;
+    }
+    if (req.body.location) {
+      try {
+        geocoder.geocode(req.body.location, function(err, response) {
+          if (err) {
+            res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+          } else if (!response || (Array.isArray(response) && response.length === 0)) {
+            res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+          } else {
+            query.location = response[0].formattedAddress;
+            query.lat = Number(response[0].latitude);
+            query.long = Number(response[0].longitude);
+            if (query && query.lat && query.long) {
+              res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+            }
+          }
+        });
+      } catch (e) {
+        Logger.log("geo error", e);
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      }
     } else {
-      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      query.location = req.body.location;
+      query.lat = Number(req.body.lat);
+      query.long = Number(req.body.long);
+      if (query && query.lat && query.long) {
+        res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+      }
     }
-    // getListsResults(query, req, res);
   },
   getProviderDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQuery = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
-        free_text: req.query.keyword,
+        free_text: req.query.free_text,
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
+      };
+
+      var searchQueryWithoutKey = {
+        lat: Number(req.query.lat),
+        long: Number(req.query.long),
+        location: req.query.location,
+        free_text: req.query.free_text,
+        network: req.query.network,
+        specialty: req.query.specialty,
+        language: req.query.language,
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
@@ -96,15 +127,15 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQuery.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
         ViewModel.pages_providerDetails,
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
-          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQuery)}`,
-          "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQuery)}`,
+          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
+          "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
@@ -149,16 +180,16 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQuery = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
-        free_text: req.query.keyword,
+        free_text: req.query.free_text,
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: req.query.distance
+        distance: Number(req.query.distance)
       };
 
       var provider = new Model();
@@ -171,7 +202,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQuery.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
@@ -179,7 +210,7 @@ module.exports = {
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
-          "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQuery)}`,
+          "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
@@ -229,6 +260,18 @@ var getListsResults = function(query, req, res) {
   providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
   providers.query = query;
 
+  var searchQueryWithKey = {
+    providerKey: req.query.providerKey,
+    lat: Number(req.query.lat),
+    long: Number(req.query.long),
+    location: req.query.location,
+    free_text: req.query.free_text,
+    network: req.query.network,
+    specialty: req.query.specialty,
+    language: req.query.language,
+    distance: Number(req.query.distance)
+  };
+
   var providersPresenter = new MainPresenter(
     CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
@@ -239,10 +282,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
-      "searchQuerySpecialty": query.specialty,
+      "searchQuerySpecialty": Utils.formatQueryParam("specialty", query.specialty),
       "searchQueryLanguage": query.language,
-      "searchQueryKeyword": query.free_text,
-      "searchQueryNetwork": query.network,
+      "searchQueryFreeText": query.free_text,
+      "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
       "stylesheets": [{ "stylesheet": "./styles/style.css" }],
       "scripts": [
@@ -259,7 +302,7 @@ var getListsResults = function(query, req, res) {
           "name": "location",
           "placeholder": "Zip code, city, or address",
           "label": {
-            "text": ""
+            "text": "Near"
           }
         }
       },

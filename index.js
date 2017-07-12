@@ -24,8 +24,8 @@ var cert = null;
 global.global_request_options = {};
 
 try {
-  privatekey = fs.readFileSync("/opt/docker/certs/node.key");
-  cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  privatekey = fs.readFileSync(CONSTANTS.PRIVATE_KEY);
+  cert = fs.readFileSync(CONSTANTS.CERT);
   CONSTANTS.SSL_ENABLED = true;
   global.global_request_options = {
     agentOptions: {
@@ -68,6 +68,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 // template versions
 
+app.get(CONSTANTS.BASE_URI, mainHelpers.getDirectorySearch);
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);

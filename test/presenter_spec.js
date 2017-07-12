@@ -68,7 +68,7 @@ describe("Given Presenters", function() {
       var data = presenter.propertyMap;
       var expectedData = presenter.enrichData(data);
       expect(typeof expectedData).toEqual("object");
-      expect({ "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
+      expect({ "body": "", "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
     });
   });
 
@@ -98,7 +98,7 @@ describe("Given Presenters", function() {
       var data = presenter.propertyMap;
       var expectedData = presenter.enrichData(data);
       expect(typeof expectedData).toEqual("object");
-      expect({ "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
+      expect({ "body": "", "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
     });
   });
 
@@ -128,7 +128,7 @@ describe("Given Presenters", function() {
       var data = presenter.propertyMap;
       var expectedData = presenter.enrichData(data);
       expect(typeof expectedData).toEqual("object");
-      expect({ "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
+      expect({ "body": "", "locations": ["SF", "LA"], "title": "Locations:" }).toEqual(expectedData);
     });
   });
 });
