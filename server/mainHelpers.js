@@ -48,11 +48,17 @@ module.exports = {
     }
   },
   postDirectorySearch: function(req, res) {
+
+
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
     var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
+    }
+    if (!req.body.location && !req.body.lat && !req.body.long) {
+        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        return;
     }
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
