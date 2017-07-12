@@ -55,7 +55,8 @@ module.exports = {
     var query = {};
     if (req.body) {
       query = req.body;
-    } else {
+    }
+    if (!req.body.location && !req.body.lat && !req.body.long) {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
         return;
     }
