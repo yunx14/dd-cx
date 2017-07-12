@@ -24,8 +24,8 @@ var cert = null;
 global.global_request_options = {};
 
 try {
-  privatekey = fs.readFileSync("/opt/docker/certs/node.key");
-  cert = fs.readFileSync("/opt/docker/certs/node.cer");
+  privatekey = fs.readFileSync(CONSTANTS.PRIVATE_KEY);
+  cert = fs.readFileSync(CONSTANTS.CERT);
   CONSTANTS.SSL_ENABLED = true;
   global.global_request_options = {
     agentOptions: {
