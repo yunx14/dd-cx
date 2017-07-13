@@ -1,4 +1,7 @@
 $(".refine__toggle").click(function(e) {
-  e.preventDefault();
-  $(".refine__menu").toggleClass("open");
+  if($(".refine__menu").hasClass("open")) {
+    $(".refine__menu").removeClass("open");
+  } else {
+    $(".refine__menu").addClass("open");
+  }
 });
