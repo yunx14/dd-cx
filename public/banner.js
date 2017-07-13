@@ -30,7 +30,9 @@ $(".banner__close").click(function() {
 
 $(document).ready(function() {
   var cookie = getCookie("showBanner");
-  if(cookie !== "") {
-    $(".banner-container").hide();
+  if (cookie == "no") {
+    return false;
+  } else if (cookie === "" || cookie === null) {
+    $(".banner-container").show();
   }
 });
