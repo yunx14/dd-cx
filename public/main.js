@@ -53,7 +53,3 @@ function selectLocation(elementID) {
   })(pac_input);
 }
 selectLocation("location");
-
-$(".banner__close").click(function() {
-  $(".banner-container").hide();
-});

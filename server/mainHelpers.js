@@ -41,7 +41,8 @@ module.exports = {
             {"script": "main.js"},
             {"script": "geocoder.js"},
             {"script": "feedback.js"},
-            {"script": "refine-search.js"}
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -151,7 +152,8 @@ module.exports = {
             {"script": "jquery.min.js"},
             {"script": "template3.js"},
             {"script": "feedback.js"},
-            {"script": "refine-search.js"}
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -228,7 +230,8 @@ module.exports = {
             {"script": "jquery.min.js"},
             {"script": "template3.js"},
             {"script": "feedback.js"},
-            {"script": "refine-search.js"}
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -306,7 +309,8 @@ var getListsResults = function(query, req, res) {
         {"script": "main.js"},
         {"script": "geocoder.js"},
         {"script": "feedback.js"},
-        {"script": "refine-search.js"}
+        {"script": "refine-search.js"},
+        {"script": "banner.js"}
       ],
       "searchInput": {
         "field": {
