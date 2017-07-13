@@ -39,7 +39,8 @@ module.exports = {
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
             {"script": "main.js"},
-            {"script": "geocoder.js"}
+            {"script": "geocoder.js"},
+            {"script": "feedback.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -147,7 +148,8 @@ module.exports = {
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
-            {"script": "template3.js"}
+            {"script": "template3.js"},
+            {"script": "feedback.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -222,7 +224,8 @@ module.exports = {
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
-            {"script": "template3.js"}
+            {"script": "template3.js"},
+            {"script": "feedback.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -298,7 +301,8 @@ var getListsResults = function(query, req, res) {
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},
         {"script": "main.js"},
-        {"script": "geocoder.js"}
+        {"script": "geocoder.js"},
+        {"script": "feedback.js"}
       ],
       "searchInput": {
         "field": {
