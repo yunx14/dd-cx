@@ -284,16 +284,11 @@ var Map = {
       });
     }
 
-    //TODO this miscalculates the markers array length
-    // if ((end-start) === 0) {
-    //   Map.map.setCenter(new google.maps.LatLng(Map.markers[0].position.lat(), Map.markers[0].position.lng()));
-    //   // TODO set a default zoom level
-    // } else {
-    //   for (var j = 0; j < Map.markers.length; j++) {
-  	// 		Map.bounds.extend(Map.markers[j].getPosition());
-  	// 	}
-  	// 	Map.map.fitBounds(Map.bounds);
-    // }
+    for (var j = 0; j < Map.markers.length; j++) {
+			Map.bounds.extend(Map.markers[j].getPosition());
+		}
+		Map.map.fitBounds(Map.bounds);
+
   },
 
   buildIWContent : function(place) {
