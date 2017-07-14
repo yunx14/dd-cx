@@ -307,7 +307,6 @@ var getListsResults = function(query, req, res) {
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},
         {"script": "main.js"},
-        {"script": "geocoder.js"},
         {"script": "feedback.js"},
         {"script": "refine-search.js"},
         {"script": "banner.js"},
