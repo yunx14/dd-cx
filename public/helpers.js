@@ -25,9 +25,9 @@ var FEHelpers = (function(){
   var fixmyshit = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
       if( footerTop.getBoundingClientRect().top <= mapPos.getBoundingClientRect().bottom) { //
-        mappPos.className = "provider-map absolute";
+        mapPos.className = "provider-map absolute";
       } else {
-        mappPos.className = "provider-map fixed";
+        mapPos.className = "provider-map fixed";
       }
     } else {
       mapPos.className = "provider-map";
