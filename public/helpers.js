@@ -24,11 +24,11 @@ var FEHelpers = (function(){
 
   var fixmyshit = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
-      if( footerTop.getBoundingClientRect().top <= mapPos.getBoundingClientRect().bottom) { //
-        mapPos.className = "provider-map absolute";
-      } else {
-        mapPos.className = "provider-map fixed";
-      }
+      // if( footerTop.getBoundingClientRect().top <= mapPos.getBoundingClientRect().bottom) {
+      // mapPos.className = "provider-map absolute";
+      // } else {
+         mapPos.className = "provider-map fixed";
+      // }
     } else {
       mapPos.className = "provider-map";
     }
