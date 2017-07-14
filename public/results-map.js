@@ -267,7 +267,7 @@ var Map = {
     Map.markers = []; //reset markers
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
 
-    for (var i = 0, h=0; i <= fakeassdata.length; i++, h++) {
+    for (var i = 0, h=0; i < fakeassdata.length; i++, h++) {
 			Map.markers[h] = new google.maps.Marker({
 				position: new google.maps.LatLng(fakeassdata[i].address.latitude, fakeassdata[i].address.longitude),
 				map: Map.map,
