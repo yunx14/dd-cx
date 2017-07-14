@@ -67,6 +67,15 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 /* UI Requests */
 
 // template versions
+app.get(CONSTANTS.BASE_URI + "/providers", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/providers/:city", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/providers/:city/offices", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/providers/:city/offices/:name", mainHelpers.getDirectorySearch);
+
+app.get(CONSTANTS.BASE_URI + "/offices", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/offices/:name", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/facilities", mainHelpers.getDirectorySearch);
+app.get(CONSTANTS.BASE_URI + "/facilities/:name", mainHelpers.getDirectorySearch);
 
 app.get(CONSTANTS.BASE_URI, mainHelpers.getDirectorySearch);
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);

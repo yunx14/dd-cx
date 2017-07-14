@@ -18,6 +18,8 @@ module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
+    Logger.log("Path Params", req.params);
+
     if (req.query && req.query.lat && req.query.long) {
       Logger.log("query " + JSON.stringify(req.query));
       var inputLat = req.query.lat;
@@ -307,10 +309,10 @@ var getListsResults = function(query, req, res) {
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},
         {"script": "main.js"},
-        {"script": "geocoder.js"},
         {"script": "feedback.js"},
         {"script": "refine-search.js"},
-        {"script": "banner.js"}
+        {"script": "banner.js"},
+        {"script": "helpers.js"}
       ],
       "searchInput": {
         "field": {
