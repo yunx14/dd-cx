@@ -9,7 +9,7 @@ var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
-var BusinessLogic = require("../utility/businessLogic.js");
+var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -372,7 +372,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
-        providersPresenter.propertyMap.filter.network = BusinessLogic.returnNetworkFormFields(query.network);
+        providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
