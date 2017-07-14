@@ -36,4 +36,4 @@ var FEHelpers = (function(){
   };
 }());
 
-window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmyshit, 250));
+window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmyshit, 10));
