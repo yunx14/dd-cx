@@ -310,7 +310,8 @@ var getListsResults = function(query, req, res) {
         {"script": "feedback.js"},
         {"script": "refine-search.js"},
         {"script": "banner.js"},
-        {"script": "helpers.js"}
+        {"script": "helpers.js"},
+        {"script": "results-map.js"}
       ],
       "searchInput": {
         "field": {
