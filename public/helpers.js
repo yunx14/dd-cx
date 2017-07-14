@@ -21,13 +21,13 @@ var FEHelpers = (function(){
     console.log(text);
   };
 
-  var fixmyshit = function() {
+  var fixmyshit = debounce(function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
       topPos.className = "provider-map fixed";
     } else {
       topPos.className = "provider-map";
     }
-  };
+  }, 250);
 
   return {
     "debounce": debounce,
@@ -35,3 +35,5 @@ var FEHelpers = (function(){
     "fixmyshit": fixmyshit
   };
 }());
+
+window.addEventListener("scroll", FEHelpers.fixmyshit);
