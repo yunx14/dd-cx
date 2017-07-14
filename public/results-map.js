@@ -296,3 +296,5 @@ var Map = {
   	infoWindowCont.html("some fake ass shit" + place.firstName);
   }
 };
+
+Map.providerMap(fakeassdata);
