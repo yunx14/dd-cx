@@ -1,4 +1,6 @@
 var FEHelpers = (function(){
+  var topPos = document.getElementById("provider-map");
+  var formBottom = document.getElementsByClassName("provider-form")[0];
 
   var debounce = function(func, wait, immediate) {
   	var timeout;
@@ -19,9 +21,18 @@ var FEHelpers = (function(){
     console.log(text);
   };
 
+  var fixmyshit = function() {
+    if(formBottom.getBoundingClientRect().bottom <= 0) {
+      topPos.className = "provider-map fixed";
+    } else {
+      topPos.className = "provider-map";
+    }
+  };
+
   return {
     "debounce": debounce,
-    "log": log
+    "log": log,
+    "fixmyshit": fixmyshit
   };
 }());
 

@@ -310,7 +310,8 @@ var getListsResults = function(query, req, res) {
         {"script": "geocoder.js"},
         {"script": "feedback.js"},
         {"script": "refine-search.js"},
-        {"script": "banner.js"}
+        {"script": "banner.js"},
+        {"script": "helpers.js"}
       ],
       "searchInput": {
         "field": {
