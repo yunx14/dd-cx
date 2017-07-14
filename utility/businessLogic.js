@@ -1,6 +1,6 @@
 module.exports.returnNetworkFormFields = function(network) {
   let networks = {
-  	legend: "Insurance networks",
+  	legend: "Networks",
   	inputs: [{
   		field: {
   			id: "network_PPO",
@@ -28,7 +28,7 @@ module.exports.returnNetworkFormFields = function(network) {
   			id: "network_DeltaCare",
   			type: "checkbox",
   			name: "network",
-  			value: "delta-care",
+  			value: "deltacare",
   			label: {
   				text: "DeltaCare USA",
   				class: "form-element__checkbox"

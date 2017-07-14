@@ -39,7 +39,10 @@ module.exports = {
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
             {"script": "main.js"},
-            {"script": "geocoder.js"}
+            {"script": "geocoder.js"},
+            {"script": "feedback.js"},
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -55,7 +58,8 @@ module.exports = {
     var query = {};
     if (req.body) {
       query = req.body;
-    } else {
+    }
+    if (!req.body.location && !req.body.lat && !req.body.long) {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
         return;
     }
@@ -146,7 +150,10 @@ module.exports = {
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
-            {"script": "template3.js"}
+            {"script": "template3.js"},
+            {"script": "feedback.js"},
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -221,7 +228,10 @@ module.exports = {
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": "jquery.min.js"},
-            {"script": "template3.js"}
+            {"script": "template3.js"},
+            {"script": "feedback.js"},
+            {"script": "refine-search.js"},
+            {"script": "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -297,7 +307,10 @@ var getListsResults = function(query, req, res) {
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": "jquery.min.js"},
         {"script": "main.js"},
-        {"script": "geocoder.js"}
+        {"script": "geocoder.js"},
+        {"script": "feedback.js"},
+        {"script": "refine-search.js"},
+        {"script": "banner.js"}
       ],
       "searchInput": {
         "field": {

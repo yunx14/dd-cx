@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.1 (43504) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon / icon-network</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-/-icon-network">
+            <g id="icon-/-icon-network">
+                <polygon id="Shape" points="0 0 16 0 16 16 0 16"></polygon>
+                <path d="M11,7 C12.1118531,7 13,6.10666667 13,5 C13,3.89333333 12.1118531,3 11,3 C9.89482471,3 9,3.89333333 9,5 C9,6.10666667 9.89482471,7 11,7 Z M5,7 C6.11185309,7 7,6.10666667 7,5 C7,3.89333333 6.11185309,3 5,3 C3.89482471,3 3,3.89333333 3,5 C3,6.10666667 3.89482471,7 5,7 Z M5,9 C3.33571429,9 0,9.78 0,11 L0,13 L10,13 L10,11 C10,9.78 6.66428571,9 5,9 Z M11,9 C10.5119197,9 10.2634881,9.01333333 10,9 C10.8732748,9.59333333 11,10.1137341 11,11 L11,13 L16,13 L16,11 C16,9.78 12.4843162,9 11,9 Z" id="Shape" fill="#43B02A" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>
