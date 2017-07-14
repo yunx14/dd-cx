@@ -35,5 +35,3 @@ var FEHelpers = (function(){
     "fixmyshit": fixmyshit
   };
 }());
-
-module.exports = FEHelpers;
