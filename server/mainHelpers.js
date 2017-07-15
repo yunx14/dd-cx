@@ -11,6 +11,7 @@ var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
+var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -373,6 +374,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
+        providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
