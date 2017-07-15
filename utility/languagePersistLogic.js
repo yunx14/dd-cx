@@ -621,8 +621,7 @@ module.exports.returnLanguageFormFields = function(language) {
 
     for (i = 0; i < l; i++) {
       if (languages.select.options[i].option.value === language) {
-        console.log("here I am ", languages.select.options[i].option.value);
-        // networks.inputs[0].field.valuelessAttribute = "checked";
+        languages.select.options[i].option.valuelessAttribute = "selected";
       }
     }
   }
