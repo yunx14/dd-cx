@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
+var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -22,19 +23,19 @@ const baseURI = "/";
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-    Logger.log("Path Params", req.params);
 
     if (req.query && req.query.lat && req.query.long) {
       Logger.log("query " + JSON.stringify(req.query));
-      var inputLat = req.query.lat;
-      var inputLong = req.query.long;
-      if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
+
+      if (String(Number(req.query.lat)) !== "NaN" && String(Number(req.query.long)) !== "NaN") {
         getListsResults(req.query, req, res);
       } else {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       }
+
     } else {
-      Logger.log("There is no query, showing empty search page");
+      Logger.log("Here is empty search page");
+
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
@@ -68,9 +69,7 @@ module.exports = {
       res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       return;
     }
-    if (req.body.distance) {
-      query.distance = Number(req.body.distance);
-    }
+
     if (req.body.keyword) {
       query.free_text = req.body.keyword;
       query.keyword = null;
@@ -141,7 +140,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
@@ -219,7 +218,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
@@ -318,6 +317,18 @@ var getListsResults = function(query, req, res) {
         {"script": baseURI + "helpers.js"},
         {"script": baseURI + "results-map.js"}
       ],
+      "freeTextInput": {
+        "field": {
+          "id": "keyword",
+          "value": query.free_text,
+          "type": "text",
+          "name": "keyword",
+          "placeholder": "Dentist, practice or keyword",
+          "label": {
+            "text": "Search"
+          }
+        }
+      },
       "searchInput": {
         "field": {
           "id": "location",
@@ -370,14 +381,19 @@ var getListsResults = function(query, req, res) {
       } else {
 
         var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
-        providersPresenter.propertyMap.total = providers.total;
-        providersPresenter.propertyMap.totalPages = providers.totalPages;
-        providersPresenter.propertyMap.pageSize = providers.pageSize;
-        providersPresenter.propertyMap.currentPage = providers.currentPage;
+        // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
         providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+        // distance persistence
+        providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
+        providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+        // pagination support
+        providersPresenter.propertyMap.total = providers.total;
+        providersPresenter.propertyMap.totalPages = providers.totalPages;
+        providersPresenter.propertyMap.pageSize = providers.pageSize;
+        providersPresenter.propertyMap.currentPage = providers.currentPage;
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
