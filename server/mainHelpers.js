@@ -20,19 +20,19 @@ var NodeGeocoder = require('node-geocoder');
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-    Logger.log("Path Params", req.params);
 
     if (req.query && req.query.lat && req.query.long) {
       Logger.log("query " + JSON.stringify(req.query));
-      var inputLat = req.query.lat;
-      var inputLong = req.query.long;
-      if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
+
+      if (String(Number(req.query.lat)) !== "NaN" && String(Number(req.query.long)) !== "NaN") {
         getListsResults(req.query, req, res);
       } else {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       }
+
     } else {
-      Logger.log("There is no query, showing empty search page");
+      Logger.log("Here is empty search page");
+
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
@@ -66,9 +66,7 @@ module.exports = {
       res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       return;
     }
-    if (req.body.distance) {
-      query.distance = Number(req.body.distance);
-    }
+
     if (req.body.keyword) {
       query.free_text = req.body.keyword;
       query.keyword = null;
@@ -139,7 +137,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
@@ -217,7 +215,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
