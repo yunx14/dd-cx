@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
+var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -367,14 +368,19 @@ var getListsResults = function(query, req, res) {
       } else {
 
         var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
-        providersPresenter.propertyMap.total = providers.total;
-        providersPresenter.propertyMap.totalPages = providers.totalPages;
-        providersPresenter.propertyMap.pageSize = providers.pageSize;
-        providersPresenter.propertyMap.currentPage = providers.currentPage;
+        // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
         providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+        // distance persistence
+        providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
+        providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+        // pagination support
+        providersPresenter.propertyMap.total = providers.total;
+        providersPresenter.propertyMap.totalPages = providers.totalPages;
+        providersPresenter.propertyMap.pageSize = providers.pageSize;
+        providersPresenter.propertyMap.currentPage = providers.currentPage;
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
