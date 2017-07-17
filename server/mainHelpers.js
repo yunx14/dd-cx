@@ -378,7 +378,7 @@ var getListsResults = function(query, req, res) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
 
-        var CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
+        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
         // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
@@ -395,7 +395,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.paginationList = PaginationControl.render(CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
