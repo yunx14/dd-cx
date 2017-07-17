@@ -317,32 +317,6 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ]
-      // "hiddenFields": [
-      //   {
-      //     "field": {
-      //       "id": "latitude",
-      //       "type": "hidden",
-      //       "name": "lat",
-      //       "value": query.lat,
-      //       "label": {
-      //         "text": "latitude",
-      //         "class": "hidden"
-      //       }
-      //     }
-      //   },
-      //   {
-      //     "field": {
-      //       "id": "longitude",
-      //       "type": "hidden",
-      //       "name": "long",
-      //       "value": query.long,
-      //       "label": {
-      //         "text": "longitude",
-      //         "class": "hidden"
-      //       }
-      //     }
-      //   }
-      // ]
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
