@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
+var LocationPersistLogic = require("../utility/locationPersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
@@ -315,30 +316,6 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
-      // "freeTextInput": {
-      //   "field": {
-      //     "id": "keyword",
-      //     "value": query.free_text,
-      //     "type": "text",
-      //     "name": "keyword",
-      //     "placeholder": "Dentist, practice or keyword",
-      //     "label": {
-      //       "text": "Search"
-      //     }
-      //   }
-      // },
-      "searchInput": {
-        "field": {
-          "id": "location",
-          "value": query.location,
-          "type": "text",
-          "name": "location",
-          "placeholder": "Zip code, city, or address",
-          "label": {
-            "text": "Near"
-          }
-        }
-      },
       "hiddenFields": [
         {
           "field": {
@@ -378,12 +355,15 @@ var getListsResults = function(query, req, res) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
 
-        var CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
+        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
         // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
         providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+        // location persistence
+        providersPresenter.propertyMap.searchInput = ViewModel.pages_directorySearchResults.searchInput;
+        providersPresenter.propertyMap.searchInput = LocationPersistLogic.returnLocationFormFields(query.location);
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
@@ -395,7 +375,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.paginationList = PaginationControl.render(CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
