@@ -314,6 +314,18 @@ var getListsResults = function(query, req, res) {
         {"script": "helpers.js"},
         {"script": "results-map.js"}
       ],
+      "freeTextInput": {
+        "field": {
+          "id": "keyword",
+          "value": query.free_text,
+          "type": "text",
+          "name": "keyword",
+          "placeholder": "Dentist, practice or keyword",
+          "label": {
+            "text": "Search"
+          }
+        }
+      },
       "searchInput": {
         "field": {
           "id": "location",
