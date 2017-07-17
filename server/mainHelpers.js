@@ -13,12 +13,10 @@ var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
+var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
-
-const baseURI = "/";
-
 
 module.exports = {
   getDirectorySearch: function(req, res) {
@@ -41,15 +39,15 @@ module.exports = {
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": baseURI + "jquery.min.js"},
-            {"script": baseURI + "main.js"},
-            {"script": baseURI + "geocoder.js"},
-            {"script": baseURI + "feedback.js"},
-            {"script": baseURI + "refine-search.js"},
-            {"script": baseURI + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -150,14 +148,14 @@ module.exports = {
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": baseURI + "jquery.min.js"},
-            {"script": baseURI + "template3.js"},
-            {"script": baseURI + "feedback.js"},
-            {"script": baseURI + "refine-search.js"},
-            {"script": baseURI + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -228,14 +226,14 @@ module.exports = {
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": baseURI + "jquery.min.js"},
-            {"script": baseURI + "template3.js"},
-            {"script": baseURI + "feedback.js"},
-            {"script": baseURI + "refine-search.js"},
-            {"script": baseURI + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -306,29 +304,29 @@ var getListsResults = function(query, req, res) {
       "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
-      "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+      "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-        {"script": baseURI + "jquery.min.js"},
-        {"script": baseURI + "main.js"},
-        {"script": baseURI + "feedback.js"},
-        {"script": baseURI + "refine-search.js"},
-        {"script": baseURI + "banner.js"},
-        {"script": baseURI + "helpers.js"},
-        {"script": baseURI + "results-map.js"}
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
-      "freeTextInput": {
-        "field": {
-          "id": "keyword",
-          "value": query.free_text,
-          "type": "text",
-          "name": "keyword",
-          "placeholder": "Dentist, practice or keyword",
-          "label": {
-            "text": "Search"
-          }
-        }
-      },
+      // "freeTextInput": {
+      //   "field": {
+      //     "id": "keyword",
+      //     "value": query.free_text,
+      //     "type": "text",
+      //     "name": "keyword",
+      //     "placeholder": "Dentist, practice or keyword",
+      //     "label": {
+      //       "text": "Search"
+      //     }
+      //   }
+      // },
       "searchInput": {
         "field": {
           "id": "location",
@@ -380,7 +378,7 @@ var getListsResults = function(query, req, res) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
 
-        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
+        var CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
         // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
@@ -389,12 +387,15 @@ var getListsResults = function(query, req, res) {
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+        // freeTextInput persistence
+        providersPresenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
+        providersPresenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
         // pagination support
         providersPresenter.propertyMap.total = providers.total;
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+        providersPresenter.propertyMap.paginationList = PaginationControl.render(CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
