@@ -12,6 +12,7 @@ var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
+var LocationPersistLogic = require("../utility/locationPersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
@@ -315,18 +316,6 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
-      "searchInput": {
-        "field": {
-          "id": "location",
-          "value": query.location,
-          "type": "text",
-          "name": "location",
-          "placeholder": "Zip code, city, or address",
-          "label": {
-            "text": "Near"
-          }
-        }
-      },
       "hiddenFields": [
         {
           "field": {
@@ -372,6 +361,9 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
         providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+        // location persistence
+        providersPresenter.propertyMap.searchInput = ViewModel.pages_directorySearchResults.searchInput;
+        providersPresenter.propertyMap.searchInput = LocationPersistLogic.returnLocationFormFields(query.location);
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
