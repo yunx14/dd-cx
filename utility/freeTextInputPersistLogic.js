@@ -1,4 +1,4 @@
-module.exports.returnFreeTextInputFormFields = function(freeTextInput) {
+module.exports.returnFreeTextInputFormFields = function(keyword) {
   let freeTextInput = {
     field: {
       id: "keyword",
@@ -11,8 +11,8 @@ module.exports.returnFreeTextInputFormFields = function(freeTextInput) {
     }
   };
 
-  if (freeTextInput) {
-    freeTextInput.field.value = freeTextInput;
+  if (keyword) {
+    freeTextInput.field.value = keyword;
   }
 
   return freeTextInput;

@@ -318,18 +318,6 @@ var getListsResults = function(query, req, res) {
         {"script": baseURI + "helpers.js"},
         {"script": baseURI + "results-map.js"}
       ],
-      // "freeTextInput": {
-      //   "field": {
-      //     "id": "keyword",
-      //     "value": query.free_text,
-      //     "type": "text",
-      //     "name": "keyword",
-      //     "placeholder": "Dentist, practice or keyword",
-      //     "label": {
-      //       "text": "Search"
-      //     }
-      //   }
-      // },
       "searchInput": {
         "field": {
           "id": "location",
