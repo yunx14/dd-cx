@@ -54,6 +54,7 @@ module.exports.returnDistanceFormFields = function(distance) {
 
 
   if (distance) {
+    distanceSelects.select.options[5].option.valuelessAttribute = null;
     var i, l = distanceSelects.select.options.length;
 
     for (i = 0; i < l; i++) {
