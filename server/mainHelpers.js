@@ -16,6 +16,9 @@ var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
 
+const baseURI = "/";
+
+
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
@@ -40,12 +43,12 @@ module.exports = {
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "main.js"},
-            {"script": "geocoder.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": baseURI + "jquery.min.js"},
+            {"script": baseURI + "main.js"},
+            {"script": baseURI + "geocoder.js"},
+            {"script": baseURI + "feedback.js"},
+            {"script": baseURI + "refine-search.js"},
+            {"script": baseURI + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -151,11 +154,11 @@ module.exports = {
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "template3.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": baseURI + "jquery.min.js"},
+            {"script": baseURI + "template3.js"},
+            {"script": baseURI + "feedback.js"},
+            {"script": baseURI + "refine-search.js"},
+            {"script": baseURI + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -229,11 +232,11 @@ module.exports = {
           "stylesheets": [{ "stylesheet": "./styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "template3.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": baseURI + "jquery.min.js"},
+            {"script": baseURI + "template3.js"},
+            {"script": baseURI + "feedback.js"},
+            {"script": baseURI + "refine-search.js"},
+            {"script": baseURI + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -307,13 +310,13 @@ var getListsResults = function(query, req, res) {
       "stylesheets": [{ "stylesheet": "./styles/style.css" }],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-        {"script": "jquery.min.js"},
-        {"script": "main.js"},
-        {"script": "feedback.js"},
-        {"script": "refine-search.js"},
-        {"script": "banner.js"},
-        {"script": "helpers.js"},
-        {"script": "results-map.js"}
+        {"script": baseURI + "jquery.min.js"},
+        {"script": baseURI + "main.js"},
+        {"script": baseURI + "feedback.js"},
+        {"script": baseURI + "refine-search.js"},
+        {"script": baseURI + "banner.js"},
+        {"script": baseURI + "helpers.js"},
+        {"script": baseURI + "results-map.js"}
       ],
       "searchInput": {
         "field": {
