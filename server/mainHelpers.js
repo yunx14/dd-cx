@@ -9,7 +9,9 @@ var ViewModel = require("../views/viewModel.js");
 
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
-var BusinessLogic = require("../utility/businessLogic.js");
+var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
+var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
+var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -17,7 +19,6 @@ var NodeGeocoder = require('node-geocoder');
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-
     Logger.log("Path Params", req.params);
 
     if (req.query && req.query.lat && req.query.long) {
@@ -53,17 +54,16 @@ module.exports = {
     }
   },
   postDirectorySearch: function(req, res) {
-
-
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
+
     var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
     }
     if (!req.body.location && !req.body.lat && !req.body.long) {
-        res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
-        return;
+      res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      return;
     }
     if (req.body.distance) {
       query.distance = Number(req.body.distance);
@@ -312,7 +312,8 @@ var getListsResults = function(query, req, res) {
         {"script": "feedback.js"},
         {"script": "refine-search.js"},
         {"script": "banner.js"},
-        {"script": "helpers.js"}
+        {"script": "helpers.js"},
+        {"script": "results-map.js"}
       ],
       "searchInput": {
         "field": {
@@ -371,7 +372,9 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
-        providersPresenter.propertyMap.filter.network = BusinessLogic.returnNetworkFormFields(query.network);
+        providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
+        providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
+        providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
