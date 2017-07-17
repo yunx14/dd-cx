@@ -24,13 +24,11 @@ var FEHelpers = (function(){
 
   var fixmyshit = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
-      // if( footerTop.getBoundingClientRect().top <= mapPos.getBoundingClientRect().bottom) {
-      // mapPos.className = "provider-map absolute";
-      // } else {
-      console.log(footerTop.getBoundingClientRect().top+ " footer top");
-      console.log(mapPos.getBoundingClientRect().bottom+ " map bottom");
-         mapPos.className = "provider-map fixed";
-      // }
+      if(mapPos.getBoundingClientRect().bottom >= (footerTop.getBoundingClientRect().top - 20)) {
+        mapPos.className = "provider-map absolute";
+      } else {
+        mapPos.className = "provider-map fixed";
+      }
     } else {
       mapPos.className = "provider-map";
     }
