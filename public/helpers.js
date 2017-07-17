@@ -24,7 +24,7 @@ var FEHelpers = (function(){
 
   var fixmyshit = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
-      if(mapPos.getBoundingClientRect().bottom >= (footerTop.getBoundingClientRect().top - 20)) {
+      if(mapPos.getBoundingClientRect().bottom >= (footerTop.getBoundingClientRect().top - 67)) {
         mapPos.className = "provider-map absolute";
       } else {
         mapPos.className = "provider-map fixed";
