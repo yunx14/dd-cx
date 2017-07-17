@@ -18,13 +18,14 @@ module.exports = {
       {},
       {
         "title": CONSTANTS.EE_ABOUT,
-        "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
         "environment": CONSTANTS.ENVIRONMENT,
         "ssl_enabled": CONSTANTS.SSL_ENABLED,
         "ee-host": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST + ":" + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT,
         "ee-port-ssl": CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL,
         "search-service-host": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST + ":" + CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT,
-        "search-service-api": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH
+        "search-service-api": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH,
+        "static-path": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );

@@ -32,34 +32,39 @@ module.exports = {
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19001,
     "SEARCH_SERVICE_HOST": "http://aw-lx0095",
-    "SEARCH_SERVICE_PATH": "/providers"
+    "SEARCH_SERVICE_PATH": "/providers",
+    "STATIC_PATH": "/"
   },
   "dit": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
-    "SEARCH_SERVICE_PATH": "/provider/v1/providers"
+    "SEARCH_SERVICE_PATH": "/provider/v1/providers",
+    "STATIC_PATH": "/"
   },
   "mot": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
-    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
+    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
+    "STATIC_PATH": "/"
   },
   "pit": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 0,
     "SEARCH_SERVICE_HOST": "please fill out",
-    "SEARCH_SERVICE_PATH": "----"
+    "SEARCH_SERVICE_PATH": "----",
+    "STATIC_PATH": "/"
   },
   "prod": {
     "EE_PORT": 80,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
-    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers"
+    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
+    "STATIC_PATH": "/"
   }
 };

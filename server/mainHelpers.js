@@ -13,6 +13,7 @@ var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
+var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -20,33 +21,33 @@ var NodeGeocoder = require('node-geocoder');
 module.exports = {
   getDirectorySearch: function(req, res) {
     Logger.log("GET " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
-    Logger.log("Path Params", req.params);
 
     if (req.query && req.query.lat && req.query.long) {
       Logger.log("query " + JSON.stringify(req.query));
-      var inputLat = req.query.lat;
-      var inputLong = req.query.long;
-      if (String(Number(inputLat)) !== "NaN" && String(Number(inputLong)) !== "NaN") {
+
+      if (String(Number(req.query.lat)) !== "NaN" && String(Number(req.query.long)) !== "NaN") {
         getListsResults(req.query, req, res);
       } else {
         res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       }
+
     } else {
-      Logger.log("There is no query, showing empty search page");
+      Logger.log("Here is empty search page");
+
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "main.js"},
-            {"script": "geocoder.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -66,9 +67,7 @@ module.exports = {
       res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
       return;
     }
-    if (req.body.distance) {
-      query.distance = Number(req.body.distance);
-    }
+
     if (req.body.keyword) {
       query.free_text = req.body.keyword;
       query.keyword = null;
@@ -139,7 +138,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
@@ -149,14 +148,14 @@ module.exports = {
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "template3.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -217,7 +216,7 @@ module.exports = {
 
       provider.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey; //+ Utils.formatQuery(req.query);
+      provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
@@ -227,14 +226,14 @@ module.exports = {
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
-          "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-            {"script": "jquery.min.js"},
-            {"script": "template3.js"},
-            {"script": "feedback.js"},
-            {"script": "refine-search.js"},
-            {"script": "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -305,17 +304,29 @@ var getListsResults = function(query, req, res) {
       "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
-      "stylesheets": [{ "stylesheet": "./styles/style.css" }],
+      "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
-        {"script": "jquery.min.js"},
-        {"script": "main.js"},
-        {"script": "feedback.js"},
-        {"script": "refine-search.js"},
-        {"script": "banner.js"},
-        {"script": "helpers.js"},
-        {"script": "results-map.js"}
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
+      // "freeTextInput": {
+      //   "field": {
+      //     "id": "keyword",
+      //     "value": query.free_text,
+      //     "type": "text",
+      //     "name": "keyword",
+      //     "placeholder": "Dentist, practice or keyword",
+      //     "label": {
+      //       "text": "Search"
+      //     }
+      //   }
+      // },
       "searchInput": {
         "field": {
           "id": "location",
@@ -367,7 +378,7 @@ var getListsResults = function(query, req, res) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
       } else {
 
-        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
+        var CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
         // network, specialty, language persistence
         providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
@@ -376,12 +387,15 @@ var getListsResults = function(query, req, res) {
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+        // freeTextInput persistence
+        providersPresenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
+        providersPresenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
         // pagination support
         providersPresenter.propertyMap.total = providers.total;
         providersPresenter.propertyMap.totalPages = providers.totalPages;
         providersPresenter.propertyMap.pageSize = providers.pageSize;
         providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+        providersPresenter.propertyMap.paginationList = PaginationControl.render(CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
         res.status(code).send(providersPresenter.render(formattedData));
