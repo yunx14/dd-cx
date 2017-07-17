@@ -13,6 +13,7 @@ var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
+var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -314,18 +315,18 @@ var getListsResults = function(query, req, res) {
         {"script": "helpers.js"},
         {"script": "results-map.js"}
       ],
-      "freeTextInput": {
-        "field": {
-          "id": "keyword",
-          "value": query.free_text,
-          "type": "text",
-          "name": "keyword",
-          "placeholder": "Dentist, practice or keyword",
-          "label": {
-            "text": "Search"
-          }
-        }
-      },
+      // "freeTextInput": {
+      //   "field": {
+      //     "id": "keyword",
+      //     "value": query.free_text,
+      //     "type": "text",
+      //     "name": "keyword",
+      //     "placeholder": "Dentist, practice or keyword",
+      //     "label": {
+      //       "text": "Search"
+      //     }
+      //   }
+      // },
       "searchInput": {
         "field": {
           "id": "location",
@@ -386,6 +387,9 @@ var getListsResults = function(query, req, res) {
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+        // freeTextInput persistence
+        providersPresenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
+        providersPresenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
         // pagination support
         providersPresenter.propertyMap.total = providers.total;
         providersPresenter.propertyMap.totalPages = providers.totalPages;
