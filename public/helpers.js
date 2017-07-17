@@ -27,6 +27,8 @@ var FEHelpers = (function(){
       // if( footerTop.getBoundingClientRect().top <= mapPos.getBoundingClientRect().bottom) {
       // mapPos.className = "provider-map absolute";
       // } else {
+      console.log(footerTop.getBoundingClientRect().top+ " footer top");
+      console.log(mapPos.getBoundingClientRect().bottom+ " map bottom");
          mapPos.className = "provider-map fixed";
       // }
     } else {
