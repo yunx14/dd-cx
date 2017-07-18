@@ -296,6 +296,7 @@ var getListsResults = function(query, req, res) {
     ViewModel.pages_directorySearchResults,
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
+      "currentProviders": JSON.stringify(CONSTANTS.VIEW_MODEL_COLLECTION_KEY),
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
       "searchQueryLocation": query.location,
       "searchQueryLat": query.lat,
