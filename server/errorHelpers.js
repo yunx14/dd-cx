@@ -19,7 +19,10 @@ module.exports = {
       ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Invalid Zip Code",
-        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
+        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+        "severity": ViewModel.pages_directoryError.errorMessages.invalidAddress.severity,
+        "header": ViewModel.pages_directoryError.errorMessages.invalidAddress.header,
+        "message": ViewModel.pages_directoryError.errorMessages.invalidAddress.message
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -33,7 +36,10 @@ module.exports = {
       ViewModel.pages_directoryError,
       {
         "title": "Provider Directory No Results",
-        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
+        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+        "severity": ViewModel.pages_directoryError.errorMessages.noResults.severity,
+        "header": ViewModel.pages_directoryError.errorMessages.noResults.header,
+        "message": ViewModel.pages_directoryError.errorMessages.noResults.message
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -47,7 +53,10 @@ module.exports = {
       ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Server Timeout",
-        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
+        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+        "severity": ViewModel.pages_directoryError.errorMessages.serverTimeout.severity,
+        "header": ViewModel.pages_directoryError.errorMessages.serverTimeout.header,
+        "message": ViewModel.pages_directoryError.errorMessages.serverTimeout.message
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -61,7 +70,10 @@ module.exports = {
       ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Server is Down",
-        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
+        "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+        "severity": ViewModel.pages_directoryError.errorMessages.servicesDown.severity,
+        "header": ViewModel.pages_directoryError.errorMessages.servicesDown.header,
+        "message": ViewModel.pages_directoryError.errorMessages.servicesDown.message
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
