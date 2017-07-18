@@ -296,7 +296,6 @@ var getListsResults = function(query, req, res) {
     ViewModel.pages_directorySearchResults,
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
-      "currentProviders": JSON.stringify(CONSTANTS.VIEW_MODEL_COLLECTION_KEY),
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
       "searchQueryLocation": query.location,
       "searchQueryLat": query.lat,
@@ -357,6 +356,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
+        providersPresenter.propertyMap.currentProviders = JSON.stringify(formattedData);
         res.status(code).send(providersPresenter.render(formattedData));
       }
     },
