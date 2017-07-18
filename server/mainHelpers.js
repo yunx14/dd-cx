@@ -356,7 +356,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
-        providersPresenter.propertyMap.currentProviders = formattedData;
+        providersPresenter.propertyMap.currentProviders = JSON.stringify(formattedData);
         res.status(code).send(providersPresenter.render(formattedData));
       }
     },
