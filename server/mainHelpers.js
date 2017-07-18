@@ -12,6 +12,8 @@ var Logger = require("../utility/logger.js");
 var NetworkPersistLogic = require("../utility/networkPersistLogic.js");
 var SpecialtyPersistLogic = require("../utility/specialtyPersistLogic.js");
 var LanguagePersistLogic = require("../utility/languagePersistLogic.js");
+var LocationPersistLogic = require("../utility/locationPersistLogic.js");
+var LatlongPersistLogic = require("../utility/latlongPersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
 
@@ -313,44 +315,6 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
-      ],
-      "searchInput": {
-        "field": {
-          "id": "location",
-          "value": query.location,
-          "type": "text",
-          "name": "location",
-          "placeholder": "Zip code, city, or address",
-          "label": {
-            "text": "Near"
-          }
-        }
-      },
-      "hiddenFields": [
-        {
-          "field": {
-            "id": "latitude",
-            "type": "hidden",
-            "name": "lat",
-            "value": query.lat,
-            "label": {
-              "text": "latitude",
-              "class": "hidden"
-            }
-          }
-        },
-        {
-          "field": {
-            "id": "longitude",
-            "type": "hidden",
-            "name": "long",
-            "value": query.long,
-            "label": {
-              "text": "longitude",
-              "class": "hidden"
-            }
-          }
-        }
       ]
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -371,6 +335,12 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
         providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
         providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+        // location persistence
+        providersPresenter.propertyMap.searchInput = ViewModel.pages_directorySearchResults.searchInput;
+        providersPresenter.propertyMap.searchInput = LocationPersistLogic.returnLocationFormFields(query.location);
+        // lat long persistence
+        providersPresenter.propertyMap.hiddenFields = ViewModel.pages_directorySearchResults.hiddenFields;
+        providersPresenter.propertyMap.hiddenFields = LatlongPersistLogic.returnLatlongFormFields(query.lat, query.long);
         // distance persistence
         providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
         providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
@@ -385,6 +355,7 @@ var getListsResults = function(query, req, res) {
         providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
 
         var formattedData = Utils.formatData(providers.toJSON());
+        providersPresenter.propertyMap.currentProviders = JSON.stringify(formattedData);
         res.status(code).send(providersPresenter.render(formattedData));
       }
     },

@@ -1,7 +1,9 @@
 var FEHelpers = (function(){
   var mapPos = document.getElementById("provider-map");
   var formBottom = document.getElementsByClassName("provider-form")[0];
-  var footerTop = document.getElementsByClassName("page-footer")[0];
+  var bodyHeight = $("body").height();
+  var footerHeight = $(".page-footer").height();
+  var mapBottomOffset = 67;
 
   var debounce = function(func, wait, immediate) {
   	var timeout;
@@ -24,7 +26,7 @@ var FEHelpers = (function(){
 
   var fixmyshit = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
-      if(mapPos.getBoundingClientRect().bottom >= (footerTop.getBoundingClientRect().top - 67)) {
+      if(window.pageYOffset >= (bodyHeight - window.innerHeight - footerHeight - mapBottomOffset)) {
         mapPos.className = "provider-map absolute";
       } else {
         mapPos.className = "provider-map fixed";
