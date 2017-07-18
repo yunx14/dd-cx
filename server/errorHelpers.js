@@ -16,7 +16,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.pages_directoryError.errorMessages.invalidAddress,
+      ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Invalid Zip Code",
         "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
@@ -30,7 +30,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.pages_directoryError.errorMessages.noResults,
+      ViewModel.pages_directoryError,
       {
         "title": "Provider Directory No Results",
         "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
@@ -44,7 +44,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.pages_directoryError.errorMessages.serverTimeout,
+      ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Server Timeout",
         "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
@@ -58,7 +58,7 @@ module.exports = {
 
     var errorPresenter = new MainPresenter(
       "pages-directoryError",
-      ViewModel.pages_directoryError.errorMessages.servicesDown,
+      ViewModel.pages_directoryError,
       {
         "title": "Provider Directory Server is Down",
         "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }]
