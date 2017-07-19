@@ -7,10 +7,11 @@ module.exports.returnLocationFormFields = function(location) {
       placeholder: "Zip code, city, or address",
       valuelessAttribute: "required",
       attributes: {
-        oninvalid: "this.setCustomValidity('Please enter a location')"
+        oninvalid: "this.setCustomValidity('Please enter a location')",
+        oninput: "this.setCustomValidity('')"
       },
       label: {
-        text: "Near"
+        text: "Location"
       }
     }
   };
