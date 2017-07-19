@@ -20,11 +20,7 @@ var FEHelpers = (function(){
   	};
   };
 
-  var log = function(text) {
-    console.log(text);
-  };
-
-  var fixmyshit = function() {
+  var fixmystuff = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
       if(window.pageYOffset >= (bodyHeight - window.innerHeight - footerHeight - mapBottomOffset)) {
         mapPos.className = "provider-map absolute";
@@ -38,9 +34,8 @@ var FEHelpers = (function(){
 
   return {
     "debounce": debounce,
-    "log": log,
-    "fixmyshit": fixmyshit
+    "fixmystuff": fixmystuff
   };
 }());
 
-window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmyshit, 10));
+window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmystuff, 10));
