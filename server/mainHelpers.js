@@ -40,7 +40,10 @@ module.exports = {
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -149,15 +152,33 @@ module.exports = {
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
-          ]
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href:"https://www.deltadentalins.com/",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
+                          }
+                        }
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -227,7 +248,10 @@ module.exports = {
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
