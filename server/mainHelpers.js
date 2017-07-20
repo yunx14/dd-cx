@@ -51,23 +51,23 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
-            "banner": {
-                        text: "Return to the old dentist search?",
-                        button: {
-                          anchorLink: {
-                            href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
-                            text: "Go back",
-                            class:"button btn--primary inverted banner__button"}
-                          },
-                          close: {
-                            icon: {
-                              class: "icon-exit-inverted",
-                              ariaLabel: "close"
-                            }
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
                           }
                         }
-          ]
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -273,23 +273,23 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
-            "banner": {
-                        text: "Return to the old dentist search?",
-                        button: {
-                          anchorLink: {
-                            href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
-                            text: "Go back",
-                            class:"button btn--primary inverted banner__button"}
-                          },
-                          close: {
-                            icon: {
-                              class: "icon-exit-inverted",
-                              ariaLabel: "close"
-                            }
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
                           }
                         }
-          ]
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -371,23 +371,23 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
-        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"},
-        "banner": {
-                    text: "Return to the old dentist search?",
-                    button: {
-                      anchorLink: {
-                        href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
-                        text: "Go back",
-                        class:"button btn--primary inverted banner__button"}
-                      },
-                      close: {
-                        icon: {
-                          class: "icon-exit-inverted",
-                          ariaLabel: "close"
-                        }
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
+      ],
+      "banner": {
+                  text: "Return to the old dentist search?",
+                  button: {
+                    anchorLink: {
+                      href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                      text: "Go back",
+                      class:"button btn--primary inverted banner__button"}
+                    },
+                    close: {
+                      icon: {
+                        class: "icon-exit-inverted",
+                        ariaLabel: "close"
                       }
                     }
-      ]
+                  }
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
