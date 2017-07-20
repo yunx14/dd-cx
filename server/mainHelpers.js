@@ -35,12 +35,17 @@ module.exports = {
     } else {
       Logger.log("Here is empty search page");
 
+      const query = req.query;
+
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
         {
           "title": "Provider Directory Search",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -49,7 +54,22 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
-          ]
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
+                          }
+                        }
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -106,7 +126,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = {
+      var searchQueryWithKey = query = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
@@ -149,7 +169,10 @@ module.exports = {
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -157,7 +180,22 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
-          ]
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
+                          }
+                        }
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -195,7 +233,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = {
+      var searchQueryWithKey = query = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
@@ -227,7 +265,10 @@ module.exports = {
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "detailLink": `${CONSTANTS.PROVIDER_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "inaccurate",
-          "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+          "stylesheets": [
+            { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+          ],
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -235,7 +276,22 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
-          ]
+          ],
+          "banner": {
+                      text: "Return to the old dentist search?",
+                      button: {
+                        anchorLink: {
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                          text: "Go back",
+                          class:"button btn--primary inverted banner__button"}
+                        },
+                        close: {
+                          icon: {
+                            class: "icon-exit-inverted",
+                            ariaLabel: "close"
+                          }
+                        }
+                      }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -305,7 +361,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
-      "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+      "stylesheets": [
+        { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+        { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+      ],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -314,8 +373,24 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "spiderfy.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
-      ]
+      ],
+      "banner": {
+                  text: "Return to the old dentist search?",
+                  button: {
+                    anchorLink: {
+                      href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                      text: "Go back",
+                      class:"button btn--primary inverted banner__button"}
+                    },
+                    close: {
+                      icon: {
+                        class: "icon-exit-inverted",
+                        ariaLabel: "close"
+                      }
+                    }
+                  }
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );

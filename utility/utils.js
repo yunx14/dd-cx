@@ -58,5 +58,15 @@ module.exports = Utils = {
       this.formatDistance(data.distance);
     }
     return formattedData;
+  },
+  transformNetworkLegacy: function(network) {
+    if (network && !Array.isArray(network) && network === "ppo") {
+      return "01";
+    } else if (network && !Array.isArray(network) && network === "premier") {
+      return "20";
+    } else if (network && !Array.isArray(network) && network === "deltacare") {
+      return "30";
+    }
+    return "any";
   }
 };
