@@ -48,7 +48,7 @@ var Map = {
 
   buildIWContent : function(place) {
   	var infoWindowCont = $("#info-content");
-  	infoWindowCont.html(place.firstName+" "+place.lastName+"<br/>"+place.address.addressLine+"<br/>"+place.address.city+", "+place.address.state+" "+place.address.zipcode);
+  	infoWindowCont.html(place.firstName+" "+place.lastName+"<br/>"+place.address.addressLine+"<br/>"+place.address.city+", "+place.address.state+" "+place.address.zipcode+"<br/>"+place.officePhone);
   }
 };
 
