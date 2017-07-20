@@ -35,6 +35,8 @@ module.exports = {
     } else {
       Logger.log("Here is empty search page");
 
+      const query = req.query;
+
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
@@ -124,7 +126,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = {
+      var searchQueryWithKey = query = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
@@ -231,7 +233,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = {
+      var searchQueryWithKey = query = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
