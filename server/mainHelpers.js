@@ -373,6 +373,7 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "spiderfy.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
       "banner": {
