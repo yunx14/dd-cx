@@ -1,6 +1,7 @@
 var FEHelpers = (function(){
   var mapPos = document.getElementById("provider-map");
   var formBottom = document.getElementsByClassName("provider-form")[0];
+  var col = document.getElementsByClassName("provider-list")[0];
   var bodyHeight = $("body").height();
   var footerHeight = $(".page-footer").height();
   var mapBottomOffset = 67;
@@ -20,13 +21,12 @@ var FEHelpers = (function(){
   	};
   };
 
-  var log = function(text) {
-    console.log(text);
-  };
-
-  var fixmyshit = function() {
+  var fixmystuff = function() {
     if(formBottom.getBoundingClientRect().bottom <= 0) {
-      if(window.pageYOffset >= (bodyHeight - window.innerHeight - footerHeight - mapBottomOffset)) {
+      if(mapPos.getBoundingClientRect().top > 32) {
+        mapPos.className = "provider-map fixed";
+      }
+      if(Math.ceil(mapPos.getBoundingClientRect().bottom) >= Math.ceil(col.getBoundingClientRect().bottom)) {
         mapPos.className = "provider-map absolute";
       } else {
         mapPos.className = "provider-map fixed";
@@ -38,9 +38,8 @@ var FEHelpers = (function(){
 
   return {
     "debounce": debounce,
-    "log": log,
-    "fixmyshit": fixmyshit
+    "fixmystuff": fixmystuff
   };
 }());
 
-window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmyshit, 10));
+window.addEventListener("scroll", FEHelpers.debounce(FEHelpers.fixmystuff, 10));
