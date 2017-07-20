@@ -51,7 +51,22 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+            "banner": {
+                        text: "Return to the old dentist search?",
+                        button: {
+                          anchorLink: {
+                            href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                            text: "Go back",
+                            class:"button btn--primary inverted banner__button"}
+                          },
+                          close: {
+                            icon: {
+                              class: "icon-exit-inverted",
+                              ariaLabel: "close"
+                            }
+                          }
+                        }
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -162,13 +177,13 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ],
           "banner": {
                       text: "Return to the old dentist search?",
                       button: {
                         anchorLink: {
-                          href:"https://www.deltadentalins.com/",
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
                           text: "Go back",
                           class:"button btn--primary inverted banner__button"}
                         },
@@ -258,7 +273,22 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+            "banner": {
+                        text: "Return to the old dentist search?",
+                        button: {
+                          anchorLink: {
+                            href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                            text: "Go back",
+                            class:"button btn--primary inverted banner__button"}
+                          },
+                          close: {
+                            icon: {
+                              class: "icon-exit-inverted",
+                              ariaLabel: "close"
+                            }
+                          }
+                        }
           ]
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
@@ -329,7 +359,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
       "title": "Provider Directory Search Results",
-      "stylesheets": [{ "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" }],
+      "stylesheets": [
+        { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
+        { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+      ],
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -338,7 +371,22 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
-        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"},
+        "banner": {
+                    text: "Return to the old dentist search?",
+                    button: {
+                      anchorLink: {
+                        href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                        text: "Go back",
+                        class:"button btn--primary inverted banner__button"}
+                      },
+                      close: {
+                        icon: {
+                          class: "icon-exit-inverted",
+                          ariaLabel: "close"
+                        }
+                      }
+                    }
       ]
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
