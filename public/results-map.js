@@ -19,13 +19,18 @@ var Map = {
   		backgroundColor: '#fff'
   	});
 
+    Map.oms = new OverlappingMarkerSpiderfier(map, {
+      markersWontMove: true,
+      markersWontHide: true,
+      basicFormatEvents: true
+    });
     Map.markers = []; //reset markers
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
 			Map.markers[h] = new google.maps.Marker({
 				position: new google.maps.LatLng(currentProviders[i].address.latitude, currentProviders[i].address.longitude),
-				map: Map.map,
+				map: Map.oms,
         placeResult : currentProviders[i],
         markerID : i
 			});
