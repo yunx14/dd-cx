@@ -19,7 +19,7 @@ var Map = {
   		backgroundColor: '#fff'
   	});
 
-    Map.oms = new OverlappingMarkerSpiderfier(map, {
+    Map.oms = new OverlappingMarkerSpiderfier(Map.map, {
       markersWontMove: true,
       markersWontHide: true,
       basicFormatEvents: true
