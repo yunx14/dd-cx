@@ -59,7 +59,7 @@ module.exports = {
                       text: "Return to the old dentist search?",
                       button: {
                         anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
                           text: "Go back",
                           class:"button btn--primary inverted banner__button"}
                         },
@@ -185,7 +185,7 @@ module.exports = {
                       text: "Return to the old dentist search?",
                       button: {
                         anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
                           text: "Go back",
                           class:"button btn--primary inverted banner__button"}
                         },
@@ -281,7 +281,7 @@ module.exports = {
                       text: "Return to the old dentist search?",
                       button: {
                         anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
                           text: "Go back",
                           class:"button btn--primary inverted banner__button"}
                         },
@@ -379,7 +379,7 @@ var getListsResults = function(query, req, res) {
                   text: "Return to the old dentist search?",
                   button: {
                     anchorLink: {
-                      href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?d_loc=" + query.location + " &d_net=" + Utils.transformNetworkLegacy(query.network) + "&d_kw=" + query.free_text + "&d_d=" + query.distance + "&d_prg=delta&d_co=delta",
+                      href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
                       text: "Go back",
                       class:"button btn--primary inverted banner__button"}
                     },
