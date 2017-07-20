@@ -48,6 +48,38 @@ module.exports = Utils = {
     }
     return distance;
   },
+  formatNetwork: function(network) {
+    var formattedNetwork = [];
+    if (network) {
+      if (Array.isArray(network) && network.length === 1) {
+        if (network[0].networkId === "2PPO") {
+          formattedNetwork.push("PPO");
+        }
+        if (network[0].networkId === "2PREMIER") {
+          formattedNetwork.push("Premier");
+        }
+        if (network[0].networkId === "2DELTACARE") {
+          formattedNetwork.push("Deltacare USA");
+        }
+        return formattedNetwork.join("") + " " + "network";
+      } else if (Array.isArray(network) && network.length >= 1) {
+        for (var i = 0; i < network.length; i++) {
+          if (network[i].networkId === "2PPO") {
+            formattedNetwork.push("PPO");
+          }
+          if (network[i].networkId === "2PREMIER") {
+            formattedNetwork.push("Premier");
+          }
+          if (network[i].networkId === "2DELTACARE") {
+            formattedNetwork.push("Deltacare USA");
+          }
+        }
+        return formattedNetwork.join(", ") + "networks";
+      }
+    } else {
+      return "";
+    }
+  },
   formatData: function(data) {
     var formattedData = data;
     if (Array.isArray(data)) {
