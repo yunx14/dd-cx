@@ -74,7 +74,7 @@ module.exports = Utils = {
             formattedNetwork.push("Deltacare USA");
           }
         }
-        return formattedNetwork.join(", ").slice(0, -2) + "networks";
+        return formattedNetwork.join(", ").slice(0, -2) + " " + "networks";
       }
     } else {
       return "";
