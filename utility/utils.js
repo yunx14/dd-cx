@@ -85,6 +85,7 @@ module.exports = Utils = {
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
         formattedData[i].distance = this.formatDistance(data[i].distance);
+        formattedData[i].providerNetworks = this.formatNetwork(data[i].providerNetworks);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
       this.formatDistance(data.distance);
