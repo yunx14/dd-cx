@@ -157,6 +157,8 @@ module.exports = Utils = {
         availability.icon = "icon-warning",
         availability.text = "Not accepting new patients";
       }
+
+      return availability;
     } else {
       return "";
     }
