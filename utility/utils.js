@@ -48,11 +48,115 @@ module.exports = Utils = {
     }
     return distance;
   },
+  formatNetwork: function(network) {
+    var formattedNetwork = [];
+    if (network) {
+      if (Array.isArray(network) && network.length === 1) {
+        if (network[0].networkId === "2PPO") {
+          formattedNetwork.push("PPO");
+        }
+        if (network[0].networkId === "2PREMIER") {
+          formattedNetwork.push("Premier");
+        }
+        if (network[0].networkId === "2DELTACARE") {
+          formattedNetwork.push("DeltaCare USA");
+        }
+        return formattedNetwork.join("") + " " + "network";
+      } else if (Array.isArray(network) && network.length >= 1) {
+        for (var i = 0; i < network.length; i++) {
+          if (network[i].networkId === "2PPO") {
+            formattedNetwork.push("PPO");
+          }
+          if (network[i].networkId === "2PREMIER") {
+            formattedNetwork.push("Premier");
+          }
+          if (network[i].networkId === "2DELTACARE") {
+            formattedNetwork.push("DeltaCare USA");
+          }
+        }
+        return formattedNetwork.join(", ") + " " + "networks";
+      }
+    } else {
+      return "";
+    }
+  },
+  formatAvailability: function(network) {
+    var formattedAvailability = {};
+    if (network) {
+      if (Array.isArray(network) && network.length === 1) {
+        if (network[0].networkId === "2PPO") {
+          if (network[0].acceptsNewPatients === "Y") {
+            formattedAvailability.icon = "icon-check-circle";
+            formattedAvailability.text = "Accepting new patients";
+          } else if (network[0].acceptsNewPatients === "N") {
+            formattedAvailability.icon = "icon-warning",
+            formattedAvailability.text = "Not accepting new patients";
+          }
+        }
+        if (network[0].networkId === "2PREMIER") {
+          if (network[0].acceptsNewPatients === "Y") {
+            formattedAvailability.icon = "icon-check-circle";
+            formattedAvailability.text = "Accepting new patients";
+          } else if (network[0].acceptsNewPatients === "N") {
+            formattedAvailability.icon = "icon-warning",
+            formattedAvailability.text = "Not accepting new patients";
+          }
+        }
+        if (network[0].networkId === "2DELTACARE") {
+          if (network[0].acceptsNewPatients === "Y") {
+            formattedAvailability.icon = "icon-check-circle";
+            formattedAvailability.text = "Accepting new patients";
+          } else if (network[0].acceptsNewPatients === "N") {
+            formattedAvailability.icon = "icon-warning",
+            formattedAvailability.text = "Not accepting new patients";
+          }
+        }
+        return formattedAvailability;
+      } else if (Array.isArray(network) && network.length > 1) {
+        var counterY = 0;
+        var AcceptNetwork = [];
+        for (var i = 0; i < network.length; i++) {
+          if (network[i].networkId === "2PPO" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("PPO");
+          }
+          if (network[i].networkId === "2PREMIER" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("Premier");
+          }
+          if (network[i].networkId === "2DELTACARE" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("DeltaCare USA");
+          }
+        }
+
+        if ( counterY !== 0 && (network.length === counterY) ) {
+          formattedAvailability.icon = "icon-check-circle";
+          formattedAvailability.text = "Accepting new patients";
+        } else if (counterY > 0 && (network.length > counterY)) {
+          for (var i = 0; i < AcceptNetwork.length; i++) {
+            var tempText = "Accepting new patients (";
+            tempText = tempText + AcceptNetwork[i] + ", ";
+          }
+          formattedAvailability.icon = "icon-check-circle";
+          formattedAvailability.text = tempText.slice(0, -2) + " only)";
+        } else {
+          formattedAvailability.icon = "icon-warning",
+          formattedAvailability.text = "Not accepting new patients";
+        }
+        return formattedAvailability;
+      }
+    } else {
+      return formattedAvailability;
+    }
+  },
   formatData: function(data) {
     var formattedData = data;
     if (Array.isArray(data)) {
       for (var i = 0; i < data.length; i++) {
         formattedData[i].distance = this.formatDistance(data[i].distance);
+        formattedData[i].availability = this.formatAvailability(data[i].providerNetworks);
+        formattedData[i].providerNetworks = this.formatNetwork(data[i].providerNetworks);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
       this.formatDistance(data.distance);
@@ -61,9 +165,9 @@ module.exports = Utils = {
   },
   transformNetworkLegacy: function(network) {
     if (network && !Array.isArray(network) && network === "ppo") {
-      return "01";
-    } else if (network && !Array.isArray(network) && network === "premier") {
       return "20";
+    } else if (network && !Array.isArray(network) && network === "premier") {
+      return "01";
     } else if (network && !Array.isArray(network) && network === "deltacare") {
       return "30";
     }
