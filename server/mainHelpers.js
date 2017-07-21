@@ -98,14 +98,17 @@ module.exports = {
         geocoder.geocode(req.body.location, function(err, response) {
           if (err) {
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+            return;
           } else if (!response || (Array.isArray(response) && response.length === 0)) {
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
+            return;
           } else {
             query.location = response[0].formattedAddress;
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
             if (query && query.lat && query.long) {
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
+              return;
             }
           }
         });
@@ -406,6 +409,7 @@ var getListsResults = function(query, req, res) {
       // success
       if (providers.isEmpty()) {
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
+        return;
       } else {
 
         var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
