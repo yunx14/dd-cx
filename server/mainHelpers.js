@@ -206,6 +206,7 @@ module.exports = {
           if (data) {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
+              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
             }
             providerPresenter.mergePropertyMap(data);
           }
@@ -302,6 +303,7 @@ module.exports = {
           if (data) {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
+              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
             }
             providerPresenter.mergePropertyMap(data);
           }
