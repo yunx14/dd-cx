@@ -59,7 +59,7 @@ module.exports = Utils = {
           formattedNetwork.push("Premier");
         }
         if (network[0].networkId === "2DELTACARE") {
-          formattedNetwork.push("Deltacare USA");
+          formattedNetwork.push("DeltaCare USA");
         }
         return formattedNetwork.join("") + " " + "network";
       } else if (Array.isArray(network) && network.length >= 1) {
@@ -71,7 +71,7 @@ module.exports = Utils = {
             formattedNetwork.push("Premier");
           }
           if (network[i].networkId === "2DELTACARE") {
-            formattedNetwork.push("Deltacare USA");
+            formattedNetwork.push("DeltaCare USA");
           }
         }
         return formattedNetwork.join(", ") + " " + "networks";
