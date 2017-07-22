@@ -134,8 +134,8 @@ module.exports = Utils = {
           formattedAvailability.icon = "icon-check-circle";
           formattedAvailability.text = "Accepting new patients";
         } else if (counterY > 0 && (network.length > counterY)) {
+          var tempText = "Accepting new patients (";
           for (var i = 0; i < AcceptNetwork.length; i++) {
-            var tempText = "Accepting new patients (";
             tempText = tempText + AcceptNetwork[i] + ", ";
           }
           formattedAvailability.icon = "icon-check-circle";
