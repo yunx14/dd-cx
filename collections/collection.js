@@ -110,25 +110,29 @@ Collection.prototype.fetch = function(options, success, error) {
   this.secure = (uri.indexOf("https") !== -1);
 
   let req = request.get(options, function (err, res, body) {
-
     let status = 200;
 
     if (err) {
-      Logger.warn("Exception " + err);
-      status = 500;
+      Logger.warn("Error returned " + err);
+      status = (res && res.statusCode) ? res.statusCode : 500;
     } else {
       status = (res && res.statusCode) ? res.statusCode : 200;
       Logger.debug("STATUS: " + status);
-
-      let data = {};
-      try {
-        data = JSON.parse(body);
-      } catch(e) {
-        error(e);
-        // TODO: we need to do something with bad server responses that are not expected or formatted correctly
+      if (status < 400) {
+        let data = {};
+        try {
+          data = JSON.parse(body);
+        } catch(e) {
+          status = 500;
+          error(e);
+          return;
+        }
+        this.attributes = data;
+        success(status, data);
+      } else {
+        Logger.warn("Error was returned " + status);
+        error(status, new Error("Error returned from request " + status));
       }
-      this.attributes = data;
-      success(status, data);
     }
   });
 
@@ -146,7 +150,7 @@ Collection.prototype.fetch = function(options, success, error) {
       data = {};
     }
     Logger.warn("Exception " + JSON.stringify(data));
-    error(500, e);
+    error(400, e);
   });
 };
 /**
