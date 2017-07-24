@@ -450,8 +450,10 @@ var getListsResults = function(query, req, res) {
         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
       } else if (code === 400) {
         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-      } else {
+      } else if (code === 500) {
         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
+      } else {
+        res.status(code).redirect(CONSTANTS.ERROR_NO_RESULTS);
       }
     }
   );
