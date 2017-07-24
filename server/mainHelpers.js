@@ -408,6 +408,7 @@ var getListsResults = function(query, req, res) {
     function(code, data) {
       // success
       if (providers.isEmpty()) {
+        console.log("No results - is the request set already? ", res);
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
         return;
       } else {
