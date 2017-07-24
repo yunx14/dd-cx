@@ -131,8 +131,8 @@ Collection.prototype.fetch = function(options, success, error) {
         success(status, data);
       } else {
         Logger.warn("Error was returned " + status);
-        Logger.debug("request sent " + ((req) ? JSON.stringify(req) : "n/a");
-        Logger.debug("response sent " + ((res) ? JSON.stringify(res) : "n/a");
+        Logger.debug("request sent " + ((req) ? JSON.stringify(req) : "n/a"));
+        Logger.debug("response sent " + ((res) ? JSON.stringify(res) : "n/a"));
         error(status, new Error("Error returned from request " + status));
       }
     }
