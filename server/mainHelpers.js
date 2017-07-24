@@ -57,20 +57,21 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ],
           "banner": {
-                      text: "Return to the old dentist search?",
-                      button: {
-                        anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
-                          text: "Go back",
-                          class:"button btn--primary inverted banner__button"}
-                        },
-                        close: {
-                          icon: {
-                            class: "icon-exit-inverted",
-                            ariaLabel: "close"
-                          }
-                        }
-                      }
+            text: "Return to the old dentist search?",
+            button: {
+              anchorLink: {
+                href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                text: "Go back",
+                class:"button btn--primary inverted banner__button"
+              }
+            },
+            close: {
+              icon: {
+                class: "icon-exit-inverted",
+                ariaLabel: "close"
+              }
+            }
+          }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -177,6 +178,7 @@ module.exports = {
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
             { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
           ],
+          "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -186,20 +188,21 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ],
           "banner": {
-                      text: "Return to the old dentist search?",
-                      button: {
-                        anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
-                          text: "Go back",
-                          class:"button btn--primary inverted banner__button"}
-                        },
-                        close: {
-                          icon: {
-                            class: "icon-exit-inverted",
-                            ariaLabel: "close"
-                          }
-                        }
-                      }
+            text: "Return to the old dentist search?",
+            button: {
+              anchorLink: {
+                href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                text: "Go back",
+                class:"button btn--primary inverted banner__button"
+              }
+            },
+            close: {
+              icon: {
+                class: "icon-exit-inverted",
+                ariaLabel: "close"
+              }
+            }
+          }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -275,6 +278,7 @@ module.exports = {
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
             { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
           ],
+          "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
             {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -285,20 +289,21 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "inaccurate-form.js"}
           ],
           "banner": {
-                      text: "Return to the old dentist search?",
-                      button: {
-                        anchorLink: {
-                          href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
-                          text: "Go back",
-                          class:"button btn--primary inverted banner__button"}
-                        },
-                        close: {
-                          icon: {
-                            class: "icon-exit-inverted",
-                            ariaLabel: "close"
-                          }
-                        }
-                      }
+            text: "Return to the old dentist search?",
+            button: {
+              anchorLink: {
+                href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+                text: "Go back",
+                class:"button btn--primary inverted banner__button"
+              }
+            },
+            close: {
+              icon: {
+                class: "icon-exit-inverted",
+                ariaLabel: "close"
+              }
+            }
+          }
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
@@ -374,6 +379,7 @@ var getListsResults = function(query, req, res) {
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
         { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
       ],
+      "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
       "scripts": [
         {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
@@ -386,20 +392,21 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
       "banner": {
-                  text: "Return to the old dentist search?",
-                  button: {
-                    anchorLink: {
-                      href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
-                      text: "Go back",
-                      class:"button btn--primary inverted banner__button"}
-                    },
-                    close: {
-                      icon: {
-                        class: "icon-exit-inverted",
-                        ariaLabel: "close"
-                      }
-                    }
-                  }
+        text: "Return to the old dentist search?",
+        button: {
+          anchorLink: {
+            href: CONSTANTS[CONSTANTS.ENVIRONMENT].OLD_DIRECTORY_HOST + "/find-a-dentist?" + ((query.location) ? "d_loc=" + query.location : "") + ((query.network) ? "&d_net=" + Utils.transformNetworkLegacy(query.network) : "") + ((query.free_text) ? "&d_kw=" + query.free_text : "") + "&d_d=" + ((query.distance) ? query.distance : "15") + "&d_prg=delta&d_co=delta",
+            text: "Go back",
+            class:"button btn--primary inverted banner__button"
+          }
+        },
+        close: {
+          icon: {
+            class: "icon-exit-inverted",
+            ariaLabel: "close"
+          }
+        }
+      }
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
