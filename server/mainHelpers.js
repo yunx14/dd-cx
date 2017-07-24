@@ -409,7 +409,6 @@ var getListsResults = function(query, req, res) {
     function(code, data) {
       // success
       if (providers.isEmpty()) {
-        console.log("No results - is the request set already? ", res);
         res.redirect(CONSTANTS.ERROR_NO_RESULTS);
         return;
       } else {
@@ -451,8 +450,10 @@ var getListsResults = function(query, req, res) {
         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
       } else if (code === 400) {
         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-      } else {
+      } else if (code === 500) {
         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
+      } else {
+        res.status(code).redirect(CONSTANTS.ERROR_NO_RESULTS);
       }
     }
   );
