@@ -5,7 +5,7 @@ var InaccurateForm = (function() {
 
   function copyTextToEmailLink() {
     $textarea.change(function(){
-      $submit.attr("href", originalHref+"&body="+$(this).text());
+      $submit.attr("href", originalHref+"&body="+$(this).value);
     });
   }
 
