@@ -116,42 +116,30 @@ module.exports = Utils = {
         var counterY = 0;
         var AcceptNetwork = [];
         for (var i = 0; i < network.length; i++) {
-          if (network[i].networkId === "2PPO") {
-            if (network[i].acceptsNewPatients === "Y") {
-              counterY += 1;
-              AcceptNetwork.push("PPO");
-            } else if (network[i].acceptsNewPatients === "N") {
-              AcceptNetwork.push("PPO");
-            }
+          if (network[i].networkId === "2PPO" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("PPO");
           }
-          if (network[i].networkId === "2PREMIER") {
-            if (network[i].acceptsNewPatients === "Y") {
-              counterY += 1;
-              AcceptNetwork.push("Premier");
-            } else if (network[i].acceptsNewPatients === "N") {
-              AcceptNetwork.push("Premier");
-            }
+          if (network[i].networkId === "2PREMIER" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("Premier");
           }
-          if (network[i].networkId === "2DELTACARE") {
-            if (network[i].acceptsNewPatients === "Y") {
-              counterY += 1;
-              AcceptNetwork.push("DeltaCare USA");
-            } else if (network[i].acceptsNewPatients === "N") {
-              AcceptNetwork.push("DeltaCare USA");
-            }
+          if (network[i].networkId === "2DELTACARE" && network[i].acceptsNewPatients === "Y") {
+            counterY += 1;
+            AcceptNetwork.push("DeltaCare USA");
           }
         }
 
-        if ( counterY !== 0 && (AcceptNetwork.length === counterY) ) {
+        if ( counterY !== 0 && (network.length === counterY) ) {
           formattedAvailability.icon = "icon-check-circle";
           formattedAvailability.text = "Accepting new patients";
-        } else if (counterY > 0 && (AcceptNetwork.length > counterY)) {
+        } else if (counterY > 0 && (network.length > counterY)) {
+          var tempText = "Accepting new patients (";
           for (var i = 0; i < AcceptNetwork.length; i++) {
-            var tempText = "Accepting new patients (";
             tempText = tempText + AcceptNetwork[i] + ", ";
           }
           formattedAvailability.icon = "icon-check-circle";
-          formattedAvailability.text = tempText.slice(0, -2) + ")";
+          formattedAvailability.text = tempText.slice(0, -2) + " only)";
         } else {
           formattedAvailability.icon = "icon-warning",
           formattedAvailability.text = "Not accepting new patients";
