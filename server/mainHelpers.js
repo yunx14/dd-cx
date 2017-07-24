@@ -280,7 +280,8 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
-            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "inaccurate-form.js"}
           ],
           "banner": {
                       text: "Return to the old dentist search?",
