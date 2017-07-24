@@ -124,7 +124,9 @@ Collection.prototype.fetch = function(options, success, error) {
       try {
         data = JSON.parse(body);
       } catch(e) {
+        status = 500;
         error(e);
+        return;
         // TODO: we need to do something with bad server responses that are not expected or formatted correctly
       }
       this.attributes = data;
