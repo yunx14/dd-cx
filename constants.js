@@ -5,7 +5,7 @@ module.exports = {
 
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
   "PRIVATE_KEY": "/opt/docker/certs/node.key",
-  // "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
+  "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
   "CERT": "/opt/docker/certs/node.cer",
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
