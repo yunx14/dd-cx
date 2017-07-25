@@ -48,7 +48,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
@@ -192,7 +192,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
@@ -292,7 +292,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
@@ -393,7 +393,7 @@ var getListsResults = function(query, req, res) {
       ],
       "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
       "scripts": [
-        {"script": "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ&libraries=places"},
+        {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
