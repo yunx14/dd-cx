@@ -40,7 +40,8 @@
             newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
         }
       }
-      setPath({{galocation}}, {{gaoffice}}, {{gaprovider}});
+      //setPath({{galocation}}, {{gaoffice}}, {{gaprovider}});
+      setPath();
       ga('set', 'dimension9', dnt);
       ga('set', 'page', newPathname);
       ga('send', 'pageview');
