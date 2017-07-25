@@ -224,7 +224,8 @@ body {
   font: 400 0.875rem/1.43 "Gotham SSm A", "Gotham SSm B", Gotham, "Helvetica", "Arial", sans-serif;
   color: #000000;
   background: #ffffff;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+min-width: 320px;}
 
 main {
   display: block;
