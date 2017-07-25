@@ -5,7 +5,7 @@ module.exports = {
 
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
   "PRIVATE_KEY": "/opt/docker/certs/node.key",
-  "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
+  // "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
   "CERT": "/opt/docker/certs/node.cer",
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
@@ -43,7 +43,7 @@ module.exports = {
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
-    "SEARCH_SERVICE_PATH": "/provider/v1/providers",
+    "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"

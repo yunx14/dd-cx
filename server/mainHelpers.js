@@ -81,13 +81,14 @@ module.exports = {
   postDirectorySearch: function(req, res) {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
-    var options = {
-      provider: 'google',
-      httpAdapter: 'https',
-      apiKey: CONSTANTS.GOOGLE_MAPS_API_KEY,
-      formatter: null
-    };
-    var geocoder = NodeGeocoder(options);
+    // var options = {
+    //   provider: 'google',
+    //   httpAdapter: 'https',
+    //   apiKey: CONSTANTS.GOOGLE_MAPS_API_KEY,
+    //   formatter: null
+    // };
+    // var geocoder = NodeGeocoder(options);
+    var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
@@ -102,12 +103,15 @@ module.exports = {
       query.keyword = null;
     }
     if (req.body.location) {
+	    Logger.log("We will server-side geolocate");
       try {
         geocoder.geocode(req.body.location, function(err, response) {
           if (err) {
+		  Logger.log("We got an error from geolocation " + err );
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
             return;
           } else if (!response || (Array.isArray(response) && response.length === 0)) {
+		Logger.log("no response from geolocator");
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
             return;
           } else {
@@ -115,6 +119,7 @@ module.exports = {
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
             if (query && query.lat && query.long) {
+		    Logger.log("Redirectory to search page - " + Utils.formatQuery(query));
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
               return;
             }
@@ -129,6 +134,7 @@ module.exports = {
       query.lat = Number(req.body.lat);
       query.long = Number(req.body.long);
       if (query && query.lat && query.long) {
+	      Logger.log("redirectory to search - " + Utils.formatQuery(query));
         res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
       }
     }

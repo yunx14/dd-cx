@@ -57,7 +57,7 @@ var options = {
 
 // Serve up public static files
 app.use("/", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
-app.use(CONSTANTS.BASE_URI, express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
+app.use("/find-a-dentist/alpha", express.static(path.join(__dirname, CONSTANTS.PUBLIC_DIRECTORY), options));
 app.use("/docs", express.static(path.join(__dirname, "jsdoc"), options));
 
 // Allow parsing json and url
