@@ -23,9 +23,18 @@
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
       ga('create', '{{google-al}}', 'auto');
       var dnt= navigator.doNotTrack || window.doNotTrack || window.msDoNotTrack;
-      var pathname = window.location.host +"/"+ window.location.pathname;
+      var pathArray = window.location.pathname.split( '/' );
+      var newPathStart = "find-a-dentist/alpha";
+      var newPathname = "";
+      if (pathArray[3] == "directory-search.html"){
+        newPathname = newPathStart + "/search";
+      } else if (pathArray[3] == "provider-details.html") {
+        newPathname = newPathStart +"/offices"+ {{address.city}} +"-"+ {{address.state}} +"/"+ {{firstName}}{{lastName}};
+      } else {
+          newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");;
+      }
       ga('set', 'dimension9', dnt);
-      ga('set', 'page', pathname);
+      ga('set', 'page', newPathname);
       ga('send', 'pageview');
     </script>
 
