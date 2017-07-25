@@ -23,16 +23,24 @@
       })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
       ga('create', '{{google-al}}', 'auto');
       var dnt= navigator.doNotTrack || window.doNotTrack || window.msDoNotTrack;
-      var pathArray = window.location.pathname.split( '/' );
-      var newPathStart = "find-a-dentist/alpha";
       var newPathname = "";
-      if (pathArray[3] == "directory-search.html"){
-        newPathname = newPathStart + "/search";
-      } else if (pathArray[3] == "provider-details.html") {
-        newPathname = newPathStart +"/offices";
-      } else {
-          newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");;
+      function setPath(location, office, provider) {
+        var galocation = location || null;
+        var gaoffice = office || null;
+        var gaprovider = provider || null;
+        var pathArray = window.location.pathname.split( '/' );
+        var newPathStart = "find-a-dentist/alpha";
+        if (pathArray[3] == "directory-search.html"){
+          newPathname = newPathStart + "/search";
+        } else if (pathArray[3] == "provider-details.html") {
+          if(galocation && gaoffice && gaprovider){
+            newPathname = newPathStart +"/offices";
+          } else newPathname = newPathStart +"/offices"+ window.location.search;
+        } else {
+            newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
+        }
       }
+      setPath({{galocation}}, {{gaoffice}}, {{gaprovider}});
       ga('set', 'dimension9', dnt);
       ga('set', 'page', newPathname);
       ga('send', 'pageview');
