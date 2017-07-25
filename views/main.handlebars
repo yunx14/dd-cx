@@ -29,7 +29,7 @@
       if (pathArray[3] == "directory-search.html"){
         newPathname = newPathStart + "/search";
       } else if (pathArray[3] == "provider-details.html") {
-        newPathname = newPathStart +"/offices"+ {{address.city}} +"-"+ {{address.state}} +"/"+ {{firstName}}{{lastName}};
+        newPathname = newPathStart +"/offices";
       } else {
           newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");;
       }
