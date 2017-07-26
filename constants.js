@@ -36,7 +36,7 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": null
+    "GOOGLE_MAPS_API_KEY": "gme-deltadentalofcalifornia"
   },
   "dit": {
     "EE_PORT": 80,
