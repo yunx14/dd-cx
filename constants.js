@@ -5,7 +5,6 @@ module.exports = {
 
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
   "PRIVATE_KEY": "/opt/docker/certs/node.key",
-  "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
   "CERT": "/opt/docker/certs/node.cer",
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
@@ -36,7 +35,8 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API_KEY": null
   },
   "dit": {
     "EE_PORT": 80,
@@ -46,7 +46,8 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API_KEY": null
   },
   "mot": {
     "EE_PORT": 80,
@@ -56,7 +57,8 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
   },
   "pit": {
     "EE_PORT": 80,
@@ -66,7 +68,8 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
   },
   "prod": {
     "EE_PORT": 80,
@@ -76,6 +79,7 @@ module.exports = {
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
   }
 };
