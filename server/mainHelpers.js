@@ -81,14 +81,14 @@ module.exports = {
   postDirectorySearch: function(req, res) {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
-    // var options = {
-    //   provider: 'google',
-    //   httpAdapter: 'https',
-    //   apiKey: CONSTANTS.GOOGLE_MAPS_API_KEY,
-    //   formatter: null
-    // };
-    // var geocoder = NodeGeocoder(options);
-    var geocoder = NodeGeocoder();
+    var options = {
+      provider: 'google',
+      httpAdapter: 'https',
+      apiKey: CONSTANTS.GOOGLE_MAPS_API_KEY,
+      formatter: null
+    };
+    var geocoder = NodeGeocoder(options);
+    //var geocoder = NodeGeocoder();
     var query = {};
     if (req.body) {
       query = req.body;
