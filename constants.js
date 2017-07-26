@@ -34,7 +34,7 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 19001,
     "SEARCH_SERVICE_HOST": "http://aw-lx0095",
     "SEARCH_SERVICE_PATH": "/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"
   },
@@ -44,7 +44,7 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"
   },
@@ -54,7 +54,7 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"
   },
@@ -64,7 +64,7 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://pit-wso2vip",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"
   },
@@ -74,7 +74,7 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1"
   }
