@@ -36,8 +36,16 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "gme-deltadentalofcalifornia",
-    "GOOGLE_MAPS_API_KEY_UI": "key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ"
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   },
   "dit": {
     "EE_PORT": 80,

@@ -36,7 +36,14 @@ module.exports = {
       Logger.log("Here is empty search page");
 
       const query = req.query;
-
+      var googleAPI = "";
+      if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      }
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
@@ -48,7 +55,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?client=&libraries=places"},
+            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`,
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
@@ -86,8 +93,8 @@ module.exports = {
       var options = {
         provider: "google",
         httpAdapter: "https",
-        apiKey: "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
-        clientId: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API_KEY,
+        apiKey: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.SERVER.APIKEY,
+        clientId: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.SERVER.CLIENTID,
         formatter: null
       };
       geocoder = NodeGeocoder(options);
