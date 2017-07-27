@@ -86,7 +86,7 @@ module.exports = {
       var options = {
         provider: 'google',
         httpAdapter: 'https',
-        apiKey: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API_KEY,
+        clientId: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API_KEY,
         formatter: null
       };
       geocoder = NodeGeocoder(options);

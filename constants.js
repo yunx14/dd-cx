@@ -36,7 +36,8 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "gme-deltadentalofcalifornia"
+    "GOOGLE_MAPS_API_KEY": "gme-deltadentalofcalifornia",
+    "GOOGLE_MAPS_API_KEY_UI": "key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ"
   },
   "dit": {
     "EE_PORT": 80,
@@ -47,7 +48,8 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": null
+    "GOOGLE_MAPS_API_KEY": null,
+    "GOOGLE_MAPS_API_KEY_UI": "key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ"
   },
   "mot": {
     "EE_PORT": 80,
@@ -58,7 +60,8 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
+    "GOOGLE_MAPS_API_KEY_UI": null
   },
   "pit": {
     "EE_PORT": 80,
@@ -69,7 +72,8 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
+    "GOOGLE_MAPS_API_KEY_UI": null
   },
   "prod": {
     "EE_PORT": 80,
@@ -80,6 +84,7 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia"
+    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
+    "GOOGLE_MAPS_API_KEY_UI": null
   }
 };
