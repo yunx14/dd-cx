@@ -42,8 +42,8 @@ module.exports = {
         "CLIENTID": "gme-deltadentalofcalifornia"
       },
       "UI": {
-        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
-        "CLIENTID": "gme-deltadentalofcalifornia"
+        "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
+        "CLIENTID": null
       }
     }
   },
@@ -56,8 +56,16 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": null,
-    "GOOGLE_MAPS_API_KEY_UI": "key=AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ"
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
+        "CLIENTID": null
+      }
+    }
   },
   "mot": {
     "EE_PORT": 80,
@@ -68,8 +76,16 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
-    "GOOGLE_MAPS_API_KEY_UI": null
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   },
   "pit": {
     "EE_PORT": 80,
@@ -80,8 +96,16 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
-    "GOOGLE_MAPS_API_KEY_UI": null
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   },
   "prod": {
     "EE_PORT": 80,
@@ -92,7 +116,15 @@ module.exports = {
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
     "GOOGLE_AL": "UA-9398012-1",
-    "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
-    "GOOGLE_MAPS_API_KEY_UI": null
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   }
 };
