@@ -55,7 +55,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`,
+            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
