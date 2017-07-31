@@ -34,8 +34,16 @@ module.exports = {
 
     } else {
       Logger.log("Here is empty search page");
-
       const query = req.query;
+
+      var googleAPI = "";
+      if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      }
 
       var directorySearchPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.SEARCH,
@@ -48,7 +56,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
+            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "geocoder.js"},
@@ -81,14 +89,20 @@ module.exports = {
   postDirectorySearch: function(req, res) {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
-    // var options = {
-    //   provider: 'google',
-    //   httpAdapter: 'https',
-    //   apiKey: CONSTANTS.GOOGLE_MAPS_API_KEY,
-    //   formatter: null
-    // };
-    // var geocoder = NodeGeocoder(options);
-    var geocoder = NodeGeocoder();
+    var geocoder = null;
+    if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API_KEY) {
+      var options = {
+        provider: "google",
+        httpAdapter: "https",
+        apiKey: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.SERVER.APIKEY,
+        clientId: CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.SERVER.CLIENTID,
+        formatter: null
+      };
+      geocoder = NodeGeocoder(options);
+    } else {
+      geocoder = NodeGeocoder();
+    }
+
     var query = {};
     if (req.body) {
       query = req.body;
@@ -107,11 +121,11 @@ module.exports = {
       try {
         geocoder.geocode(req.body.location, function(err, response) {
           if (err) {
-		  Logger.log("We got an error from geolocation " + err );
+		        Logger.log("We got an error from geolocation " + err );
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
             return;
           } else if (!response || (Array.isArray(response) && response.length === 0)) {
-		Logger.log("no response from geolocator");
+		        Logger.log("no response from geolocator");
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
             return;
           } else {
@@ -119,7 +133,7 @@ module.exports = {
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
             if (query && query.lat && query.long) {
-		    Logger.log("Redirectory to search page - " + Utils.formatQuery(query));
+		          Logger.log("Redirectory to search page - " + Utils.formatQuery(query));
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
               return;
             }
@@ -178,6 +192,15 @@ module.exports = {
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
       provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
+      var googleAPI = "";
+      if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      }
+
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.DETAILS,
         ViewModel.pages_providerDetails,
@@ -192,7 +215,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
+            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
@@ -278,6 +301,15 @@ module.exports = {
       provider.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
       provider.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/" + searchQueryWithKey.providerKey;
 
+      var googleAPI = "";
+      if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY) {
+        googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}`;
+      } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+        googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+      }
+
       var providerPresenter = new MainPresenter(
         CONSTANTS.TEMPLATES.INACCURATE,
         ViewModel.pages_inaccurate,
@@ -292,7 +324,7 @@ module.exports = {
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
-            {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
+            {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "template3.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
@@ -372,6 +404,15 @@ var getListsResults = function(query, req, res) {
     distance: Number(req.query.distance)
   };
 
+  var googleAPI = "";
+  if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+    googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+  } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY) {
+    googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}`;
+  } else if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
+    googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
+  }
+
   var providersPresenter = new MainPresenter(
     CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
@@ -393,7 +434,7 @@ var getListsResults = function(query, req, res) {
       ],
       "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
       "scripts": [
-        {"script": "https://maps.googleapis.com/maps/api/js?client=gme-deltadentalofcalifornia&libraries=places"},
+        {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},

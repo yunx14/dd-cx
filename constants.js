@@ -5,7 +5,6 @@ module.exports = {
 
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
   "PRIVATE_KEY": "/opt/docker/certs/node.key",
-  // "GOOGLE_MAPS_API_KEY": "client=gme-deltadentalofcalifornia",
   "CERT": "/opt/docker/certs/node.cer",
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
@@ -34,9 +33,19 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 19001,
     "SEARCH_SERVICE_HOST": "http://aw-lx0095",
     "SEARCH_SERVICE_PATH": "/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
+        "CLIENTID": null
+      }
+    }
   },
   "dit": {
     "EE_PORT": 80,
@@ -44,9 +53,19 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8280,
     "SEARCH_SERVICE_HOST": "http://aw-lx0193",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
+        "CLIENTID": null
+      }
+    }
   },
   "mot": {
     "EE_PORT": 80,
@@ -54,9 +73,19 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://mot-wso2vip.ut.dentegra.lab",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://mot.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   },
   "pit": {
     "EE_PORT": 80,
@@ -64,9 +93,19 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://pit-wso2vip",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   },
   "prod": {
     "EE_PORT": 80,
@@ -74,8 +113,18 @@ module.exports = {
     "SEARCH_SERVICE_PORT": 8243,
     "SEARCH_SERVICE_HOST": "https://wso2vip.deltads.ent",
     "SEARCH_SERVICE_PATH": "/api/cx/providerSearch/v1/providers",
-    "STATIC_PATH": "/",
+    "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
-    "GOOGLE_AL": "UA-9398012-1"
+    "GOOGLE_AL": "UA-9398012-1",
+    "GOOGLE_MAPS_API": {
+      "SERVER": {
+        "APIKEY": "kZiebLVaCcsqcVL-AerSL8ZX1Ic=",
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      },
+      "UI": {
+        "APIKEY": null,
+        "CLIENTID": "gme-deltadentalofcalifornia"
+      }
+    }
   }
 };
