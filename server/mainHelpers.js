@@ -52,7 +52,7 @@ module.exports = {
           "title": "Provider Directory Search",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
-            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+            { "stylesheet": "//cloud.typography.com/6549574/670548/css/fonts.css" }
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
@@ -211,7 +211,7 @@ module.exports = {
           "title": "Provider Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
-            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+            { "stylesheet": "//cloud.typography.com/6549574/670548/css/fonts.css" }
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
@@ -320,7 +320,7 @@ module.exports = {
           "title": "inaccurate",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
-            { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+            { "stylesheet": "//cloud.typography.com/6549574/670548/css/fonts.css" }
           ],
           "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
           "scripts": [
@@ -430,7 +430,7 @@ var getListsResults = function(query, req, res) {
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
-        { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
+        { "stylesheet": "//cloud.typography.com/6549574/670548/css/fonts.css" }
       ],
       "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
       "scripts": [
