@@ -207,7 +207,6 @@ module.exports = {
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
-          "facilityHref": `${CONSTANTS.FACILITY_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Provider Detail",
           "stylesheets": [
@@ -277,7 +276,7 @@ module.exports = {
   getFacilityDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.FACILITY_DETAILS_PAGE);
 
-    if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location && req.query.facilityId) {
+    if (req.query && req.query.lat && req.query.long && req.query.location && req.query.facilityId) {
       var searchQueryWithKey = query = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
@@ -313,7 +312,7 @@ module.exports = {
 
       facility.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       facility.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities?facilityId=" + searchQueryWithKey.facilityId;
+      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities";
 
       var googleAPI = "";
       if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
@@ -330,7 +329,6 @@ module.exports = {
         {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
-          "facilityHref": `${CONSTANTS.FACILITY_DETAILS_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
           "title": "Facility Detail",
           "stylesheets": [
@@ -372,12 +370,12 @@ module.exports = {
           if (data) {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
-              data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
+              // data.availability = Utils.formatAvailability(data.providers.providerNetworks);
+              // data.providerNetworks = Utils.formatNetwork(data.providers.providerNetworks);
             }
-            providerPresenter.mergePropertyMap(data);
+            facilityPresenter.mergePropertyMap(data);
           }
-          res.status(code).send(providerPresenter.render());
+          res.status(code).send(facilityPresenter.render());
         },
         function(code, data) {
           // error
