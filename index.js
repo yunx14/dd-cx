@@ -84,6 +84,7 @@ app.get(CONSTANTS.BASE_URI, mainHelpers.getDirectorySearch);
 app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
+app.get(CONSTANTS.FACILITY_DETAILS_PAGE, mainHelpers.getFacilityDetails);
 app.get(CONSTANTS.INACCURATE_PAGE, mainHelpers.getInaccurate);
 
 // error template

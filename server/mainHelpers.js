@@ -273,6 +273,9 @@ module.exports = {
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   },
+  getFacilityDetails: function(req, res) {
+    console.log("hihihihihihihhih");
+  },
   getInaccurate: function(req, res) {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
