@@ -525,7 +525,8 @@ var getListsResults = function(query, req, res) {
     network: req.query.network,
     specialty: req.query.specialty,
     language: req.query.language,
-    distance: Number(req.query.distance)
+    distance: Number(req.query.distance),
+    facilityId: req.query.facilityId
   };
 
   var googleAPI = "";
@@ -543,6 +544,8 @@ var getListsResults = function(query, req, res) {
     {
       "provider": CONSTANTS.VIEW_MODEL_COLLECTION_KEY,
       "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+      "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+      "facilityId": query.facilityId,
       "searchQueryLocation": query.location,
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
