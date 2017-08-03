@@ -2,9 +2,6 @@ var FEHelpers = (function(){
   var mapPos = document.getElementById("provider-map");
   var formBottom = document.getElementsByClassName("provider-form")[0];
   var col = document.getElementsByClassName("provider-list")[0];
-  var bodyHeight = $("body").height();
-  var footerHeight = $(".page-footer").height();
-  var mapBottomOffset = 67;
 
   var debounce = function(func, wait, immediate) {
   	var timeout;
