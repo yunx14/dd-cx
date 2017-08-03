@@ -13,12 +13,14 @@ module.exports = {
   "BASE_URI": "/find-a-dentist/alpha",
   "DIRECTORY_SEARCH_PAGE": "/find-a-dentist/alpha/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/find-a-dentist/alpha/provider-details.html",
+  "FACILITY_DETAILS_PAGE": "/find-a-dentist/alpha/facility-details.html",
   "INACCURATE_PAGE": "/find-a-dentist/alpha/inaccurate.html",
 
   "TEMPLATES": {
     "MAIN_PRESENTER_TEMPLATE": "main",
     "SEARCH_RESULTS": "pages-directorySearchResults",
     "DETAILS": "pages-providerDetails",
+    "FACILITY_DETAILS": "pages-facilityDetails",
     "SEARCH": "pages-directorySearch",
     "INACCURATE": "pages-inaccurate"
   },
