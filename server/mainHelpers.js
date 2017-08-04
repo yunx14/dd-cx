@@ -258,7 +258,7 @@ module.exports = {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
               data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
+              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
             }
             providerPresenter.mergePropertyMap(data);
           }
@@ -389,7 +389,7 @@ module.exports = {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
               data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
+              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
             }
             facilityPresenter.mergePropertyMap(data);
           }
@@ -499,7 +499,7 @@ module.exports = {
             if (data.hasOwnProperty("distance")) {
               data.distance = Utils.formatDistance(data.distance);
               data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.providerNetworks = Utils.formatNetwork(data.providerNetworks);
+              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
             }
             providerPresenter.mergePropertyMap(data);
           }
