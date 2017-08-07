@@ -30,7 +30,7 @@ var Map = {
       url: "images/map-markers/m1.png",
       size: new google.maps.Size(22, 26),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 26)
+      anchor: new google.maps.Point(11, 26)
     };
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
@@ -44,7 +44,7 @@ var Map = {
       Map.oms.addMarker(Map.markers[h]);
 		}
 
-    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 5, imagePath: "images/map-markers/m"});
+    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 14, imagePath: "images/map-markers/m"});
 
     function attachClickInfo(marker) {
       marker.addListener('click', function() {
