@@ -213,10 +213,10 @@ module.exports = {
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
           "searchQueryDistance": req.query.distance,
-          "searchQuerySpecialty": Utils.formatQueryParam("specialty", req.query.specialty),
+          "searchQuerySpecialty": req.query.specialty,
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
-          "searchQueryNetwork": Utils.formatQueryParam("network", req.query.network),
+          "searchQueryNetwork": req.query.network,
           "title": "Provider Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -344,10 +344,10 @@ module.exports = {
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
           "searchQueryDistance": req.query.distance,
-          "searchQuerySpecialty": Utils.formatQueryParam("specialty", req.query.specialty),
+          "searchQuerySpecialty": req.query.specialty,
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
-          "searchQueryNetwork": Utils.formatQueryParam("network", req.query.network),
+          "searchQueryNetwork": req.query.network,
           "title": "Facility Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -532,19 +532,6 @@ var getListsResults = function(query, req, res) {
   providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
   providers.query = query;
 
-  var searchQueryWithKey = {
-    providerKey: req.query.providerKey,
-    lat: Number(req.query.lat),
-    long: Number(req.query.long),
-    location: req.query.location,
-    free_text: req.query.free_text,
-    network: req.query.network,
-    specialty: req.query.specialty,
-    language: req.query.language,
-    distance: Number(req.query.distance),
-    facilityId: req.query.facilityId
-  };
-
   var googleAPI = "";
   if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
     googleAPI = `&key=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY}&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
@@ -566,10 +553,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
-      "searchQuerySpecialty": Utils.formatQueryParam("specialty", query.specialty),
+      "searchQuerySpecialty": query.specialty,
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
-      "searchQueryNetwork": Utils.formatQueryParam("network", query.network),
+      "searchQueryNetwork": query.network,
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -585,7 +572,6 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "spiderfy.js"},
-        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "map-cluster.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
       "banner": {
