@@ -26,22 +26,14 @@ module.exports = Utils = {
     }
     return formatQuery.slice(0, -1);
   },
-  // formatQueryParam: function(name, array) {
-  //   if (name && array) {
-  //     if (Array.isArray(array)) {
-  //       var formatQuery = "", i = 0, l = array.length;
-  //       for (i = 0; i < l; i++) {
-  //         formatQuery = formatQuery + name + "=" + array[i] + "&";
-  //       }
-  //     } else {
-  //       return name + "=" + array;
-  //     }
-  //    return formatQuery.slice(0, -1);
-  //   } else if (name) {
-  //    return name + "=";
-  //   }
-  //   return "";
-  // },
+  formatQueryParam: function(arrayOrStr) {
+    if (typeof arrayOrStr === "string") {
+      arrayOrStr = arrayOrStr.split(" ");
+      return arrayOrStr;
+    } else {
+      return arrayOrStr;
+    }
+  },
   formatDistance: function(distance) {
     if (distance < 0.1) {
       return "<0.1";

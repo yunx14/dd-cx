@@ -213,10 +213,10 @@ module.exports = {
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
           "searchQueryDistance": req.query.distance,
-          "searchQuerySpecialty": req.query.specialty,
+          "searchQuerySpecialty": Utils.formatQueryParam(req.query.specialty),
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
-          "searchQueryNetwork": req.query.network,
+          "searchQueryNetwork": Utils.formatQueryParam(req.query.network),
           "title": "Provider Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -344,10 +344,10 @@ module.exports = {
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
           "searchQueryDistance": req.query.distance,
-          "searchQuerySpecialty": req.query.specialty,
+          "searchQuerySpecialty": Utils.formatQueryParam(req.query.specialty),
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
-          "searchQueryNetwork": req.query.network,
+          "searchQueryNetwork": Utils.formatQueryParam(req.query.network),
           "title": "Facility Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -553,10 +553,10 @@ var getListsResults = function(query, req, res) {
       "searchQueryLat": query.lat,
       "searchQueryLong": query.long,
       "searchQueryDistance": query.distance,
-      "searchQuerySpecialty": query.specialty,
+      "searchQuerySpecialty": Utils.formatQueryParam(query.specialty),
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
-      "searchQueryNetwork": query.network,
+      "searchQueryNetwork": Utils.formatQueryParam(query.network),
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -572,7 +572,7 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "spiderfy.js"},
-        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "map-cluster.js"}
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "map-cluster.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "results-map.js"}
       ],
       "banner": {
