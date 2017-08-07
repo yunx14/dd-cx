@@ -28,9 +28,9 @@ var Map = {
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
     Map.markerIcon = {
       url: "images/map-markers/m1.png",
-      size: new google.maps.Size(20, 24),
+      size: new google.maps.Size(22, 26),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 0)
+      anchor: new google.maps.Point(0, 26)
     };
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
