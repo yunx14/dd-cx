@@ -37,6 +37,8 @@ var Map = {
       Map.oms.addMarker(Map.markers[h]);
 		}
 
+    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers);
+
     function attachClickInfo(marker) {
       marker.addListener('click', function() {
         Map.infoWindow.open(Map.map, marker);
