@@ -28,7 +28,7 @@ var Map = {
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
     Map.markerIcon = {
       url: "images/map-markers/m1.png",
-      size: new google.maps.Size(16, 16),
+      size: new google.maps.Size(20, 24),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(0, 0)
     };
@@ -44,7 +44,7 @@ var Map = {
       Map.oms.addMarker(Map.markers[h]);
 		}
 
-    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, imagePath: "images/map-markers/m"});
+    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 20, imagePath: "images/map-markers/m"});
 
     function attachClickInfo(marker) {
       marker.addListener('click', function() {
