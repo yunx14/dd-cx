@@ -26,11 +26,18 @@ var Map = {
     });
     Map.markers = []; //reset markers
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
+    Map.markerIcon = {
+      url: "images/map-markers/m1.png",
+      size: new google.maps.Size(16, 16),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 0)
+    };
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
 			Map.markers[h] = new google.maps.Marker({
 				position: new google.maps.LatLng(currentProviders[i].address.latitude, currentProviders[i].address.longitude),
         placeResult : currentProviders[i],
+        icon: Map.markerIcon,
         markerID : i
 			});
       attachClickInfo(Map.markers[h]);
