@@ -44,7 +44,7 @@ var Map = {
       Map.oms.addMarker(Map.markers[h]);
 		}
 
-    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 14, imagePath: "images/map-markers/m"});
+    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 20, maxZoom: 11, imagePath: "images/map-markers/m"});
 
     function attachClickInfo(marker) {
       marker.addListener('click', function() {
