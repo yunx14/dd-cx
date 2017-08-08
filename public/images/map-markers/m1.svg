@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="29px" viewBox="0 0 20 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Map marker@2x</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon/Map/Location-marker">
+            <g id="Map-marker">
+                <path d="M9.7354,0.659724545 C14.8439178,0.659724545 19,4.92336411 19,10.164403 C19,16.367711 12.0542869,25.3226654 9.7354,28.1378577 C7.41651312,25.3226654 0.4708,16.367711 0.4708,10.164403 C0.4708,4.92336411 4.62688224,0.659724545 9.7354,0.659724545" id="Fill-42" stroke="#6F5A95" fill="#FFFFFF"></path>
+                <path d="M9.7798,1.96161231 C5.3958,1.96161231 1.8498,5.57768703 1.8498,10.0491122 C1.8498,16.1142328 9.7798,25.5777145 9.7798,25.5777145 C9.7798,25.5777145 17.7098,16.1142328 17.7098,10.0491122 C17.7098,5.57768703 14.1638,1.96161231 9.7798,1.96161231" id="Fill-40" fill="#6F5A95"></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -53,3 +53,5 @@ function selectLocation(elementID) {
   })(pac_input);
 }
 selectLocation("location");
+
+$("#filter_reset").click(resetForm(document.getElementsByClassName("refine__menu")[0]));

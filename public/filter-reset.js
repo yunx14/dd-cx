@@ -14,8 +14,8 @@ function resetForm(form) {
         selects[i].selectedIndex = 0;
     }
 
-    for (var i = 0; i<text.length; i++)
+    for (var i = 0; i<text.length; i++) {
         text[i].innerHTML= '';
-
+    }
     return false;
 }
