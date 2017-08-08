@@ -30,7 +30,7 @@ var Map = {
       url: "images/map-markers/m1.png",
       size: new google.maps.Size(20, 30),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(9, 25)
+      anchor: new google.maps.Point(9, 35)
     };
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
