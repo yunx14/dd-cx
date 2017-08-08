@@ -20,6 +20,8 @@ function resetForm(form) {
     return false;
 }
 
-$("#filter_reset").click(function() {
-  resetForm(document.getElementsByClassName("refine__menu")[0]);
+$("#filter_reset").click(function(e) {
+  var refineMenu = document.getElementsByClassName("refine__menu")[0];
+  e.preventDefault();
+  resetForm(refineMenu);
 });
