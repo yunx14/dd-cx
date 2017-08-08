@@ -19,3 +19,5 @@ function resetForm(form) {
     }
     return false;
 }
+
+$("#filter_reset").click(resetForm(document.getElementsByClassName("refine__menu")[0]));
