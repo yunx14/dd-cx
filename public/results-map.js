@@ -44,9 +44,7 @@ var Map = {
       Map.oms.addMarker(Map.markers[h]);
 		}
 
-    //Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 16, imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m"});
-
-    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 16, imagePath: "images/map-markers/m", styles: [{
+    Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 20, imagePath: "images/map-markers/m", styles: [{
         url: 'images/map-markers/m1.png',
         height: 30,
         width: 20,
