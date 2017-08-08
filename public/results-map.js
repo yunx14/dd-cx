@@ -28,9 +28,9 @@ var Map = {
   	Map.bounds = new google.maps.LatLngBounds(); // reset bounds
     Map.markerIcon = {
       url: "images/map-markers/m1.png",
-      size: new google.maps.Size(22, 26),
+      size: new google.maps.Size(22, 30),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(11, 26)
+      anchor: new google.maps.Point(11, 30)
     };
 
     for (var i = 0, h=0; i < currentProviders.length; i++, h++) {
@@ -48,8 +48,8 @@ var Map = {
 
     Map.markerCluster = new MarkerClusterer(Map.map, Map.markers, {gridSize: 30, maxZoom: 16, imagePath: "images/map-markers/m", styles: [{
         url: 'images/map-markers/m1.png',
-        height: 22,
-        width: 26,
+        height: 30,
+        width: 22,
         textColor: '#ffffff',
         textSize: 11
       }]});
