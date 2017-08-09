@@ -50,7 +50,7 @@ var Map = {
         width: 20,
         textColor: '#ffffff',
         textSize: 11,
-        anchor: [5, 5]
+        anchor: [6, 5]
       }]});
 
     function attachClickInfo(marker) {
