@@ -49,7 +49,8 @@ var Map = {
         height: 30,
         width: 20,
         textColor: '#ffffff',
-        textSize: 11
+        textSize: 11,
+        anchor: [10]
       }]});
 
     function attachClickInfo(marker) {
