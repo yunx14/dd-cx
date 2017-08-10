@@ -14,6 +14,7 @@ module.exports = {
   "DIRECTORY_SEARCH_PAGE": "/find-a-dentist/alpha/directory-search.html",
   "PROVIDER_DETAILS_PAGE": "/find-a-dentist/alpha/provider-details.html",
   "FACILITY_DETAILS_PAGE": "/find-a-dentist/alpha/facility-details.html",
+  "OFFICE_DETAILS_PAGE": "/find-a-dentist/alpha/office-details.html",
   "INACCURATE_PAGE": "/find-a-dentist/alpha/inaccurate.html",
 
   "TEMPLATES": {
@@ -21,6 +22,7 @@ module.exports = {
     "SEARCH_RESULTS": "pages-directorySearchResults",
     "DETAILS": "pages-providerDetails",
     "FACILITY_DETAILS": "pages-facilityDetails",
+    "OFFICE_DETAILS": "pages-officeDetails",
     "SEARCH": "pages-directorySearch",
     "INACCURATE": "pages-inaccurate"
   },
