@@ -47,6 +47,17 @@ module.exports = {
         "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
         "CLIENTID": null
       }
+    },
+    "APPD": {
+      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
+      "controllerPort" : 9090,
+      "controllerSslEnabled" : false,
+      "accountName" : "DDM",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "tmpDir": "AppD/logs",
+      "debug": true
     }
   },
   "dit": {
@@ -67,6 +78,17 @@ module.exports = {
         "APIKEY": "AIzaSyBwM4PtsUrx03bFU9UhqI44KwdXXqbiGJQ",
         "CLIENTID": null
       }
+    },
+    "APPD": {
+      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
+      "controllerPort" : 9090,
+      "controllerSslEnabled" : false,
+      "accountName" : "DDM",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "tmpDir": "AppD/logs",
+      "debug": true
     }
   },
   "mot": {
@@ -87,6 +109,17 @@ module.exports = {
         "APIKEY": null,
         "CLIENTID": "gme-deltadentalofcalifornia"
       }
+    },
+    "APPD": {
+      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
+      "controllerPort" : 9090,
+      "controllerSslEnabled" : false,
+      "accountName" : "MOT",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "tmpDir": "AppD/logs",
+      "debug": false
     }
   },
   "pit": {
@@ -107,6 +140,17 @@ module.exports = {
         "APIKEY": null,
         "CLIENTID": "gme-deltadentalofcalifornia"
       }
+    },
+    "APPD": {
+      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
+      "controllerPort" : 9090,
+      "controllerSslEnabled" : false,
+      "accountName" : "PIT",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "tmpDir": "AppD/logs",
+      "debug": false
     }
   },
   "prod": {
@@ -128,5 +172,14 @@ module.exports = {
         "CLIENTID": "gme-deltadentalofcalifornia"
       }
     }
+  },
+  "APPD": {
+    "controllerHostName" : "prodappd.deltads.ent",
+    "controllerPort" : 80,
+    "controllerSslEnabled" : false,
+    "accountName" : "customer1",
+    "accountAccessKey" : "28dba359-c994-40e0-aecd-ca6d875f2d6f",
+    "applicationName" : "Customer_Experience",
+    "tierName" : "CX-Node"
   }
 };

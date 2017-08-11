@@ -16,6 +16,7 @@
   "author": "Bob Warren <rwarren@delta.org> (http://www.delta.com)",
   "license": "none",
   "dependencies": {
+    "appdynamics": "^4.2.15",
     "body-parser": "*",
     "express": "^4.14.0",
     "express-handlebars": "*",
