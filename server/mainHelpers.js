@@ -416,6 +416,10 @@ module.exports = {
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
   },
+  getOfficeDetails: function(req, res) {
+    Logger.log("GET " + CONSTANTS.OFFICE_DETAILS_PAGE);
+
+  },
   getInaccurate: function(req, res) {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
