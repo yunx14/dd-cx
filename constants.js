@@ -58,6 +58,7 @@ module.exports = {
       "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
       "applicationName" : "Customer_Experience",
       "tierName" : "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
     }
@@ -89,6 +90,7 @@ module.exports = {
       "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
       "applicationName" : "Customer_Experience",
       "tierName" : "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
     }
@@ -120,6 +122,7 @@ module.exports = {
       "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
       "applicationName" : "Customer_Experience",
       "tierName" : "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": false
     }
@@ -151,6 +154,7 @@ module.exports = {
       "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
       "applicationName" : "Customer_Experience",
       "tierName" : "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": false
     }
@@ -181,7 +185,8 @@ module.exports = {
       "accountName" : "customer1",
       "accountAccessKey" : "28dba359-c994-40e0-aecd-ca6d875f2d6f",
       "applicationName" : "Customer_Experience",
-      "tierName" : "CX-Node",
+      "tierName": "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": false
     }

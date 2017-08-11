@@ -1,3 +1,6 @@
+const CONSTANTS = require("./constants.js");
+    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
+
 require("appdynamics").profile({
   controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
   controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
@@ -9,16 +12,15 @@ require("appdynamics").profile({
   nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
  });
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var path = require("path");
-var https = require("https");
-var fs = require("fs");
-    Handlebars = require("handlebars");
-var request = require('request');
 
-const CONSTANTS = require("./constants.js");
-    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
+ var express = require("express");
+ var bodyParser = require("body-parser");
+ var path = require("path");
+ var https = require("https");
+ var fs = require("fs");
+     Handlebars = require("handlebars");
+ var request = require('request');
+
 var mainHelpers = require("./server/mainHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
