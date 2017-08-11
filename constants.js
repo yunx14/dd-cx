@@ -173,15 +173,17 @@ module.exports = {
         "APIKEY": null,
         "CLIENTID": "gme-deltadentalofcalifornia"
       }
+    },
+    "APPD": {
+      "controllerHostName" : "prodappd.deltads.ent",
+      "controllerPort" : 80,
+      "controllerSslEnabled" : false,
+      "accountName" : "customer1",
+      "accountAccessKey" : "28dba359-c994-40e0-aecd-ca6d875f2d6f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "tmpDir": "AppD/logs",
+      "debug": false
     }
-  },
-  "APPD": {
-    "controllerHostName" : "prodappd.deltads.ent",
-    "controllerPort" : 80,
-    "controllerSslEnabled" : false,
-    "accountName" : "customer1",
-    "accountAccessKey" : "28dba359-c994-40e0-aecd-ca6d875f2d6f",
-    "applicationName" : "Customer_Experience",
-    "tierName" : "CX-Node"
   }
 };

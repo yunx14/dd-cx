@@ -1,3 +1,14 @@
+require("appdynamics").profile({
+  controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
+  controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
+  controllerSslEnabled: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerSslEnabled,  // Set to true if controllerPort is SSL
+  accountName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName,
+  accountAccessKey: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey, //required
+  applicationName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName,
+  tierName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName,
+  nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
+ });
+
 var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
@@ -85,7 +96,6 @@ app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
 app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
 app.get(CONSTANTS.FACILITY_DETAILS_PAGE, mainHelpers.getFacilityDetails);
-app.get(CONSTANTS.OFFICE_DETAILS_PAGE, mainHelpers.getOfficeDetails);
 app.get(CONSTANTS.INACCURATE_PAGE, mainHelpers.getInaccurate);
 
 // error template
