@@ -164,5 +164,10 @@ module.exports = Utils = {
       return "30";
     }
     return "any";
+  },
+  formatTimestamp: function() {
+    var time = new Date().getTime();
+    var date = new Date(time);
+    console.log(date.toString());
   }
 };
