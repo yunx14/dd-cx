@@ -167,18 +167,19 @@ module.exports = Utils = {
   },
   formatTimestamp: function() {
     var now = new Date();
-    return this.pad("                        ",
-        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " +
-        now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds(),
-        false);
+    // return this.pad("                      ",
+    // now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds(),
+    // false);
+    return now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
   },
-  pad: function(pad, str, padLeft) {
-      if (typeof str === 'undefined')
-      return pad;
-      if (padLeft) {
-        return (pad + str).slice(-pad.length);
-      } else {
-        return (str + pad).substring(0, pad.length);
-      }
-  }
+  // pad: function(pad, str, padLeft) {
+  //   if (typeof str === 'undefined'){
+  //     return pad;
+  //   }
+  //   if (padLeft) {
+  //     return (pad + str).slice(-pad.length);
+  //   } else {
+  //     return (str + pad).substring(0, pad.length);
+  //   }
+  // }
 };
