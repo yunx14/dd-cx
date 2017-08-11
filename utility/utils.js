@@ -166,8 +166,19 @@ module.exports = Utils = {
     return "any";
   },
   formatTimestamp: function() {
-    var time = new Date().getTime();
-    var date = new Date(time);
-    console.log(date.toString());
+    var now = new Date();
+    return this.pad("                        ",
+        now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " +
+        now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds(),
+        false);
+  },
+  pad: function(pad, str, padLeft) {
+      if (typeof str === 'undefined')
+      return pad;
+      if (padLeft) {
+        return (pad + str).slice(-pad.length);
+      } else {
+        return (str + pad).substring(0, pad.length);
+      }
   }
 };

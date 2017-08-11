@@ -5,23 +5,18 @@ const CONSTANTS = require("../constants.js"),
 
 module.exports = {
   log: function(message) {
-    logger.log("info", message);
-    logger.log(Utils.formatTimestamp());
+    logger.log("info", "[" + Utils.formatTimestamp() + "]  " + message);
   },
   error: function(message) {
-    logger.log("error", message);
-    logger.log(Utils.formatTimestamp());
+    logger.log("error", "[" + Utils.formatTimestamp() + "]  " + message);
   },
   debug: function(message) {
-    logger.log("debug", message);
-    logger.log(Utils.formatTimestamp());
+    logger.log("debug", "[" + Utils.formatTimestamp() + "]  " + message);
   },
   info: function(message) {
-    logger.log("info", message);
-    logger.log(Utils.formatTimestamp());
+    logger.log("info", "[" + Utils.formatTimestamp() + "]  " + message);
   },
   warn: function(message) {
-    logger.log("warn", message);
-    logger.log(Utils.formatTimestamp());
+    logger.log("warn", "[" + Utils.formatTimestamp() + "]  " + message);
   }
 };
