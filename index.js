@@ -98,6 +98,8 @@ app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
 app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
 app.get([CONSTANTS.BASE_URI + "/facilities/:name",
         CONSTANTS.FACILITY_DETAILS_PAGE], mainHelpers.getFacilityDetails);
+app.get([CONSTANTS.BASE_URI + "/offices/:name",
+        CONSTANTS.OFFICE_DETAILS_PAGE], mainHelpers.getOfficeDetails);
 app.get(CONSTANTS.INACCURATE_PAGE, mainHelpers.getInaccurate);
 
 // error template
