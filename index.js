@@ -1,6 +1,6 @@
 const CONSTANTS = require("./constants.js");
     CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
-/*
+
 require("appdynamics").profile({
   controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
   controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
@@ -11,7 +11,6 @@ require("appdynamics").profile({
   tierName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName,
   nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
  });
-*/
 
  var express = require("express");
  var bodyParser = require("body-parser");
