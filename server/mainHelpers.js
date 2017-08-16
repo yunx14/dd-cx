@@ -19,6 +19,7 @@ var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
+var yelp = require('yelp-fusion');
 
 module.exports = {
   getDirectorySearch: function(req, res) {
@@ -293,6 +294,11 @@ module.exports = {
 
       var handleReviewRating = function(promiseData) {
         return new Promise(function(resolve, reject) {
+          yelp.accessToken(clientId, clientSecret).then(response => {
+            console.log("yelp access token is ", response.jsonBody.access_token);
+          }).catch(e => {
+            console.log("getting an error from yelp", e);
+          });
           resolve(promiseData);
         });
       };
