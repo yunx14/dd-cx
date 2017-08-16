@@ -24,6 +24,15 @@ module.exports = {
           { "stylesheet": "http://cloud.typography.com/6549574/670548/css/fonts.css" }
         ],
         "google-al": CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_AL,
+        "scripts": [
+          {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "filter-reset.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
+        ],
         "severity": ViewModel.pages_directoryError.errorMessages.invalidAddress.severity,
         "header": ViewModel.pages_directoryError.errorMessages.invalidAddress.header,
         "message": ViewModel.pages_directoryError.errorMessages.invalidAddress.message
