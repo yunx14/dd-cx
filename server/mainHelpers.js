@@ -253,7 +253,14 @@ module.exports = {
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
 
-      var handleProviderDetails = function(res, code, providerPresenter, provider) {
+      var promiseData = {
+        res: res,
+        code: 200,
+        presenter: providerPresenter,
+        model: provider
+      };
+
+      var handleProviderDetails = function(promiseData) {
         return new Promise(function(resolve, reject) {
           provider.fetch({},
             function(code, data) {
@@ -264,54 +271,58 @@ module.exports = {
                   data.availability = Utils.formatAvailability(data.providerNetworks);
                   data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
                 }
-                providerPresenter.mergePropertyMap(data);
+                promiseData.presenter.mergePropertyMap(data);
               }
-              resolve(res, code, providerPresenter, provider);
+              resolve(promiseData);
             },
             function(code, data) {
               // error
-              Logger.warn("ERROR: Failed to request provider: " + code);
-              reject(res, code);
+              promiseData.code = code;
+              Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
+              reject(promiseData);
             }
           );
         });
       };
 
-      var handleYelpID = function(res, code, providerPresenter, provider) {
-        resolve(res, code, providerPresenter, provider);
-      };
-
-      var handleReviewRating = function(res, code, providerPresenter, provider) {
-        resolve(res, code, providerPresenter, provider);
-      };
-
-      var render = function(res, code, providerPresenter, provider) {
+      var handleYelpID = function(promiseData) {
         return new Promise(function(resolve, reject) {
-          console.log("res", res);
-          res.status(code).send(providerPresenter());
-          resolve();
+          resolve(promiseData);
         });
       };
 
-      var handleDetailViews = function(res, code, providerPresenter, provider) {
-        return Promise.resolve(res, code, providerPresenter, provider)
+      var handleReviewRating = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          resolve(promiseData);
+        });
+      };
+
+      var render = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          promiseData.res.status(promiseData.code).send(promiseData.presenter.render());
+          resolve(promiseData);
+        });
+      };
+
+      var handleDetailViews = function(promiseData) {
+        return Promise.resolve(promiseData)
         .then(handleProviderDetails)
         .then(handleYelpID)
         .then(handleReviewRating)
         .then(render)
-        .catch(function(res, code) {
-          return Promise.reject(res, code);
+        .catch(function(promiseData) {
+          return Promise.reject(promiseData);
         });
       };
 
-      handleDetailViews(res, 200, providerPresenter, provider)
-      .catch(function(res, code) {
-        if (code === 504) {
-          res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-        } else if (code === 400) {
-          res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+      handleDetailViews(promiseData)
+      .catch(function(promiseData) {
+        if (promiseData.code === 504) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (promiseData.code === 400) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
         } else {
-          res.status(code).redirect(CONSTANTS.ERROR_DOWN);
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
         }
       });
 
