@@ -51,14 +51,14 @@ module.exports = {
       }
     },
     "APPD": {
-      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
-      "controllerPort" : 9090,
-      "controllerSslEnabled" : false,
-      "accountName" : "DDM",
-      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
-      "applicationName" : "Customer_Experience",
-      "tierName" : "CX-Node",
-      "nodeName": "cx-pde-node",
+      "controllerHostName" : "rc-lx1320.ut.dentegra.lab",
+      "controllerPort" : 8080,
+      "controllerSslEnabled" : false,
+      "accountName" : "DDM",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
+      "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
     }
@@ -83,13 +83,13 @@ module.exports = {
       }
     },
     "APPD": {
-      "controllerHostName" : "rc-lx1281.ut.dentegra.lab",
-      "controllerPort" : 9090,
-      "controllerSslEnabled" : false,
-      "accountName" : "DDM",
-      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
-      "applicationName" : "Customer_Experience",
-      "tierName" : "CX-Node",
+      "controllerHostName" : "rc-lx1320.ut.dentegra.lab",
+      "controllerPort" : 8080,
+      "controllerSslEnabled" : false,
+      "accountName" : "DDM",
+      "accountAccessKey" : "0e8ccee3-08f6-491e-a01b-25cecb9f836f",
+      "applicationName" : "Customer_Experience",
+      "tierName" : "CX-Node",
       "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
