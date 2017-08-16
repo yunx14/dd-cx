@@ -253,31 +253,88 @@ module.exports = {
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
 
-      provider.fetch({},
-        function(code, data) {
-          // success
-          if (data) {
-            if (data.hasOwnProperty("distance")) {
-              data.distance = Utils.formatDistance(data.distance);
-              data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+      var handleProviderDetails = function(res, code, providerPresenter, provider) {
+        return new Promise(function(resolve, reject) {
+          provider.fetch({},
+            function(code, data) {
+              // success
+              if (data) {
+                if (data.hasOwnProperty("distance")) {
+                  data.distance = Utils.formatDistance(data.distance);
+                  data.availability = Utils.formatAvailability(data.providerNetworks);
+                  data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+                }
+                providerPresenter.mergePropertyMap(data);
+              }
+              resolve(res, code, providerPresenter, provider);
+            },
+            function(code, data) {
+              // error
+              Logger.warn("ERROR: Failed to request provider: " + code);
+              reject(code, res);
             }
-            providerPresenter.mergePropertyMap(data);
-          }
+          );
+        });
+      };
+
+      var handleYelpID = function(res, code, providerPresenter, provider) {
+        resolve(res, code, providerPresenter, provider);
+      };
+
+      var handleReviewRating = function(res, code, providerPresenter, provider) {
+        resolve(res, code, providerPresenter, provider);
+      };
+
+      var handleDetailViews = function(res, code, providerPresenter, provider) {
+        return Promise.resolve(res, code, providerPresenter, provider)
+        .then(handleProviderDetails)
+        .then(handleYelpID)
+        .then(handleReviewRating)
+        .then(function(res, code, providerPresenter, provider) {
           res.status(code).send(providerPresenter.render());
-        },
-        function(code, data) {
-          // error
-          Logger.warn("ERROR: Failed to request provider: " + code);
-          if (code === 504) {
-            res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-          } else if (code === 400) {
-            res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-          } else {
-            res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-          }
+        })
+        .catch(function(res, code) {
+          return Promise.reject(res, code);
+        });
+      };
+
+      handleDetailViews(res, code, providerPresenter, provider)
+      .catch(function(res, code) {
+        if (code === 504) {
+          res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (code === 400) {
+          res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        } else {
+          res.status(code).redirect(CONSTANTS.ERROR_DOWN);
         }
-      );
+      });
+
+
+    //   provider.fetch({},
+    //     function(code, data) {
+    //       // success
+    //       if (data) {
+    //         if (data.hasOwnProperty("distance")) {
+    //           data.distance = Utils.formatDistance(data.distance);
+    //           data.availability = Utils.formatAvailability(data.providerNetworks);
+    //           data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+    //         }
+    //         providerPresenter.mergePropertyMap(data);
+    //       }
+    //       res.status(code).send(providerPresenter.render());
+    //     },
+    //     function(code, data) {
+    //       // error
+    //       Logger.warn("ERROR: Failed to request provider: " + code);
+    //       if (code === 504) {
+    //         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
+    //       } else if (code === 400) {
+    //         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    //       } else {
+    //         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
+    //       }
+    //     }
+    //   );
     } else {
       // TODO: need generic bad request page
       Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
