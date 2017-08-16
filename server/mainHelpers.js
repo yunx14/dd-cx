@@ -285,14 +285,18 @@ module.exports = {
         resolve(res, code, providerPresenter, provider);
       };
 
+      var render = function(res, code, providerPresenter, provider) {
+        return new Promise(function(resolve, reject) {
+          res.status(code).send(providerPresenter());
+        });
+      };
+
       var handleDetailViews = function(res, code, providerPresenter, provider) {
         return Promise.resolve(res, code, providerPresenter, provider)
         .then(handleProviderDetails)
         .then(handleYelpID)
         .then(handleReviewRating)
-        .then(function(res, code, providerPresenter, provider) {
-          res.status(code).send(providerPresenter.render());
-        })
+        .then(render)
         .catch(function(res, code) {
           return Promise.reject(res, code);
         });
