@@ -1,24 +1,41 @@
 const CONSTANTS = require("./constants.js");
     CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
 
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName = process.env.CONTROLLER_HOST_NAME;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort = process.env.CONTROLLER_HOST_PORT;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName = process.env.ACCOUNT_NAME;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey = process.env.ACCOUNT_ACCESS_KEY;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName = process.env.APPLICATION_NAME;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName = process.env.TIER_NAME;
-CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName = process.env.NODE_NAME;
+var Logger = require("./utility/logger.js");
 
-require("appdynamics").profile({
-  controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
-  controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
-  controllerSslEnabled: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerSslEnabled,  // Set to true if controllerPort is SSL
-  accountName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName,
-  accountAccessKey: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey, //required
-  applicationName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName,
-  tierName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName,
-  nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
- });
+if (process.env.CONTROLLER_HOST_NAME &&
+    process.env.CONTROLLER_HOST_PORT &&
+    process.env.ACCOUNT_NAME &&
+    process.env.ACCOUNT_ACCESS_KEY &&
+    process.env.APPLICATION_NAME &&
+    process.env.TIER_NAME &&
+    process.env.NODE_NAME
+) {
+  // Configure APPD
+  Logger.log("AppD is configured");
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName = process.env.CONTROLLER_HOST_NAME;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort = process.env.CONTROLLER_HOST_PORT;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName = process.env.ACCOUNT_NAME;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey = process.env.ACCOUNT_ACCESS_KEY;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName = process.env.APPLICATION_NAME;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName = process.env.TIER_NAME;
+  CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName = process.env.NODE_NAME;
+
+  require("appdynamics").profile({
+    controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
+    controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
+    controllerSslEnabled: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerSslEnabled,  // Set to true if controllerPort is SSL
+    accountName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName,
+    accountAccessKey: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey, //required
+    applicationName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName,
+    tierName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName,
+    nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
+   });
+} else {
+  Logger.log("AppD is not configured, no environment variables.");
+}
+
+
 
  var express = require("express");
  var bodyParser = require("body-parser");
@@ -31,7 +48,7 @@ require("appdynamics").profile({
 var mainHelpers = require("./server/mainHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
-var Logger = require("./utility/logger.js");
+
 
 
 //patch partials
