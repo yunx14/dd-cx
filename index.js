@@ -1,6 +1,14 @@
 const CONSTANTS = require("./constants.js");
     CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
 
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName = process.env.CONTROLLER_HOST_NAME;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort = process.env.CONTROLLER_HOST_PORT;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountName = process.env.ACCOUNT_NAME;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.accountAccessKey = process.env.ACCOUNT_ACCESS_KEY;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName = process.env.APPLICATION_NAME;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName = process.env.TIER_NAME;
+CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName = process.env.NODE_NAME;
+
 require("appdynamics").profile({
   controllerHostName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerHostName,
   controllerPort: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.controllerPort,
