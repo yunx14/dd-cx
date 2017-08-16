@@ -271,7 +271,7 @@ module.exports = {
             function(code, data) {
               // error
               Logger.warn("ERROR: Failed to request provider: " + code);
-              reject(code, res);
+              reject(res, code);
             }
           );
         });
