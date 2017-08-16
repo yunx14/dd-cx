@@ -287,7 +287,9 @@ module.exports = {
 
       var render = function(res, code, providerPresenter, provider) {
         return new Promise(function(resolve, reject) {
+          console.log("res", res);
           res.status(code).send(providerPresenter());
+          resolve();
         });
       };
 
