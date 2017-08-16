@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-what is this</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Personal-Info-1-AARP-Desktop" transform="translate(-481.000000, -641.000000)">
+            <g id="Stacked-Group" transform="translate(300.000000, 113.000000)">
+                <g id="Stacked-Group-2">
+                    <g id="Group-4" transform="translate(0.000000, 526.000000)">
+                        <g id="icon-what-is-this-dark-reverse" transform="translate(180.000000, 1.000000)">
+                            <g id="what-is-this-icon" stroke-width="1" fill-rule="evenodd" transform="translate(1.000000, 1.000000)" fill="#6D6D6D">
+                                <circle id="Oval" cx="7" cy="7" r="7"></circle>
+                            </g>
+                            <text id="?" font-family="Helvetica-Bold, Helvetica" font-size="13" font-weight="bold" fill="#FFFFFF">
+                                <tspan x="4" y="12">?</tspan>
+                            </text>
+                            <rect id="Rectangle" fill="#6D6D6D" fill-rule="evenodd" x="5" y="10" width="5" height="3"></rect>
+                            <rect id="Rectangle-11" fill="#FFFFFF" fill-rule="evenodd" x="7" y="11" width="2" height="2"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

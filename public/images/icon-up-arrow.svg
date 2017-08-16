@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="6px" viewBox="0 0 10 6" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Purchasing-Desktop-Faciities-Primary-Selected" transform="translate(-399.000000, -846.000000)" fill="#666666">
+            <g id="Golden-Gate-Dental" transform="translate(299.000000, 743.000000)">
+                <g id="more" transform="translate(67.000000, 95.000000)">
+                    <path d="M42.8777781,8.12190929 C42.7139821,7.95936357 42.4489075,7.95936357 42.285945,8.12190929 L37.9997395,12.8273994 L33.7143676,8.12190929 C33.5509883,7.95936357 33.2859137,7.95936357 33.1225345,8.12190929 C32.9591552,8.28862284 32.9591552,8.55536453 33.1225345,8.71791025 L37.6834005,13.7234847 C37.7705084,13.8110093 37.8859575,13.8485199 37.9997395,13.8401842 C38.1139383,13.8485199 38.2293874,13.8110093 38.316912,13.7234847 L42.8777781,8.71791025 C43.0407406,8.55536453 43.0407406,8.28862284 42.8777781,8.12190929" id="arrow" transform="translate(38.000000, 10.920659) rotate(180.000000) translate(-38.000000, -10.920659) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
