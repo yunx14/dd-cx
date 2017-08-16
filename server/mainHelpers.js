@@ -298,7 +298,7 @@ module.exports = {
         });
       };
 
-      handleDetailViews(res, code, providerPresenter, provider)
+      handleDetailViews(res, 200, providerPresenter, provider)
       .catch(function(res, code) {
         if (code === 504) {
           res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
