@@ -287,6 +287,8 @@ module.exports = {
       };
 
       var handleYelpID = function(promiseData) {
+        var clientId = CONSTANTS.YELP_API.CLIENT_ID;
+        var clientSecret = CONSTANTS.YELP_API.CLIENT_SECRET;
         return new Promise(function(resolve, reject) {
           yelp.accessToken(clientId, clientSecret)
           .then(function(response) {
