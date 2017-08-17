@@ -1,4 +1,5 @@
 $("form").submit(function() {
+  var formName = $(this).attr("name");
   var searchParams = [];
   var $inputs = $(this).find("input");
   $.each($inputs, function(index, input) {
@@ -6,7 +7,7 @@ $("form").submit(function() {
   });
   ga('send', 'event', {
     eventCategory: 'CX Provider Directory',
-    eventAction: 'search directory',
-    eventLabel: searchParams
+    eventAction: 'Submit Form',
+    eventLabel: formName
   });
 });
