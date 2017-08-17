@@ -288,17 +288,20 @@ module.exports = {
 
       var handleYelpID = function(promiseData) {
         return new Promise(function(resolve, reject) {
-          resolve(promiseData);
+          yelp.accessToken(clientId, clientSecret)
+          .then(function(response) {
+            console.log("yelp access token is ", response.jsonBody.access_token);
+            resolve(promiseData);
+          })
+          .catch(function(e) {
+            console.log("getting an error from yelp", e);
+            reject(promiseData);
+          })
         });
       };
 
       var handleReviewRating = function(promiseData) {
         return new Promise(function(resolve, reject) {
-          yelp.accessToken(clientId, clientSecret).then(response => {
-            console.log("yelp access token is ", response.jsonBody.access_token);
-          }).catch(e => {
-            console.log("getting an error from yelp", e);
-          });
           resolve(promiseData);
         });
       };
