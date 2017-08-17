@@ -23,7 +23,8 @@
     "filelogger": "^1.0.3",
     "handlebars": "^4.0.0",
     "node-geocoder": "^3.18.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "yelp-fusion": "^1.0.3"
   },
   "devDependencies": {
     "jasmine-node": "^2.0.0",

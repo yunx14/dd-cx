@@ -19,6 +19,7 @@ var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
+var yelp = require('yelp-fusion');
 
 module.exports = {
   getDirectorySearch: function(req, res) {
@@ -286,8 +287,18 @@ module.exports = {
       };
 
       var handleYelpID = function(promiseData) {
+        var clientId = CONSTANTS.YELP_API.CLIENT_ID;
+        var clientSecret = CONSTANTS.YELP_API.CLIENT_SECRET;
         return new Promise(function(resolve, reject) {
-          resolve(promiseData);
+          yelp.accessToken(clientId, clientSecret)
+          .then(function(response) {
+            console.log("yelp access token is ", response.jsonBody.access_token);
+            resolve(promiseData);
+          })
+          .catch(function(e) {
+            console.log("getting an error from yelp", e);
+            reject(promiseData);
+          })
         });
       };
 

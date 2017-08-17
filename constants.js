@@ -6,6 +6,10 @@ module.exports = {
   "SERVER_LOG_PATH": "/var/log/provider-directory.log",
   "PRIVATE_KEY": "/opt/docker/certs/node.key",
   "CERT": "/opt/docker/certs/node.cer",
+  "YELP_API": {
+    "CLIENT_ID": "jd2Hae_XhJIMfD_ejgT0XA",
+    "CLIENT_SECRET": "zeWVHuIcIpuYHAQjJFtviwLKGm9O0N7gWEv8lT4XCpz9p9wdCU1A7v10urSLIgDs"
+  },
 
   "VIEW_MODEL_COLLECTION_KEY":  "{{collection}}",
   "PUBLIC_DIRECTORY": "public",
