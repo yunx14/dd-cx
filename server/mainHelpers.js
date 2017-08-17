@@ -394,8 +394,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance),
-        facilityId: req.query.facilityId
+        distance: Number(req.query.distance)
       };
 
       var facility = new Model();
