@@ -394,8 +394,7 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance),
-        facilityId: req.query.facilityId
+        distance: Number(req.query.distance)
       };
 
       var facility = new Model();
@@ -408,7 +407,7 @@ module.exports = {
 
       facility.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       facility.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities";
+      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities/" + searchQueryWithKey.facilityId;
 
       var googleAPI = "";
       if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
