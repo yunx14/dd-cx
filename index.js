@@ -1,6 +1,5 @@
 const CONSTANTS = require("./constants.js");
-    CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
-
+      CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
 var Logger = require("./utility/logger.js");
 
 if (process.env.CONTROLLER_HOST_NAME &&
@@ -30,32 +29,30 @@ if (process.env.CONTROLLER_HOST_NAME &&
     applicationName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.applicationName,
     tierName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.tierName,
     nodeName: CONSTANTS[CONSTANTS.ENVIRONMENT].APPD.nodeName,
-   });
+  });
 } else {
   Logger.log("AppD is not configured, no environment variables.");
 }
 
+var express = require("express");
+var bodyParser = require("body-parser");
+var path = require("path");
+var https = require("https");
+var fs = require("fs");
+    Handlebars = require("handlebars");
+var request = require('request');
 
-
- var express = require("express");
- var bodyParser = require("body-parser");
- var path = require("path");
- var https = require("https");
- var fs = require("fs");
-     Handlebars = require("handlebars");
- var request = require('request');
-
-var mainHelpers = require("./server/mainHelpers.js");
+var directorySearchHelpers = require("./server/directorySearchHelpers.js");
+var providerDetailsHelpers = require("./server/providerDetailsHelpers.js");
+var facilityDetailsHelpers = require("./server/facilityDetailsHelpers.js");
+var officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
+var inaccurateHelpers = require("./server/inaccurateHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
 
-
-
 //patch partials
 Handlebars.partials = Handlebars.templates;
-
 var app = express();
-
 var privatekey = null;
 var cert = null;
 global.global_request_options = {};
@@ -66,9 +63,9 @@ try {
   CONSTANTS.SSL_ENABLED = true;
   global.global_request_options = {
     agentOptions: {
-        rejectUnauthorized: false,
-        ca: cert
-      }
+      rejectUnauthorized: false,
+      ca: cert
+    }
   };
 } catch (e) {
   Logger.warn("Could not read certs for https! " + e);
@@ -113,18 +110,18 @@ app.get([
   CONSTANTS.BASE_URI + "/facilities",
   CONSTANTS.BASE_URI + "/offices",
   CONSTANTS.BASE_URI + "/offices/:name"],
-  mainHelpers.getDirectorySearch);
+  directorySearchHelpers.getDirectorySearch);
 
 
-app.get(CONSTANTS.BASE_URI, mainHelpers.getDirectorySearch);
-app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.getDirectorySearch);
-app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, mainHelpers.postDirectorySearch);
-app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, mainHelpers.getProviderDetails);
+app.get(CONSTANTS.BASE_URI, directorySearchHelpers.getDirectorySearch);
+app.get(CONSTANTS.DIRECTORY_SEARCH_PAGE, directorySearchHelpers.getDirectorySearch);
+app.post(CONSTANTS.DIRECTORY_SEARCH_PAGE, directorySearchHelpers.postDirectorySearch);
+app.get(CONSTANTS.PROVIDER_DETAILS_PAGE, providerDetailsHelpers.getProviderDetails);
 app.get([CONSTANTS.BASE_URI + "/facilities/:name",
-        CONSTANTS.FACILITY_DETAILS_PAGE], mainHelpers.getFacilityDetails);
+        CONSTANTS.FACILITY_DETAILS_PAGE], facilityDetailsHelpers.getFacilityDetails);
 app.get([CONSTANTS.BASE_URI + "/offices/:name",
-        CONSTANTS.OFFICE_DETAILS_PAGE], mainHelpers.getOfficeDetails);
-app.get(CONSTANTS.INACCURATE_PAGE, mainHelpers.getInaccurate);
+        CONSTANTS.OFFICE_DETAILS_PAGE], officeDetailsHelpers.getOfficeDetails);
+app.get(CONSTANTS.INACCURATE_PAGE, inaccurateHelpers.getInaccurate);
 
 // error template
 app.get(CONSTANTS.ERROR_INVALID_ZIP, errorHelpers.errorInvalidZip);
