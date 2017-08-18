@@ -51,7 +51,7 @@ module.exports = Utils = {
           formattedNetwork.push("Premier");
         }
         if (network[0].networkId === "2DELTACARE") {
-          formattedNetwork.push("DeltaCare USA");
+          formattedNetwork.sort().reverse().push(network[i].networkName);
         }
         return formattedNetwork.join("") + " " + "network";
       } else if (Array.isArray(network) && network.length >= 1) {
@@ -63,10 +63,10 @@ module.exports = Utils = {
             formattedNetwork.push("Premier");
           }
           if (network[i].networkId === "2DELTACARE") {
-            formattedNetwork.push("DeltaCare USA");
+            formattedNetwork.push(network[i].networkName);
           }
         }
-        return formattedNetwork.join(", ") + " " + "networks";
+        return formattedNetwork.sort().reverse().join(", ") + " " + "networks";
       }
     } else {
       return "";
