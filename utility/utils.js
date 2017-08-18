@@ -72,6 +72,51 @@ module.exports = Utils = {
       return "";
     }
   },
+  formatNetworkForResultsPage: function(network) {
+    var formattedNetwork = [];
+    var temp = [];
+    if (network) {
+      if (Array.isArray(network) && network.length === 1) {
+        if (network[0].networkId === "2PPO") {
+          formattedNetwork.push("PPO");
+        }
+        if (network[0].networkId === "2PREMIER") {
+          formattedNetwork.push("Premier");
+        }
+        if (network[0].networkId === "2DELTACARE") {
+          formattedNetwork.sort().reverse().push(network[i].networkName);
+        }
+        return formattedNetwork.join("") + " " + "network";
+      } else if (Array.isArray(network) && network.length >= 1) {
+        for (var i = 0; i < network.length; i++) {
+          if (network[i].networkId === "2PPO") {
+            formattedNetwork.push("PPO");
+          }
+          if (network[i].networkId === "2PREMIER") {
+            formattedNetwork.push("Premier");
+          }
+          if (network[i].networkId === "2DELTACARE") {
+            temp.push(network[i].networkName);
+          }
+        }
+        var totalDeltacareNetworksNumber = temp.length - 1;
+        formattedNetwork = formattedNetwork.sort().reverse();
+        var ppoPosition = formattedNetwork.indexOf("PPO");
+        if (ppoPosition !== -1) {
+          formattedNetwork.splice(ppoPosition, 1);
+          formattedNetwork.unshift("PPO");
+        }
+        if (totalDeltacareNetworksNumber > 0) {
+          formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
+        } else {
+          formattedNetwork.push("DeltaCare USA");
+        }
+        return formattedNetwork.join(", ") + " " + "networks";
+      }
+    } else {
+      return "";
+    }
+  },
   formatAvailability: function(network) {
     var formattedAvailability = {};
     if (network) {
@@ -148,7 +193,7 @@ module.exports = Utils = {
       for (var i = 0; i < data.length; i++) {
         formattedData[i].distance = this.formatDistance(data[i].distance);
         formattedData[i].availability = this.formatAvailability(data[i].providerNetworks);
-        formattedData[i].providerNetworks = this.formatNetwork(data[i].providerNetworks);
+        formattedData[i].providerNetworks = this.formatNetworkForResultsPage(data[i].providerNetworks);
       }
     } else if (typeof data === "object" && data && typeof data !== "function" && !Array.isArray(data)) {
       this.formatDistance(data.distance);
