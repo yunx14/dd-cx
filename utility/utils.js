@@ -66,7 +66,13 @@ module.exports = Utils = {
             formattedNetwork.push(network[i].networkName);
           }
         }
-        return formattedNetwork.sort().reverse().join(", ") + " " + "networks";
+        formattedNetwork = formattedNetwork.sort().reverse();
+        var ppoPosition = formattedNetwork.indexOf("PPO");
+        if (ppoPosition !== -1) {
+          formattedNetwork.splice(ppoPosition, 1);
+          formattedNetwork.unshift("PPO");
+        }
+        return formattedNetwork.join(", ") + " " + "networks";
       }
     } else {
       return "";
