@@ -10,8 +10,6 @@ var ViewModel = require("../views/viewModel.js");
 var Utils = require("../utility/utils.js");
 var Logger = require("../utility/logger.js");
 
-var yelp = require('yelp-fusion');
-
 module.exports = {
   getProviderDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
@@ -145,28 +143,6 @@ module.exports = {
         });
       };
 
-      var handleYelpID = function(promiseData) {
-        var clientId = CONSTANTS.YELP_API.CLIENT_ID;
-        var clientSecret = CONSTANTS.YELP_API.CLIENT_SECRET;
-        return new Promise(function(resolve, reject) {
-          yelp.accessToken(clientId, clientSecret)
-          .then(function(response) {
-            console.log("yelp access token is ", response.jsonBody.access_token);
-            resolve(promiseData);
-          })
-          .catch(function(e) {
-            console.log("getting an error from yelp", e);
-            reject(promiseData);
-          })
-        });
-      };
-
-      var handleReviewRating = function(promiseData) {
-        return new Promise(function(resolve, reject) {
-          resolve(promiseData);
-        });
-      };
-
       var render = function(promiseData) {
         return new Promise(function(resolve, reject) {
           promiseData.res.status(promiseData.code).send(promiseData.presenter.render());
@@ -177,8 +153,8 @@ module.exports = {
       var handleDetailViews = function(promiseData) {
         return Promise.resolve(promiseData)
         .then(handleProviderDetails)
-        .then(handleYelpID)
-        .then(handleReviewRating)
+        // .then(handleYelpID)
+        // .then(handleReviewRating)
         .then(render)
         .catch(function(promiseData) {
           return Promise.reject(promiseData);
