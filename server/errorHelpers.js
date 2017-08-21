@@ -153,6 +153,7 @@ module.exports = {
         "scripts": [
           {"script": `https://maps.googleapis.com/maps/api/js?libraries=places${googleAPI}`},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "ga-analytics.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
