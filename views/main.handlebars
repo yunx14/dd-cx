@@ -33,7 +33,9 @@
         } else if (pathArray[3] == "provider-details.html") {
           if(searchArray.get("providerKey")){
             newPathname = newPathStart +"/provider/"+ searchArray.get("providerKey");
-          } else newPathname = newPathStart +"/provider/"+ window.location.search;
+          } else {
+            newPathname = newPathStart +"/provider/"+ window.location.search;
+          }
         } else if (pathArray[3] == "facility-details.html" {
           if(searchArray.get("facilityId")) {
             newPathname = newPathStart + "/facility/"+ searchArray.get("facilityId");
