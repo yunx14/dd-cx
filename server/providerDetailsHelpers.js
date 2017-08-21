@@ -15,7 +15,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = query = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),

@@ -15,7 +15,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.INACCURATE_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = query = {
+      var searchQueryWithKey = {
         providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
@@ -91,35 +91,99 @@ module.exports = {
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
 
-      provider.fetch({},
-        function(code, data) {
-          // success
-          if (data) {
-            if (data.hasOwnProperty("distance")) {
-              data.distance = Utils.formatDistance(data.distance);
-              data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+      var promiseData = {
+        res: res,
+        code: 200,
+        presenter: providerPresenter,
+        model: provider
+      };
+
+      var handleProviderDetails = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          provider.fetch({},
+            function(code, data) {
+              // success
+              if (data) {
+                if (data.hasOwnProperty("distance")) {
+                  data.distance = Utils.formatDistance(data.distance);
+                  data.availability = Utils.formatAvailability(data.providerNetworks);
+                  data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+                }
+                promiseData.presenter.mergePropertyMap(data);
+              }
+              resolve(promiseData);
+            },
+            function(code, data) {
+              // error
+              promiseData.code = code;
+              Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
+              reject(promiseData);
             }
-            providerPresenter.mergePropertyMap(data);
-          }
-          res.status(code).send(providerPresenter.render());
-        },
-        function(code, data) {
-          // error
-          Logger.warn("ERROR: Failed to request provider: " + code);
-          if (code === 504) {
-            res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-          } else if (code === 400) {
-            res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-          } else {
-            res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-          }
+          );
+        });
+      };
+
+      var render = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          promiseData.res.status(promiseData.code).send(promiseData.presenter.render());
+          resolve(promiseData);
+        });
+      };
+
+      var handleDetailViews = function(promiseData) {
+        return Promise.resolve(promiseData)
+        .then(handleProviderDetails)
+        .then(render)
+        .catch(function(promiseData) {
+          return Promise.reject(promiseData);
+        });
+      };
+
+      handleDetailViews(promiseData)
+      .catch(function(promiseData) {
+        if (promiseData.code === 504) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (promiseData.code === 400) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        } else {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
         }
-      );
+      });
     } else {
       // TODO: need generic bad request page
       Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
       res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
     }
+
+    //   provider.fetch({},
+    //     function(code, data) {
+    //       // success
+    //       if (data) {
+    //         if (data.hasOwnProperty("distance")) {
+    //           data.distance = Utils.formatDistance(data.distance);
+    //           data.availability = Utils.formatAvailability(data.providerNetworks);
+    //           data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+    //         }
+    //         providerPresenter.mergePropertyMap(data);
+    //       }
+    //       res.status(code).send(providerPresenter.render());
+    //     },
+    //     function(code, data) {
+    //       // error
+    //       Logger.warn("ERROR: Failed to request provider: " + code);
+    //       if (code === 504) {
+    //         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
+    //       } else if (code === 400) {
+    //         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    //       } else {
+    //         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
+    //       }
+    //     }
+    //   );
+    // } else {
+    //   // TODO: need generic bad request page
+    //   Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
+    //   res.status(400).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    // }
   }
 };
