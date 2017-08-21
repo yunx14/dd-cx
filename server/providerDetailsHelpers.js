@@ -15,8 +15,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.PROVIDER_DETAILS_PAGE);
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
-      var searchQueryWithKey = {
-        providerKey: req.query.providerKey,
+      var searchQueryWithKey = query = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -24,7 +23,8 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance)
+        distance: Number(req.query.distance),
+        providerKey: req.query.providerKey
       };
 
       var searchQueryWithoutKey = {
