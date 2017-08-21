@@ -24,21 +24,33 @@
       ga('create', '{{google-al}}', 'auto');
       var dnt= navigator.doNotTrack || window.doNotTrack || window.msDoNotTrack;
       var newPathname = "";
-      function setPath(key) {
-        var gakey = key || null;
+      function setPath() {
         var pathArray = window.location.pathname.split( '/' );
+        var searchArray = new URLSearchParams(window.location.search);
         var newPathStart = "find-a-dentist/alpha";
         if (pathArray[3] == "directory-search.html"){
           newPathname = newPathStart + "/search";
         } else if (pathArray[3] == "provider-details.html") {
-          if(gakey){
-            newPathname = newPathStart +"/offices/"+ gakey;
-          } else newPathname = newPathStart +"/offices"+ window.location.search;
+          if(searchArray.get("providerKey")){
+            newPathname = newPathStart +"/provider/"+ searchArray.get("providerKey");
+          } else newPathname = newPathStart +"/provider/"+ window.location.search;
+        } else if (pathArray[3] == "facility-details.html" {
+          if(searchArray.get("facilityId")) {
+            newPathname = newPathStart + "/facility/"+ searchArray.get("facilityId");
+          } else {
+            newPathname = newPathStart + "/facility/"+ window.location.search;
+          }
+        } else if (pathArray[3] == "office-details.html" {
+          if(searchArray.get("practiceLocationNumber")) {
+            newPathname = newPathStart + "/office/"+ searchArray.get("practiceLocationNumber");
+          } else {
+            newPathname = newPathStart + "/office/"+ window.location.search;
+          }
         } else {
             newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
         }
       }
-      setPath("{{providerKey}}");
+      setPath();
       ga('set', 'dimension9', dnt);
       ga('set', 'page', newPathname);
       ga('send', 'pageview');
