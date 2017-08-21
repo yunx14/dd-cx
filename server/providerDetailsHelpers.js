@@ -171,33 +171,6 @@ module.exports = {
           promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
         }
       });
-
-
-    //   provider.fetch({},
-    //     function(code, data) {
-    //       // success
-    //       if (data) {
-    //         if (data.hasOwnProperty("distance")) {
-    //           data.distance = Utils.formatDistance(data.distance);
-    //           data.availability = Utils.formatAvailability(data.providerNetworks);
-    //           data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
-    //         }
-    //         providerPresenter.mergePropertyMap(data);
-    //       }
-    //       res.status(code).send(providerPresenter.render());
-    //     },
-    //     function(code, data) {
-    //       // error
-    //       Logger.warn("ERROR: Failed to request provider: " + code);
-    //       if (code === 504) {
-    //         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-    //       } else if (code === 400) {
-    //         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-    //       } else {
-    //         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-    //       }
-    //     }
-    //   );
     } else {
       // TODO: need generic bad request page
       Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
