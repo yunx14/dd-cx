@@ -16,7 +16,6 @@ module.exports = {
 
     if (req.query && req.query.providerKey && req.query.lat && req.query.long && req.query.location) {
       var searchQueryWithKey = query = {
-        providerKey: req.query.providerKey,
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -24,7 +23,8 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance)
+        distance: Number(req.query.distance),
+        providerKey: req.query.providerKey
       };
 
       var searchQueryWithoutKey = {
@@ -171,33 +171,6 @@ module.exports = {
           promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
         }
       });
-
-
-    //   provider.fetch({},
-    //     function(code, data) {
-    //       // success
-    //       if (data) {
-    //         if (data.hasOwnProperty("distance")) {
-    //           data.distance = Utils.formatDistance(data.distance);
-    //           data.availability = Utils.formatAvailability(data.providerNetworks);
-    //           data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
-    //         }
-    //         providerPresenter.mergePropertyMap(data);
-    //       }
-    //       res.status(code).send(providerPresenter.render());
-    //     },
-    //     function(code, data) {
-    //       // error
-    //       Logger.warn("ERROR: Failed to request provider: " + code);
-    //       if (code === 504) {
-    //         res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-    //       } else if (code === 400) {
-    //         res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-    //       } else {
-    //         res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-    //       }
-    //     }
-    //   );
     } else {
       // TODO: need generic bad request page
       Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
