@@ -15,8 +15,7 @@ module.exports = {
     Logger.log("GET " + CONSTANTS.FACILITY_DETAILS_PAGE);
 
     if (req.query && req.query.lat && req.query.long && req.query.location && req.query.facilityId) {
-      var searchQueryWithKey = query = {
-        providerKey: req.query.providerKey,
+      var searchQueryWithFacilityId = query = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -28,7 +27,7 @@ module.exports = {
         facilityId: req.query.facilityId
       };
 
-      var searchQueryWithoutKey = {
+      var searchQueryWithoutFacilityId = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -49,7 +48,7 @@ module.exports = {
 
       facility.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       facility.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities/" + searchQueryWithKey.facilityId;
+      facility.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/facilities/" + searchQueryWithFacilityId.facilityId;
 
       var googleAPI = "";
       if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
@@ -67,8 +66,7 @@ module.exports = {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
-          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutKey)}`,
-          "inaccurateInfoHref": `${CONSTANTS.INACCURATE_PAGE}${Utils.formatQuery(searchQueryWithKey)}`,
+          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutFacilityId)}`,
           "searchQueryLocation": req.query.location,
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
@@ -112,31 +110,64 @@ module.exports = {
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
 
-      facility.fetch({},
-        function(code, data) {
-          // success
-          if (data) {
-            if (data.hasOwnProperty("distance")) {
-              data.distance = Utils.formatDistance(data.distance);
-              data.availability = Utils.formatAvailability(data.providerNetworks);
-              data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+      var promiseData = {
+        res: res,
+        code: 200,
+        presenter: facilityPresenter,
+        model: facility
+      };
+
+      var handleFacilityDetails = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          facility.fetch({},
+            function(code, data) {
+              // success
+              if (data) {
+                if (data.hasOwnProperty("distance")) {
+                  data.distance = Utils.formatDistance(data.distance);
+                  data.availability = Utils.formatAvailability(data.providerNetworks);
+                  data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+                }
+                promiseData.presenter.mergePropertyMap(data);
+              }
+              resolve(promiseData);
+            },
+            function(code, data) {
+              // error
+              promiseData.code = code;
+              Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
+              reject(promiseData);
             }
-            facilityPresenter.mergePropertyMap(data);
-          }
-          res.status(code).send(facilityPresenter.render());
-        },
-        function(code, data) {
-          // error
-          Logger.warn("ERROR: Failed to request provider: " + code);
-          if (code === 504) {
-            res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-          } else if (code === 400) {
-            res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-          } else {
-            res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-          }
+          );
+        });
+      };
+
+      var render = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          promiseData.res.status(promiseData.code).send(promiseData.presenter.render());
+          resolve(promiseData);
+        });
+      };
+
+      var handleFacilityDetailViews = function(promiseData) {
+        return Promise.resolve(promiseData)
+        .then(handleFacilityDetails)
+        .then(render)
+        .catch(function(promiseData) {
+          return Promise.reject(promiseData);
+        });
+      };
+
+      handleFacilityDetailViews(promiseData)
+      .catch(function(promiseData) {
+        if (promiseData.code === 504) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_TIMEOUT);
+        } else if (promiseData.code === 400) {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+        } else {
+          promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
         }
-      );
+      });
     } else {
       // TODO: need generic bad request page
       Logger.log("No params or bad provider Key " + JSON.stringify(req.params));
