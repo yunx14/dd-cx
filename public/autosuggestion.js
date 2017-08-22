@@ -1,5 +1,5 @@
 function getSuggestion(keyword) {
-    var endpoint = "/providers/suggestion?freeText="+keyword;
+    var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
 
     var jqxhr = $.getJSON(endpoint)
         .done(function(data){
@@ -8,6 +8,7 @@ function getSuggestion(keyword) {
         })
         .fail(function() {
           // fail siliently
+          console.log("shit something went wrong");
         })
 }
 
