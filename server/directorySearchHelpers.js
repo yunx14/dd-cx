@@ -63,6 +63,7 @@ module.exports = {
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "filter-reset.js"},
+            {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "autosuggestion.js"},
             {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
           ],
           "banner": {
@@ -204,6 +205,7 @@ var getListsResults = function(query, req, res) {
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "filter-reset.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"},
+        {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "autosuggestion.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "helpers.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "spiderfy.js"},
         {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "map-cluster.js"},

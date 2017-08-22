@@ -158,6 +158,7 @@ module.exports = {
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "filter-reset.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "autosuggestion.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "banner.js"}
         ],
         "severity": ViewModel.pages_directoryError.errorMessages.servicesDown.severity,
