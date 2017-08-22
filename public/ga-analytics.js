@@ -1,7 +1,7 @@
 $("form").submit(function() {
   var formName = $(this).attr("name");
   var searchParams = [];
-  var $inputs = $(this).find("input");
+  var $inputs = $(this).find("input:text");
   var obj = {};
   $.each($inputs, function(index, input) {
     obj[input.name] = input.value;
