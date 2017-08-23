@@ -155,6 +155,7 @@ module.exports = {
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "jquery.min.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "ga-analytics.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "main.js"},
+          {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "handlebars.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "feedback.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "refine-search.js"},
           {"script": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "filter-reset.js"},
