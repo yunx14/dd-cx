@@ -58,6 +58,7 @@ var FEHelpers = (function(){
 
   return {
     "debounce": debounce,
+    "throttle": throttle,
     "fixmystuff": fixmystuff
   };
 }());
