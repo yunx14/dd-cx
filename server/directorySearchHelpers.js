@@ -1,7 +1,6 @@
 const CONSTANTS = require("../constants.js");
 var MainPresenter = require("../views/mainPresenter.js");
 var SolrCollection = require("../collections/solrCollection.js");
-var Model = require("../models/model.js");
 
 var MainTemplate = require("../views/pds.js");
 var AtomicPower = require("../views/atomicPower.js");
@@ -158,11 +157,11 @@ module.exports = {
 };
 
 var getListsResults = function(query, req, res) {
-  var providers = new SolrCollection("providers");
-  providers.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
-  providers.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-  providers.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
-  providers.query = query;
+  var resultsList = new SolrCollection("providers");
+  resultsList.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+  resultsList.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
+  resultsList.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH;
+  resultsList.query = query;
 
   var googleAPI = "";
   if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
@@ -173,7 +172,7 @@ var getListsResults = function(query, req, res) {
     googleAPI = `&client=${CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID}`;
   }
 
-  var providersPresenter = new MainPresenter(
+  var resultsListPresenter = new MainPresenter(
     CONSTANTS.TEMPLATES.SEARCH_RESULTS,
     ViewModel.pages_directorySearchResults,
     {
@@ -230,59 +229,100 @@ var getListsResults = function(query, req, res) {
     },
     CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
   );
+
   if (query.page) {
-    providers.currentPage = query.page;
+    resultsList.currentPage = query.page;
   }
-  providers.fetch({},
-    function(code, data) {
-      // success
-      if (providers.isEmpty()) {
-        res.redirect(CONSTANTS.ERROR_NO_RESULTS);
-        return;
-      } else {
 
-        var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(providers.query);
-        // network, specialty, language persistence
-        providersPresenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
-        providersPresenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
-        providersPresenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
-        providersPresenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
-        // location persistence
-        providersPresenter.propertyMap.searchInput = ViewModel.pages_directorySearchResults.searchInput;
-        providersPresenter.propertyMap.searchInput = LocationPersistLogic.returnLocationFormFields(query.location);
-        // lat long persistence
-        providersPresenter.propertyMap.hiddenFields = ViewModel.pages_directorySearchResults.hiddenFields;
-        providersPresenter.propertyMap.hiddenFields = LatlongPersistLogic.returnLatlongFormFields(query.lat, query.long);
-        // distance persistence
-        providersPresenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
-        providersPresenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
-        // freeTextInput persistence
-        providersPresenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
-        providersPresenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
-        // pagination support
-        providersPresenter.propertyMap.total = providers.total;
-        providersPresenter.propertyMap.totalPages = providers.totalPages;
-        providersPresenter.propertyMap.pageSize = providers.pageSize;
-        providersPresenter.propertyMap.currentPage = providers.currentPage;
-        providersPresenter.propertyMap.paginationList = PaginationControl.render(baseURI, providers.currentPage, providers.totalPages, "Prev", "Next", providers.paginationConfiguration.currentPageParam);
+  var promiseData = {
+    res: res,
+    code: 200,
+    presenter: resultsListPresenter,
+    collection: resultsList
+  };
 
-        var formattedData = Utils.formatData(providers.toJSON());
-        providersPresenter.propertyMap.currentProviders = JSON.stringify(formattedData);
-        res.status(code).send(providersPresenter.render(formattedData));
-      }
-    },
-    function(code, data)  {
-      // error
-      Logger.log("ERROR: Failed to request providers: " + code);
-      if (code === 504) {
-        res.status(code).redirect(CONSTANTS.ERROR_TIMEOUT);
-      } else if (code === 400) {
-        res.status(code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
-      } else if (code === 500) {
-        res.status(code).redirect(CONSTANTS.ERROR_DOWN);
-      } else {
-        res.status(code).redirect(CONSTANTS.ERROR_NO_RESULTS);
-      }
+  var handleResultsList = function(promiseData) {
+    return new Promise(function(resolve, reject) {
+      resultsList.fetch({},
+        function(code, data) {
+          // success
+          if (resultsList.isEmpty()) {
+            promiseData.res.redirect(CONSTANTS.ERROR_NO_RESULTS);
+          } else {
+            var baseURI = CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(resultsList.query);
+            // network, specialty, language persistence
+            promiseData.presenter.propertyMap.filter = ViewModel.pages_directorySearchResults.filter;
+            promiseData.presenter.propertyMap.filter.network = NetworkPersistLogic.returnNetworkFormFields(query.network);
+            promiseData.presenter.propertyMap.filter.specialty = SpecialtyPersistLogic.returnSpecialtyFormFields(query.specialty);
+            promiseData.presenter.propertyMap.filter.language = LanguagePersistLogic.returnLanguageFormFields(query.language);
+            // location persistence
+            promiseData.presenter.propertyMap.searchInput = ViewModel.pages_directorySearchResults.searchInput;
+            promiseData.presenter.propertyMap.searchInput = LocationPersistLogic.returnLocationFormFields(query.location);
+            // lat long persistence
+            promiseData.presenter.propertyMap.hiddenFields = ViewModel.pages_directorySearchResults.hiddenFields;
+            promiseData.presenter.propertyMap.hiddenFields = LatlongPersistLogic.returnLatlongFormFields(query.lat, query.long);
+            // distance persistence
+            promiseData.presenter.propertyMap.distanceSelect = ViewModel.pages_directorySearchResults.distanceSelect;
+            promiseData.presenter.propertyMap.distanceSelect = DistancePersistLogic.returnDistanceFormFields(query.distance);
+            // freeTextInput persistence
+            promiseData.presenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
+            promiseData.presenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
+            // pagination support
+            promiseData.presenter.propertyMap.total = resultsList.total;
+            promiseData.presenter.propertyMap.totalPages = resultsList.totalPages;
+            promiseData.presenter.propertyMap.pageSize = resultsList.pageSize;
+            promiseData.presenter.propertyMap.currentPage = resultsList.currentPage;
+            promiseData.presenter.propertyMap.paginationList = PaginationControl.render(baseURI, resultsList.currentPage, resultsList.totalPages, "Prev", "Next", resultsList.paginationConfiguration.currentPageParam);
+
+            var formattedData = Utils.formatData(resultsList.toJSON());
+            promiseData.presenter.propertyMap.currentProviders = JSON.stringify(formattedData);
+            promiseData.formattedData = formattedData;
+          }
+          resolve(promiseData);
+        },
+        function(code, data) {
+          // error
+          promiseData.code = code;
+          Logger.log("ERROR: Failed to request resultsList: " + code);
+          if (promiseData.code === 504) {
+            promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_TIMEOUT);
+          } else if (code === 400) {
+            promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+          } else if (code === 500) {
+            promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
+          } else {
+            promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_NO_RESULTS);
+          }
+          reject(promiseData);
+        }
+      );
+    });
+  };
+
+  var render = function(promiseData) {
+    return new Promise(function(resolve, reject) {
+      promiseData.res.status(promiseData.code).send(promiseData.presenter.render(promiseData.formattedData));
+      resolve(promiseData);
+    });
+  };
+
+  var handleResultsListViews = function(promiseData) {
+    return Promise.resolve(promiseData)
+    .then(handleResultsList)
+    .then(render)
+    .catch(function(promiseData) {
+      return Promise.reject(promiseData);
+    });
+  };
+
+  handleResultsListViews(promiseData)
+  .catch(function(promiseData) {
+    if (promiseData.code === 504) {
+      promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_TIMEOUT);
+    } else if (promiseData.code === 400) {
+      promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_INVALID_ZIP);
+    } else {
+      promiseData.res.status(promiseData.code).redirect(CONSTANTS.ERROR_DOWN);
     }
-  );
+  });
 }
