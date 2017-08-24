@@ -114,9 +114,7 @@ module.exports = Utils = {
         }
         if (totalDeltacareNetworksNumber > 0) {
           formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
-        } else {
-          formattedNetwork.push("DeltaCare USA");
-        }
+        } 
         return formattedNetwork.join(", ") + " " + "networks";
       }
     } else {

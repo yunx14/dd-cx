@@ -40,8 +40,6 @@ module.exports = {
 
       var provider = new Model();
       if (req.query) {
-        // req.query.free_text = req.query.keyword;
-        // req.query.keyword = null;
         Logger.log("query " + JSON.stringify(req.query));
         provider.query = req.query;
       }
