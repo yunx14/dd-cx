@@ -10,57 +10,6 @@
     <link href="{{stylesheet}}" rel="stylesheet"/>
     {{/each}}
 
-    <script type="text/javascript">
-      (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-          (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-      ga('create', '{{google-al}}', 'auto');
-      var dnt= navigator.doNotTrack || window.doNotTrack || window.msDoNotTrack;
-      var newPathname = "";
-      function setPath() {
-        var pathArray = window.location.pathname.split( '/' );
-        var searchArray = new URLSearchParams(window.location.search);
-        var searchArrayLocation = searchArray.get("location");
-        var loc = searchArrayLocation.slice(0, (searchArrayLocation.search(/\d/) -1));
-        loc = loc.replace(/\s+/g, '-').replace(/,/g, '');
-        var newPathStart = "find-a-dentist/alpha";
-        if (pathArray[3] == "directory-search.html"){
-          newPathname = newPathStart + "/search" + window.location.search;
-        } else if (pathArray[3] == "provider-details.html") {
-          if(searchArray.get("providerKey")){
-            newPathname = newPathStart +"/"+ loc +"/provider/"+ searchArray.get("providerKey");
-          } else {
-            newPathname = newPathStart +"/"+ loc +"/provider/"+ window.location.search;
-          }
-        } else if (pathArray[3] == "facility-details.html" {
-          if(searchArray.get("facilityId")) {
-            newPathname = newPathStart +"/"+ loc +"/facility/"+ searchArray.get("facilityId");
-          } else {
-            newPathname = newPathStart +"/"+ loc +"/facility/"+ window.location.search;
-          }
-        } else if (pathArray[3] == "office-details.html" {
-          if(searchArray.get("practiceLocationNumber")) {
-            newPathname = newPathStart +"/"+ loc +"/office/"+ searchArray.get("practiceLocationNumber");
-          } else {
-            newPathname = newPathStart +"/"+ loc +"/office/"+ window.location.search;
-          }
-        } else {
-            newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
-        }
-      }
-      setPath();
-      ga('set', 'dimension9', dnt);
-      ga('set', 'page', newPathname);
-      ga('send', 'pageview');
-    </script>
-
     {{#each blockingScripts}}
     <script src="{{script}}"></script>
     {{/each}}
@@ -69,6 +18,59 @@
   <body>
     {{> (lookup . "body") }}
   </body>
+
+  <script type="text/javascript">
+    (function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', '{{google-al}}', 'auto');
+    var dnt= navigator.doNotTrack || window.doNotTrack || window.msDoNotTrack;
+    var newPathname = "";
+    function setPath() {
+      var pathArray = window.location.pathname.split( '/' );
+      var searchArray = new URLSearchParams(window.location.search);
+
+      var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-') || "";
+      var providerState = document.getElementsByClassName("provider__address-state")[0].textContent || "";
+      var providerLocation = providerCity+"-"+providerState;
+
+      var newPathStart = "find-a-dentist/alpha";
+
+      if (pathArray[3] == "directory-search.html"){
+        newPathname = newPathStart + "/search" + window.location.search;
+      } else if (pathArray[3] == "provider-details.html") {
+        var officeName = document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-') || "no-office";
+        var facilityName = document.getElementsByClassName("provider__facility")[0].textContent.replace(/\s+/g, '-') || "no-facility";
+        var providerName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-') || "no-provider";
+
+        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName +"/"+ providerName;
+
+      } else if (pathArray[3] == "facility-details.html" {
+        var officeName = document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-') || "no-office";
+        var facilityName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-') || "no-facility";
+
+        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName;
+
+      } else if (pathArray[3] == "office-details.html" {
+        var officeName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-') || "no-office";
+
+        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName;
+      } else {
+          newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
+      }
+    }
+    setPath();
+    ga('set', 'dimension9', dnt);
+    ga('set', 'page', newPathname);
+    ga('send', 'pageview');
+  </script>
 
   {{#each scripts}}
   <script src="{{script}}" defer="defer"></script>
