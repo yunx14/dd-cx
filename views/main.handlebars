@@ -36,16 +36,14 @@
     function setPath() {
       var pathArray = window.location.pathname.split( '/' );
       var searchArray = new URLSearchParams(window.location.search);
-
-      var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-') || "";
-      var providerState = document.getElementsByClassName("provider__address-state")[0].textContent || "";
-      var providerLocation = providerCity+"-"+providerState;
-
       var newPathStart = "find-a-dentist/alpha";
 
       if (pathArray[3] == "directory-search.html"){
         newPathname = newPathStart + "/search" + window.location.search;
       } else if (pathArray[3] == "provider-details.html") {
+        var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
+        var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
+        var providerLocation = providerCity+"-"+providerState;
         var officeName = "no-office";
         var facilityName = "no-facility";
         var providerName = "no-provider";
@@ -65,6 +63,9 @@
         newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName +"/"+ providerName;
 
       } else if (pathArray[3] == "facility-details.html") {
+        var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
+        var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
+        var providerLocation = providerCity+"-"+providerState;
         var officeName = "no-office";
         var facilityName = "no-facility";
 
@@ -79,6 +80,9 @@
         newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName;
 
       } else if (pathArray[3] == "office-details.html") {
+        var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
+        var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
+        var providerLocation = providerCity+"-"+providerState;
         var officeName = "no-office";
 
         if(document.getElementsByClassName("provider__name").length) {
