@@ -52,13 +52,13 @@
 
         newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName +"/"+ providerName;
 
-      } else if (pathArray[3] == "facility-details.html" {
+      } else if (pathArray[3] == "facility-details.html") {
         var officeName = document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-') || "no-office";
         var facilityName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-') || "no-facility";
 
         newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName;
 
-      } else if (pathArray[3] == "office-details.html" {
+      } else if (pathArray[3] == "office-details.html") {
         var officeName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-') || "no-office";
 
         newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName;
