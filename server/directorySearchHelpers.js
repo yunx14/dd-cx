@@ -114,10 +114,10 @@ module.exports = {
       return;
     }
 
-    if (req.body.keyword) {
-      query.free_text = req.body.keyword;
-      query.keyword = null;
-    }
+    // if (req.body.keyword) {
+    //   query.free_text = req.body.keyword;
+    //   query.keyword = null;
+    // }
     if (req.body.location) {
 	    Logger.log("We will server-side geolocate");
       try {
