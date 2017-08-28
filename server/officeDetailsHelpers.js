@@ -40,8 +40,6 @@ module.exports = {
 
       var office = new Model();
       if (req.query) {
-        // req.query.free_text = req.query.keyword;
-        // req.query.keyword = null;
         Logger.log("query " + JSON.stringify(req.query));
         office.query = req.query;
       }
