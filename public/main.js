@@ -28,7 +28,7 @@ function selectLocation(elementID) {
     function addEventListenerWrapper(type, listener) {
         // Simulate a 'down arrow' keypress on hitting 'return' when no pac suggestion is selected,
         // and then trigger the original listener.
-        if (type == "keydown") {
+        if (type == "keyup") {
             var orig_listener = listener;
             listener = function(event) {
                 var suggestion_selected = $(".pac-item-selected").length > 0;
