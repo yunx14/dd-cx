@@ -12,8 +12,8 @@ function getSuggestion(keyword) {
         })
 }
 
-$("#keyword").keyup(function() {
-  if (this.value && this.value.length > 2) {
-    getSuggestion(this.value);
-  }
-})
+// $("#keyword").keyup(function() {
+//   if (this.value && this.value.length > 2) {
+//     getSuggestion(this.value);
+//   }
+// })
