@@ -44,7 +44,8 @@ module.exports = {
         ],
         "severity": ViewModel.pages_directoryError.errorMessages.invalidAddress.severity,
         "header": ViewModel.pages_directoryError.errorMessages.invalidAddress.header,
-        "message": ViewModel.pages_directoryError.errorMessages.invalidAddress.message
+        "message": ViewModel.pages_directoryError.errorMessages.invalidAddress.message,
+        "updateDatabase": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -83,7 +84,8 @@ module.exports = {
         ],
         "severity": ViewModel.pages_directoryError.errorMessages.noResults.severity,
         "header": ViewModel.pages_directoryError.errorMessages.noResults.header,
-        "message": ViewModel.pages_directoryError.errorMessages.noResults.message
+        "message": ViewModel.pages_directoryError.errorMessages.noResults.message,
+        "updateDatabase": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -122,7 +124,8 @@ module.exports = {
         ],
         "severity": ViewModel.pages_directoryError.errorMessages.serverTimeout.severity,
         "header": ViewModel.pages_directoryError.errorMessages.serverTimeout.header,
-        "message": ViewModel.pages_directoryError.errorMessages.serverTimeout.message
+        "message": ViewModel.pages_directoryError.errorMessages.serverTimeout.message,
+        "updateDatabase": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );
@@ -164,7 +167,8 @@ module.exports = {
         ],
         "severity": ViewModel.pages_directoryError.errorMessages.servicesDown.severity,
         "header": ViewModel.pages_directoryError.errorMessages.servicesDown.header,
-        "message": ViewModel.pages_directoryError.errorMessages.servicesDown.message
+        "message": ViewModel.pages_directoryError.errorMessages.servicesDown.message,
+        "updateDatabase": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED
       },
       CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
     );

@@ -49,6 +49,7 @@ var officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
 var inaccurateHelpers = require("./server/inaccurateHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
+var Model = require("./models/model.js");
 
 //patch partials
 Handlebars.partials = Handlebars.templates;
@@ -152,3 +153,44 @@ var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
 });
 
 CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = server.address().address;
+
+
+const requestPlatformInformation = () => {
+  return new Promise( (resolve, reject) => {
+    const about = new Model();
+    about.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+    about.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
+    about.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/about";
+
+    about.fetch({},
+      (code, data) => {
+        Logger.debug(JSON.stringify(data));
+        // success
+        if (data && data.providerDirectoryLastUpdateDate) {
+          CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
+          Logger.info(`Last updated date ${CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
+        }
+        resolve();
+      },
+      (code, data) => {
+        // error
+        Logger.error("ERROR: Failed to request about information: " + code);
+        reject();
+      }
+    );
+  });
+};
+
+requestPlatformInformation()
+.catch( (e) => {
+  Logger.error(`ERROR: Failed to request about information ${e}`);
+  CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+});
+
+const timer = setInterval(() => {
+  requestPlatformInformation()
+  .catch( (e) => {
+    Logger.error(`ERROR: Failed to request about information ${e}`);
+    CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+  });
+}, 86400000);

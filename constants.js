@@ -65,7 +65,8 @@ module.exports = {
       "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
-    }
+    },
+    SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
   "dit": {
     "EE_PORT": 80,
@@ -97,7 +98,8 @@ module.exports = {
       "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": true
-    }
+    },
+    SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
   "mot": {
     "EE_PORT": 80,
@@ -129,7 +131,8 @@ module.exports = {
       "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": false
-    }
+    },
+    SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
   "pit": {
     "EE_PORT": 80,
@@ -161,7 +164,8 @@ module.exports = {
       "nodeName": "cx-pde-node",
       "tmpDir": "AppD/logs",
       "debug": false
-    }
+    },
+    SEARCH_SERVICE_LAST_UPDATED: "unknown"
   },
   "prod": {
     "EE_PORT": 80,
@@ -194,5 +198,6 @@ module.exports = {
       "tmpDir": "AppD/logs",
       "debug": false
     }
-  }
+  },
+  SEARCH_SERVICE_LAST_UPDATED: "unknown"
 };

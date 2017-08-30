@@ -84,7 +84,8 @@ module.exports = {
                 ariaLabel: "close"
               }
             }
-          }
+          },
+          "updateDatabase": CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED
         },
         CONSTANTS.TEMPLATES.MAIN_PRESENTER_TEMPLATE
       );
