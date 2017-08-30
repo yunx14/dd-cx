@@ -168,7 +168,7 @@ const requestPlatformInformation = () => {
         // success
         if (data && data.providerDirectoryLastUpdateDate) {
           CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
-          Logger.info(`Last updated date ${[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
+          Logger.info(`Last updated date ${CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
         }
         resolve();
       },
