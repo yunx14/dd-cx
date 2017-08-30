@@ -164,6 +164,7 @@ const requestPlatformInformation = () => {
 
     about.fetch({},
       function(code, data) {
+        Logger.debug(JSON.stringify(data));
         // success
         if (data && data.hasOwnProperty("providerDirectoryLastUpdateDate")) {
           CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
