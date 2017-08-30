@@ -183,3 +183,5 @@ requestPlatformInformation()
   Logger.error("ERROR: Failed to request about information");
   CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
 });
+
+Logger.info(`Last updated date ${[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
