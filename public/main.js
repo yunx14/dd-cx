@@ -32,7 +32,7 @@ function selectLocation(elementID) {
             var orig_listener = listener;
             listener = function(event) {
                 var suggestion_selected = $(".pac-item-selected").length > 0;
-                if (event.which == 13 || event.which == 9 && !suggestion_selected) {
+                if ((event.which == 13 || event.which == 9) && !suggestion_selected) {
                     var simulated_downarrow = $.Event("keydown", {
                         keyCode: 40,
                         which: 40

@@ -50,8 +50,8 @@ module.exports = Utils = {
         if (network[0].networkId === "2PREMIER") {
           formattedNetwork.push("Premier");
         }
-        if (network[0].networkId === "2DELTACARE") {
-          formattedNetwork.sort().reverse().push(network[i].networkName);
+        if (network[0].networkId === "2DELTACARE" && network[0].networkName) {
+          formattedNetwork.sort().reverse().push(network[0].networkName);
         }
         return formattedNetwork.join("") + " " + "network";
       } else if (Array.isArray(network) && network.length >= 1) {
@@ -62,7 +62,7 @@ module.exports = Utils = {
           if (network[i].networkId === "2PREMIER") {
             formattedNetwork.push("Premier");
           }
-          if (network[i].networkId === "2DELTACARE") {
+          if (network[i].networkId === "2DELTACARE" && network[i].networkName) {
             formattedNetwork.push(network[i].networkName);
           }
         }
@@ -89,8 +89,8 @@ module.exports = Utils = {
         if (network[0].networkId === "2PREMIER") {
           formattedNetwork.push("Premier");
         }
-        if (network[0].networkId === "2DELTACARE") {
-          formattedNetwork.sort().reverse().push(network[i].networkName);
+        if (network[0].networkId === "2DELTACARE" && network[0].networkName) {
+          formattedNetwork.sort().reverse().push(network[0].networkName);
         }
         return formattedNetwork.join("") + " " + "network";
       } else if (Array.isArray(network) && network.length >= 1) {
@@ -101,7 +101,7 @@ module.exports = Utils = {
           if (network[i].networkId === "2PREMIER") {
             formattedNetwork.push("Premier");
           }
-          if (network[i].networkId === "2DELTACARE") {
+          if (network[i].networkId === "2DELTACARE" && network[i].networkName) {
             temp.push(network[i].networkName);
           }
         }
@@ -114,7 +114,7 @@ module.exports = Utils = {
         }
         if (totalDeltacareNetworksNumber > 0) {
           formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
-        } 
+        }
         return formattedNetwork.join(", ") + " " + "networks";
       }
     } else {
@@ -126,7 +126,7 @@ module.exports = Utils = {
     if (network) {
       if (Array.isArray(network) && network.length === 1) {
         if (network[0].networkId === "2PPO") {
-          if (network[0].acceptsNewPatients === "Y") {
+          if (network[0].acceptsNewPatients && network[0].acceptsNewPatients === "Y") {
             formattedAvailability.icon = "icon-check-circle";
             formattedAvailability.text = "Accepting new patients";
           } else if (network[0].acceptsNewPatients === "N") {
@@ -135,7 +135,7 @@ module.exports = Utils = {
           }
         }
         if (network[0].networkId === "2PREMIER") {
-          if (network[0].acceptsNewPatients === "Y") {
+          if (network[0].acceptsNewPatients && network[0].acceptsNewPatients === "Y") {
             formattedAvailability.icon = "icon-check-circle";
             formattedAvailability.text = "Accepting new patients";
           } else if (network[0].acceptsNewPatients === "N") {
@@ -144,10 +144,10 @@ module.exports = Utils = {
           }
         }
         if (network[0].networkId === "2DELTACARE") {
-          if (network[0].acceptsNewPatients === "Y") {
+          if (network[0].acceptsNewPatients && network[0].acceptsNewPatients === "Y") {
             formattedAvailability.icon = "icon-check-circle";
             formattedAvailability.text = "Accepting new patients";
-          } else if (network[0].acceptsNewPatients === "N") {
+          } else if (network[0].acceptsNewPatients && network[0].acceptsNewPatients === "N") {
             formattedAvailability.icon = "icon-warning",
             formattedAvailability.text = "Not accepting new patients";
           }
