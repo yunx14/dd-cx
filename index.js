@@ -163,7 +163,7 @@ const requestPlatformInformation = () => {
     about.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/about";
 
     about.fetch({},
-      function(code, data) {
+      (code, data) => {
         Logger.debug(JSON.stringify(data));
         // success
         if (data && data.providerDirectoryLastUpdateDate) {
@@ -172,7 +172,7 @@ const requestPlatformInformation = () => {
         }
         resolve();
       },
-      function(code, data) {
+      (code, data) => {
         // error
         Logger.error("ERROR: Failed to request about information: " + code);
         reject();
@@ -181,8 +181,10 @@ const requestPlatformInformation = () => {
   });
 };
 
-requestPlatformInformation()
-.catch( (e) => {
-  Logger.error(`ERROR: Failed to request about information ${e}`);
-  CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
-});
+const timer = setInterval(() => {
+  requestPlatformInformation()
+  .catch( (e) => {
+    Logger.error(`ERROR: Failed to request about information ${e}`);
+    CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+  });
+}, 86400000);
