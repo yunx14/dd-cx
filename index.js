@@ -167,9 +167,9 @@ const requestPlatformInformation = () => {
         Logger.debug(JSON.stringify(data));
         // success
         if (data && data.providerDirectoryLastUpdateDate) {
+          console.log("I am here", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
           CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
-        } else {
-          CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+          console.log("I am here again", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
         }
         resolve();
       },
