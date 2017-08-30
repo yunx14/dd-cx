@@ -167,9 +167,8 @@ const requestPlatformInformation = () => {
         Logger.debug(JSON.stringify(data));
         // success
         if (data && data.providerDirectoryLastUpdateDate) {
-          console.log("I am here", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
           CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
-          console.log("I am here again", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
+          Logger.info(`Last updated date ${[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
         }
         resolve();
       },
@@ -187,5 +186,3 @@ requestPlatformInformation()
   Logger.error(`ERROR: Failed to request about information ${e}`);
   CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
 });
-
-Logger.info(`Last updated date ${[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
