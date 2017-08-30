@@ -49,6 +49,7 @@ var officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
 var inaccurateHelpers = require("./server/inaccurateHelpers.js");
 var errorHelpers = require("./server/errorHelpers.js");
 var testHelpers = require("./server/testHelpers.js");
+var Model = require("./models/model.js");
 
 //patch partials
 Handlebars.partials = Handlebars.templates;
@@ -179,8 +180,8 @@ const requestPlatformInformation = () => {
 };
 
 requestPlatformInformation()
-.catch( () => {
-  Logger.error("ERROR: Failed to request about information");
+.catch( (e) => {
+  Logger.error(`ERROR: Failed to request about information ${e}`);
   CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
 });
 
