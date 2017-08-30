@@ -125,6 +125,7 @@ module.exports = {
                   data.distance = Utils.formatDistance(data.distance);
                   data.availability = Utils.formatAvailability(data.providerNetworks);
                   data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
+                  data.transformedNetworksIcon = Utils.formatNetworkForResultsPage(data.providerNetworks);
                 }
                 promiseData.presenter.mergePropertyMap(data);
               }
