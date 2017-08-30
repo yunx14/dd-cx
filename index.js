@@ -152,3 +152,34 @@ var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
 });
 
 CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = server.address().address;
+
+
+const requestPlatformInformation = () => {
+  return new Promise( (resolve, reject) => {
+    const about = new Model();
+    about.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+    about.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
+    about.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/about";
+
+    about.fetch({},
+      function(code, data) {
+        // success
+        if (data && data.hasOwnProperty("providerDirectoryLastUpdateDate")) {
+          CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
+        }
+        resolve();
+      },
+      function(code, data) {
+        // error
+        Logger.error("ERROR: Failed to request about information: " + code);
+        reject();
+      }
+    );
+  });
+};
+
+requestPlatformInformation()
+.catch( () => {
+  Logger.error("ERROR: Failed to request about information");
+  CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+});
