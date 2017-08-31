@@ -3,7 +3,7 @@ module.exports.returnFreeTextInputFormFields = function(keyword) {
     field: {
       id: "keyword",
       type: "text",
-      name: "keyword",
+      name: "free_text",
       placeholder: "Dentist, practice or keyword",
       label: {
         text: "Search"
