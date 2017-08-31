@@ -2,6 +2,9 @@ function resetForm(form) {
     var inputs = form.getElementsByTagName('input');
     var text= form.getElementsByTagName('textarea');
     var selects = form.getElementsByTagName('select');
+
+    document.getElementById("keyword").value = '';
+
     for (var i = 0; i<inputs.length; i++) {
         switch (inputs[i].type) {
             case 'radio':
@@ -17,6 +20,8 @@ function resetForm(form) {
     for (var i = 0; i<text.length; i++) {
         text[i].innerHTML= '';
     }
+
+    document.getElementById("distance").selectedIndex = 5;
     return false;
 }
 

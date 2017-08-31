@@ -1,7 +1,5 @@
 const cluster = require("cluster");
 
-
-
 // Code to run if we're in the master process
 if (cluster.isMaster) {
   // Count the machine's CPUs
@@ -203,6 +201,12 @@ if (cluster.isMaster) {
       );
     });
   };
+  
+  requestPlatformInformation()
+  .catch( (e) => {
+    Logger.error(`ERROR: Failed to request about information ${e}`);
+    CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+  });
 
   const timer = setInterval(() => {
     requestPlatformInformation()
