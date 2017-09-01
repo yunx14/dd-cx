@@ -39,7 +39,7 @@ module.exports = {
     "EE_PORT": 81,
     "EE_PORT_SSL": 443,
     "SEARCH_SERVICE_PORT": 19001,
-    "SEARCH_SERVICE_HOST": "http://aw-lx0095",
+    "SEARCH_SERVICE_HOST": "http://aw-lx0095.deltadev.ent",
     "SEARCH_SERVICE_PATH": "/providers",
     "STATIC_PATH": "/find-a-dentist/alpha/",
     "OLD_DIRECTORY_HOST": "https://www.deltadentalins.com",
