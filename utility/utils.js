@@ -112,7 +112,7 @@ module.exports = Utils = {
           formattedNetwork.splice(ppoPosition, 1);
           formattedNetwork.unshift("PPO");
         }
-        if (totalDeltacareNetworksNumber > 0) {
+        if (totalDeltacareNetworksNumber >= 0) {
           formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
         }
         return formattedNetwork.join(", ") + " " + "networks";
