@@ -112,11 +112,11 @@ module.exports = Utils = {
           formattedNetwork.splice(ppoPosition, 1);
           formattedNetwork.unshift("PPO");
         }
-        if (totalDeltacareNetworksNumber > 0) {
-          formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
-        }
-        if (totalDeltacareNetworksNumber = 0) {
+        if (totalDeltacareNetworksNumber && totalDeltacareNetworksNumber = 0) {
           formattedNetwork.push("DeltaCare USA");
+        }
+        if (totalDeltacareNetworksNumber && totalDeltacareNetworksNumber > 0) {
+          formattedNetwork.push("DeltaCare USA and " + totalDeltacareNetworksNumber + " more");
         }
         return formattedNetwork.join(", ") + " " + "networks";
       }
