@@ -45,52 +45,52 @@
         var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
         var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
         var providerLocation = providerCity+"-"+providerState;
-        var officeName = "no-office";
-        var facilityName = "no-facility";
-        var providerName = "no-provider";
+        var officeName = "";
+        var facilityName = "";
+        var providerName = "";
 
         if(document.getElementsByClassName("provider__place-name").length) {
-          officeName = document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-');
+          officeName = "/" + document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-');
         }
 
         if(document.getElementsByClassName("provider__facility").length) {
-          facilityName = document.getElementsByClassName("provider__facility")[0].textContent.replace(/\s+/g, '-');
+          facilityName = "/" + document.getElementsByClassName("provider__facility")[0].textContent.replace(/\s+/g, '-');
         }
 
         if(document.getElementsByClassName("provider__name").length) {
-          providerName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
+          providerName = "/" + document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
         }
 
-        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName +"/"+ providerName;
+        newPathname = newPathStart +"/"+ providerLocation +""+ officeName +""+ facilityName +""+ providerName;
 
       } else if (pathArray[3] == "facility-details.html") {
         var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
         var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
         var providerLocation = providerCity+"-"+providerState;
-        var officeName = "no-office";
-        var facilityName = "no-facility";
+        var officeName = "";
+        var facilityName = "";
 
         if(document.getElementsByClassName("provider__place-name").length) {
-          officeName = document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-');
+          officeName = "/" + document.getElementsByClassName("provider__place-name")[0].textContent.replace(/\s+/g, '-');
         }
 
         if(document.getElementsByClassName("provider__name").length) {
-          facilityName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
+          facilityName = "/" + document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
         }
 
-        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName +"/"+ facilityName;
+        newPathname = newPathStart +"/"+ providerLocation +""+ officeName +""+ facilityName;
 
       } else if (pathArray[3] == "office-details.html") {
         var providerCity = document.getElementsByClassName("provider__address-city")[0].textContent.replace(/\s+/g, '-');
         var providerState = document.getElementsByClassName("provider__address-state")[0].textContent;
         var providerLocation = providerCity+"-"+providerState;
-        var officeName = "no-office";
+        var officeName = "";
 
         if(document.getElementsByClassName("provider__name").length) {
-          officeName = document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
+          officeName = "/" + document.getElementsByClassName("provider__name")[0].textContent.replace(/\s+/g, '-');
         }
 
-        newPathname = newPathStart +"/"+ providerLocation +"/"+ officeName;
+        newPathname = newPathStart +"/"+ providerLocation +""+ officeName;
       } else {
           newPathname = newPathStart +"/"+ pathArray[3].replace(".html", "");
       }
