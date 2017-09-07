@@ -128,6 +128,7 @@ module.exports = {
                   data.availability = Utils.formatAvailability(data.providerNetworks);
                   data.transformedNetworks = Utils.formatNetwork(data.providerNetworks);
                   data.transformedNetworksIcon = Utils.formatNetworkForResultsPage(data.providerNetworks);
+                  data.transformedBoardCertified = Utils.formatBoardCertified(data.boardCertified);
                 }
                 promiseData.presenter.mergePropertyMap(data);
               }
