@@ -34,9 +34,8 @@ var AutoSuggest = (function() {
   // };
 
   var getSuggestion = function(keyword) {
-    var input = document.getElementById("keyword");
     var list = document.getElementById("autosuggest-template").innerHTML;
-    input.appendChild(list);
+    $("#keyword").append(list);
   }
 
   return {
