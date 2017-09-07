@@ -19,19 +19,25 @@ var AutoSuggest = (function() {
     }
   };
 
-  var getSuggestion = function(keyword) {
-    var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
+  // var getSuggestion = function(keyword) {
+  //   var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
+  //
+  //   var jqxhr = $.getJSON(endpoint)
+  //       .done(function(data){
+  //         //compile Handlebars with the data
+  //         console.log(data);
+  //       })
+  //       .fail(function() {
+  //         // fail siliently
+  //         console.log("shit something went wrong");
+  //       })
+  // };
 
-    var jqxhr = $.getJSON(endpoint)
-        .done(function(data){
-          //compile Handlebars with the data
-          console.log(data);
-        })
-        .fail(function() {
-          // fail siliently
-          console.log("shit something went wrong");
-        })
-  };
+  var getSuggestion = function(keyword) {
+    var input = document.getElementById("keyword");
+    var list = document.getElementById("autosuggest-template").innerHTML;
+    input.appendChild(list);
+  }
 
   return {
     "init": init
