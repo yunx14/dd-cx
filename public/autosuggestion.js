@@ -140,8 +140,6 @@ var AutoSuggest = (function() {
 
     list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
     isVisible = true;
-
-    console.log(list);
     bindToList(document.getElementsByClassName("autosuggest-list")[0]);
   };
 
