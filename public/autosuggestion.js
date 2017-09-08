@@ -1,22 +1,76 @@
 
 var AutoSuggest = (function() {
-  var init = function(el) {
+  var isVisible = false,
+      boundElem = {},
+      list = {},
+      templateName = "";
+
+  var init = function(el, template) {
     if (el) {
+      boundElem = document.getElementById(el);
       var ls = document.getElementById(el);
       bindToInput(ls);
     } else {
       console.log("autosuggest cant bind to input");
     }
+
+    if(template) {
+      templateName = template;
+    } else {
+      console.log("template is unavailable");
+    }
   }
 
   var bindToInput = function(el) {
-    el.onkeyup = function() {
-      if (this.value && this.value.length > 2) {
-        getSuggestion(this.value);
+    el.onkeydown = function(evt) {
+      var c = evt.keyCode;
+
+      if (opened) {
+        if (c === 13) { //Enter
+          evt.preventDefault();
+          console.log("I pick this one");
+        } else if (c === 38 || c === 40) { //Up down arrows
+          evt.preventDefault();
+          c === 38? previous() : next();
+        }
       } else {
-        return;
+        if (this.value && this.value.length > 2) {
+          open();
+        } else {
+          close();
+        }
       }
     }
+  };
+
+  var opened = function() {
+    return isVisible;
+  };
+
+  var close = function() {
+    if (!opened) {
+      return;
+    }
+    //document.getElementById("autosuggest-container").remove();
+    $(".autosuggest-container").remove();
+    isVisible = false;
+  };
+
+  var open = function() {
+    var newList = document.getElementById("autosuggest-template").innerHTML;
+    $("#keyword").after(newList);
+    $(".autosuggest-container").show();
+
+    list = $(".autosuggest-container");
+    isVisible = true;
+  };
+
+  var next = function() {
+    console.log("select the next option");
+  };
+
+  var previous = function() {
+    console.log("select the previous option");
   };
 
   // var getSuggestion = function(keyword) {
@@ -33,17 +87,11 @@ var AutoSuggest = (function() {
   //       })
   // };
 
-  var getSuggestion = function(keyword) {
-    var list = document.getElementById("autosuggest-template").innerHTML;
-    $(".autosuggest-container").remove();
-    $("#keyword").after(list);
-    $(".autosuggest-container").show();
-  }
-
   return {
     "init": init
   };
 }());
 
 var autosuggest_input = "keyword";
+var autosuggest_template = "autosuggest-template";
 AutoSuggest.init(autosuggest_input);
