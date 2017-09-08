@@ -3,6 +3,7 @@ var AutoSuggest = (function() {
   var isVisible = false,
       boundElem = {},
       list = {},
+      selectedIndex = -1,
       templateName = "";
 
   var init = function(el, template) {
@@ -61,16 +62,22 @@ var AutoSuggest = (function() {
     $("#keyword").after(newList);
     $(".autosuggest-container").show();
 
-    list = $(".autosuggest-container");
+    list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
     isVisible = true;
   };
 
   var next = function() {
-    console.log("select the next option");
+    console.log("select the next option after " + selectedIndex);
+    var count = list.length;
+
+    selectedIndex == count - 1 ? selectedIndex = -1 : selectedIndex++;
   };
 
   var previous = function() {
-    console.log("select the previous option");
+    console.log("select the previous option before " + selectedIndex);
+    var count = list.length;
+
+    selectedIndex == -1 ? selectedIndex = count - 1 : selectedIndex--;
   };
 
   var evaluate = function() {
