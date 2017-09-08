@@ -74,7 +74,12 @@ var AutoSuggest = (function() {
         return;
       }
 
-      console.log(target);
+      for (var i = 0; i < list.length; i++) {
+        list[i].className = "autosuggest-list__item";
+        list[i].setAttribute("aria-selected", "false");
+      }
+
+      target.className += " active";
 
     });
   };
