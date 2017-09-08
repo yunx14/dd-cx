@@ -50,7 +50,6 @@ var AutoSuggest = (function() {
     if (!opened()) {
       return;
     }
-    //document.getElementById("autosuggest-container").remove();
     console.log('closing the suggestion list');
     $(".autosuggest-container").remove();
     isVisible = false;
@@ -79,7 +78,9 @@ var AutoSuggest = (function() {
     var value = this.value;
 
     if (value && value.length >= 3) {
-      open();
+      if (!opened()) {
+        open();
+      }
     } else {
       close();
     }
