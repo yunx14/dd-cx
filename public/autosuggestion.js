@@ -52,6 +52,36 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function(selectedList) {
+    selectedList.addEventListener("mousedown", function(evt) {
+      var target = evt.target,
+          related = evt.relatedTarget,
+          delegationSelector = "LI",
+          match;
+
+      while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
+        target = target.parentNode;
+      }
+
+      if (!match) {
+        return;
+      }
+
+      while ( related && related != target && related != document ) {
+        related = related.parentNode;
+      }
+
+      if ( related == target ) {
+        return;
+      }
+
+      if (target.dataset.link) {
+        window.location.href = target.dataset.link;
+      } else {
+        boundElem.value = target.getElementsByClassName("autosuggest__name")[0].textContent;
+      }
+
+    });
+
     selectedList.addEventListener("mouseover", function(evt) {
       var target = evt.target,
           related = evt.relatedTarget,
