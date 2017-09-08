@@ -24,11 +24,15 @@ var AutoSuggest = (function() {
   }
 
   var bindToInput = function(el) {
+    el.onblur = function(){
+      close();
+    }
+
     el.oninput = function(){
       evaluate.call(this);
     }
 
-    el.onkeyup = function(evt) {
+    el.onkeydown = function(evt) {
       var c = evt.keyCode;
 
       if (opened()) {
