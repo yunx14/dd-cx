@@ -38,7 +38,10 @@ var AutoSuggest = (function() {
       if (opened()) {
         if (c === 13) { //Enter
           evt.preventDefault();
-          console.log("I pick this one");
+          console.log("I pick this one: "+ list[selectedIndex]);
+          if(list[selectedIndex].dataset.link) {
+            console.log(list[selectedIndex].dataset.link);
+          }
         } else if (c === 38 || c === 40) { //Up down arrows
           evt.preventDefault();
           c === 38? previous() : next();
@@ -59,6 +62,7 @@ var AutoSuggest = (function() {
     console.log('closing the suggestion list');
     $(".autosuggest-container").remove();
     isVisible = false;
+    selectedIndex = -1
   };
 
   var open = function() {
