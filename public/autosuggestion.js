@@ -22,6 +22,10 @@ var AutoSuggest = (function() {
   }
 
   var bindToInput = function(el) {
+    el.oninput = function(){
+      evaluate.bind(this);
+    }
+
     el.onkeyup = function(evt) {
       var c = evt.keyCode;
 
@@ -32,12 +36,6 @@ var AutoSuggest = (function() {
         } else if (c === 38 || c === 40) { //Up down arrows
           evt.preventDefault();
           c === 38? previous() : next();
-        }
-      } else {
-        if (this.value && this.value.length > 2) {
-          open();
-        } else {
-          close();
         }
       }
     }
@@ -72,6 +70,16 @@ var AutoSuggest = (function() {
   var previous = function() {
     console.log("select the previous option");
   };
+
+  var evaluate = function() {
+    var value = this.value;
+
+    if (value && value.length >= 2) {
+      open();
+    } else {
+      close();
+    }
+  }
 
   // var getSuggestion = function(keyword) {
   //   var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
