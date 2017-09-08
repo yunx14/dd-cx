@@ -76,7 +76,7 @@ var AutoSuggest = (function() {
       list[i].className = "autosuggest-list__item";
     }
     if (selectedIndex != -1) {
-      list[selectedIndex].className += "active"
+      list[selectedIndex].className += " active"
     }
   };
 
@@ -90,7 +90,7 @@ var AutoSuggest = (function() {
       list[i].className = "autosuggest-list__item";
     }
     if (selectedIndex != -1) {
-      list[selectedIndex].className += "active"
+      list[selectedIndex].className += " active"
     }
   };
 
