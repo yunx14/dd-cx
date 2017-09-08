@@ -55,10 +55,10 @@ var AutoSuggest = (function() {
     selectedList.addEventListener("mouseover", function(evt) {
       var target = evt.target,
           related = evt.relatedTarget,
-          delegationSelector = ".autosuggest-list__item",
+          delegationSelector = "LI",
           match;
 
-      while ( target && target != document && !( match = matches( target, delegationSelector ) ) ) {
+      while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
         target = target.parentNode;
       }
 
@@ -80,7 +80,7 @@ var AutoSuggest = (function() {
   };
 
   var matches = function(elem, selector) {
-    return elem.matchesSelector( selector );
+    return elem == selector;
   }
 
   var opened = function() {
