@@ -23,7 +23,7 @@ var AutoSuggest = (function() {
 
   var bindToInput = function(el) {
     el.oninput = function(){
-      evaluate.bind(this);
+      evaluate.call(this);
     }
 
     el.onkeyup = function(evt) {
@@ -43,6 +43,7 @@ var AutoSuggest = (function() {
 
   var opened = function() {
     return isVisible;
+    console.log('checking to see if suggestion list is open');
   };
 
   var close = function() {
@@ -50,11 +51,13 @@ var AutoSuggest = (function() {
       return;
     }
     //document.getElementById("autosuggest-container").remove();
+    console.log('closing the suggestion list');
     $(".autosuggest-container").remove();
     isVisible = false;
   };
 
   var open = function() {
+    console.log('opening the suggestion list');
     var newList = document.getElementById("autosuggest-template").innerHTML;
     $("#keyword").after(newList);
     $(".autosuggest-container").show();
@@ -72,9 +75,10 @@ var AutoSuggest = (function() {
   };
 
   var evaluate = function() {
+    console.log("evaluating the input");
     var value = this.value;
 
-    if (value && value.length >= 2) {
+    if (value && value.length >= 3) {
       open();
     } else {
       close();
