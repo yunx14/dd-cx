@@ -51,12 +51,12 @@ var AutoSuggest = (function() {
     }
   };
 
-  var bindToList = function(listEl) {
-    listEl.onmouseover = function(evt) {
-      console.log(evt.target);
-      console.log("node name: "+ evt.target.nodeName);
-      console.log("parent node: "+ evt.target.parentNode);
-    }
+  var bindToList = function() {
+    list.forEach(
+      this.addEventListener("mouseover", function() {
+        console.log(this);
+      });
+    )
   };
 
   var opened = function() {
