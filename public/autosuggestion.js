@@ -52,12 +52,36 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function(selectedList) {
-    selectedList.onmouseover = function(evt) {
-      if(evt.target.tagName == "LI") {
-        console.log(evt.target);
+    selectedList.addEventListener("onmouseover", function(evt) {
+      var target = evt.target,
+          related = evt.relatedTarget,
+          delegationSelector = ".autosuggest-list__item",
+          match;
+
+      while ( target && target != document && !( match = matches( target, delegationSelector ) ) ) {
+        target = target.parentNode;
       }
-    }
+
+      if (!match) {
+        return;
+      }
+
+      while ( related && related != target && related != document ) {
+        related = related.parentNode;
+      }
+
+      if ( related == target ) {
+        return;
+      }
+
+      console.log(target);
+
+    });
   };
+
+  var matches = function(elem, selector) {
+    return elem.matchesSelector( selector );
+  }
 
   var opened = function() {
     return isVisible;
