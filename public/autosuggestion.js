@@ -25,7 +25,7 @@ var AutoSuggest = (function() {
     el.onkeydown = function(evt) {
       var c = evt.keyCode;
 
-      if (opened) {
+      if (opened()) {
         if (c === 13) { //Enter
           evt.preventDefault();
           console.log("I pick this one");
@@ -48,7 +48,7 @@ var AutoSuggest = (function() {
   };
 
   var close = function() {
-    if (!opened) {
+    if (!opened()) {
       return;
     }
     //document.getElementById("autosuggest-container").remove();
@@ -94,4 +94,4 @@ var AutoSuggest = (function() {
 
 var autosuggest_input = "keyword";
 var autosuggest_template = "autosuggest-template";
-AutoSuggest.init(autosuggest_input);
+AutoSuggest.init(autosuggest_input, autosuggest_template);
