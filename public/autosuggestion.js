@@ -22,7 +22,7 @@ var AutoSuggest = (function() {
   }
 
   var bindToInput = function(el) {
-    el.onkeydown = function(evt) {
+    el.onkeyup = function(evt) {
       var c = evt.keyCode;
 
       if (opened()) {
