@@ -207,4 +207,4 @@ var AutoSuggest = (function() {
 
 var autosuggest_input = "keyword";
 var autosuggest_template = "autosuggest-template";
-AutoSuggest.init(autosuggest_input, autosuggest_template);
+//AutoSuggest.init(autosuggest_input, autosuggest_template);
