@@ -52,11 +52,11 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function() {
-    list.forEach(function() {
-      this.addEventListener("mouseover", function() {
-        console.log(this);
-      });
-    });
+    for (var i=0; i<list.length; i++) {
+      list[i].onmouseover = function(){
+        console.log(this +" : " + i);
+      }
+    }
   };
 
   var opened = function() {
