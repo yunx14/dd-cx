@@ -52,7 +52,7 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function(selectedList) {
-    selectedList.addEventListener("onmouseover", function(evt) {
+    selectedList.addEventListener("mouseover", function(evt) {
       var target = evt.target,
           related = evt.relatedTarget,
           delegationSelector = ".autosuggest-list__item",
