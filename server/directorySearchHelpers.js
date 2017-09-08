@@ -48,6 +48,9 @@ module.exports = {
         CONSTANTS.TEMPLATES.SEARCH,
         ViewModel.pages_directorySearch,
         {
+          "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+          "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+          "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
           "title": "Provider Directory Search",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
