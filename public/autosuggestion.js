@@ -52,7 +52,7 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function(selectedList) {
-    selectedList.onmousenter = function(evt) {
+    selectedList.onmouseenter = function(evt) {
       if(evt.target.tagName != "li") {
         return;
       } else {
