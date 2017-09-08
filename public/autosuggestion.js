@@ -51,10 +51,12 @@ var AutoSuggest = (function() {
     }
   };
 
-  var bindToList = function() {
-    for (var i=0; i<list.length; i++) {
-      list[i].onmouseover = function(){
-        console.log(this +" : " + i);
+  var bindToList = function(selectedList) {
+    selectedList.onmousenter = function(evt) {
+      if(evt.target.tagName != "li") {
+        return;
+      } else {
+        console.log(evt.target);
       }
     }
   };
