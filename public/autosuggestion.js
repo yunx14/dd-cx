@@ -39,7 +39,7 @@ var AutoSuggest = (function() {
         if (c === 13) { //Enter
           evt.preventDefault();
           if (list[selectedIndex].dataset.link) {
-            console.log(list[selectedIndex].dataset.link);
+            window.location.href = list[selectedIndex].dataset.link;
           } else {
             console.log('submit the search');
           }
