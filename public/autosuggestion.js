@@ -51,33 +51,40 @@ var AutoSuggest = (function() {
     }
   };
 
+  var bindToList = function(listEl) {
+    listEl.onmouseover = function(evt) {
+      console.log(evt);
+    }
+  };
+
   var opened = function() {
     return isVisible;
-    console.log('checking to see if suggestion list is open');
   };
 
   var close = function() {
     if (!opened()) {
       return;
     }
-    console.log('closing the suggestion list');
+
+    // Need to unbind the mouseover events 
     $(".autosuggest-container").remove();
     isVisible = false;
     selectedIndex = -1
   };
 
   var open = function() {
-    console.log('opening the suggestion list');
     var newList = document.getElementById("autosuggest-template").innerHTML;
     $("#keyword").after(newList);
     $(".autosuggest-container").show();
 
     list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
     isVisible = true;
+
+    console.log(list);
+    bindToList(document.getElementsByClassName("autosuggest-list")[0]);
   };
 
   var next = function() {
-    console.log("select the next option after " + selectedIndex);
     var count = list.length;
 
     selectedIndex == count - 1 ? selectedIndex = -1 : selectedIndex++;
@@ -85,7 +92,6 @@ var AutoSuggest = (function() {
   };
 
   var previous = function() {
-    console.log("select the previous option before " + selectedIndex);
     var count = list.length;
 
     selectedIndex == -1 ? selectedIndex = count - 1 : selectedIndex--;
@@ -107,11 +113,12 @@ var AutoSuggest = (function() {
   }
 
   var evaluate = function() {
-    console.log("evaluating the input");
     var value = this.value;
     elemValue = this.value;
 
     if (value && value.length >= 3) {
+      // Send the value off to the backend and trigger event on response
+
       if (!opened()) {
         open();
       }
