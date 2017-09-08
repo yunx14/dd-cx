@@ -2,6 +2,7 @@
 var AutoSuggest = (function() {
   var isVisible = false,
       boundElem = {},
+      elemValue = "",
       list = {},
       selectedIndex = -1,
       templateName = "";
@@ -71,13 +72,7 @@ var AutoSuggest = (function() {
     var count = list.length;
 
     selectedIndex == count - 1 ? selectedIndex = -1 : selectedIndex++;
-
-    for (var i = 0; i < list.length; i++) {
-      list[i].className = "autosuggest-list__item";
-    }
-    if (selectedIndex != -1) {
-      list[selectedIndex].className += " active"
-    }
+    goto();
   };
 
   var previous = function() {
@@ -85,18 +80,27 @@ var AutoSuggest = (function() {
     var count = list.length;
 
     selectedIndex == -1 ? selectedIndex = count - 1 : selectedIndex--;
+    goto();
+  };
 
+  var goto = function() {
     for (var i = 0; i < list.length; i++) {
       list[i].className = "autosuggest-list__item";
+      list[i].setAttribute("aria-selected", "false");
     }
     if (selectedIndex != -1) {
-      list[selectedIndex].className += " active"
+      list[selectedIndex].className += " active";
+      list[selectedIndex].setAttribute("aria-selected", "true");
+      boundElem.value = list[selectedIndex].getElementsByClassName("autosuggest__name")[0].textContent;
+    } else {
+      boundElem.value = elemValue;
     }
-  };
+  }
 
   var evaluate = function() {
     console.log("evaluating the input");
     var value = this.value;
+    elemValue = this.value;
 
     if (value && value.length >= 3) {
       if (!opened()) {
