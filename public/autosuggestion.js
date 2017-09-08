@@ -71,6 +71,13 @@ var AutoSuggest = (function() {
     var count = list.length;
 
     selectedIndex == count - 1 ? selectedIndex = -1 : selectedIndex++;
+
+    for (var i = 0; i < list.length; i++) {
+      list[i].className = "autosuggest-list__item";
+    }
+    if (selectedIndex != -1) {
+      list[selectedIndex].className += "active"
+    }
   };
 
   var previous = function() {
@@ -78,6 +85,13 @@ var AutoSuggest = (function() {
     var count = list.length;
 
     selectedIndex == -1 ? selectedIndex = count - 1 : selectedIndex--;
+
+    for (var i = 0; i < list.length; i++) {
+      list[i].className = "autosuggest-list__item";
+    }
+    if (selectedIndex != -1) {
+      list[selectedIndex].className += "active"
+    }
   };
 
   var evaluate = function() {
