@@ -202,11 +202,13 @@ if (cluster.isMaster) {
     });
   };
 
-  requestPlatformInformation()
-  .catch( (e) => {
-    Logger.error(`ERROR: Failed to request about information ${e}`);
-    CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
-  });
+  if (CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED === "unknown") {
+    requestPlatformInformation()
+    .catch( (e) => {
+      Logger.error(`ERROR: Failed to request about information ${e}`);
+      CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+    });
+  }
 
   const timer = setInterval(() => {
     requestPlatformInformation()
