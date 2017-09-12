@@ -1,11 +1,11 @@
 
 var AutoSuggest = (function() {
-  var isVisible = false,
-      boundElem = {},
-      elemValue = "",
-      list = {},
-      selectedIndex = -1,
-      templateName = "";
+  var isVisible = false, // autosuggest container
+      boundElem = {}, // input selector
+      elemValue = "", // value of the input selector
+      list = {},  // list of autosuggest items
+      selectedIndex = -1, // keep track of selected item
+      templateName = ""; // name of the handlebars template
 
   var init = function(el, template) {
     if (el) {
@@ -33,7 +33,7 @@ var AutoSuggest = (function() {
     }
 
     el.onkeydown = function(evt) {
-      var c = evt.keyCode;
+      var c = window.event? evt.keyCode : evt.which;
 
       if (opened()) {
         if (c === 13) { //Enter
@@ -116,7 +116,11 @@ var AutoSuggest = (function() {
 
   var matches = function(elem, selector) {
     return elem == selector;
-  }
+  };
+
+  var hasClass = function(el, className) {
+    return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
+  };
 
   var opened = function() {
     return isVisible;
@@ -127,11 +131,11 @@ var AutoSuggest = (function() {
       return;
     }
 
-    // Need to unbind the mouseover events
-    $(".autosuggest-container").remove();
-    isVisible = false;
-    selectedIndex = -1
-  };
+      // Need to unbind the mouseover events
+      $(".autosuggest-container").remove();
+      isVisible = false;
+      selectedIndex = -1
+    };
 
   var open = function() {
     var newList = document.getElementById("autosuggest-template").innerHTML;
@@ -172,11 +176,22 @@ var AutoSuggest = (function() {
   }
 
   var evaluate = function() {
-    var value = this.value;
+    var keyword = this.value;
     elemValue = this.value;
 
     if (value && value.length >= 3) {
       // Send the value off to the backend and trigger event on response
+      var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
+  
+      var jqxhr = $.getJSON(endpoint)
+          .done(function(data){
+            //compile Handlebars with the data
+            console.log(data);
+          })
+          .fail(function() {
+            // fail siliently
+            console.log("couldnt reach db");
+          });
 
       if (!opened()) {
         open();
@@ -186,20 +201,6 @@ var AutoSuggest = (function() {
     }
   }
 
-  // var getSuggestion = function(keyword) {
-  //   var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
-  //
-  //   var jqxhr = $.getJSON(endpoint)
-  //       .done(function(data){
-  //         //compile Handlebars with the data
-  //         console.log(data);
-  //       })
-  //       .fail(function() {
-  //         // fail siliently
-  //         console.log("shit something went wrong");
-  //       })
-  // };
-
   return {
     "init": init
   };
@@ -207,4 +208,4 @@ var AutoSuggest = (function() {
 
 var autosuggest_input = "keyword";
 var autosuggest_template = "autosuggest-template";
-//AutoSuggest.init(autosuggest_input, autosuggest_template);
+AutoSuggest.init(autosuggest_input, autosuggest_template);
