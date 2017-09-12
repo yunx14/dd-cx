@@ -177,7 +177,6 @@ if (cluster.isMaster) {
     const now = new Date();
     const yesterdayDate = new Date(now - 86400000);
     CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = `${yesterdayDate.getMonth() + 1}-${yesterdayDate.getDate()}-${yesterdayDate.getFullYear()}`;
-    console.log("hey", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
   };
 
   const requestPlatformInformation = () => {
@@ -202,6 +201,7 @@ if (cluster.isMaster) {
         (code, data) => {
           // error
           reject(new Error(`ERROR: Failed to request about information ${code}`));
+          getYesterdayDate();
         }
       );
     });
