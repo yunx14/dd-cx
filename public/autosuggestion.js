@@ -186,9 +186,6 @@ var AutoSuggest = (function() {
             var template = Handlebars.compile(autosuggest_template);
             var html = template(data);
 
-
-            console.log(html);
-
             if (!opened()) {
               open(html);
             }
