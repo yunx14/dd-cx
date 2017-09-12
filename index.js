@@ -168,13 +168,17 @@ if (cluster.isMaster) {
     CONSTANTS.SSL_ENABLED = false;
   }
 
-  var server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
+  const server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
     Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);
     CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = this.address().address;
   });
 
-//  CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = server.address().address;
-
+  const getYesterdayDate = () => {
+    const now = new Date();
+    const yesterdayDate = new Date(now - 86400000);
+    CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = `${yesterdayDate.getMonth() + 1}-${yesterdayDate.getDate()}-${yesterdayDate.getFullYear()}`;
+    console.log("hey", CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED);
+  };
 
   const requestPlatformInformation = () => {
     return new Promise( (resolve, reject) => {
@@ -189,32 +193,32 @@ if (cluster.isMaster) {
           // success
           if (data && data.providerDirectoryLastUpdateDate) {
             CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
-            Logger.info(`Last updated date ${CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
+          } else if (!data) {
+            getYesterdayDate();
           }
+          Logger.info(`Last updated date ${CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED}`);
           resolve();
         },
         (code, data) => {
           // error
-          Logger.error("ERROR: Failed to request about information: " + code);
-          reject();
+          reject(new Error(`ERROR: Failed to request about information ${code}`));
         }
       );
     });
   };
 
-  if (CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED === "unknown") {
-    requestPlatformInformation()
-    .catch( (e) => {
-      Logger.error(`ERROR: Failed to request about information ${e}`);
-      CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
-    });
-  }
+  requestPlatformInformation()
+  .catch( (e) => {
+    Logger.error(`firstError ${e.message}`);
+    getYesterdayDate();
+  });
+
 
   const timer = setInterval(() => {
     requestPlatformInformation()
     .catch( (e) => {
-      Logger.error(`ERROR: Failed to request about information ${e}`);
-      CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = "unknown";
+      Logger.error(`RecallError ${e.message}`);
+      getYesterdayDate();
     });
   }, 43200000);
 
