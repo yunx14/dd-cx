@@ -187,15 +187,16 @@ var AutoSuggest = (function() {
           .done(function(data){
             //compile Handlebars with the data
             console.log(data);
+
+            if (!opened()) {
+              open();
+            }
           })
           .fail(function() {
             // fail siliently
             console.log("couldnt reach db");
+            close();
           });
-
-      if (!opened()) {
-        open();
-      }
     } else {
       close();
     }
