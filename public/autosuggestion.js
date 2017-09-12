@@ -190,7 +190,7 @@ var AutoSuggest = (function() {
             console.log(html);
 
             if (!opened()) {
-              open();
+              open(html);
             }
           })
           .fail(function() {
