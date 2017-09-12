@@ -27,6 +27,9 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError,
       {
+        "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+        "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+        "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
         "title": "Provider Directory Invalid Zip Code",
         "stylesheets": [
           { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -67,6 +70,9 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError,
       {
+        "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+        "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+        "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
         "title": "Provider Directory No Results",
         "stylesheets": [
           { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -107,6 +113,9 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError,
       {
+        "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+        "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+        "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
         "title": "Provider Directory Server Timeout",
         "stylesheets": [
           { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -147,6 +156,9 @@ module.exports = {
       "pages-directoryError",
       ViewModel.pages_directoryError,
       {
+        "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
+        "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
+        "officeDetailsPage": CONSTANTS.OFFICE_DETAILS_PAGE,
         "title": "Provider Directory Server is Down",
         "stylesheets": [
           { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
