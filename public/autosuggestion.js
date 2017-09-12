@@ -186,7 +186,7 @@ var AutoSuggest = (function() {
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
-            var source = document.getElementById(templateName);
+            var source = document.getElementById(templateName).innerHTML;
             var template = Handlebars.compile(source);
             var html = template(data);
 
