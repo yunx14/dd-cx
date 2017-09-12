@@ -86,7 +86,14 @@
       }
     }
   ],
-  "specialties": ["Periodontist", "General Dentist"],
+  "specialties": [
+    {
+      "name": "Periodontist"
+    }, 
+    {
+      "name": "General Dentist"
+    }
+  ],
   "practiceLocations": [
     {
       "term": "MACT Dental Clinic <b>Jack</b>son",

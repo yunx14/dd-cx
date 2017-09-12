@@ -130,14 +130,18 @@ var AutoSuggest = (function() {
       selectedIndex = -1
     };
 
-  var open = function() {
-    var newList = document.getElementById("autosuggest-template").innerHTML;
-    $("#keyword").after(newList);
-    $(".autosuggest-container").show();
+  var open = function(compiledTemplate) {
+    if(compiledTemplate) {
+      $("#keyword").after(compiledTemplate);
+      $(".autosuggest-container").show();
 
-    list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
-    isVisible = true;
-    bindToList(document.getElementsByClassName("autosuggest-list")[0]);
+      list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
+      isVisible = true;
+      bindToList(document.getElementsByClassName("autosuggest-list")[0]);
+    } else {
+      console.log("template is not defined");
+    }
+    
   };
 
   var next = function() {
