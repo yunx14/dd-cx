@@ -1,0 +1,234 @@
+{
+  "providers": [
+    {
+      "term": "<b>Jack</b>son Nguyen",
+      "weight": 0,
+      "providerKey": "GRP713514960713514960002PRV57517164100",
+      "firstName": "Jackson",
+      "middleName": " ",
+      "lastName": "Nguyen",
+      "specialty": "General Dentist",
+      "address": {
+        "addressLine": "4508 Garth Rd Ste A, ",
+        "city": "Baytown",
+        "state": "TX",
+        "zipcode": "77521-2160",
+        "latitude": 29.7712154,
+        "longitude": -94.976265
+      }
+    },
+    {
+      "term": "<b>Jack</b> W Weinreb",
+      "weight": 0,
+      "providerKey": "GRP240605302240605302001PRV24067973900",
+      "firstName": "Jack",
+      "middleName": "W",
+      "lastName": "Weinreb",
+      "specialty": "General Dentist",
+      "address": {
+        "addressLine": "1844 San Miguel Dr Ste 112, ",
+        "city": "Walnut Creek",
+        "state": "CA",
+        "zipcode": "94596-8601",
+        "latitude": 37.8950386,
+        "longitude": -122.0528259
+      }
+    },
+    {
+      "term": "<b>JACK</b> W CHOI",
+      "weight": 0,
+      "providerKey": "GRP509995518509995518001PRV24092059400",
+      "firstName": "JACK",
+      "middleName": "W",
+      "lastName": "CHOI",
+      "specialty": "General Dentist",
+      "address": {
+        "addressLine": "1775 Walters Ave Ste 110, ",
+        "city": "Northbrook",
+        "state": "IL",
+        "zipcode": "60062-4578",
+        "latitude": 42.1270638,
+        "longitude": -87.8239822
+      }
+    },
+    {
+      "term": "Francine I <b>Jack</b>son",
+      "weight": 0,
+      "providerKey": "GRP240002919240002919001PRV24000952500",
+      "firstName": "Francine",
+      "middleName": "I",
+      "lastName": "Jackson",
+      "specialty": "General Dentist",
+      "address": {
+        "addressLine": "3665 E Thousand Oaks Blvd, ",
+        "city": "Westlake Village",
+        "state": "CA",
+        "zipcode": "91362-3606",
+        "latitude": 34.164032,
+        "longitude": -118.8285217
+      }
+    },
+    {
+      "term": "Cheryl D Freeman-<b>Jack</b>son",
+      "weight": 0,
+      "providerKey": "GRP240586659240586659001PRV24066494300",
+      "firstName": "Cheryl",
+      "middleName": "D",
+      "lastName": "Freeman-Jackson",
+      "specialty": "General Dentist",
+      "address": {
+        "addressLine": "2313 Santa Clara Dr Ste J1, ",
+        "city": "Santa Clara",
+        "state": "UT",
+        "zipcode": "84765-5472",
+        "latitude": 0,
+        "longitude": 0
+      }
+    }
+  ],
+  "specialties": ["Periodontist", "General Dentist"],
+  "practiceLocations": [
+    {
+      "term": "MACT Dental Clinic <b>Jack</b>son",
+      "weight": 0,
+      "practiceLocationNumber": "240004627001",
+      "address": {
+        "addressLine": "11900 South St Ste 122, ",
+        "city": "Cerritos",
+        "state": "CA",
+        "zipcode": "90703-6800",
+        "latitude": 33.8573074,
+        "longitude": -118.0792084
+      },
+      "officeName": "MACT Dental Clinic Jackson"
+    },
+    {
+      "term": "Lake <b>Jack</b>son Dental Care",
+      "weight": 0,
+      "practiceLocationNumber": "240614559001",
+      "address": {
+        "addressLine": "1799 66th St, ",
+        "city": "St Petersburg",
+        "state": "FL",
+        "zipcode": "33710-5537",
+        "latitude": 0,
+        "longitude": 0
+      },
+      "officeName": "Lake Jackson Dental Care"
+    },
+    {
+      "term": "<b>Jack</b> W Weinreb DDS LLC",
+      "weight": 0,
+      "practiceLocationNumber": "240605302001",
+      "address": {
+        "addressLine": "1844 San Miguel Dr Ste 112, ",
+        "city": "Walnut Creek",
+        "state": "CA",
+        "zipcode": "94596-8601",
+        "latitude": 37.8950386,
+        "longitude": -122.0528259
+      },
+      "officeName": "Jack W Weinreb DDS LLC"
+    },
+    {
+      "term": "Francine I <b>Jack</b>son DDS Inc",
+      "weight": 0,
+      "practiceLocationNumber": "240002919001",
+      "address": {
+        "addressLine": "3665 E Thousand Oaks Blvd, ",
+        "city": "Westlake Village",
+        "state": "CA",
+        "zipcode": "91362-3606",
+        "latitude": 34.164032,
+        "longitude": -118.8285217
+      },
+      "officeName": "Francine I Jackson DDS Inc"
+    },
+    {
+      "term": "Cheryl Freeman <b>Jack</b>son",
+      "weight": 0,
+      "practiceLocationNumber": "240586659001",
+      "address": {
+        "addressLine": "2313 Santa Clara Dr Ste J1, ",
+        "city": "Santa Clara",
+        "state": "UT",
+        "zipcode": "84765-5472",
+        "latitude": 0,
+        "longitude": 0
+      },
+      "officeName": "Cheryl Freeman Jackson"
+    }
+  ],
+  "facilities": [
+    {
+      "term": "<b>Jack</b>sonville Univ Ortho Clin",
+      "weight": 0,
+      "facilityId": "011306",
+      "facilityName": "Jacksonville Univ Ortho Clin",
+      "address": {
+        "addressLine": "3098 66th St, ",
+        "city": "St Petersburg",
+        "state": "FL",
+        "zipcode": "33710-3114",
+        "latitude": 0,
+        "longitude": 0
+      }
+    },
+    {
+      "term": "<b>Jack</b>son Family Dental",
+      "weight": 0,
+      "facilityId": "186401",
+      "facilityName": "Jackson Family Dental",
+      "address": {
+        "addressLine": "4470 Ming Ave, ",
+        "city": "Bakersfield",
+        "state": "CA",
+        "zipcode": "93309-4800",
+        "latitude": 35.3399544,
+        "longitude": -119.0517731
+      }
+    },
+    {
+      "term": "<b>Jack</b> Irwin DDS",
+      "weight": 0,
+      "facilityId": "023645",
+      "facilityName": "Jack Irwin DDS",
+      "address": {
+        "addressLine": "101 Chestnut St Ste 130, ",
+        "city": "Gaithersburg",
+        "state": "MD",
+        "zipcode": "20877-2139",
+        "latitude": 39.1416206,
+        "longitude": -77.2037277
+      }
+    },
+    {
+      "term": "<b>JACK</b>SON CREEK DENTAL CARE LLC",
+      "weight": 0,
+      "facilityId": "058078",
+      "facilityName": "JACKSON CREEK DENTAL CARE LLC",
+      "address": {
+        "addressLine": "819 Walnut St Ste 101, ",
+        "city": "Kansas City",
+        "state": "MO",
+        "zipcode": "64106-1801",
+        "latitude": 0,
+        "longitude": 0
+      }
+    },
+    {
+      "term": "<b>JACK</b>SON CREEK DENTAL CARE",
+      "weight": 0,
+      "facilityId": "056012",
+      "facilityName": "JACKSON CREEK DENTAL CARE",
+      "address": {
+        "addressLine": "819 Walnut St Ste 101, ",
+        "city": "Kansas City",
+        "state": "MO",
+        "zipcode": "64106-1801",
+        "latitude": 0,
+        "longitude": 0
+      }
+    }
+  ]
+}

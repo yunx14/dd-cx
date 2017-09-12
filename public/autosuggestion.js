@@ -181,19 +181,23 @@ var AutoSuggest = (function() {
 
     if (keyword && keyword.length >= 3) {
       // Send the value off to the backend and trigger event on response
-      var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
+      var endpoint = "http://aw-lx0176/find-a-dentist/alpha/fakedata.json?freeText="+keyword;
   
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
-            console.log(data);
+            var source = document.getElementById(templateName).innerHTML;
+            var template = Handlebars.compile(source);
+            var html = template(data);
+
+
+            console.log(html);
 
             if (!opened()) {
               open();
             }
           })
           .fail(function() {
-            // fail siliently
             console.log("couldnt reach db");
             close();
           });
