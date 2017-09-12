@@ -4,8 +4,7 @@ var AutoSuggest = (function() {
       boundElem = {}, // input selector
       elemValue = "", // value of the input selector
       list = {},  // list of autosuggest items
-      selectedIndex = -1, // keep track of selected item
-      templateName = ""; // name of the handlebars template
+      selectedIndex = -1; // keep track of selected item
 
   var init = function(el, template) {
     if (el) {
@@ -14,12 +13,6 @@ var AutoSuggest = (function() {
       bindToInput(ls);
     } else {
       console.log("autosuggest cant bind to input");
-    }
-
-    if(template) {
-      templateName = template;
-    } else {
-      console.log("template is unavailable");
     }
   }
 
@@ -186,8 +179,7 @@ var AutoSuggest = (function() {
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
-            var source = document.getElementById(templateName).innerHTML;
-            var template = Handlebars.compile(source);
+            var template = Handlebars.compile(autosuggest_template);
             var html = template(data);
 
 
@@ -212,5 +204,5 @@ var AutoSuggest = (function() {
 }());
 
 var autosuggest_input = "keyword";
-var autosuggest_template = "autosuggest-template";
-AutoSuggest.init(autosuggest_input, autosuggest_template);
+var autosuggest_template = '<div id="autosuggest-container" class="autosuggest-container" style="display:none"><ul class="autosuggest-list" role="listbox" aria-activedescendant>{{#if specialties}}<div class="autosuggest__heading"><p>Specialties</p></div>{{#each specialties}}<li class="autosuggest-list__item" id="assp{{@index}}" role="option"><div class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-search-black"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{name}}</span></div></div></li>{{/each }}{{/if}}{{#if providers}}<div class="autosuggest__heading"><p>Providers</p></div>{{#each providers}}<li class="autosuggest-list__item" role="option" id="aspr{{@index}}" data-link="{{@root.providerDetailsPage}}?providerKey={{providerKey}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-user"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{firstName}} {{lastName}}</span><span class="autosuggest__specialty">{{specialty}}</span><div class="autosuggest__address"> <span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if practiceLocations}}<div class="autosuggest__heading"><p>Offices</p></div>{{#each practiceLocations}}<li class="autosuggest-list__item" id="aspl{{@index}}" role="option" data-link="{{@root.officeDetailsPage}}?practiceLocationNumber={{practiceLocationNumber}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-office"></i></div> <div class="autosuggest__term"><span class="autosuggest__name">{{officeName}}</span> <div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if facilities}}<div class="autosuggest__heading"><p>Facilites</p></div>{{#each facilities}}<li class="autosuggest-list__item" id="asfa{{@index}}" role="option" data-link="{{@root.facilityDetailsPage}}?facilityId={{facilityId}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-office"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{facilityName}}</span><div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}</ul></div>';
+AutoSuggest.init(autosuggest_input);
