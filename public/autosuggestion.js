@@ -186,14 +186,18 @@ var AutoSuggest = (function() {
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
-            console.log(data);
+            var source = document.getElementById(templateName);
+            var template = Handlebars.compile(source);
+            var html = template(data);
+
+
+            console.log(html);
 
             if (!opened()) {
               open();
             }
           })
           .fail(function() {
-            // fail siliently
             console.log("couldnt reach db");
             close();
           });
