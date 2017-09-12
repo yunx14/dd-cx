@@ -179,7 +179,7 @@ var AutoSuggest = (function() {
     var keyword = this.value;
     elemValue = this.value;
 
-    if (value && value.length >= 3) {
+    if (keyword && keyword.length >= 3) {
       // Send the value off to the backend and trigger event on response
       var endpoint = "//aw-lx0095:19001/providers/suggestion?freeText="+keyword;
   
