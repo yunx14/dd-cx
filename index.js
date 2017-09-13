@@ -20,7 +20,7 @@ if (cluster.isMaster) {
 } else {
   const CONSTANTS = require("./constants.js");
         CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
-  var Logger = require("./utility/logger.js");
+  const Logger = require("./utility/logger.js");
 
   if (process.env.CONTROLLER_HOST_NAME &&
       process.env.CONTROLLER_HOST_PORT &&
@@ -59,7 +59,7 @@ if (cluster.isMaster) {
   const path = require("path");
   const https = require("https");
   const fs = require("fs");
-      Handlebars = require("handlebars");
+        Handlebars = require("handlebars");
   const request = require('request');
 
   const directorySearchHelpers = require("./server/directorySearchHelpers.js");
@@ -101,7 +101,7 @@ if (cluster.isMaster) {
   //Disabled the 'x-powered-by: Express' Header for security reasons
   app.disable('x-powered-by');
 
-  var options = {
+  const options = {
     dotfiles: "ignore",
     extensions: ["htm", "html"],
     index: false
@@ -212,7 +212,6 @@ if (cluster.isMaster) {
     Logger.error(`firstError ${e.message}`);
     getYesterdayDate();
   });
-
 
   const timer = setInterval(() => {
     requestPlatformInformation()
