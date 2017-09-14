@@ -1,12 +1,13 @@
-
 var AutoSuggest = (function() {
   var isVisible = false, // autosuggest container
       boundElem = {}, // input selector
       elemValue = "", // value of the input selector
       list = {},  // list of autosuggest items
-      selectedIndex = -1; // keep track of selected item
+      selectedIndex = -1, // keep track of selected item
+      nodeEndpoint = "", // this is the url to connect to the db
+      minChars = 3; // minimum number of chars to trigger autosuggest
 
-  var init = function(el, template) {
+  var init = function(el) {
     if (el) {
       boundElem = document.getElementById(el);
       var ls = document.getElementById(el);
@@ -103,6 +104,7 @@ var AutoSuggest = (function() {
       }
 
       target.className += " active";
+      target.setAttribute("aria-selected", "true");
 
     });
   };
@@ -124,20 +126,21 @@ var AutoSuggest = (function() {
       return;
     }
 
-      // Need to unbind the mouseover events
-      $(".autosuggest-container").remove();
-      isVisible = false;
-      selectedIndex = -1
-    };
+    // Need to unbind the mouseover events
+    $(".autosuggest-container").remove();
+    isVisible = false;
+    selectedIndex = -1
+  };
 
   var open = function(compiledTemplate) {
     if(compiledTemplate) {
-      $("#keyword").after(compiledTemplate);
+      //$("#keyword").after(compiledTemplate); // get keyword from the global vars
+      boundElem.parentNode.append(compiledTemplate);
       $(".autosuggest-container").show();
 
-      list = document.getElementsByClassName("autosuggest-list")[0].getElementsByTagName("li");
+      list = document.getElementById("autosuggest-list").getElementsByTagName("li");
       isVisible = true;
-      bindToList(document.getElementsByClassName("autosuggest-list")[0]);
+      bindToList(document.getElementById("autosuggest-list"));
     } else {
       console.log("template is not defined");
     }
@@ -170,13 +173,13 @@ var AutoSuggest = (function() {
     } else {
       boundElem.value = elemValue;
     }
-  }
+  };
 
   var evaluate = function() {
     var keyword = this.value;
     elemValue = this.value;
 
-    if (keyword && keyword.length >= 3) {
+    if (keyword && keyword.length >= minChars) {
       // Send the value off to the backend and trigger event on response
       var endpoint = "http://aw-lx0176/find-a-dentist/alpha/fakedata.json?freeText="+keyword;
   
@@ -205,5 +208,5 @@ var AutoSuggest = (function() {
 }());
 
 var autosuggest_input = "keyword";
-var autosuggest_template = '<div id="autosuggest-container" class="autosuggest-container" style="display:none"><ul class="autosuggest-list" role="listbox" aria-activedescendant>{{#if specialties}}<div class="autosuggest__heading"><p>Specialties</p></div>{{#each specialties}}<li class="autosuggest-list__item" id="assp{{@index}}" role="option"><div class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-search-black"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{name}}</span></div></div></li>{{/each }}{{/if}}{{#if providers}}<div class="autosuggest__heading"><p>Providers</p></div>{{#each providers}}<li class="autosuggest-list__item" role="option" id="aspr{{@index}}" data-link="'+providerDetailsPage+'?providerKey={{providerKey}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-user"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{firstName}} {{lastName}}</span><span class="autosuggest__specialty">{{specialty}}</span><div class="autosuggest__address"> <span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if practiceLocations}}<div class="autosuggest__heading"><p>Offices</p></div>{{#each practiceLocations}}<li class="autosuggest-list__item" id="aspl{{@index}}" role="option" data-link="'+officeDetailsPage+'?practiceLocationNumber={{practiceLocationNumber}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-office"></i></div> <div class="autosuggest__term"><span class="autosuggest__name">{{officeName}}</span> <div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if facilities}}<div class="autosuggest__heading"><p>Facilites</p></div>{{#each facilities}}<li class="autosuggest-list__item" id="asfa{{@index}}" role="option" data-link="'+facilityDetailsPage+'?facilityId={{facilityId}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-office"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{facilityName}}</span><div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}</ul></div>';
+var autosuggest_template = '<div id="autosuggest-container" class="autosuggest-container" style="display:none"><ul id="autosuggest-list" class="autosuggest-list" role="listbox" aria-activedescendant>{{#if specialties}}<div class="autosuggest__heading"><p>Specialties</p></div>{{#each specialties}}<li class="autosuggest-list__item" id="assp{{@index}}" role="option"><div class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-search-black"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{name}}</span></div></div></li>{{/each }}{{/if}}{{#if providers}}<div class="autosuggest__heading"><p>Providers</p></div>{{#each providers}}<li class="autosuggest-list__item" role="option" id="aspr{{@index}}" data-link="'+providerDetailsPage+'?providerKey={{providerKey}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-user"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{firstName}} {{lastName}}</span><span class="autosuggest__specialty">{{specialty}}</span><div class="autosuggest__address"> <span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if practiceLocations}}<div class="autosuggest__heading"><p>Offices</p></div>{{#each practiceLocations}}<li class="autosuggest-list__item" id="aspl{{@index}}" role="option" data-link="'+officeDetailsPage+'?practiceLocationNumber={{practiceLocationNumber}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item" ><div class="autosuggest__icon"><i class="icon icon-office"></i></div> <div class="autosuggest__term"><span class="autosuggest__name">{{officeName}}</span> <div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}{{#if facilities}}<div class="autosuggest__heading"><p>Facilites</p></div>{{#each facilities}}<li class="autosuggest-list__item" id="asfa{{@index}}" role="option" data-link="'+facilityDetailsPage+'?facilityId={{facilityId}}&lat={{address.latitude}}&long={{address.longitude}}&location={{address.city}}"><div  class="autosuggest-item"><div class="autosuggest__icon"><i class="icon icon-office"></i></div><div class="autosuggest__term"><span class="autosuggest__name">{{facilityName}}</span><div class="autosuggest__address"><span class="autosuggest__address-street">{{address.addressLine}}</span><span class="autosuggest__address-city">{{address.city}}, </span><span class="autosuggest__address-state">{{address.state}}</span></div></div></div></li>{{/each }}{{/if}}</ul></div>';
 AutoSuggest.init(autosuggest_input);
