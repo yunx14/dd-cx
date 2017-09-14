@@ -13,9 +13,9 @@ var Logger = require("../utility/logger.js");
 module.exports = {
   passThrough: function(req, res) {
     Logger.log("GET auto suggestions");
-    var auto_text = req.params.text;
+    var auto_text = req.query.text;
     res.send(200, auto_text);
 
-    // const CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + suggestions?text= + keyword;
+    // var auto_request = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/suggestions?text=" + keyword;
   }
 };
