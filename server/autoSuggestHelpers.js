@@ -13,5 +13,6 @@ var Logger = require("../utility/logger.js");
 module.exports = {
   passThrough: function(req, res) {
     Logger.log("GET auto suggestions");
-
+    res.send(200, "Hello auto suggest!!!")
+  }
 };
