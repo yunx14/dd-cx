@@ -134,10 +134,7 @@ var AutoSuggest = (function() {
 
   var open = function(compiledTemplate) {
     if(compiledTemplate) {
-      //$("#keyword").after(compiledTemplate); // get keyword from the global vars
-      var container = document.createElement("div");
-      container.innerHTML(compiledTemplate);
-      boundElem.parentNode.append(container);
+      $("#keyword").after(compiledTemplate); // get keyword from the global vars
       $(".autosuggest-container").show();
 
       list = document.getElementById("autosuggest-list").getElementsByTagName("li");
