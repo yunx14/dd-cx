@@ -67,6 +67,7 @@ if (cluster.isMaster) {
   const facilityDetailsHelpers = require("./server/facilityDetailsHelpers.js");
   const officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
   const inaccurateHelpers = require("./server/inaccurateHelpers.js");
+  const autoSuggestHelpers = require("./server/autoSuggestHelpers.js");
   const errorHelpers = require("./server/errorHelpers.js");
   const testHelpers = require("./server/testHelpers.js");
   const Model = require("./models/model.js");
@@ -143,6 +144,7 @@ if (cluster.isMaster) {
   app.get([CONSTANTS.BASE_URI + "/offices/:name",
           CONSTANTS.OFFICE_DETAILS_PAGE], officeDetailsHelpers.getOfficeDetails);
   app.get(CONSTANTS.INACCURATE_PAGE, inaccurateHelpers.getInaccurate);
+  app.get(CONSTANTS.BASE_URI + "/autosuggest", autoSuggestHelpers.passThrough);
 
   // error template
   app.get(CONSTANTS.ERROR_INVALID_ZIP, errorHelpers.errorInvalidZip);
