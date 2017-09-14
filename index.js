@@ -20,7 +20,7 @@ if (cluster.isMaster) {
 } else {
   const CONSTANTS = require("./constants.js");
         CONSTANTS.ENVIRONMENT = (process.env.NODE_ENV) ? process.env.NODE_ENV : "dev";
-  var Logger = require("./utility/logger.js");
+  const Logger = require("./utility/logger.js");
 
   if (process.env.CONTROLLER_HOST_NAME &&
       process.env.CONTROLLER_HOST_PORT &&
@@ -54,28 +54,28 @@ if (cluster.isMaster) {
     Logger.log("AppD is not configured, no environment variables.");
   }
 
-  var express = require("express");
-  var bodyParser = require("body-parser");
-  var path = require("path");
-  var https = require("https");
-  var fs = require("fs");
-      Handlebars = require("handlebars");
-  var request = require('request');
+  const express = require("express");
+  const bodyParser = require("body-parser");
+  const path = require("path");
+  const https = require("https");
+  const fs = require("fs");
+        Handlebars = require("handlebars");
+  const request = require('request');
 
-  var directorySearchHelpers = require("./server/directorySearchHelpers.js");
-  var providerDetailsHelpers = require("./server/providerDetailsHelpers.js");
-  var facilityDetailsHelpers = require("./server/facilityDetailsHelpers.js");
-  var officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
-  var inaccurateHelpers = require("./server/inaccurateHelpers.js");
-  var errorHelpers = require("./server/errorHelpers.js");
-  var testHelpers = require("./server/testHelpers.js");
-  var Model = require("./models/model.js");
+  const directorySearchHelpers = require("./server/directorySearchHelpers.js");
+  const providerDetailsHelpers = require("./server/providerDetailsHelpers.js");
+  const facilityDetailsHelpers = require("./server/facilityDetailsHelpers.js");
+  const officeDetailsHelpers = require("./server/officeDetailsHelpers.js");
+  const inaccurateHelpers = require("./server/inaccurateHelpers.js");
+  const errorHelpers = require("./server/errorHelpers.js");
+  const testHelpers = require("./server/testHelpers.js");
+  const Model = require("./models/model.js");
 
   //patch partials
   Handlebars.partials = Handlebars.templates;
-  var app = express();
-  var privatekey = null;
-  var cert = null;
+  const app = express();
+  const privatekey = null;
+  const cert = null;
   global.global_request_options = {};
 
   try {
@@ -89,7 +89,7 @@ if (cluster.isMaster) {
       }
     };
   } catch (e) {
-    Logger.warn("Could not read certs for https! " + e);
+    Logger.warn(`Could not read certs for https! ${e}`);
     CONSTANTS.SSL_ENABLED = false;
   }
 
@@ -101,7 +101,7 @@ if (cluster.isMaster) {
   //Disabled the 'x-powered-by: Express' Header for security reasons
   app.disable('x-powered-by');
 
-  var options = {
+  const options = {
     dotfiles: "ignore",
     extensions: ["htm", "html"],
     index: false
@@ -160,7 +160,7 @@ if (cluster.isMaster) {
 
       // Fire up servers and print friendly message to console
       https.createServer({ "key": privatekey, "cert": cert }, app).listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL, function () {
-        Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint SSL listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL);
+        Logger.log(`(${CONSTANTS.ENVIRONMENT}) Provider Directory Experience EndPoint SSL listening on port ${CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT_SSL}`);
       });
     }
   } catch (e) {
@@ -169,7 +169,7 @@ if (cluster.isMaster) {
   }
 
   const server = app.listen(CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT, function () {
-    Logger.log("(" + CONSTANTS.ENVIRONMENT + ") Provider Directory Experience EndPoint listening on port " + CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT);
+    Logger.log(`(${CONSTANTS.ENVIRONMENT}) Provider Directory Experience EndPoint listening on port ${CONSTANTS[CONSTANTS.ENVIRONMENT].EE_PORT}`);
     CONSTANTS[CONSTANTS.ENVIRONMENT].EE_HOST = this.address().address;
   });
 
@@ -212,7 +212,6 @@ if (cluster.isMaster) {
     Logger.error(`firstError ${e.message}`);
     getYesterdayDate();
   });
-
 
   const timer = setInterval(() => {
     requestPlatformInformation()
