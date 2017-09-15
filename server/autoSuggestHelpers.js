@@ -12,9 +12,7 @@ var Logger = require("../utility/logger.js");
 
 module.exports = {
   passThrough: function(req, res) {
-    Logger.log("GET auto suggestions");
-    // var auto_text = req.query.text;
-    // res.send(200, auto_text);
+    Logger.log("GET auto suggestions query", req.query.text);
 
     var suggestions = new Model();
     suggestions.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
@@ -22,30 +20,30 @@ module.exports = {
     suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/suggestions?text=" + req.query.text;
 
     var promiseData = {
-        res: res,
-        code: 200,
-        model: suggestions
+      res: res,
+      code: 200,
+      model: suggestions
     };
 
     var handleSuggestions = function(promiseData) {
-        return new Promise(function(resolve, reject) {
-          suggestions.fetch({},
-            function(code, data) {
-              // success
-              if (data) {
-                res.send(200, "this came back from the db");
-              }
-              resolve(promiseData);
-            },
-            function(code, data) {
-              // error
-              promiseData.code = code;
-              res.send(200, "this has an error");
-              Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
-              reject(promiseData);
+      return new Promise(function(resolve, reject) {
+        suggestions.fetch({},
+          function(code, data) {
+            // success
+            if (data) {
+              Logger.log("here are my suggested data", data);
+              promiseData.res.status(promiseData.code).send(data);
             }
-          );
-        });
+            resolve(promiseData);
+          },
+          function(code, data) {
+            // error
+            promiseData.code = code;
+            Logger.warn("ERROR: Failed to request suggest error: " + promiseData.code);
+            reject(promiseData);
+          }
+        );
+      });
     };
 
     var handleResults = function(promiseData) {
@@ -54,21 +52,20 @@ module.exports = {
 	    .catch(function(promiseData) {
 	      return Promise.reject(promiseData);
 	    });
-	};
+  	};
 
-	handleResults(promiseData)
-      .catch(function(promiseData) {
-        if (promiseData.code === 504) {
-          //promiseData.res.status(promiseData.code);
-          res.send(200, "got a 504");
-        } else if (promiseData.code === 400) {
-          //promiseData.ers.status(promiseData.code);
-          res.send(200, "got a 400");
-        } else {
-          res.send(200, "got something else");
-          //promiseData.res.status(promiseData.code);
-        }
+  	handleResults(promiseData)
+    .catch(function(promiseData) {
+      if (promiseData.code === 504) {
+        //promiseData.res.status(promiseData.code);
+        res.send(200, "got a 504");
+      } else if (promiseData.code === 400) {
+        //promiseData.ers.status(promiseData.code);
+        res.send(200, "got a 400");
+      } else {
+        res.send(200, "got something else");
+        //promiseData.res.status(promiseData.code);
+      }
     });
-
   }
 };
