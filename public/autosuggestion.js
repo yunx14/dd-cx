@@ -5,7 +5,8 @@ var AutoSuggest = (function() {
       list = {},  // list of autosuggest items
       selectedIndex = -1, // keep track of selected item
       templateId = "",
-      nodeEndpoint = "http://aw-lx0076:81/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
+      nodeEndpoint = "http://localhost:81/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
+      // nodeEndpoint = "http://aw-lx0076:81/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
       minChars = 3; // minimum number of chars to trigger autosuggest
 
   var init = function(el, template) {
@@ -152,7 +153,7 @@ var AutoSuggest = (function() {
     } else {
       console.log("template is not defined");
     }
-    
+
   };
 
   var next = function() {
@@ -190,7 +191,7 @@ var AutoSuggest = (function() {
     if (keyword && keyword.length >= minChars) {
       // Send the value off to the backend and trigger event on response
       var endpoint = nodeEndpoint+""+keyword;
-  
+
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
