@@ -19,7 +19,7 @@ module.exports = {
     var suggestions = new Model();
     suggestions.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
     suggestions.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-    suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/autosuggest?text=" + req.query.text;
+    suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/suggestions?text=" + req.query.text;
 
     var promiseData = {
         res: res,
@@ -33,7 +33,7 @@ module.exports = {
             function(code, data) {
               // success
               if (data) {
-                res.send(200, data);
+                res.send(200, "this came back from the db");
               }
               resolve(promiseData);
             },
