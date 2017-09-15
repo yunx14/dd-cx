@@ -40,7 +40,6 @@ module.exports = {
             function(code, data) {
               // error
               promiseData.code = code;
-              res.send(200, "this thing isnt working");
               res.send(200, promiseData);
               res.send(200, promiseData.code)
               Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
@@ -61,9 +60,11 @@ module.exports = {
 	handleResults(promiseData)
       .catch(function(promiseData) {
         if (promiseData.code === 504) {
-          promiseData.res.status(promiseData.code);
+          //promiseData.res.status(promiseData.code);
+          res.send(200, "got a 504");
         } else if (promiseData.code === 400) {
-          promiseData.res.status(promiseData.code);
+          //promiseData.ers.status(promiseData.code);
+          res.send(200, "got a 400");
         } else {
           promiseData.res.status(promiseData.code);
         }
