@@ -14,7 +14,7 @@ module.exports = {
   passThrough: function(req, res) {
     Logger.log("GET auto suggestions");
 
-    // res.send(200, auto_text);
+    res.send(200, req.query.text);
 
     var suggestions = new Model();
     suggestions.query = req.query.text;
