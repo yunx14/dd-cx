@@ -16,5 +16,35 @@ module.exports = {
     var auto_text = req.query.text;
     res.send(200, auto_text);
 
+    var suggestions = new Model();
+    suggestions.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
+    suggestions.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
+    suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/autosuggest?text=/" + req.query.text;
+
+    var promiseData = {
+        res: res,
+        code: 200,
+        model: suggestions
+      };
+
+      var handleFacilityDetails = function(promiseData) {
+        return new Promise(function(resolve, reject) {
+          suggestions.fetch({},
+            function(code, data) {
+              // success
+              if (data) {
+                res.send(200, data)
+              }
+              resolve(promiseData);
+            },
+            function(code, data) {
+              // error
+              promiseData.code = code;
+              Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
+              reject(promiseData);
+            }
+          );
+        });
+      };
   }
 };
