@@ -66,7 +66,8 @@ module.exports = {
           //promiseData.ers.status(promiseData.code);
           res.send(200, "got a 400");
         } else {
-          promiseData.res.status(promiseData.code);
+          res.send(200, "got something else");
+          //promiseData.res.status(promiseData.code);
         }
     });
 
