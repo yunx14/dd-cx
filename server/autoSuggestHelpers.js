@@ -19,7 +19,7 @@ module.exports = {
     var suggestions = new Model();
     suggestions.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
     suggestions.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-    suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/autosuggest?text=/" + req.query.text;
+    suggestions.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/autosuggest?text=" + req.query.text;
 
     var promiseData = {
         res: res,
