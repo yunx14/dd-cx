@@ -33,7 +33,7 @@ module.exports = {
             function(code, data) {
               // success
               if (data) {
-                res.send(200, "this is not an error");
+                res.send(200, data);
               }
               resolve(promiseData);
             },
