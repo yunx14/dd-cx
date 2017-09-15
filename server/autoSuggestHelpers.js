@@ -25,9 +25,9 @@ module.exports = {
         res: res,
         code: 200,
         model: suggestions
-      };
+    };
 
-      var handleFacilityDetails = function(promiseData) {
+    var handleSuggestions = function(promiseData) {
         return new Promise(function(resolve, reject) {
           suggestions.fetch({},
             function(code, data) {
@@ -45,6 +45,26 @@ module.exports = {
             }
           );
         });
-      };
+    };
+
+    var handleResults = function(promiseData) {
+	    return Promise.resolve(promiseData)
+	    .then(handleSuggestions)
+	    .catch(function(promiseData) {
+	      return Promise.reject(promiseData);
+	    });
+	};
+
+	handleResults(promiseData)
+      .catch(function(promiseData) {
+        if (promiseData.code === 504) {
+          promiseData.res.status(promiseData.code);
+        } else if (promiseData.code === 400) {
+          promiseData.res.status(promiseData.code);
+        } else {
+          promiseData.res.status(promiseData.code);
+        }
+    });
+
   }
 };
