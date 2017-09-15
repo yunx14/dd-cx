@@ -13,8 +13,8 @@ var Logger = require("../utility/logger.js");
 module.exports = {
   passThrough: function(req, res) {
     Logger.log("GET auto suggestions");
-    var auto_text = req.query.text;
-    res.send(200, auto_text);
+    // var auto_text = req.query.text;
+    // res.send(200, auto_text);
 
     var suggestions = new Model();
     suggestions.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
@@ -40,6 +40,7 @@ module.exports = {
             function(code, data) {
               // error
               promiseData.code = code;
+              res.send(200, promiseData.code)
               Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
               reject(promiseData);
             }
