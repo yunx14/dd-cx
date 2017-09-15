@@ -40,8 +40,7 @@ module.exports = {
             function(code, data) {
               // error
               promiseData.code = code;
-              res.send(200, promiseData);
-              res.send(200, promiseData.code)
+              res.send(200, "this has an error");
               Logger.warn("ERROR: Failed to request provider: " + promiseData.code);
               reject(promiseData);
             }
