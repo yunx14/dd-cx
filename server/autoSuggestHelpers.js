@@ -2,10 +2,6 @@ const CONSTANTS = require("../constants.js");
 var Model = require("../models/model.js");
 var Logger = require("../utility/logger.js");
 
-// var MainTemplate = require("../views/pds.js");
-// var AtomicPower = require("../views/atomicPower.js");
-// var ViewModel = require("../views/viewModel.js");
-
 module.exports = {
   passThrough: function(req, res) {
     Logger.log("GET auto suggestions query", req.query.text);
@@ -52,16 +48,7 @@ module.exports = {
 
   	handleResults(promiseData)
     .catch(function(promiseData) {
-      if (promiseData.code === 504) {
-        //promiseData.res.status(promiseData.code);
-        res.send(200, "got a 504");
-      } else if (promiseData.code === 400) {
-        //promiseData.ers.status(promiseData.code);
-        res.send(200, "got a 400");
-      } else {
-        res.send(200, "got something else");
-        //promiseData.res.status(promiseData.code);
-      }
+      return Promise.reject(promiseData);
     });
   }
 };
