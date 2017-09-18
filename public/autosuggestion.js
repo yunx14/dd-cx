@@ -219,11 +219,14 @@ var AutoSuggest = (function() {
             //compile Handlebars with the data
             var template = Handlebars.compile(autosuggest_template);
             var html = template(data);
-
-            if (!opened()) {
-              open(html);
+            if (data.facilities.length || data.practiceLocations.length || data.providers.length || data.specialties.length) {
+              if (!opened()) {
+                open(html);
+              } else {
+                update(html);
+              }
             } else {
-              update(html);
+              return false;
             }
           })
           .fail(function() {
