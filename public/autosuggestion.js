@@ -32,7 +32,7 @@ var AutoSuggest = (function() {
 
     el.oninput = function(){
       //evaluate.call(this);
-      debounce(evaluate.call(this), 10);
+      debounce(evaluate.call(this), 300);
     }
 
     el.onkeydown = function(evt) {
