@@ -139,7 +139,7 @@ var AutoSuggest = (function() {
     // Need to unbind the mouseover events
     container.parentNode.removeChild(container);
     isVisible = false;
-    selectedIndex = -1
+    selectedIndex = -1;
   };
 
   var open = function(compiledTemplate) {
@@ -153,8 +153,19 @@ var AutoSuggest = (function() {
     } else {
       console.log("template is not defined");
     }
-
   };
+
+  function update(compiledTemplate) {
+    if (compiledTemplate) {
+        var container = document.getElementById(templateId);
+        container.parentNode.removeChild(container);
+        isVisible = false;
+        selectedIndex = -1;
+
+        boundElem.insertAdjacentHTML('afterend', compiledTemplate);
+        document.getElementById(templateId).style.display = "block";
+    }
+  }
 
   var next = function() {
     var count = list.length;
@@ -200,6 +211,8 @@ var AutoSuggest = (function() {
 
             if (!opened()) {
               open(html);
+            } else {
+              update(html);
             }
           })
           .fail(function() {
