@@ -31,8 +31,7 @@ var AutoSuggest = (function() {
     }
 
     el.oninput = function(){
-      //evaluate.call(this);
-      debounce(evaluate.call(this), 300);
+      evaluate.call(this);
     }
 
     el.onkeydown = function(evt) {
@@ -195,22 +194,20 @@ var AutoSuggest = (function() {
     }
   };
 
-  var debounce = function(func, wait, immediate) {
+  function debounce(func, wait, immediate) {
     var timeout;
     return function() {
       var context = this, args = arguments;
-      var later = function() {
+      clearTimeout(timeout);
+      timeout = setTimeout(function() {
         timeout = null;
         if (!immediate) func.apply(context, args);
-      };
-      var callNow = immediate && !timeout;
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-      if (callNow) func.apply(context, args);
+      }, wait);
+      if (immediate && !timeout) func.apply(context, args);
     };
-  };
+  }
 
-  var evaluate = function() {
+  var evaluate = debounce(function() {
     var keyword = this.value;
     elemValue = this.value;
 
@@ -237,7 +234,7 @@ var AutoSuggest = (function() {
     } else {
       close();
     }
-  }
+  }, 700);
 
   return {
     "init": init
