@@ -5,8 +5,7 @@ var AutoSuggest = (function() {
       list = {},  // list of autosuggest items
       selectedIndex = -1, // keep track of selected item
       templateId = "",
-      // nodeEndpoint = "http://localhost:81/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
-      nodeEndpoint = "http://aw-lx0076:81/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
+      nodeEndpoint = "/find-a-dentist/alpha/autosuggest?text=", // this is the url to connect to the db
       minChars = 3; // minimum number of chars to trigger autosuggest
 
   var init = function(el, template) {
