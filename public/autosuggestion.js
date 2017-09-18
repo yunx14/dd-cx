@@ -31,7 +31,8 @@ var AutoSuggest = (function() {
     }
 
     el.oninput = function(){
-      evaluate.call(this);
+      //evaluate.call(this);
+      debounce(evaluate.call(this), 10);
     }
 
     el.onkeydown = function(evt) {
@@ -159,11 +160,10 @@ var AutoSuggest = (function() {
     if (compiledTemplate) {
         var container = document.getElementById(templateId);
         container.parentNode.removeChild(container);
-        isVisible = false;
-        selectedIndex = -1;
 
         boundElem.insertAdjacentHTML('afterend', compiledTemplate);
         document.getElementById(templateId).style.display = "block";
+        selectedIndex = -1;
     }
   }
 
@@ -193,6 +193,21 @@ var AutoSuggest = (function() {
     } else {
       boundElem.value = elemValue;
     }
+  };
+
+  var debounce = function(func, wait, immediate) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
   };
 
   var evaluate = function() {
