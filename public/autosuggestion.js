@@ -234,7 +234,7 @@ var AutoSuggest = (function() {
     } else {
       close();
     }
-  }, 700);
+  }, 200);
 
   return {
     "init": init
