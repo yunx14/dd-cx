@@ -226,7 +226,11 @@ var AutoSuggest = (function() {
                 update(html);
               }
             } else {
-              return false;
+              if (opened) {
+                close();
+              } else {
+                return false;
+              }
             }
           })
           .fail(function() {
