@@ -75,8 +75,8 @@ if (cluster.isMaster) {
   //patch partials
   Handlebars.partials = Handlebars.templates;
   const app = express();
-  const privatekey = null;
-  const cert = null;
+  let privatekey = null;
+  let cert = null;
   global.global_request_options = {};
 
   try {
