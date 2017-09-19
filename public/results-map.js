@@ -60,24 +60,19 @@ var Map = {
       });
     }
 
+    function mapSearch() {
+      var center = Map.map.getCenter();
+      var ltln = Map.map.getBounds();
+      console.log('You zoomed the map. The bounds changed to '+ltln+' with center at '+center);
+    }
+
     for (var j = 0; j < Map.markers.length; j++) {
 			Map.bounds.extend(Map.markers[j].getPosition());
 		}
 		Map.map.fitBounds(Map.bounds);
 
-    google.maps.event.addListener(Map.map, 'dragend', function(){
-      var center = Map.map.getCenter();
-      var ltln = Map.map.getBounds();
-
-      console.log("you moved the map to "+ center.lat() +", "+ center.lng()+". So we should prolly do a new search on these coordinates.");
-    });
-
-    google.maps.event.addListener(Map.map, 'zoom_changed', function(){
-      var center = Map.map.getCenter();
-      var ltln = Map.map.getBounds();
-      console.log('You zoomed. The bounds changed '+ltln+' with center at '+center);
-    });
-
+    google.maps.event.addListener(Map.map, 'dragend', mapSearch);
+    google.maps.event.addListener(Map.map, 'zoom_changed', mapSearch);
   },
 
   buildIWContent : function(place) {
