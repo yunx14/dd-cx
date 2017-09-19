@@ -33,21 +33,7 @@ var AutoSuggest = (function() {
     }
 
     el.onkeydown = function(evt) {
-      var c = window.event? evt.keyCode : evt.which;
-
-      if (document.getElementById(templateId).length) {
-        if (c === 13) { //Enter
-          evt.preventDefault();
-          if (list[selectedIndex].dataset.link) {
-            window.location.href = list[selectedIndex].dataset.link;
-          } else {
-            console.log('submit the search'); //TODO need to write this code still
-          }
-        } else if (c === 38 || c === 40) { //Up down arrows
-          evt.preventDefault();
-          c === 38? previous() : next();
-        }
-      }
+      keyboardNav(evt);
     }
   };
 
@@ -71,7 +57,7 @@ var AutoSuggest = (function() {
   var close = function() {
     var container = document.getElementById(templateId);
 
-    if (!(document.getElementById(templateId).length)) {
+    if (!container) {
       return;
     }
 
@@ -104,6 +90,24 @@ var AutoSuggest = (function() {
         document.getElementById(templateId).style.display = "block";
         selectedIndex = -1;
     }
+  }
+
+  function keyboardNav(evt) {
+    var c = window.event? evt.keyCode : evt.which;
+
+      if (document.getElementById(templateId).length) {
+        if (c === 13) { //Enter
+          evt.preventDefault();
+          if (list[selectedIndex].dataset.link) {
+            window.location.href = list[selectedIndex].dataset.link;
+          } else {
+            console.log('submit the search'); //TODO need to write this code still
+          }
+        } else if (c === 38 || c === 40) { //Up down arrows
+          evt.preventDefault();
+          c === 38? previous() : next();
+        }
+      }
   }
 
   function selectItem(evt) {
