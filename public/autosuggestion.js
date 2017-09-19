@@ -83,12 +83,8 @@ var AutoSuggest = (function() {
 
   function update(compiledTemplate) {
     if (compiledTemplate) {
-        var container = document.getElementById(templateId);
-        container.parentNode.removeChild(container);
-
-        boundElem.insertAdjacentHTML('afterend', compiledTemplate);
-        document.getElementById(templateId).style.display = "block";
-        selectedIndex = -1;
+        close();
+        open(compiledTemplate);
     }
   }
 
