@@ -63,7 +63,7 @@ var Map = {
     function mapSearch() {
       var center = Map.map.getCenter();
       var ltln = Map.map.getBounds();
-      console.log('You zoomed the map. The bounds changed to '+ltln+' with center at '+center);
+      console.log('The bounds changed to '+ltln+' with center at '+center);
     }
 
     for (var j = 0; j < Map.markers.length; j++) {
