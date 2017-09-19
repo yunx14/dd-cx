@@ -223,16 +223,18 @@ var AutoSuggest = (function() {
       var jqxhr = $.getJSON(endpoint)
           .done(function(data){
             //compile Handlebars with the data
-            var template = Handlebars.compile(autosuggest_template);
-            var html = template(data);
+            var template = Handlebars.compile(autosuggest_template),
+                html = template(data),
+                container = document.getElementById(templateId);
+
             if (data.facilities.length || data.practiceLocations.length || data.providers.length || data.specialties.length) {
-              if (!(document.getElementById(templateId).length)) {
+              if (!container) {
                 open(html);
               } else {
                 update(html);
               }
             } else {
-              if (document.getElementById(templateId).length) {
+              if (container) {
                 close();
               } else {
                 return false;
