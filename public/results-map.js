@@ -66,15 +66,15 @@ var Map = {
 		Map.map.fitBounds(Map.bounds);
 
     google.maps.event.addListener(Map.map, 'dragend', function(){
-      var center = map.getCenter();
-      var ltln = map.getBounds();
+      var center = Map.map.getCenter();
+      var ltln = Map.map.getBounds();
 
       console.log("you moved the map to "+ center.lat() +", "+ center.lng()+". So we should prolly do a new search on these coordinates.");
     });
 
-    google.maps.event.addListener(map, 'zoom_changed', function(){
-      var center = map.getCenter();
-      var ltln = map.getBounds();
+    google.maps.event.addListener(Map.map, 'zoom_changed', function(){
+      var center = Map.map.getCenter();
+      var ltln = Map.map.getBounds();
       console.log('You zoomed. The bounds changed '+ltln+' with center at '+center);
     });
 
