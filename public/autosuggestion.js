@@ -1,6 +1,5 @@
 var AutoSuggest = (function() {
-  var isVisible = false, // autosuggest container
-      boundElem = {}, // input selector
+  var boundElem = {}, // input selector
       elemValue = "", // value of the input selector
       list = {},  // list of autosuggest items
       selectedIndex = -1, // keep track of selected item
@@ -36,7 +35,7 @@ var AutoSuggest = (function() {
     el.onkeydown = function(evt) {
       var c = window.event? evt.keyCode : evt.which;
 
-      if (opened()) {
+      if (document.getElementById(templateId).length) {
         if (c === 13) { //Enter
           evt.preventDefault();
           if (list[selectedIndex].dataset.link) {
@@ -53,68 +52,13 @@ var AutoSuggest = (function() {
   };
 
   var bindToList = function(selectedList) {
-    selectedList.addEventListener("mousedown", function(evt) {
-      var target = evt.target,
-          related = evt.relatedTarget,
-          delegationSelector = "LI",
-          match;
-
-      while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
-        target = target.parentNode;
-      }
-
-      if (!match) {
-        return;
-      }
-
-      while ( related && related != target && related != document ) {
-        related = related.parentNode;
-      }
-
-      if ( related == target ) {
-        return;
-      }
-
-      if (target.dataset.link) {
-        window.location.href = target.dataset.link;
-      } else {
-        boundElem.value = target.getElementsByClassName("autosuggest__name")[0].textContent;
-      }
-
-    });
-
-    selectedList.addEventListener("mouseover", function(evt) {
-      var target = evt.target,
-          related = evt.relatedTarget,
-          delegationSelector = "LI",
-          match;
-
-      while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
-        target = target.parentNode;
-      }
-
-      if (!match) {
-        return;
-      }
-
-      while ( related && related != target && related != document ) {
-        related = related.parentNode;
-      }
-
-      if ( related == target ) {
-        return;
-      }
-
-      for (var i = 0; i < list.length; i++) {
-        list[i].className = "autosuggest-list__item";
-        list[i].setAttribute("aria-selected", "false");
-      }
-
-      target.className += " active";
-      target.setAttribute("aria-selected", "true");
-
-    });
+    selectedList.addEventListener("mousedown", selectItem);
+    selectedList.addEventListener("mouseover", hoverItem);
   };
+
+  function removeEvent(el, type, handler){
+    if (el.detachEvent) el.detachEvent('on'+type, handler); else el.removeEventListener(type, handler);
+  }
 
   var matches = function(elem, selector) {
     return elem == selector;
@@ -124,20 +68,18 @@ var AutoSuggest = (function() {
     return el.classList ? el.classList.contains(className) : new RegExp('\\b'+ className+'\\b').test(el.className);
   };
 
-  var opened = function() {
-    return isVisible;
-  };
-
   var close = function() {
     var container = document.getElementById(templateId);
 
-    if (!opened()) {
+    if (!(document.getElementById(templateId).length)) {
       return;
     }
 
     // Need to unbind the mouseover events
+    removeEvent(container.childNodes[0], "mousedown", selectItem);
+    removeEvent(container.childNodes[0], "mouseover", hoverItem);
+
     container.parentNode.removeChild(container);
-    isVisible = false;
     selectedIndex = -1;
   };
 
@@ -147,7 +89,6 @@ var AutoSuggest = (function() {
       document.getElementById(templateId).style.display = "block";
 
       list = document.getElementById("autosuggest-list").getElementsByTagName("li");
-      isVisible = true;
       bindToList(document.getElementById("autosuggest-list"));
     } else {
       console.log("template is not defined");
@@ -163,6 +104,66 @@ var AutoSuggest = (function() {
         document.getElementById(templateId).style.display = "block";
         selectedIndex = -1;
     }
+  }
+
+  function selectItem(evt) {
+    var target = evt.target,
+        related = evt.relatedTarget,
+        delegationSelector = "LI",
+        match;
+
+    while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
+      target = target.parentNode;
+    }
+
+    if (!match) {
+      return;
+    }
+
+    while ( related && related != target && related != document ) {
+      related = related.parentNode;
+    }
+
+    if ( related == target ) {
+      return;
+    }
+
+    if (target.dataset.link) {
+      window.location.href = target.dataset.link;
+    } else {
+      boundElem.value = target.getElementsByClassName("autosuggest__name")[0].textContent;
+    }
+  }
+
+  function hoverItem(evt) {
+    var target = evt.target,
+        related = evt.relatedTarget,
+        delegationSelector = "LI",
+        match;
+
+    while ( target && target != document && !( match = matches( target.tagName, delegationSelector ) ) ) {
+      target = target.parentNode;
+    }
+
+    if (!match) {
+      return;
+    }
+
+    while ( related && related != target && related != document ) {
+      related = related.parentNode;
+    }
+
+    if ( related == target ) {
+      return;
+    }
+
+    for (var i = 0; i < list.length; i++) {
+      list[i].className = "autosuggest-list__item";
+      list[i].setAttribute("aria-selected", "false");
+    }
+
+    target.className += " active";
+    target.setAttribute("aria-selected", "true");
   }
 
   var next = function() {
@@ -220,13 +221,13 @@ var AutoSuggest = (function() {
             var template = Handlebars.compile(autosuggest_template);
             var html = template(data);
             if (data.facilities.length || data.practiceLocations.length || data.providers.length || data.specialties.length) {
-              if (!opened()) {
+              if (!(document.getElementById(templateId).length)) {
                 open(html);
               } else {
                 update(html);
               }
             } else {
-              if (opened) {
+              if (document.getElementById(templateId).length) {
                 close();
               } else {
                 return false;
