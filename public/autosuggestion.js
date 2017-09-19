@@ -93,9 +93,10 @@ var AutoSuggest = (function() {
   }
 
   function keyboardNav(evt) {
-    var c = window.event? evt.keyCode : evt.which;
+    var c = window.event? evt.keyCode : evt.which,
+        container = document.getElementById(templateId);
 
-      if (document.getElementById(templateId).length) {
+      if (container) {
         if (c === 13) { //Enter
           evt.preventDefault();
           if (list[selectedIndex].dataset.link) {
