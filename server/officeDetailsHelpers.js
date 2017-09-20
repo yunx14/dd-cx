@@ -14,8 +14,8 @@ module.exports = {
   getOfficeDetails: function(req, res) {
     Logger.log("GET " + CONSTANTS.OFFICE_DETAILS_PAGE);
 
-    if (req.query && req.query.lat && req.query.long && req.query.location && req.query.practiceLocationNumber) {
-      var searchQueryWithPracticeLocationNumber = query = {
+    if (req.query && req.query.lat && req.query.long && req.query.location && req.query.officeId) {
+      var searchQueryWithOfficeId = query = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -24,10 +24,10 @@ module.exports = {
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
-        practiceLocationNumber: req.query.practiceLocationNumber
+        officeId: req.query.officeId
       };
 
-      var searchQueryWithoutPracticeLocationNumber = {
+      var searchQueryWithoutOfficeId = {
         lat: Number(req.query.lat),
         long: Number(req.query.long),
         location: req.query.location,
@@ -46,7 +46,7 @@ module.exports = {
 
       office.host = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_HOST;
       office.port = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PORT;
-      office.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/locations/" + searchQueryWithPracticeLocationNumber.practiceLocationNumber;
+      office.path = CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_PATH + "/locations/" + searchQueryWithOfficeId.officeId;
 
       var googleAPI = "";
       if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.APIKEY && CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API.UI.CLIENTID) {
@@ -64,7 +64,7 @@ module.exports = {
           "directorySearchPage": CONSTANTS.DIRECTORY_SEARCH_PAGE,
           "providerDetailsPage": CONSTANTS.PROVIDER_DETAILS_PAGE,
           "facilityDetailsPage": CONSTANTS.FACILITY_DETAILS_PAGE,
-          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutPracticeLocationNumber)}`,
+          "searchResultsLink": `${CONSTANTS.DIRECTORY_SEARCH_PAGE}${Utils.formatQuery(searchQueryWithoutOfficeId)}`,
           "searchQueryLocation": req.query.location,
           "searchQueryLat": req.query.lat,
           "searchQueryLong": req.query.long,
