@@ -134,7 +134,12 @@ module.exports = {
             query.location = response[0].formattedAddress;
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
+            query.sourceNetwork = ""; // 2AMGEN
+            query.targetNetwork = ""; // 2PPO
+
             if (query && query.lat && query.long) {
+              // console.log("here is my query", query);
+
 		          Logger.log("Redirectory to search page - " + Utils.formatQuery(query));
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
               return;
