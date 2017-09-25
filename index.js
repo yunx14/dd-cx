@@ -190,7 +190,7 @@ if (cluster.isMaster) {
 
       about.fetch({},
         (code, data) => {
-          Logger.debug(JSON.stringify(data));
+          // Logger.debug(JSON.stringify(data));
           // success
           if (data && data.providerDirectoryLastUpdateDate) {
             CONSTANTS[CONSTANTS.ENVIRONMENT].SEARCH_SERVICE_LAST_UPDATED = data.providerDirectoryLastUpdateDate;
