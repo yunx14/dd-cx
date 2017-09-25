@@ -41,6 +41,7 @@ function selectLocation(elementID) {
                 }
 
                 orig_listener.apply(input, [event]);
+                fillInAddress();
             };
         }
 
