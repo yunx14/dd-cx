@@ -118,7 +118,7 @@ module.exports = {
       return;
     }
 
-    if (req.body.location) {
+    if (req.body.location && !req.body.lat.length && !req.body.long.length) {
 	    Logger.log("We will server-side geolocate");
       try {
         geocoder.geocode(req.body.location, function(err, response) {
@@ -134,13 +134,9 @@ module.exports = {
             query.location = response[0].formattedAddress;
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
-            query.sourceNetwork = ""; // 2AMGEN
-            query.targetNetwork = ""; // 2PPO
 
             if (query && query.lat && query.long) {
-              // console.log("here is my query", query);
-
-		          Logger.log("Redirectory to search page - " + Utils.formatQuery(query));
+		          Logger.log("Redirectory to search page from node geo - " + Utils.formatQuery(query));
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
               return;
             }
@@ -155,7 +151,7 @@ module.exports = {
       query.lat = Number(req.body.lat);
       query.long = Number(req.body.long);
       if (query && query.lat && query.long) {
-	      Logger.log("redirectory to search - " + Utils.formatQuery(query));
+	      Logger.log("Redirectory to search page from UI geo - " + Utils.formatQuery(query));
         res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
       }
     }
