@@ -31,7 +31,6 @@ function selectLocation(elementID) {
         if (type == "keydown") {
             var orig_listener = listener;
             listener = function(event) {
-                var whichEvent = event.which;
                 var suggestion_selected = $(".pac-item-selected").length > 0;
                 if ((event.which == 13 || event.which == 9) && !suggestion_selected) {
                     var simulated_downarrow = $.Event("keydown", {
@@ -42,10 +41,6 @@ function selectLocation(elementID) {
                 }
 
                 orig_listener.apply(input, [event]);
-
-                if (whichEvent == 13) {
-                  fillInAddress();
-                }
             };
         }
 
