@@ -116,7 +116,7 @@ module.exports = {
         model: office
       };
 
-      var handleOffficeDetails = function(promiseData) {
+      var handleOfficeDetails = function(promiseData) {
         return new Promise(function(resolve, reject) {
           office.fetch({},
             function(code, data) {
@@ -151,7 +151,7 @@ module.exports = {
 
       var handleOfficeDetailViews = function(promiseData) {
         return Promise.resolve(promiseData)
-        .then(handleOffficeDetails)
+        .then(handleOfficeDetails)
         .then(render)
         .catch(function(promiseData) {
           return Promise.reject(promiseData);
