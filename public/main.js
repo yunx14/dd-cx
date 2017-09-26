@@ -41,8 +41,11 @@ function selectLocation(elementID) {
                 }
                 orig_listener.apply(input, [event]);
                 if(event.which == 13) {
-                  event.preventDefault();
-                  return false;
+                  var place = autocomplete.getPlace();
+                  if (place.geometry.location.lat() != $latitudeInput.val()) { // check that autocomplete.place has lat and long equal to the lat and long in the hidden fields
+                    event.preventDefault();
+                    return false;
+                  } 
                 }
             };
         }
