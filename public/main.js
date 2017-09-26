@@ -42,7 +42,10 @@ function selectLocation(elementID) {
                 orig_listener.apply(input, [event]);
                 if(event.which == 13) {
                   var place = autocomplete.getPlace();
-                  if (place != undefined && (place.geometry.location.lat() != $latitudeInput.val())) {
+                  if (place == undefined) {
+                    event.preventDefault();
+                    return false;
+                  } else if (place.geometry.location.lat() != $latitudeInput.val()) {
                     event.preventDefault();
                     return false;
                   }
