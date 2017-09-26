@@ -42,10 +42,10 @@ function selectLocation(elementID) {
                 orig_listener.apply(input, [event]);
                 if(event.which == 13) {
                   var place = autocomplete.getPlace();
-                  if (place.geometry.location.lat() != $latitudeInput.val()) { // check that autocomplete.place has lat and long equal to the lat and long in the hidden fields
+                  if (place != undefined && (place.geometry.location.lat() != $latitudeInput.val())) {
                     event.preventDefault();
                     return false;
-                  } 
+                  }
                 }
             };
         }
