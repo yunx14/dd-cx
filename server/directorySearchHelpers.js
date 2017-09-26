@@ -118,7 +118,7 @@ module.exports = {
       return;
     }
 
-    if (req.body.location && !req.body.lat.length && !req.body.long.length) {
+    if (req.body.location) {
 	    Logger.log("We will server-side geolocate");
       try {
         geocoder.geocode(req.body.location, function(err, response) {
