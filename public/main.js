@@ -40,7 +40,7 @@ function selectLocation(elementID) {
                     orig_listener.apply(input, [simulated_downarrow]);
                 }
 
-                orig_listener.apply(input, [event]);
+                //orig_listener.apply(input, [event]);
             };
         }
 
