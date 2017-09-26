@@ -39,8 +39,9 @@ function selectLocation(elementID) {
                     });
                     orig_listener.apply(input, [simulated_downarrow]);
                 }
-
-                //orig_listener.apply(input, [event]);
+                if(event.which != 13) {
+                  orig_listener.apply(input, [event]);
+                }
             };
         }
 
