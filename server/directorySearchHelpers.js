@@ -191,6 +191,7 @@ var getListsResults = function(query, req, res) {
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
       "searchQueryNetwork": Utils.formatQueryParam(query.network),
+      "searchQueryAddNetwork": query.addnetwork,
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },

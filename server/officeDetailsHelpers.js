@@ -21,6 +21,7 @@ module.exports = {
         location: req.query.location,
         free_text: req.query.free_text,
         network: req.query.network,
+        addnetwork: req.query.addnetwork,
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
@@ -33,6 +34,7 @@ module.exports = {
         location: req.query.location,
         free_text: req.query.free_text,
         network: req.query.network,
+        addnetwork: req.query.addnetwork,
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance)
@@ -73,6 +75,7 @@ module.exports = {
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
           "searchQueryNetwork": Utils.formatQueryParam(req.query.network),
+          "searchQueryAddNetwork": req.query.addnetwork,
           "title": "Facility Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
