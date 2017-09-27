@@ -220,14 +220,5 @@ module.exports = Utils = {
   formatTimestamp: function() {
     var now = new Date();
     return now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds() + ":" + now.getMilliseconds();
-  },
-  formatBoardCertified: function(boardCertified) {
-    var transformedBoardCertified;
-    if (boardCertified && boardCertified === "Y") {
-      transformedBoardCertified = true;
-    } else if (boardCertified && boardCertified === "N") {
-      transformedBoardCertified = false;
-    }
-    return transformedBoardCertified;
   }
 };
