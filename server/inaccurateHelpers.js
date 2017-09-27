@@ -24,6 +24,7 @@ module.exports = {
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified,
         providerKey: req.query.providerKey
       };
 
