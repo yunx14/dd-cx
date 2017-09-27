@@ -202,6 +202,7 @@ var getListsResults = function(query, req, res) {
       "searchQueryFreeText": query.free_text,
       "searchQueryBoardCert": query.boardCertified,
       "searchQueryNetwork": Utils.formatQueryParam(query.network),
+      "searchQueryAddNetwork": query.addnetwork,
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
