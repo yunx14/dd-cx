@@ -12,7 +12,7 @@ module.exports.returnBoardCertFormFields = function(boardCert) {
   };
 
   if (boardCert) {
-    boardCerts.field.value = boardCert;
+    boardCerts.field.valuelessAttribute = "checked";
   }
 
   return boardCerts;
