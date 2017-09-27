@@ -24,6 +24,7 @@ module.exports = {
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified,
         facilityId: req.query.facilityId
       };
 
@@ -35,7 +36,8 @@ module.exports = {
         network: req.query.network,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance)
+        distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified
       };
 
       var facility = new Model();
@@ -72,6 +74,7 @@ module.exports = {
           "searchQuerySpecialty": Utils.formatQueryParam(req.query.specialty),
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
+          "searchQueryBoardCert": req.query.boardCertified,
           "searchQueryNetwork": Utils.formatQueryParam(req.query.network),
           "title": "Facility Detail",
           "stylesheets": [
