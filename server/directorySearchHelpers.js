@@ -97,7 +97,7 @@ module.exports = {
     Logger.log("POST " + CONSTANTS.DIRECTORY_SEARCH_PAGE);
 
     var geocoder = null;
-    if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API_KEY) {
+    if (CONSTANTS[CONSTANTS.ENVIRONMENT].GOOGLE_MAPS_API) {
       var options = {
         provider: "google",
         httpAdapter: "https",
@@ -125,6 +125,7 @@ module.exports = {
         geocoder.geocode(req.body.location, function(err, response) {
           if (err) {
 		        Logger.log("We got an error from geolocation " + err );
+            console.log("here is geocoder that is failing ", req.body.location, geocoder._geocoder);
             res.redirect(CONSTANTS.ERROR_INVALID_ZIP);
             return;
           } else if (!response || (Array.isArray(response) && response.length === 0)) {
