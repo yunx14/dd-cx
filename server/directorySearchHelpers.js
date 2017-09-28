@@ -15,6 +15,7 @@ var LocationPersistLogic = require("../utility/locationPersistLogic.js");
 var LatlongPersistLogic = require("../utility/latlongPersistLogic.js");
 var DistancePersistLogic = require("../utility/distancePersistLogic.js");
 var FreeTextInputPersistLogic = require("../utility/freeTextInputPersistLogic.js");
+var BoardCertPersistLogic = require("../utility/boardCertPersistLogic.js");
 
 var PaginationControl = require("../components/paginationControl.js");
 var NodeGeocoder = require('node-geocoder');
@@ -135,6 +136,10 @@ module.exports = {
             query.lat = Number(response[0].latitude);
             query.long = Number(response[0].longitude);
 
+            if (query.boardCertified === "on") {
+              query.boardCertified = "true";
+            }
+
             if (query && query.lat && query.long) {
 		          Logger.log("Redirectory to search page from node geo - " + Utils.formatQuery(query));
               res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
@@ -150,6 +155,11 @@ module.exports = {
       query.location = req.body.location;
       query.lat = Number(req.body.lat);
       query.long = Number(req.body.long);
+
+      if (query.boardCertified === "on") {
+        query.boardCertified = "true";
+      }
+
       if (query && query.lat && query.long) {
 	      Logger.log("Redirectory to search page from UI geo - " + Utils.formatQuery(query));
         res.redirect(CONSTANTS.DIRECTORY_SEARCH_PAGE + Utils.formatQuery(query));
@@ -190,7 +200,9 @@ var getListsResults = function(query, req, res) {
       "searchQuerySpecialty": Utils.formatQueryParam(query.specialty),
       "searchQueryLanguage": query.language,
       "searchQueryFreeText": query.free_text,
+      "searchQueryBoardCert": query.boardCertified,
       "searchQueryNetwork": Utils.formatQueryParam(query.network),
+      "searchQueryAddNetwork": query.addnetwork,
       "title": "Provider Directory Search Results",
       "stylesheets": [
         { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },
@@ -271,6 +283,9 @@ var getListsResults = function(query, req, res) {
             // freeTextInput persistence
             promiseData.presenter.propertyMap.freeTextInput = ViewModel.pages_directorySearchResults.freeTextInput;
             promiseData.presenter.propertyMap.freeTextInput = FreeTextInputPersistLogic.returnFreeTextInputFormFields(query.free_text);
+            // boardCert persistence
+            promiseData.presenter.propertyMap.boardCert = ViewModel.pages_directorySearchResults.boardCert;
+            promiseData.presenter.propertyMap.boardCert = BoardCertPersistLogic.returnBoardCertFormFields(query.boardCertified);
             // pagination support
             promiseData.presenter.propertyMap.total = resultsList.total;
             promiseData.presenter.propertyMap.totalPages = resultsList.totalPages;

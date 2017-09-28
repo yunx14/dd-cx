@@ -21,9 +21,11 @@ module.exports = {
         location: req.query.location,
         free_text: req.query.free_text,
         network: req.query.network,
+        addnetwork: req.query.addnetwork,
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified,
         officeId: req.query.officeId
       };
 
@@ -33,9 +35,11 @@ module.exports = {
         location: req.query.location,
         free_text: req.query.free_text,
         network: req.query.network,
+        addnetwork: req.query.addnetwork,
         specialty: req.query.specialty,
         language: req.query.language,
-        distance: Number(req.query.distance)
+        distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified
       };
 
       var office = new Model();
@@ -72,7 +76,9 @@ module.exports = {
           "searchQuerySpecialty": Utils.formatQueryParam(req.query.specialty),
           "searchQueryLanguage": req.query.language,
           "searchQueryFreeText": req.query.free_text,
+          "searchQueryBoardCert": req.query.boardCertified,
           "searchQueryNetwork": Utils.formatQueryParam(req.query.network),
+          "searchQueryAddNetwork": req.query.addnetwork,
           "title": "Facility Detail",
           "stylesheets": [
             { "stylesheet": CONSTANTS[CONSTANTS.ENVIRONMENT].STATIC_PATH + "styles/style.css" },

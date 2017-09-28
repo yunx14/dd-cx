@@ -21,9 +21,11 @@ module.exports = {
         location: req.query.location,
         free_text: req.query.free_text,
         network: req.query.network,
+        addnetwork: req.query.addnetwork,
         specialty: req.query.specialty,
         language: req.query.language,
         distance: Number(req.query.distance),
+        boardCertified: req.query.boardCertified,
         providerKey: req.query.providerKey
       };
 
